@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 public class ParamActivity extends Activity {
 	public static final String SETTING_INFOS = "SETTING_INFOS";
-	private static final int ACTIVITY_LOGIN = 0;
+	//private static final int ACTIVITY_LOGIN = 0;
 	//保存按钮
 	private Button btnParamSave;
 	//取消按钮
@@ -50,7 +50,7 @@ public class ParamActivity extends Activity {
 				//判断播报距离有没有输入
 				if (edtDistanceValue == null || edtDistanceValue.equals("")
 						|| edtDistanceValue.trim().equals("")
-						|| Integer.parseInt(edtDistanceValue) > 0) {
+						|| Integer.parseInt(edtDistanceValue) < 0) {
 					Toast.makeText(getApplicationContext(), "请输入有效的播报距离", Toast.LENGTH_SHORT).show();
 					return ;
 				}
@@ -58,7 +58,7 @@ public class ParamActivity extends Activity {
 				//判断角度误差有没有输入
 				if (edtAngleErrorValue == null || edtAngleErrorValue.equals("")
 						|| edtAngleErrorValue.trim().equals("")
-						|| Integer.parseInt(edtAngleErrorValue) > 0){
+						|| Integer.parseInt(edtAngleErrorValue) < 0){
 					Toast.makeText(getApplicationContext(), "请输入有效的角度误差", Toast.LENGTH_SHORT).show();
 					return ;
 				}
@@ -66,11 +66,15 @@ public class ParamActivity extends Activity {
 				//判断刷新频率有没有输入
 				if (edtRefreshValue == null || edtRefreshValue.equals("")
 						|| edtRefreshValue.trim().equals("")
-						|| Integer.parseInt(edtRefreshValue) > 0) {
+						|| Integer.parseInt(edtRefreshValue) < 0) {
 					Toast.makeText(getApplicationContext(), "请输入有效的刷新频率", Toast.LENGTH_SHORT).show();
 					return ;
 				}
-				
+				settings.edit()
+				.putString("edtDistanceKey", edtDistanceValue)
+				.putString("edtAngleErrorKey", edtAngleErrorValue)
+				.putString("edtRefreshKey", edtRefreshValue)
+				.commit();
 				//保存
 				finish();
 			}
