@@ -37,6 +37,18 @@ public class ParamActivity extends Activity {
 		edtRefresh = (EditText) this.findViewById(R.id.edtRefresh);
 		
 		
+		// Restore preferences
+        SharedPreferences settings = getSharedPreferences(SETTING_INFOS, 0);
+		//播报距离
+        String distanceValue =  settings.getString("edtDistanceKey", "20");
+        //角度误差
+        String angleErrorValue =  settings.getString("edtAngleErrorKey", "50");
+        //刷新频率
+        String refreshValue =  settings.getString("edtRefreshKey", "200");
+        //设值
+        edtDistance.setText(distanceValue);
+        edtAngleError.setText(angleErrorValue);
+        edtRefresh.setText(refreshValue);
 		
 		OnClickListener btnParamSaveClick = new OnClickListener(){
 			@Override
