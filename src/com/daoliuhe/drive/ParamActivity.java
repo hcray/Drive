@@ -1,5 +1,7 @@
 package com.daoliuhe.drive;
 
+import com.daoliuhe.drive.tools.CustomConstant;
+
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -40,11 +42,11 @@ public class ParamActivity extends Activity {
 		// Restore preferences
         SharedPreferences settings = getSharedPreferences(SETTING_INFOS, 0);
 		//播报距离
-        String distanceValue =  settings.getString("edtDistanceKey", "20");
+        String distanceValue =  settings.getString(CustomConstant.DISTANCE_KEY, "20");
         //角度误差
-        String angleErrorValue =  settings.getString("edtAngleErrorKey", "50");
+        String angleErrorValue =  settings.getString(CustomConstant.ANGLEERROR_KEY, "50");
         //刷新频率
-        String refreshValue =  settings.getString("edtRefreshKey", "200");
+        String refreshValue =  settings.getString(CustomConstant.REFRESH_KEY, "200");
         //设值
         edtDistance.setText(distanceValue);
         edtAngleError.setText(angleErrorValue);
@@ -83,9 +85,9 @@ public class ParamActivity extends Activity {
 					return ;
 				}
 				settings.edit()
-				.putString("edtDistanceKey", edtDistanceValue)
-				.putString("edtAngleErrorKey", edtAngleErrorValue)
-				.putString("edtRefreshKey", edtRefreshValue)
+				.putString(CustomConstant.DISTANCE_KEY, edtDistanceValue)
+				.putString(CustomConstant.ANGLEERROR_KEY, edtAngleErrorValue)
+				.putString(CustomConstant.REFRESH_KEY, edtRefreshValue)
 				.commit();
 				//保存
 				finish();
