@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    android:screenOrientation="landscape"
     package="com.daoliuhe.drive"
     android:versionCode="1"
     android:versionName="1.0" >
@@ -29,6 +30,10 @@
         <activity
             android:name="com.daoliuhe.drive.ParamActivity"
             android:label="@string/title_activity_param" >
+        </activity>
+        <activity
+            android:name="com.daoliuhe.drive.LineActivity"
+            android:label="@string/title_activity_line" >
         </activity>
     </application>
 
