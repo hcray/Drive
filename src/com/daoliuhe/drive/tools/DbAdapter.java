@@ -131,7 +131,7 @@ public class DbAdapter {
 	 * @throws SQLException
 	 */
 	public DbAdapter open() throws SQLException {
-		Log.d(TAG, "GPSDbAdapter open()");
+		Log.d(TAG, "open()");
 		mDbHelper = new DatabaseHelper(mCtx);
 		mDb = mDbHelper.getWritableDatabase();
 		return this;
