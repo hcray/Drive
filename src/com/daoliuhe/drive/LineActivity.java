@@ -242,6 +242,7 @@ public class LineActivity extends Activity {
 	protected void onDestroy() {
 		super.onDestroy();
 		if(ttSpeech != null){
+			ttSpeech.stop();
 			ttSpeech.shutdown();//¹Ø±ÕTTS
 		}
 	}

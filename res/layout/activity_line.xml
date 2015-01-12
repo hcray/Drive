@@ -11,7 +11,8 @@
     
 	<TableLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
 	    <TableRow android:layout_width="fill_parent" android:layout_height="wrap_content">
-           <Button
+	        <Button
+	       style="?android:attr/buttonBarButtonStyle"
 	       android:id="@+id/btnLights1"
 	       android:layout_width="wrap_content"
 	       android:layout_height="50dip"
@@ -21,6 +22,7 @@
 	       android:textSize="18sp" />
            
            <Button
+	       style="?android:attr/buttonBarButtonStyle"
 	       android:id="@+id/btnLights2"
 	       android:layout_width="wrap_content"
 	       android:layout_height="50dip"
@@ -30,6 +32,7 @@
 	       android:textSize="18sp" />
            
            <Button
+	       style="?android:attr/buttonBarButtonStyle"
 	       android:id="@+id/btnLights3"
 	       android:layout_width="wrap_content"
 	       android:layout_height="50dip"
@@ -39,6 +42,7 @@
 	       android:textSize="18sp" />
            
            <Button
+	       style="?android:attr/buttonBarButtonStyle"
 	       android:id="@+id/btnLights4"
 	       android:layout_width="wrap_content"
 	       android:layout_height="50dip"
@@ -48,6 +52,7 @@
 	       android:textSize="18sp" />
            
            <Button
+	       style="?android:attr/buttonBarButtonStyle"
 	       android:id="@+id/btnTurnRight"
 	       android:layout_width="wrap_content"
 	       android:layout_height="50dip"
@@ -59,6 +64,7 @@
 	    
 	    <TableRow android:layout_width="fill_parent" android:layout_height="wrap_content">
            <Button
+	       style="?android:attr/buttonBarButtonStyle"
 	       android:id="@+id/btnSidewalk"
 	       android:layout_width="wrap_content"
 	       android:layout_height="50dip"
@@ -68,6 +74,7 @@
 	       android:textSize="18sp" />
            
            <Button
+	       style="?android:attr/buttonBarButtonStyle"
 	       android:id="@+id/btnPassSidewalk"
 	       android:layout_width="wrap_content"
 	       android:layout_height="50dip"
@@ -77,6 +84,7 @@
 	       android:textSize="18sp" />
            
            <Button
+	       style="?android:attr/buttonBarButtonStyle"
 	       android:id="@+id/btnTurnLeft"
 	       android:layout_width="wrap_content"
 	       android:layout_height="50dip"
@@ -86,6 +94,7 @@
 	       android:textSize="18sp" />
            
            <Button
+	       style="?android:attr/buttonBarButtonStyle"
 	       android:id="@+id/btnAheadDirectLine"
 	       android:layout_width="wrap_content"
 	       android:layout_height="50dip"
@@ -95,6 +104,7 @@
 	       android:textSize="18sp" />
            
            <Button
+	       style="?android:attr/buttonBarButtonStyle"
 	       android:id="@+id/btnPassBusStation"
 	       android:layout_width="wrap_content"
 	       android:layout_height="50dip"
@@ -106,6 +116,7 @@
 	    
 	    <TableRow android:layout_width="fill_parent" android:layout_height="wrap_content">
            <Button
+	       style="?android:attr/buttonBarButtonStyle"
 	       android:id="@+id/btnDirectLine"
 	       android:layout_width="wrap_content"
 	       android:layout_height="50dip"
@@ -115,6 +126,7 @@
 	       android:textSize="18sp" />
            
            <Button
+	       style="?android:attr/buttonBarButtonStyle"
 	       android:id="@+id/btnPassSchool"
 	       android:layout_width="wrap_content"
 	       android:layout_height="50dip"
@@ -124,6 +136,7 @@
 	       android:textSize="18sp" />
            
            <Button
+	       style="?android:attr/buttonBarButtonStyle"
 	       android:id="@+id/btnChangeLanes"
 	       android:layout_width="wrap_content"
 	       android:layout_height="50dip"
@@ -133,6 +146,7 @@
 	       android:textSize="18sp" />
            
            <Button
+	       style="?android:attr/buttonBarButtonStyle"
 	       android:id="@+id/btnSlowdown"
 	       android:layout_width="wrap_content"
 	       android:layout_height="50dip"
@@ -142,6 +156,7 @@
 	       android:textSize="18sp" />
            
            <Button
+	       style="?android:attr/buttonBarButtonStyle"
 	       android:id="@+id/btnSpeedLimit"
 	       android:layout_width="wrap_content"
 	       android:layout_height="50dip"
@@ -153,6 +168,7 @@
 	    
 	    <TableRow android:layout_width="fill_parent" android:layout_height="wrap_content">
            <Button
+	       style="?android:attr/buttonBarButtonStyle"
 	       android:id="@+id/btnPassSchoolStation"
 	       android:layout_width="wrap_content"
 	       android:layout_height="50dip"
@@ -162,6 +178,7 @@
 	       android:textSize="18sp" />
            
            <Button
+           style="?android:attr/buttonBarButtonStyle"
 	       android:id="@+id/btnTurn"
 	       android:layout_width="wrap_content"
 	       android:layout_height="50dip"
@@ -171,6 +188,7 @@
 	       android:textSize="18sp" />
            
            <Button
+           style="?android:attr/buttonBarButtonStyle"
 	       android:id="@+id/btnPullOver"
 	       android:layout_width="wrap_content"
 	       android:layout_height="50dip"
@@ -180,6 +198,7 @@
 	       android:textSize="18sp" />
            
            <Button
+		   style="?android:attr/buttonBarButtonStyle"
 	       android:id="@+id/btnBackCar"
 	       android:layout_width="wrap_content"
 	       android:layout_height="50dip"
@@ -189,6 +208,7 @@
 	       android:textSize="18sp" />
            
            <Button
+           style="?android:attr/buttonBarButtonStyle"
 	       android:id="@+id/btnReset"
 	       android:layout_width="wrap_content"
 	       android:layout_height="50dip"
