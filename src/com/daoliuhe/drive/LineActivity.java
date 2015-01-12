@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class LineActivity extends Activity {
 	public static final String SETTING_INFOS = "LineActivity";
@@ -55,9 +56,11 @@ public class LineActivity extends Activity {
 			         int supported = ttSpeech.setLanguage(Locale.CHINA);
 			         if((supported != TextToSpeech.LANG_AVAILABLE)&&(supported != TextToSpeech.LANG_COUNTRY_AVAILABLE)){
 			             //displayToast("不支持当前语言！");
+			        	 Toast.makeText(getApplicationContext(), "不支持当前语言！", Toast.LENGTH_SHORT).show();
+			         }else{
+			        	 // 设置音调，值越大声音越尖（女生），值越小则变成男声,1.0是常规  
+			        	 ttSpeech.setPitch(1.0f);
 			         }
-			         // 设置音调，值越大声音越尖（女生），值越小则变成男声,1.0是常规  
-			         ttSpeech.setPitch(0.5f);
 			     }
 			 }
 		});
@@ -67,7 +70,7 @@ public class LineActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				ttSpeech.speak("模拟灯光一", TextToSpeech.QUEUE_FLUSH, null);
+				ttSpeech.speak("i love you huangxiaohui", TextToSpeech.QUEUE_FLUSH, null);
 			}
 			
 		});
