@@ -3,10 +3,7 @@ package com.daoliuhe.drive;
 import java.util.Iterator;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.location.Criteria;
 import android.location.GpsSatellite;
 import android.location.GpsStatus;
@@ -18,7 +15,6 @@ import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -316,16 +312,12 @@ public class LineActivity extends Activity implements OnLongClickListener{
 	
 	@Override
 	public boolean onLongClick(View v) {
-		showDialog(1);
 		Log.i(TAG, "view: " + v.getId());
+		
+		
 		return true;
 	}
 	
-	@Override
-	protected Dialog onCreateDialog(int id) {
-		return buildDialog(LineActivity.this);
-	}
-
 	// 位置监听
 	private LocationListener locationListener = new LocationListener() {
 
@@ -451,30 +443,6 @@ public class LineActivity extends Activity implements OnLongClickListener{
 		// 设置对电源的需求
 		criteria.setPowerRequirement(Criteria.POWER_LOW);
 		return criteria;
-	}
-	
-	
-	private Dialog buildDialog(Context context) {
-		LayoutInflater inflater = LayoutInflater.from(this);
-		final View textEntryView = inflater.inflate(
-				R.layout.alert_dialog_text_entry, null);
-		AlertDialog.Builder builder = new AlertDialog.Builder(context);
-		//builder.setIcon(R.drawable.alert_dialog_icon);
-		builder.setTitle(R.string.alert_dialog_text_entry);
-		builder.setView(textEntryView);
-		builder.setPositiveButton(R.string.alert_dialog_ok,
-				new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int whichButton) {
-						setTitle("点击了对话框上的确定按钮");
-					}
-				});
-		builder.setNegativeButton(R.string.alert_dialog_cancel,
-				new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int whichButton) {
-						setTitle("点击了对话框上的取消按钮");
-					}
-				});
-		return builder.create();
 	}
 	
 	@Override

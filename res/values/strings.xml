@@ -10,9 +10,9 @@
     <string name="line_list">线路</string>
     <string name="title_activity_param">参数设置</string>
     <string name="title_activity_line">LineActivity</string>
-    
-   	<string name="alert_dialog_ok">确定</string>
-	<string name="alert_dialog_cancel">取消</string>
-	<string name="alert_dialog_text_entry">录入坐标</string>
+    <string name="alert_dialog_ok">确定</string>
+    <string name="alert_dialog_cancel">取消</string>
+    <string name="alert_dialog_text_entry">录入坐标</string>
+    <string name="title_activity_location">LocationActivity</string>
 
 </resources>

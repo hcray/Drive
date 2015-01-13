@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    android:screenOrientation="landscape"
     package="com.daoliuhe.drive"
+    android:screenOrientation="landscape"
     android:versionCode="1"
     android:versionName="1.0" >
 
     <uses-sdk
         android:minSdkVersion="11"
         android:targetSdkVersion="14" />
-    
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -37,6 +37,10 @@
         <activity
             android:name="com.daoliuhe.drive.LineActivity"
             android:label="@string/title_activity_line" >
+        </activity>
+        <activity
+            android:name="com.daoliuhe.drive.LocationActivity"
+            android:label="@string/title_activity_location" >
         </activity>
     </application>
 
