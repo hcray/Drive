@@ -14,5 +14,25 @@
     <string name="alert_dialog_cancel">取消</string>
     <string name="alert_dialog_text_entry">录入坐标</string>
     <string name="title_activity_location">LocationActivity</string>
+    
+    <string name="toast01">开启灯光（近光灯） → 远光灯 → 近光灯 → 远光灯 → 近光灯 → 示宽灯+警示灯 → 关闭所有灯光</string>
+    <string name="toast02">开启灯光（近光灯） → 远光灯 → 近光灯 → 先变到远光灯，再变回近光灯 → 近光灯 → 雾灯+警示灯 → 关闭所有灯光</string>
+    <string name="toast03">开启灯光（近光灯） → 远光灯 → 近光灯 → 先变到远光灯，再变回近光灯 → 示宽灯+警示灯 → 关闭所有灯光</string>
+    <string name="toast04">开启灯光（近光灯） → 远光灯 → 近光灯 → 远光灯 → 近光灯 → 关闭所有灯光</string>
+    <string name="toast05">点刹车 → 打右转向灯（注意：3秒后才能动方向盘） → 选择合适时机右转</string>
+    <string name="toast06">点刹车 （不能太轻，否则电子考官可能检测不到！）</string>
+    <string name="toast07">停车让行（必须快速停下！）</string>
+    <string name="toast08">点刹车 → 打左转向灯（注意：3秒后才能动方向盘） → 选择合适时机左转</string>
+    <string name="toast09">点刹车 → 直行（红灯时得停车）</string>
+    <string name="toast10">点刹车</string>
+    <string name="toast11">直线行驶（不能动方向盘，可以变速！维持8秒直线行驶！）</string>
+    <string name="toast12">点刹车</string>
+    <string name="toast13">打转向灯（注意：3秒后才能动方向盘，不能连续变更两条或以上的车道！）</string>
+    <string name="toast14">点刹车</string>
+    <string name="toast15">迅速加速到40码以上（注意挡位配合，4挡不超过50码！11秒内完成！）</string>
+    <string name="toast16">点刹车 → 再点刹车</string>
+    <string name="toast17">点刹车 → 打左转向灯（注意：3秒后才能动方向盘）→ 调头（最好停车1挡调头，驶入最右车道）</string>
+    <string name="toast18">点刹车 → 打右转向灯（注意：3秒后才能动方向盘）→ 停车 （正确的停车操作是：踩刹车降速至20码以下，保持踩刹车状态（右脚不能动），再踩离合（离合踩到底，此时右脚刹车一定不能动，否则会判停车不稳）；空挡、手刹，如果是晚上，得开启示宽灯和启警示灯；注意右边距，30cm以内，不能压线）</string>
+    <string name="toast19">观察后视镜、左后视镜，确认安全后下车！</string>
 
 </resources>
