@@ -1,7 +1,5 @@
 package com.daoliuhe.drive;
 
-import com.daoliuhe.drive.tools.CustomConstant;
-
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -11,6 +9,8 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.daoliuhe.drive.tools.CustomConstant;
 
 public class ParamActivity extends Activity {
 	public static final String SETTING_INFOS = "SETTING_INFOS";

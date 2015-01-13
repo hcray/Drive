@@ -1,21 +1,19 @@
 package com.daoliuhe.drive;
 
-import java.util.Locale;
-
 import android.app.Activity;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.os.Bundle;
-import android.speech.tts.TextToSpeech;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.Toast;
 
 public class LineActivity extends Activity {
 	public static final String SETTING_INFOS = "LineActivity";
 	//private static final int ACTIVITY_LOGIN = 0;
 	//语音
-	private TextToSpeech ttSpeech;
+	private SoundPool soundPool;
 
 	private Button btnLights1;
 	private Button btnLights2;
@@ -46,31 +44,34 @@ public class LineActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_line);
 
-		ttSpeech = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
-			
-			@Override
-			public void onInit(int status) {
-			     // TODO Auto-generated method stub
-			     if(status == TextToSpeech.SUCCESS){
-			         //设置朗读语言
-			         int supported = ttSpeech.setLanguage(Locale.CHINA);
-			         if((supported != TextToSpeech.LANG_AVAILABLE)&&(supported != TextToSpeech.LANG_COUNTRY_AVAILABLE)){
-			             //displayToast("不支持当前语言！");
-			        	 Toast.makeText(getApplicationContext(), "不支持当前语言！", Toast.LENGTH_SHORT).show();
-			         }else{
-			        	 // 设置音调，值越大声音越尖（女生），值越小则变成男声,1.0是常规  
-			        	 ttSpeech.setPitch(1.0f);
-			         }
-			     }
-			 }
-		});
+		soundPool= new SoundPool(10,AudioManager.STREAM_SYSTEM,5);
+		soundPool.load(this,R.raw.snd01,1);
+		soundPool.load(this,R.raw.snd02,1);
+		soundPool.load(this,R.raw.snd03,1);
+		soundPool.load(this,R.raw.snd04,1);
+		soundPool.load(this,R.raw.snd05,1);
+		soundPool.load(this,R.raw.snd06,1);
+		soundPool.load(this,R.raw.snd07,1);
+		soundPool.load(this,R.raw.snd08,1);
+		soundPool.load(this,R.raw.snd09,1);
+		soundPool.load(this,R.raw.snd10,1);
+		soundPool.load(this,R.raw.snd11,1);
+		soundPool.load(this,R.raw.snd12,1);
+		soundPool.load(this,R.raw.snd13,1);
+		soundPool.load(this,R.raw.snd14,1);
+		soundPool.load(this,R.raw.snd15,1);
+		soundPool.load(this,R.raw.snd16,1);
+		soundPool.load(this,R.raw.snd17,1);
+		soundPool.load(this,R.raw.snd18,1);
+		soundPool.load(this,R.raw.snd19,1);
 		
 		btnLights1 = (Button) this.findViewById(R.id.btnLights1);
 		btnLights1.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				ttSpeech.speak("i love you huangxiaohui", TextToSpeech.QUEUE_FLUSH, null);
+				//id,左右声道, 音量, 优先级, 是否循环(0为不循环，-1为循环),播放比率(从0.5到2，一般为1，表示正常播放)
+				soundPool.play(1, 1, 1, 0, 0, 1);
 			}
 			
 		});
@@ -79,7 +80,7 @@ public class LineActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
+				soundPool.play(2, 1, 1, 0, 0, 1);
 				
 			}
 		});
@@ -88,7 +89,7 @@ public class LineActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
+				soundPool.play(3, 1, 1, 0, 0, 1);
 				
 			}});
 		btnLights4 = (Button) this.findViewById(R.id.btnLights4);
@@ -96,7 +97,7 @@ public class LineActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
+				soundPool.play(4, 1, 1, 0, 0, 1);
 				
 			}});
 		btnTurnRight = (Button) this.findViewById(R.id.btnTurnRight);
@@ -104,7 +105,7 @@ public class LineActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
+				soundPool.play(5, 1, 1, 0, 0, 1);
 				
 			}});
 		
@@ -113,7 +114,7 @@ public class LineActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
+				soundPool.play(6, 1, 1, 0, 0, 1);
 				
 			}
 		});
@@ -122,7 +123,7 @@ public class LineActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
+				soundPool.play(7, 1, 1, 0, 0, 1);
 				
 			}});
 		btnTurnLeft = (Button) this.findViewById(R.id.btnTurnLeft);
@@ -130,7 +131,7 @@ public class LineActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
+				soundPool.play(8, 1, 1, 0, 0, 1);
 				
 			}});
 		btnAheadDirectLine = (Button) this.findViewById(R.id.btnAheadDirectLine);
@@ -138,7 +139,7 @@ public class LineActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
+				soundPool.play(9, 1, 1, 0, 0, 1);
 				
 			}});
 		btnPassBusStation = (Button) this.findViewById(R.id.btnPassBusStation);
@@ -146,7 +147,7 @@ public class LineActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
+				soundPool.play(10, 1, 1, 0, 0, 1);
 				
 			}});
 
@@ -155,7 +156,7 @@ public class LineActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
+				soundPool.play(11, 1, 1, 0, 0, 1);
 				
 			}});
 		btnPassSchool = (Button) this.findViewById(R.id.btnPassSchool);
@@ -163,7 +164,7 @@ public class LineActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
+				soundPool.play(12, 1, 1, 0, 0, 1);
 				
 			}});
 		btnChangeLanes = (Button) this.findViewById(R.id.btnChangeLanes);
@@ -171,7 +172,7 @@ public class LineActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
+				soundPool.play(13, 1, 1, 0, 0, 1);
 				
 			}});
 		btnSlowdown = (Button) this.findViewById(R.id.btnSlowdown);
@@ -179,7 +180,7 @@ public class LineActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
+				soundPool.play(14, 1, 1, 0, 0, 1);
 				
 			}});
 		btnSpeedLimit = (Button) this.findViewById(R.id.btnSpeedLimit);
@@ -187,7 +188,7 @@ public class LineActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
+				soundPool.play(15, 1, 1, 0, 0, 1);
 				
 			}});
 
@@ -196,7 +197,7 @@ public class LineActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
+				soundPool.play(16, 1, 1, 0, 0, 1);
 				
 			}});
 		btnTurn = (Button) this.findViewById(R.id.btnTurn);
@@ -204,7 +205,7 @@ public class LineActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
+				soundPool.play(17, 1, 1, 0, 0, 1);
 				
 			}});
 		btnPullOver = (Button) this.findViewById(R.id.btnPullOver);
@@ -212,7 +213,7 @@ public class LineActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
+				soundPool.play(18, 1, 1, 0, 0, 1);
 				
 			}});
 		btnBackCar = (Button) this.findViewById(R.id.btnBackCar);
@@ -220,7 +221,7 @@ public class LineActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
+				soundPool.play(19, 1, 1, 0, 0, 1);
 				
 			}});
 		btnReset = (Button) this.findViewById(R.id.btnReset);
@@ -244,10 +245,6 @@ public class LineActivity extends Activity {
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
-		if(ttSpeech != null){
-			ttSpeech.stop();
-			ttSpeech.shutdown();//关闭TTS
-		}
 	}
 
 }
