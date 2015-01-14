@@ -12,8 +12,6 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.location.LocationProvider;
-import android.media.AudioManager;
-import android.media.SoundPool;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -30,7 +28,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 	// private static final int ACTIVITY_LOGIN = 0;
 	private static final String TAG = "LineActivity";
 	// 语音
-	private SoundPool soundPool;
+	//private SoundPool soundPool;
 	// GPS定位
 	private LocationManager lm;
 
@@ -98,7 +96,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 		lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 1,
 				locationListener);
 
-		soundPool = new SoundPool(19, AudioManager.STREAM_SYSTEM, 5);
+		//soundPool = new SoundPool(19, AudioManager.STREAM_SYSTEM, 5);
 		/*
 		soundPool.load(this, R.raw.snd01, 1);
 		soundPool.load(this, R.raw.snd02, 1);
@@ -128,7 +126,8 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			public void onClick(View v) {
 				tvline.setText(R.string.toast01);
 				// id,左右声道, 音量, 优先级, 是否循环(0为不循环，-1为循环),播放比率(从0.5到2，一般为1，表示正常播放)
-				soundPool.play(1, 1, 1, 0, 0, 1);
+				//soundPool.play(1, 1, 1, 0, 0, 1);
+				playSound(1);
 			}
 		});
 		btnLights1.setOnLongClickListener(this);
@@ -139,7 +138,8 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			@Override
 			public void onClick(View v) {
 				tvline.setText(R.string.toast02);
-				soundPool.play(2, 1, 1, 0, 0, 1);
+				//soundPool.play(2, 1, 1, 0, 0, 1);
+				playSound(2);
 
 			}
 		});
@@ -149,7 +149,8 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			@Override
 			public void onClick(View v) {
 				tvline.setText(R.string.toast03);
-				soundPool.play(3, 1, 1, 0, 0, 1);
+				//soundPool.play(3, 1, 1, 0, 0, 1);
+				playSound(3);
 
 			}
 		});
@@ -159,7 +160,8 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			@Override
 			public void onClick(View v) {
 				tvline.setText(R.string.toast04);
-				soundPool.play(4, 1, 1, 0, 0, 1);
+				//soundPool.play(4, 1, 1, 0, 0, 1);
+				playSound(4);
 
 			}
 		});
@@ -169,7 +171,8 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			@Override
 			public void onClick(View v) {
 				tvline.setText(R.string.toast05);
-				soundPool.play(5, 1, 1, 0, 0, 1);
+				//soundPool.play(5, 1, 1, 0, 0, 1);
+				playSound(5);
 
 			}
 		});
@@ -180,7 +183,8 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			@Override
 			public void onClick(View v) {
 				tvline.setText(R.string.toast06);
-				soundPool.play(6, 1, 1, 0, 0, 1);
+				//soundPool.play(6, 1, 1, 0, 0, 1);
+				playSound(6);
 
 			}
 		});
@@ -190,7 +194,8 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			@Override
 			public void onClick(View v) {
 				tvline.setText(R.string.toast07);
-				soundPool.play(7, 1, 1, 0, 0, 1);
+				//soundPool.play(7, 1, 1, 0, 0, 1);
+				playSound(7);
 
 			}
 		});
@@ -200,7 +205,8 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			@Override
 			public void onClick(View v) {
 				tvline.setText(R.string.toast08);
-				soundPool.play(8, 1, 1, 0, 0, 1);
+				//soundPool.play(8, 1, 1, 0, 0, 1);
+				playSound(8);
 
 			}
 		});
@@ -211,7 +217,8 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			@Override
 			public void onClick(View v) {
 				tvline.setText(R.string.toast09);
-				soundPool.play(9, 1, 1, 0, 0, 1);
+				//soundPool.play(9, 1, 1, 0, 0, 1);
+				playSound(9);
 
 			}
 		});
@@ -221,7 +228,8 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			@Override
 			public void onClick(View v) {
 				tvline.setText(R.string.toast10);
-				soundPool.play(10, 1, 1, 0, 0, 1);
+				//soundPool.play(10, 1, 1, 0, 0, 1);
+				playSound(10);
 
 			}
 		});
@@ -232,7 +240,8 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			@Override
 			public void onClick(View v) {
 				tvline.setText(R.string.toast11);
-				soundPool.play(11, 1, 1, 0, 0, 1);
+				//soundPool.play(11, 1, 1, 0, 0, 1);
+				playSound(11);
 
 			}
 		});
@@ -242,7 +251,8 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			@Override
 			public void onClick(View v) {
 				tvline.setText(R.string.toast12);
-				soundPool.play(12, 1, 1, 0, 0, 1);
+				//soundPool.play(12, 1, 1, 0, 0, 1);
+				playSound(12);
 
 			}
 		});
@@ -252,7 +262,8 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			@Override
 			public void onClick(View v) {
 				tvline.setText(R.string.toast13);
-				soundPool.play(13, 1, 1, 0, 0, 1);
+				//soundPool.play(13, 1, 1, 0, 0, 1);
+				playSound(13);
 
 			}
 		});
@@ -262,7 +273,8 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			@Override
 			public void onClick(View v) {
 				tvline.setText(R.string.toast14);
-				soundPool.play(14, 1, 1, 0, 0, 1);
+				//soundPool.play(14, 1, 1, 0, 0, 1);
+				playSound(14);
 
 			}
 		});
@@ -272,7 +284,8 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			@Override
 			public void onClick(View v) {
 				tvline.setText(R.string.toast15);
-				soundPool.play(15, 1, 1, 0, 0, 1);
+				//soundPool.play(15, 1, 1, 0, 0, 1);
+				playSound(15);
 
 			}
 		});
@@ -284,7 +297,8 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			@Override
 			public void onClick(View v) {
 				tvline.setText(R.string.toast16);
-				soundPool.play(16, 1, 1, 0, 0, 1);
+				//soundPool.play(16, 1, 1, 0, 0, 1);
+				playSound(16);
 
 			}
 		});
@@ -294,7 +308,8 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			@Override
 			public void onClick(View v) {
 				tvline.setText(R.string.toast17);
-				soundPool.play(17, 1, 1, 0, 0, 1);
+				//soundPool.play(17, 1, 1, 0, 0, 1);
+				playSound(17);
 
 			}
 		});
@@ -304,7 +319,8 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			@Override
 			public void onClick(View v) {
 				tvline.setText(R.string.toast18);
-				soundPool.play(18, 1, 1, 0, 0, 1);
+				//soundPool.play(18, 1, 1, 0, 0, 1);
+				playSound(18);
 
 			}
 		});
@@ -314,7 +330,8 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			@Override
 			public void onClick(View v) {
 				tvline.setText(R.string.toast19);
-				soundPool.play(19, 1, 1, 0, 0, 1);
+				//soundPool.play(19, 1, 1, 0, 0, 1);
+				playSound(19);
 
 			}
 		});
@@ -325,6 +342,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			public void onClick(View v) {
 				tvline.setText("");
 				// TODO Auto-generated method stub
+				playSound(20);
 
 			}
 		});
@@ -416,6 +434,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 				int count = 0;
 				while (iters.hasNext() && count <= maxSatellites) {
 					GpsSatellite s = iters.next();
+					
 					count++;
 				}
 				System.out.println("搜索到：" + count + "颗卫星");
@@ -471,6 +490,20 @@ public class LineActivity extends Activity implements OnLongClickListener{
 		return criteria;
 	}
 	
+
+	/**
+	 * 后台播放声音
+	 * @param action
+	 */
+	public void playSound(int id) {
+		Intent intent = new Intent();
+		intent.putExtra("MSG", id);
+		intent.setClass(LineActivity.this, SoundService.class);
+
+		/* 启动service service要在AndroidManifest.xml注册如：<service></service> */
+		startService(intent);
+	}
+   
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -481,7 +514,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
-		soundPool.release();
+		//soundPool.release();
 		lm.removeUpdates(locationListener);
 	}
 

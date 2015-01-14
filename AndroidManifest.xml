@@ -42,6 +42,12 @@
             android:name="com.daoliuhe.drive.LocationActivity"
             android:label="@string/title_activity_location" >
         </activity>
+
+        <service
+            android:name="com.daoliuhe.drive.SoundService"
+            android:enabled="true"
+            android:exported="true" >
+        </service>
     </application>
 
 </manifest>
