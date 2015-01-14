@@ -9,11 +9,11 @@
     <string name="title_activity_subject">路线列表</string>
     <string name="line_list">线路</string>
     <string name="title_activity_param">参数设置</string>
-    <string name="title_activity_line">LineActivity</string>
+    <string name="title_activity_line">线路</string>
     <string name="alert_dialog_ok">确定</string>
     <string name="alert_dialog_cancel">取消</string>
     <string name="alert_dialog_text_entry">录入坐标</string>
-    <string name="title_activity_location">LocationActivity</string>
+    <string name="title_activity_location">坐标录入</string>
     
     <string name="toast01">开启灯光（近光灯） → 远光灯 → 近光灯 → 远光灯 → 近光灯 → 示宽灯+警示灯 → 关闭所有灯光</string>
     <string name="toast02">开启灯光（近光灯） → 远光灯 → 近光灯 → 先变到远光灯，再变回近光灯 → 近光灯 → 雾灯+警示灯 → 关闭所有灯光</string>
