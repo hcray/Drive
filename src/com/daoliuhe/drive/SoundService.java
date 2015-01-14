@@ -68,80 +68,79 @@ public class SoundService extends Service {
         	
         	switch(MSG){
 				case 1: 
-					uri = Uri.parse("android.resource://com.daoliuhe.drive/raw/snd01.mp3");
-					
+					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd01);
 					break;
 				
 				case 2: 
-					uri = Uri.parse("android.resource://com.daoliuhe.drive/raw/snd02.mp3");
+					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd02);
 					break;
 				
 				case 3: 
-					uri = Uri.parse("android.resource://com.daoliuhe.drive/raw/snd03.mp3");
+					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd03);
 					break;
 				
 				case 4: 
-					uri = Uri.parse("android.resource://com.daoliuhe.drive/raw/snd04.mp3");
+					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd04);
 					break;
 				
 				case 5: 
-					uri = Uri.parse("android.resource://com.daoliuhe.drive/raw/snd05.mp3");
+					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd05);
 					break;
 				
 				case 6: 
-					uri = Uri.parse("android.resource://com.daoliuhe.drive/raw/snd06.mp3");
+					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd06);
 					break;
 				
 				case 7: 
-					uri = Uri.parse("android.resource://com.daoliuhe.drive/raw/snd07.mp3");
+					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd07);
 					break;
 				
 				case 8: 
-					uri = Uri.parse("android.resource://com.daoliuhe.drive/raw/snd08.mp3");
+					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd08);
 					break;
 				
 				case 9: 
-					uri = Uri.parse("android.resource://com.daoliuhe.drive/raw/snd09.mp3");
+					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd09);
 					break;
 				
 				case 10: 
-					uri = Uri.parse("android.resource://com.daoliuhe.drive/raw/snd10.mp3");
+					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd10);
 					break;
 				
 				case 11: 
-					uri = Uri.parse("android.resource://com.daoliuhe.drive/raw/snd11.mp3");
+					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd11);
 					break;
 				
 				case 12: 
-					uri = Uri.parse("android.resource://com.daoliuhe.drive/raw/snd12.mp3");
+					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd12);
 					break;
 				
 				case 13: 
-					uri = Uri.parse("android.resource://com.daoliuhe.drive/raw/snd13.mp3");
+					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd13);
 					break;
 				
 				case 14: 
-					uri = Uri.parse("android.resource://com.daoliuhe.drive/raw/snd14.mp3");
+					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd14);
 					break;
 				
 				case 15:
-					uri = Uri.parse("android.resource://com.daoliuhe.drive/raw/snd15.mp3");
+					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd15);
 					break;
 				
 				case 16: 
-					uri = Uri.parse("android.resource://com.daoliuhe.drive/raw/snd16.mp3");
+					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd16);
 					break;
 				
 				case 17: 
-					uri = Uri.parse("android.resource://com.daoliuhe.drive/raw/snd17.mp3");
+					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd17);
 					break;
 				
 				case 18: 
-					uri = Uri.parse("android.resource://com.daoliuhe.drive/raw/snd18.mp3");
+					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd18);
 					break;
 				
 				case 19: 
-					uri = Uri.parse("android.resource://com.daoliuhe.drive/raw/snd19.mp3");
+					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd19);
 					break;
 				
 				default:

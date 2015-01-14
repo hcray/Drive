@@ -5,6 +5,7 @@
 
     <TextView
         android:layout_width="match_parent"
+        android:scrollHorizontally="true"
         android:layout_height="80dp"
         android:id="@+id/tv_line"
         android:text="@string/hello_world" />
