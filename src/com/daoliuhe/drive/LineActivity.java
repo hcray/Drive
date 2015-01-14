@@ -1,5 +1,6 @@
 package com.daoliuhe.drive;
 
+import java.io.IOException;
 import java.util.Iterator;
 
 import android.app.Activity;
@@ -12,6 +13,8 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.location.LocationProvider;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -29,6 +32,9 @@ public class LineActivity extends Activity implements OnLongClickListener{
 	private static final String TAG = "LineActivity";
 	// 语音
 	//private SoundPool soundPool;
+	//多媒体对象
+	public static MediaPlayer mMediaPlayer = null; 
+	
 	// GPS定位
 	private LocationManager lm;
 
@@ -62,6 +68,14 @@ public class LineActivity extends Activity implements OnLongClickListener{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_line);
+		
+		if (mMediaPlayer != null) {
+			mMediaPlayer.reset();
+			mMediaPlayer.release();
+			mMediaPlayer = null;
+		}
+
+		mMediaPlayer = new MediaPlayer();
 
 		tvline = (TextView) this.findViewById(R.id.tv_line);
 
@@ -127,7 +141,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 				tvline.setText(R.string.toast01);
 				// id,左右声道, 音量, 优先级, 是否循环(0为不循环，-1为循环),播放比率(从0.5到2，一般为1，表示正常播放)
 				//soundPool.play(1, 1, 1, 0, 0, 1);
-				playSound(1);
+				playMusic(1);
 			}
 		});
 		btnLights1.setOnLongClickListener(this);
@@ -139,7 +153,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			public void onClick(View v) {
 				tvline.setText(R.string.toast02);
 				//soundPool.play(2, 1, 1, 0, 0, 1);
-				playSound(2);
+				playMusic(2);
 
 			}
 		});
@@ -150,7 +164,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			public void onClick(View v) {
 				tvline.setText(R.string.toast03);
 				//soundPool.play(3, 1, 1, 0, 0, 1);
-				playSound(3);
+				playMusic(3);
 
 			}
 		});
@@ -161,7 +175,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			public void onClick(View v) {
 				tvline.setText(R.string.toast04);
 				//soundPool.play(4, 1, 1, 0, 0, 1);
-				playSound(4);
+				playMusic(4);
 
 			}
 		});
@@ -172,7 +186,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			public void onClick(View v) {
 				tvline.setText(R.string.toast05);
 				//soundPool.play(5, 1, 1, 0, 0, 1);
-				playSound(5);
+				playMusic(5);
 
 			}
 		});
@@ -184,7 +198,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			public void onClick(View v) {
 				tvline.setText(R.string.toast06);
 				//soundPool.play(6, 1, 1, 0, 0, 1);
-				playSound(6);
+				playMusic(6);
 
 			}
 		});
@@ -195,7 +209,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			public void onClick(View v) {
 				tvline.setText(R.string.toast07);
 				//soundPool.play(7, 1, 1, 0, 0, 1);
-				playSound(7);
+				playMusic(7);
 
 			}
 		});
@@ -206,7 +220,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			public void onClick(View v) {
 				tvline.setText(R.string.toast08);
 				//soundPool.play(8, 1, 1, 0, 0, 1);
-				playSound(8);
+				playMusic(8);
 
 			}
 		});
@@ -218,7 +232,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			public void onClick(View v) {
 				tvline.setText(R.string.toast09);
 				//soundPool.play(9, 1, 1, 0, 0, 1);
-				playSound(9);
+				playMusic(9);
 
 			}
 		});
@@ -229,7 +243,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			public void onClick(View v) {
 				tvline.setText(R.string.toast10);
 				//soundPool.play(10, 1, 1, 0, 0, 1);
-				playSound(10);
+				playMusic(10);
 
 			}
 		});
@@ -241,7 +255,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			public void onClick(View v) {
 				tvline.setText(R.string.toast11);
 				//soundPool.play(11, 1, 1, 0, 0, 1);
-				playSound(11);
+				playMusic(11);
 
 			}
 		});
@@ -252,7 +266,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			public void onClick(View v) {
 				tvline.setText(R.string.toast12);
 				//soundPool.play(12, 1, 1, 0, 0, 1);
-				playSound(12);
+				playMusic(12);
 
 			}
 		});
@@ -263,7 +277,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			public void onClick(View v) {
 				tvline.setText(R.string.toast13);
 				//soundPool.play(13, 1, 1, 0, 0, 1);
-				playSound(13);
+				playMusic(13);
 
 			}
 		});
@@ -274,7 +288,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			public void onClick(View v) {
 				tvline.setText(R.string.toast14);
 				//soundPool.play(14, 1, 1, 0, 0, 1);
-				playSound(14);
+				playMusic(14);
 
 			}
 		});
@@ -285,7 +299,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			public void onClick(View v) {
 				tvline.setText(R.string.toast15);
 				//soundPool.play(15, 1, 1, 0, 0, 1);
-				playSound(15);
+				playMusic(15);
 
 			}
 		});
@@ -298,7 +312,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			public void onClick(View v) {
 				tvline.setText(R.string.toast16);
 				//soundPool.play(16, 1, 1, 0, 0, 1);
-				playSound(16);
+				playMusic(16);
 
 			}
 		});
@@ -309,7 +323,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			public void onClick(View v) {
 				tvline.setText(R.string.toast17);
 				//soundPool.play(17, 1, 1, 0, 0, 1);
-				playSound(17);
+				playMusic(17);
 
 			}
 		});
@@ -320,7 +334,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			public void onClick(View v) {
 				tvline.setText(R.string.toast18);
 				//soundPool.play(18, 1, 1, 0, 0, 1);
-				playSound(18);
+				playMusic(18);
 
 			}
 		});
@@ -331,7 +345,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			public void onClick(View v) {
 				tvline.setText(R.string.toast19);
 				//soundPool.play(19, 1, 1, 0, 0, 1);
-				playSound(19);
+				playMusic(19);
 
 			}
 		});
@@ -342,7 +356,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			public void onClick(View v) {
 				tvline.setText("");
 				// TODO Auto-generated method stub
-				playSound(20);
+				playMusic(20);
 
 			}
 		});
@@ -515,9 +529,128 @@ public class LineActivity extends Activity implements OnLongClickListener{
 	protected void onDestroy() {
 		super.onDestroy();
 		//soundPool.release();
+		if (mMediaPlayer != null) {
+			mMediaPlayer.stop();
+			mMediaPlayer.release();
+			mMediaPlayer = null;
+		}
 		lm.removeUpdates(locationListener);
 	}
-
+	
+	/**
+	 * 播放声音
+	 * @param id
+	 */
+	public void playMusic(int id) {  
+        try {
+        	// 重置多媒体  
+        	mMediaPlayer.reset();
+        	Uri uri = null;
+        	
+        	switch(id){
+				case 1: 
+					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd01);
+					break;
+				
+				case 2: 
+					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd02);
+					break;
+				
+				case 3: 
+					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd03);
+					break;
+				
+				case 4: 
+					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd04);
+					break;
+				
+				case 5: 
+					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd05);
+					break;
+				
+				case 6: 
+					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd06);
+					break;
+				
+				case 7: 
+					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd07);
+					break;
+				
+				case 8: 
+					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd08);
+					break;
+				
+				case 9: 
+					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd09);
+					break;
+				
+				case 10: 
+					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd10);
+					break;
+				
+				case 11: 
+					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd11);
+					break;
+				
+				case 12: 
+					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd12);
+					break;
+				
+				case 13: 
+					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd13);
+					break;
+				
+				case 14: 
+					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd14);
+					break;
+				
+				case 15:
+					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd15);
+					break;
+				
+				case 16: 
+					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd16);
+					break;
+				
+				case 17: 
+					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd17);
+					break;
+				
+				case 18: 
+					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd18);
+					break;
+				
+				case 19: 
+					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd19);
+					break;
+				
+				default:
+					//mMediaPlayer.stop();
+					break;
+        	}
+        	
+        	if(null != uri){
+        		mMediaPlayer.setDataSource(this, uri);
+        		// 读取mp3文件   
+        		//mMediaPlayer.create(this, R.raw.snd01);
+        		//mMediaPlayer.setDataSource(getResources().openRawResource(R.raw.snd01));
+        		//mMediaPlayer.setDataSource(MUSIC_PATH+TestMediaPlayer.mMusicList.get(TestMediaPlayer.currentListItme));  
+        		//Uri uri = Uri.parse(MUSIC_PATH+TestMediaPlayer.mMusicList.get(TestMediaPlayer.currentListItme));  
+        		
+        		//mMediaPlayer.create(PlayerService.this,uri);  
+        		// 准备播放   
+        		mMediaPlayer.prepare();
+        		// 开始播放   
+        		mMediaPlayer.start();  
+        	}else{
+        		mMediaPlayer.stop();
+        	}
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}  
+    }  
 
 
 }

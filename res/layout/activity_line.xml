@@ -1,17 +1,19 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
     <TextView
         android:layout_width="match_parent"
-        android:scrollHorizontally="true"
+        android:scrollbars="vertical"
         android:layout_height="80dp"
         android:id="@+id/tv_line"
-        android:text="@string/hello_world" />
+        android:text="@string/hello_world"
+        android:maxLines="10"
+        android:singleLine="false"  />
     
     <HorizontalScrollView android:id="@+id/horizontalScrollView1" android:layout_width="fill_parent" android:layout_height="220.0dip" android:layout_marginBottom="0.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
-		<TableLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+		<TableLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
 		    <TableRow android:layout_width="fill_parent" android:layout_height="wrap_content">
 		        <Button
 		       android:id="@+id/btnLights1"
@@ -201,4 +203,4 @@
 		    </TableRow>
 		</TableLayout>
 	</HorizontalScrollView>
-</LinearLayout>
+</RelativeLayout>

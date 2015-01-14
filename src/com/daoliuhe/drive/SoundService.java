@@ -148,18 +148,22 @@ public class SoundService extends Service {
 					break;
         	}
         	
-        	mMediaPlayer.setDataSource(this, uri);
-        	// 读取mp3文件   
-        	//mMediaPlayer.create(this, R.raw.snd01);
-        	//mMediaPlayer.setDataSource(getResources().openRawResource(R.raw.snd01));
-        	//mMediaPlayer.setDataSource(MUSIC_PATH+TestMediaPlayer.mMusicList.get(TestMediaPlayer.currentListItme));  
-        	//Uri uri = Uri.parse(MUSIC_PATH+TestMediaPlayer.mMusicList.get(TestMediaPlayer.currentListItme));  
-
-        	//mMediaPlayer.create(PlayerService.this,uri);  
-        	// 准备播放   
-			mMediaPlayer.prepare();
-			// 开始播放   
-			mMediaPlayer.start();  
+        	if(null != uri){
+        		mMediaPlayer.setDataSource(this, uri);
+        		// 读取mp3文件   
+        		//mMediaPlayer.create(this, R.raw.snd01);
+        		//mMediaPlayer.setDataSource(getResources().openRawResource(R.raw.snd01));
+        		//mMediaPlayer.setDataSource(MUSIC_PATH+TestMediaPlayer.mMusicList.get(TestMediaPlayer.currentListItme));  
+        		//Uri uri = Uri.parse(MUSIC_PATH+TestMediaPlayer.mMusicList.get(TestMediaPlayer.currentListItme));  
+        		
+        		//mMediaPlayer.create(PlayerService.this,uri);  
+        		// 准备播放   
+        		mMediaPlayer.prepare();
+        		// 开始播放   
+        		mMediaPlayer.start();  
+        	}else{
+        		mMediaPlayer.stop();
+        	}
 		} catch (IllegalStateException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
