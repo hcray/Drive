@@ -17,7 +17,6 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-        
         <activity
             android:name="com.daoliuhe.drive.MainActivity"
             android:label="@string/app_name"
@@ -30,23 +29,23 @@
         </activity>
         <activity
             android:name="com.daoliuhe.drive.SubjectActivity"
-            android:label="@string/title_activity_subject" 
-            android:screenOrientation="landscape">
+            android:label="@string/title_activity_subject"
+            android:screenOrientation="landscape" >
         </activity>
         <activity
             android:name="com.daoliuhe.drive.ParamActivity"
-            android:label="@string/title_activity_param" 
-            android:screenOrientation="landscape">
+            android:label="@string/title_activity_param"
+            android:screenOrientation="landscape" >
         </activity>
         <activity
             android:name="com.daoliuhe.drive.LineActivity"
-            android:label="@string/title_activity_line" 
-            android:screenOrientation="landscape">
+            android:label="@string/title_activity_line"
+            android:screenOrientation="landscape" >
         </activity>
         <activity
             android:name="com.daoliuhe.drive.LocationActivity"
-            android:label="@string/title_activity_location" 
-            android:screenOrientation="landscape">
+            android:label="@string/title_activity_location"
+            android:screenOrientation="landscape" >
         </activity>
 
         <service
@@ -54,6 +53,12 @@
             android:enabled="true"
             android:exported="true" >
         </service>
+
+        <activity
+            android:name="com.daoliuhe.drive.LineNameActivity"
+            android:label="@string/title_activity_line_name" 
+            android:screenOrientation="landscape" >
+        </activity>
     </application>
 
 </manifest>

@@ -494,7 +494,7 @@ public class DbAdapter {
 	}
 	
 	/**
-	 * 根据id查询线路
+	 * 查询所有的线路
 	 * @param id
 	 * @return
 	 * @throws SQLException

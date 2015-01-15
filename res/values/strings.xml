@@ -14,7 +14,8 @@
     <string name="alert_dialog_cancel">取消</string>
     <string name="alert_dialog_text_entry">录入坐标</string>
     <string name="title_activity_location">坐标录入</string>
-    
+    <string name="menu_add">增加路线</string>
+    <string name="menu_back">返回</string>
     <string name="toast01">开启灯光（近光灯） → 远光灯 → 近光灯 → 远光灯 → 近光灯 → 示宽灯+警示灯 → 关闭所有灯光</string>
     <string name="toast02">开启灯光（近光灯） → 远光灯 → 近光灯 → 先变到远光灯，再变回近光灯 → 近光灯 → 雾灯+警示灯 → 关闭所有灯光</string>
     <string name="toast03">开启灯光（近光灯） → 远光灯 → 近光灯 → 先变到远光灯，再变回近光灯 → 示宽灯+警示灯 → 关闭所有灯光</string>
@@ -34,5 +35,6 @@
     <string name="toast17">点刹车 → 打左转向灯（注意：3秒后才能动方向盘）→ 调头（最好停车1挡调头，驶入最右车道）</string>
     <string name="toast18">点刹车 → 打右转向灯（注意：3秒后才能动方向盘）→ 停车 （正确的停车操作是：踩刹车降速至20码以下，保持踩刹车状态（右脚不能动），再踩离合（离合踩到底，此时右脚刹车一定不能动，否则会判停车不稳）；空挡、手刹，如果是晚上，得开启示宽灯和启警示灯；注意右边距，30cm以内，不能压线）</string>
     <string name="toast19">观察后视镜、左后视镜，确认安全后下车！</string>
+    <string name="title_activity_line_name">LineNameActivity</string>
 
 </resources>
