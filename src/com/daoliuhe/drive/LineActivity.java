@@ -16,6 +16,7 @@ import android.location.LocationProvider;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -78,7 +79,8 @@ public class LineActivity extends Activity implements OnLongClickListener{
 		mMediaPlayer = new MediaPlayer();
 
 		tvline = (TextView) this.findViewById(R.id.tv_line);
-
+		tvline.setMovementMethod(ScrollingMovementMethod.getInstance()); 
+		
 		lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 		// 判断GPS是否正常启动
 		if (!lm.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
