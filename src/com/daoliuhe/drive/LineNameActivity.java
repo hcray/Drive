@@ -54,9 +54,11 @@ public class LineNameActivity extends Activity {
 				//Â·Ïß
 				LineBean lineBean = new LineBean();
 				lineBean.setLineName(edtLineNameValue);
-				dbAdapter.insertLine(lineBean);
+				int id = dbAdapter.insertLine(lineBean);
 				
 				Intent mIntent = new Intent();
+				mIntent.putExtra("id", id);
+				mIntent.putExtra("name", edtLineNameValue);
 				setResult(RESULT_OK, mIntent);
 				finish();
 				
