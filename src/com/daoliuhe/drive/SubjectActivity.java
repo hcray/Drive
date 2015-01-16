@@ -131,6 +131,7 @@ public class SubjectActivity extends Activity {
 				intent.setClass(SubjectActivity.this, LineActivity.class);
 				intent.putExtra(DbAdapter.KEY_ID, id);
 				intent.putExtra(DbAdapter.KEY_LINE_NAME, lineName);
+				
 				if(null != turnRightLat){
 					intent.putExtra(DbAdapter.KEY_TURNRIGHT_LAT, turnRightLat);
 				}
@@ -221,7 +222,6 @@ public class SubjectActivity extends Activity {
 				if(null != backCarLng){
 					intent.putExtra(DbAdapter.KEY_BACKCAR_LNG, backCarLng);
 				}
-				
 				startActivityForResult(intent, ACTIVITY_ITEMVIEW);
 			}
         	
@@ -278,4 +278,12 @@ public class SubjectActivity extends Activity {
 		Intent intent = new Intent(SubjectActivity.this, LineNameActivity.class);
 		startActivityForResult(intent, ACTIVITY_ADD);
 	}
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		dbAdapter.close();
+	}
+	
+	
 }

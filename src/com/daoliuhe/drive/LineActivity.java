@@ -26,15 +26,21 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.daoliuhe.drive.bean.LineBean;
+import com.daoliuhe.drive.tools.DbAdapter;
+
 public class LineActivity extends Activity implements OnLongClickListener{
 
-	public static final String SETTING_INFOS = "LineActivity";
 	// private static final int ACTIVITY_LOGIN = 0;
+	private static final int ACTIVITY_ITEM_ADD = 1;
+	
 	private static final String TAG = "LineActivity";
 	// 语音
 	//private SoundPool soundPool;
 	//多媒体对象
 	public static MediaPlayer mMediaPlayer = null; 
+	//线路对象
+	private LineBean lineBean;
 	
 	// GPS定位
 	private LocationManager lm;
@@ -64,11 +70,150 @@ public class LineActivity extends Activity implements OnLongClickListener{
 	private Button btnPullOver;
 	private Button btnBackCar;
 	private Button btnReset;
+	
+	private DbAdapter dbAdapter;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_line);
+		lineBean = new LineBean();
+		
+		//数据库
+		dbAdapter = new DbAdapter(this);
+		dbAdapter.open();
+		
+		Bundle extras = this.getIntent().getExtras();
+		if (extras != null) {
+			Integer id = extras.getInt(DbAdapter.KEY_ID);
+			if(null != id){
+				lineBean.setId(id);
+			}
+			String lineName = extras.getString(DbAdapter.KEY_LINE_NAME);
+			if(null != lineName && !lineName.isEmpty()){
+				lineBean.setLineName(lineName);
+			}
+			Double turnRightLat = extras.getDouble(DbAdapter.KEY_TURNRIGHT_LAT);
+			if(null != turnRightLat){
+				lineBean.setTurnRightLat(turnRightLat);
+			}
+			Double turnRightLng = extras.getDouble(DbAdapter.KEY_TURNRIGHT_LNG);
+			if(null != turnRightLng){
+				lineBean.setTurnRightLng(turnRightLng);
+			}
+			Double sidewalkLat = extras.getDouble(DbAdapter.KEY_SIDEWALK_LAT);
+			if(null != sidewalkLat){
+				lineBean.setSidewalkLat(sidewalkLat);
+			}
+			Double sidewalkLng = extras.getDouble(DbAdapter.KEY_SIDEWALK_LNG);
+			if(null != sidewalkLng){
+				lineBean.setSidewalkLng(sidewalkLng);
+			}
+			Double passSidewalkLat = extras.getDouble(DbAdapter.KEY_PASSSIDEWALK_LAT);
+			if(null != passSidewalkLat){
+				lineBean.setPassSidewalkLat(passSidewalkLat);
+			}
+			Double passSidewalkLng = extras.getDouble(DbAdapter.KEY_PASSSIDEWALK_LNG);
+			if(null != passSidewalkLng){
+				lineBean.setPassSidewalkLng(passSidewalkLng);
+			}
+			Double turnLeftLat = extras.getDouble(DbAdapter.KEY_TURNLEFT_LAT);
+			if(null != turnLeftLat){
+				lineBean.setTurnLeftLat(turnLeftLat);
+			}
+			Double turnLeftLng = extras.getDouble(DbAdapter.KEY_TURNLEFT_LNG);
+			if(null != turnLeftLng){
+				lineBean.setTurnLeftLng(turnLeftLng);
+			}
+			Double aheadDirectLineLat = extras.getDouble(DbAdapter.KEY_AHEADDIRECTLINE_LAT);
+			if(null != aheadDirectLineLat){
+				lineBean.setAheadDirectLineLat(aheadDirectLineLat);
+			}
+			Double aheadDirectLineLng = extras.getDouble(DbAdapter.KEY_AHEADDIRECTLINE_LNG);
+			if(null != aheadDirectLineLng){
+				lineBean.setAheadDirectLineLng(aheadDirectLineLng);
+			}
+			Double passBusStationLat = extras.getDouble(DbAdapter.KEY_PASSBUSSTATION_LAT);
+			if(null != passBusStationLat){
+				lineBean.setPassBusStationLat(passBusStationLat);
+			}
+			Double passBusStationLng = extras.getDouble(DbAdapter.KEY_PASSBUSSTATION_LNG);
+			if(null != passBusStationLng){
+				lineBean.setPassBusStationLng(passBusStationLng);
+			}
+			Double directLineLat = extras.getDouble(DbAdapter.KEY_DIRECTLINE_LAT);
+			if(null != directLineLat){
+				lineBean.setDirectLineLat(directLineLat);
+			}
+			Double directLineLng = extras.getDouble(DbAdapter.KEY_DIRECTLINE_LNG);
+			if(null != directLineLng){
+				lineBean.setDirectLineLng(directLineLng);
+			}
+			Double passSchoolLat = extras.getDouble(DbAdapter.KEY_PASSSCHOOL_LAT);
+			if(null != passSchoolLat){
+				lineBean.setPassSchoolLat(passSchoolLat);
+			}
+			Double passSchoolLng = extras.getDouble(DbAdapter.KEY_PASSSCHOOL_LNG);
+			if(null != passSchoolLng){
+				lineBean.setPassSchoolLng(passSchoolLng);
+			}
+			Double changeLanesLat = extras.getDouble(DbAdapter.KEY_CHANGELANES_LAT);
+			if(null != changeLanesLat){
+				lineBean.setChangeLanesLat(changeLanesLat);
+			}
+			Double changeLanesLng = extras.getDouble(DbAdapter.KEY_CHANGELANES_LNG);
+			if(null != changeLanesLng){
+				lineBean.setChangeLanesLng(changeLanesLng);
+			}
+			Double slowdownLat = extras.getDouble(DbAdapter.KEY_SLOWDOWN_LAT);
+			if(null != slowdownLat){
+				lineBean.setSlowdownLat(slowdownLat);
+			}
+			Double slowdownLng = extras.getDouble(DbAdapter.KEY_SLOWDOWN_LNG);
+			if(null != slowdownLng){
+				lineBean.setSlowdownLng(slowdownLng);
+			}
+			Double speedLimitLat = extras.getDouble(DbAdapter.KEY_SPEEDLIMIT_LAT);
+			if(null != speedLimitLat){
+				lineBean.setSpeedLimitLat(speedLimitLat);
+			}
+			Double speedLimitLng = extras.getDouble(DbAdapter.KEY_SPEEDLIMIT_LNG);
+			if(null != speedLimitLng){
+				lineBean.setSpeedLimitLng(speedLimitLng);
+			}
+			Double passSchoolStationLat = extras.getDouble(DbAdapter.KEY_PASSSCHOOLSTATION_LAT);
+			if(null != passSchoolStationLat){
+				lineBean.setPassSchoolStationLat(passSchoolStationLat);
+			}
+			Double passSchoolStationLng = extras.getDouble(DbAdapter.KEY_PASSSCHOOLSTATION_LNG);
+			if(null != passSchoolStationLng){
+				lineBean.setPassSchoolStationLng(passSchoolStationLng);
+			}
+			Double turnLat = extras.getDouble(DbAdapter.KEY_TURN_LAT);
+			if(null != turnLat){
+				lineBean.setTurnLat(turnLat);
+			}
+			Double turnLng = extras.getDouble(DbAdapter.KEY_TURN_LNG);
+			if(null != turnLng){
+				lineBean.setTurnLng(turnLng);
+			}
+			Double pullOverLat = extras.getDouble(DbAdapter.KEY_PULLOVER_LAT);
+			if(null != pullOverLat){
+				lineBean.setPullOverLat(pullOverLat);
+			}
+			Double pullOverLng = extras.getDouble(DbAdapter.KEY_PULLOVER_LNG);
+			if(null != pullOverLng){
+				lineBean.setPullOverLng(pullOverLng);
+			}
+			Double backCarLat = extras.getDouble(DbAdapter.KEY_BACKCAR_LAT);
+			if(null != backCarLat){
+				lineBean.setBackCarLat(backCarLat);
+			}
+			Double backCarLng = extras.getDouble(DbAdapter.KEY_BACKCAR_LNG);
+			if(null != backCarLng){
+				lineBean.setBackCarLng(backCarLng);
+			}
+		}
 		
 		if (mMediaPlayer != null) {
 			mMediaPlayer.reset();
@@ -112,29 +257,6 @@ public class LineActivity extends Activity implements OnLongClickListener{
 		lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 1,
 				locationListener);
 
-		//soundPool = new SoundPool(19, AudioManager.STREAM_SYSTEM, 5);
-		/*
-		soundPool.load(this, R.raw.snd01, 1);
-		soundPool.load(this, R.raw.snd02, 1);
-		soundPool.load(this, R.raw.snd03, 1);
-		soundPool.load(this, R.raw.snd04, 1);
-		soundPool.load(this, R.raw.snd05, 1);
-		soundPool.load(this, R.raw.snd06, 1);
-		soundPool.load(this, R.raw.snd07, 1);
-		soundPool.load(this, R.raw.snd08, 1);
-		soundPool.load(this, R.raw.snd09, 1);
-		soundPool.load(this, R.raw.snd10, 1);
-		soundPool.load(this, R.raw.snd11, 1);
-		soundPool.load(this, R.raw.snd12, 1);
-		soundPool.load(this, R.raw.snd13, 1);
-		soundPool.load(this, R.raw.snd14, 1);
-		soundPool.load(this, R.raw.snd15, 1);
-		soundPool.load(this, R.raw.snd16, 1);
-		soundPool.load(this, R.raw.snd17, 1);
-		soundPool.load(this, R.raw.snd18, 1);
-		soundPool.load(this, R.raw.snd19, 1);
-		*/
-		
 		btnLights1 = (Button) this.findViewById(R.id.btnLights1);
 		btnLights1.setOnClickListener(new OnClickListener() {
 
@@ -142,11 +264,19 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			public void onClick(View v) {
 				tvline.setText(R.string.toast01);
 				// id,左右声道, 音量, 优先级, 是否循环(0为不循环，-1为循环),播放比率(从0.5到2，一般为1，表示正常播放)
-				//soundPool.play(1, 1, 1, 0, 0, 1);
 				playMusic(1);
 			}
 		});
-		btnLights1.setOnLongClickListener(this);
+		
+		
+		btnLights1.setOnLongClickListener(new OnLongClickListener(){
+
+			@Override
+			public boolean onLongClick(View v) {
+				// TODO Auto-generated method stub
+				return false;
+			}
+		});
 		
 		btnLights2 = (Button) this.findViewById(R.id.btnLights2);
 		btnLights2.setOnClickListener(new OnClickListener() {
@@ -154,7 +284,6 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			@Override
 			public void onClick(View v) {
 				tvline.setText(R.string.toast02);
-				//soundPool.play(2, 1, 1, 0, 0, 1);
 				playMusic(2);
 
 			}
@@ -165,7 +294,6 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			@Override
 			public void onClick(View v) {
 				tvline.setText(R.string.toast03);
-				//soundPool.play(3, 1, 1, 0, 0, 1);
 				playMusic(3);
 
 			}
@@ -176,177 +304,174 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			@Override
 			public void onClick(View v) {
 				tvline.setText(R.string.toast04);
-				//soundPool.play(4, 1, 1, 0, 0, 1);
 				playMusic(4);
 
 			}
 		});
 		btnTurnRight = (Button) this.findViewById(R.id.btnTurnRight);
+		btnTurnRight.setOnLongClickListener(this);
 		btnTurnRight.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				tvline.setText(R.string.toast05);
-				//soundPool.play(5, 1, 1, 0, 0, 1);
 				playMusic(5);
 
 			}
 		});
 
 		btnSidewalk = (Button) this.findViewById(R.id.btnSidewalk);
+		btnSidewalk.setOnLongClickListener(this);
 		btnSidewalk.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				tvline.setText(R.string.toast06);
-				//soundPool.play(6, 1, 1, 0, 0, 1);
 				playMusic(6);
 
 			}
 		});
 		btnPassSidewalk = (Button) this.findViewById(R.id.btnPassSidewalk);
+		btnPassSidewalk.setOnLongClickListener(this);
 		btnPassSidewalk.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				tvline.setText(R.string.toast07);
-				//soundPool.play(7, 1, 1, 0, 0, 1);
 				playMusic(7);
 
 			}
 		});
 		btnTurnLeft = (Button) this.findViewById(R.id.btnTurnLeft);
+		btnTurnLeft.setOnLongClickListener(this);
 		btnTurnLeft.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				tvline.setText(R.string.toast08);
-				//soundPool.play(8, 1, 1, 0, 0, 1);
 				playMusic(8);
 
 			}
 		});
-		btnAheadDirectLine = (Button) this
-				.findViewById(R.id.btnAheadDirectLine);
+		btnAheadDirectLine = (Button) this.findViewById(R.id.btnAheadDirectLine);
+		btnAheadDirectLine.setOnLongClickListener(this);
 		btnAheadDirectLine.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				tvline.setText(R.string.toast09);
-				//soundPool.play(9, 1, 1, 0, 0, 1);
 				playMusic(9);
 
 			}
 		});
 		btnPassBusStation = (Button) this.findViewById(R.id.btnPassBusStation);
+		btnPassBusStation.setOnLongClickListener(this);
 		btnPassBusStation.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				tvline.setText(R.string.toast10);
-				//soundPool.play(10, 1, 1, 0, 0, 1);
 				playMusic(10);
 
 			}
 		});
 
 		btnDirectLine = (Button) this.findViewById(R.id.btnDirectLine);
+		btnDirectLine.setOnLongClickListener(this);
 		btnDirectLine.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				tvline.setText(R.string.toast11);
-				//soundPool.play(11, 1, 1, 0, 0, 1);
 				playMusic(11);
 
 			}
 		});
 		btnPassSchool = (Button) this.findViewById(R.id.btnPassSchool);
+		btnPassSchool.setOnLongClickListener(this);
 		btnPassSchool.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				tvline.setText(R.string.toast12);
-				//soundPool.play(12, 1, 1, 0, 0, 1);
 				playMusic(12);
 
 			}
 		});
 		btnChangeLanes = (Button) this.findViewById(R.id.btnChangeLanes);
+		btnChangeLanes.setOnLongClickListener(this);
 		btnChangeLanes.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				tvline.setText(R.string.toast13);
-				//soundPool.play(13, 1, 1, 0, 0, 1);
 				playMusic(13);
 
 			}
 		});
 		btnSlowdown = (Button) this.findViewById(R.id.btnSlowdown);
+		btnSlowdown.setOnLongClickListener(this);
 		btnSlowdown.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				tvline.setText(R.string.toast14);
-				//soundPool.play(14, 1, 1, 0, 0, 1);
 				playMusic(14);
 
 			}
 		});
 		btnSpeedLimit = (Button) this.findViewById(R.id.btnSpeedLimit);
+		btnSpeedLimit.setOnLongClickListener(this);
 		btnSpeedLimit.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				tvline.setText(R.string.toast15);
-				//soundPool.play(15, 1, 1, 0, 0, 1);
 				playMusic(15);
 
 			}
 		});
 
-		btnPassSchoolStation = (Button) this
-				.findViewById(R.id.btnPassSchoolStation);
+		btnPassSchoolStation = (Button) this.findViewById(R.id.btnPassSchoolStation);
+		btnPassSchoolStation.setOnLongClickListener(this);
 		btnPassSchoolStation.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				tvline.setText(R.string.toast16);
-				//soundPool.play(16, 1, 1, 0, 0, 1);
 				playMusic(16);
 
 			}
 		});
 		btnTurn = (Button) this.findViewById(R.id.btnTurn);
+		btnTurn.setOnLongClickListener(this);
 		btnTurn.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				tvline.setText(R.string.toast17);
-				//soundPool.play(17, 1, 1, 0, 0, 1);
 				playMusic(17);
 
 			}
 		});
 		btnPullOver = (Button) this.findViewById(R.id.btnPullOver);
+		btnPullOver.setOnLongClickListener(this);
 		btnPullOver.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				tvline.setText(R.string.toast18);
-				//soundPool.play(18, 1, 1, 0, 0, 1);
 				playMusic(18);
 
 			}
 		});
 		btnBackCar = (Button) this.findViewById(R.id.btnBackCar);
+		btnBackCar.setOnLongClickListener(this);
 		btnBackCar.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				tvline.setText(R.string.toast19);
-				//soundPool.play(19, 1, 1, 0, 0, 1);
 				playMusic(19);
 
 			}
@@ -357,7 +482,6 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			@Override
 			public void onClick(View v) {
 				tvline.setText("");
-				// TODO Auto-generated method stub
 				playMusic(20);
 
 			}
@@ -371,10 +495,17 @@ public class LineActivity extends Activity implements OnLongClickListener{
 		
 		Intent intent = new Intent();
 		intent.setClass(LineActivity.this, LocationActivity.class);
+		int viewId = v.getId();
+		switch(viewId){
+			case R.id.btnTurnRight:
+				intent.putExtra("lat", lineBean.getTurnRightLat());
+				intent.putExtra("lng", lineBean.getTurnRightLng());
+				break;
 		
-		//intent.putExtra(GPSDbAdapter.KEY_ROWID, id);
-		startActivity(intent);
-		//startActivityForResult(intent, ACTIVITY_ITEMVIEW);
+		}
+		//哪个button的坐标
+		intent.putExtra("btnId", viewId);
+		startActivityForResult(intent, ACTIVITY_ITEM_ADD);
 		return true;
 	}
 	
@@ -445,8 +576,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 				// 获取卫星颗数的默认最大值
 				int maxSatellites = gpsStatus.getMaxSatellites();
 				// 创建一个迭代器保存所有卫星
-				Iterator<GpsSatellite> iters = gpsStatus.getSatellites()
-						.iterator();
+				Iterator<GpsSatellite> iters = gpsStatus.getSatellites().iterator();
 				int count = 0;
 				while (iters.hasNext() && count <= maxSatellites) {
 					GpsSatellite s = iters.next();
@@ -521,6 +651,30 @@ public class LineActivity extends Activity implements OnLongClickListener{
 	}
    
 	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		// TODO Auto-generated method stub
+		super.onActivityResult(requestCode, resultCode, data);
+		if(requestCode == ACTIVITY_ITEM_ADD && resultCode == RESULT_OK){
+			//保存线路
+			Bundle bundle = data.getExtras();
+			//btnId
+			int btnId = bundle.getInt("btnId");
+			//纬度
+			Double lat = bundle.getDouble("lat");
+			//经度
+			Double lng = bundle.getDouble("lng");
+			
+			switch (btnId) {
+			case R.id.btnTurnRight:
+				lineBean.setTurnRightLat(lat);
+				lineBean.setTurnRightLng(lng);
+				break;
+			}
+			dbAdapter.updateLine(lineBean);
+		}
+	}
+
+	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		//getMenuInflater().inflate(R.menu.line, menu);
@@ -530,12 +684,17 @@ public class LineActivity extends Activity implements OnLongClickListener{
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
-		//soundPool.release();
+		
 		if (mMediaPlayer != null) {
 			mMediaPlayer.stop();
 			mMediaPlayer.release();
 			mMediaPlayer = null;
 		}
+		
+		if(dbAdapter != null){
+			dbAdapter.close();
+		}
+		
 		lm.removeUpdates(locationListener);
 	}
 	
