@@ -14,22 +14,14 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.daoliuhe.drive.bean.LineBean;
 import com.daoliuhe.drive.tools.DbAdapter;
 
 public class SubjectActivity extends Activity {
-	// 路线1
-	//private Button btnPath1;
-	// 路线2
-	//private Button btnPath2;
-	// 路线3
-	//private Button btnPath3;
-	
+	//list
 	private ListView subjectList;
 	//新增
 	private static final int MENU_ADD_ID = Menu.FIRST; 
@@ -71,7 +63,6 @@ public class SubjectActivity extends Activity {
 	
 	@Override
 	public boolean onMenuItemSelected(int featureId, MenuItem item) {
-		// TODO Auto-generated method stub
 		switch (item.getItemId()) {
 		case MENU_ADD_ID: // 新增
 			addLine();
@@ -143,92 +134,92 @@ public class SubjectActivity extends Activity {
 				if(null != turnRightLat){
 					intent.putExtra(DbAdapter.KEY_TURNRIGHT_LAT, turnRightLat);
 				}
-				
 				if(null != turnRightLng){
+					intent.putExtra(DbAdapter.KEY_TURNRIGHT_LNG, turnRightLng);
 				}
-				
 				if(null != sidewalkLat){
+					intent.putExtra(DbAdapter.KEY_SIDEWALK_LAT, sidewalkLat);
 				}
-				
 				if(null != sidewalkLng){
+					intent.putExtra(DbAdapter.KEY_SIDEWALK_LNG, sidewalkLng);
 				}
-				
 				if(null != passSidewalkLat){
+					intent.putExtra(DbAdapter.KEY_PASSSIDEWALK_LAT, passSidewalkLat);
 				}
-				
 				if(null != passSidewalkLng){
+					intent.putExtra(DbAdapter.KEY_PASSSIDEWALK_LNG, passSidewalkLng);
 				}
-				
 				if(null != turnLeftLat){
+					intent.putExtra(DbAdapter.KEY_TURNLEFT_LAT, turnLeftLat);
 				}
-				
 				if(null != turnLeftLng){
+					intent.putExtra(DbAdapter.KEY_TURNLEFT_LNG, turnLeftLng);
 				}
-				
 				if(null != aheadDirectLineLat){
+					intent.putExtra(DbAdapter.KEY_AHEADDIRECTLINE_LAT, aheadDirectLineLat);
 				}
-				
 				if(null != aheadDirectLineLng){
+					intent.putExtra(DbAdapter.KEY_AHEADDIRECTLINE_LNG, aheadDirectLineLng);
 				}
-				
 				if(null != passBusStationLat){
+					intent.putExtra(DbAdapter.KEY_PASSBUSSTATION_LAT, passBusStationLat);
 				}
-				
 				if(null != passBusStationLng){
+					intent.putExtra(DbAdapter.KEY_PASSBUSSTATION_LNG, passBusStationLng);
 				}
-				
 				if(null != directLineLat){
+					intent.putExtra(DbAdapter.KEY_DIRECTLINE_LAT, directLineLat);
 				}
-				
 				if(null != directLineLng){
+					intent.putExtra(DbAdapter.KEY_DIRECTLINE_LNG, directLineLng);
 				}
-				
 				if(null != passSchoolLat){
+					intent.putExtra(DbAdapter.KEY_PASSSCHOOL_LAT, passSchoolLat);
 				}
-				
 				if(null != passSchoolLng){
+					intent.putExtra(DbAdapter.KEY_PASSSCHOOL_LNG, passSchoolLng);
 				}
-				
 				if(null != changeLanesLat){
+					intent.putExtra(DbAdapter.KEY_CHANGELANES_LAT, changeLanesLat);
 				}
-				
 				if(null != changeLanesLng){
+					intent.putExtra(DbAdapter.KEY_CHANGELANES_LNG, changeLanesLng);
 				}
-				
 				if(null != slowdownLat){
+					intent.putExtra(DbAdapter.KEY_SLOWDOWN_LAT, slowdownLat);
 				}
-				
 				if(null != slowdownLng){
+					intent.putExtra(DbAdapter.KEY_SLOWDOWN_LNG, slowdownLng);
 				}
-				
 				if(null != speedLimitLat){
+					intent.putExtra(DbAdapter.KEY_SPEEDLIMIT_LAT, speedLimitLat);
 				}
-				
 				if(null != speedLimitLng){
+					intent.putExtra(DbAdapter.KEY_SPEEDLIMIT_LNG, speedLimitLng);
 				}
-				
 				if(null != passSchoolStationLat){
+					intent.putExtra(DbAdapter.KEY_PASSSCHOOLSTATION_LAT, passSchoolStationLat);
 				}
-				
 				if(null != passSchoolStationLng){
+					intent.putExtra(DbAdapter.KEY_PASSSCHOOLSTATION_LNG, passSchoolStationLng);
 				}
-				
 				if(null != turnLat){
+					intent.putExtra(DbAdapter.KEY_TURN_LAT, turnLat);
 				}
-				
 				if(null != turnLng){
+					intent.putExtra(DbAdapter.KEY_TURN_LNG, turnLng);
 				}
-				
 				if(null != pullOverLat){
+					intent.putExtra(DbAdapter.KEY_PULLOVER_LAT, pullOverLat);
 				}
-				
 				if(null != pullOverLng){
+					intent.putExtra(DbAdapter.KEY_PULLOVER_LNG, pullOverLng);
 				}
-				
 				if(null != backCarLat){
+					intent.putExtra(DbAdapter.KEY_BACKCAR_LAT, backCarLat);
 				}
-				
 				if(null != backCarLng){
+					intent.putExtra(DbAdapter.KEY_BACKCAR_LNG, backCarLng);
 				}
 				
 				startActivityForResult(intent, ACTIVITY_ITEMVIEW);
