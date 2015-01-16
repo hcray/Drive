@@ -3,14 +3,21 @@ package com.daoliuhe.drive;
 import java.util.List;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.daoliuhe.drive.bean.LineBean;
 import com.daoliuhe.drive.tools.DbAdapter;
@@ -23,16 +30,21 @@ public class SubjectActivity extends Activity {
 	// 路线3
 	//private Button btnPath3;
 	
+	private ListView subjectList;
 	//新增
 	private static final int MENU_ADD_ID = Menu.FIRST; 
 	//取消
 	private static final int MENU_BACK_ID = Menu.FIRST + 1;
 	
-	private final int ACTIVITY_ADD = 1;
+	private static final int ACTIVITY_ADD = 1;
+	
+	private static final int ACTIVITY_ITEMVIEW = ACTIVITY_ADD + 1;
 	
 	private DbAdapter dbAdapter;
 	
 	private RelativeLayout  layout;
+	
+	private List<LineBean> lineList;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -43,66 +55,8 @@ public class SubjectActivity extends Activity {
 		//数据库
 		dbAdapter = new DbAdapter(this);
 		dbAdapter.open();
-		
-		List<LineBean> list = dbAdapter.selectAllLine();
-		for(LineBean listBean : list){
-			Button button = new Button(this);
-			button.setId(listBean.getId());
-			button.setText(listBean.getLineName());
-			RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);  
-//	        lp1.addRule(RelativeLayout.ALIGN_TOP);  
-//	        lp1.setMargins(30, 50, 100, 100);//(int left, int top, int right, int bottom)  
-	        params.leftMargin=30;  
-	        params.topMargin = 100;
-	        
-	        button.setLayoutParams(params);
-	        //lp1.height = lp1.WRAP_CONTENT;
-			//将按钮放入layout组件
-			layout.addView(button);
-		}
-		
-		Button button = new Button(this);
-		button.setId(10000);
-		button.setText("测试1");
-		layout.addView(button); 
-		
-		/*
-		btnPath1 = (Button) this.findViewById(R.id.btnPath1);
-
-		btnPath2 = (Button) this.findViewById(R.id.btnPath2);
-
-		btnPath3 = (Button) this.findViewById(R.id.btnPath3);
-
-		OnClickListener btnPath1Click = new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent();
-				intent.setClass(SubjectActivity.this, LineActivity.class);
-				startActivity(intent);
-			}
-		};
-		btnPath1.setOnClickListener(btnPath1Click);
-
-		OnClickListener btnPath2Click = new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent();
-				intent.setClass(SubjectActivity.this, LineActivity.class);
-				startActivity(intent);
-			}
-		};
-		btnPath2.setOnClickListener(btnPath2Click);
-
-		OnClickListener btnPath3Click = new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent();
-				intent.setClass(SubjectActivity.this, LineActivity.class);
-				startActivity(intent);
-			}
-		};
-		btnPath3.setOnClickListener(btnPath3Click);
-		*/
+		//加载list列表
+		renderListView();
 	}
 
 	@Override
@@ -145,8 +99,68 @@ public class SubjectActivity extends Activity {
 		}
 	}
 	
+	private void renderListView(){
+		subjectList=  (ListView)this.findViewById(R.id.subjectList);
+        lineList = dbAdapter.selectAllLine();
+        MyAdapter adapter = new MyAdapter(this);
+        subjectList.setAdapter(adapter);
+        
+        OnItemClickListener listener =  new OnItemClickListener(){
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int position,
+					long arg3) {
+				int id = lineList.get(position).getId();
+				Intent intent = new Intent();
+				intent.setClass(SubjectActivity.this, LineActivity.class);
+				intent.putExtra(DbAdapter.KEY_ID, id);
+				startActivityForResult(intent, ACTIVITY_ITEMVIEW);
+			}
+        	
+        };
+        subjectList.setOnItemClickListener(listener);
+	}
 	
-	
+	public final class ViewHolder {
+		public TextView tvLineName;
+	}
+
+	public class MyAdapter extends BaseAdapter {
+		private LayoutInflater mInflater;
+
+		public MyAdapter(Context context) {
+			this.mInflater = LayoutInflater.from(context);
+		}
+
+		@Override
+		public int getCount() {
+			return lineList.size();
+		}
+
+		@Override
+		public Object getItem(int arg0) {
+			return null;
+		}
+
+		@Override
+		public long getItemId(int arg0) {
+			return 0;
+		}
+
+		@Override
+		public View getView(int position, View convertView, ViewGroup parent) {
+			ViewHolder holder = null;
+			if (convertView == null) {
+				holder = new ViewHolder();
+				convertView = mInflater.inflate(R.layout.atom_item, null);
+				holder.tvLineName = (TextView) convertView.findViewById(R.id.tvLineName);
+				convertView.setTag(holder);
+			} else {
+				holder = (ViewHolder) convertView.getTag();
+			}
+			holder.tvLineName.setText(lineList.get(position).getLineName());
+			return convertView;
+		}
+	}
 	
 	/**
 	 * 增加线路记录
