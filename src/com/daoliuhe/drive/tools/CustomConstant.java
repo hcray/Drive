@@ -36,4 +36,14 @@ public class CustomConstant {
 	 * 纬度
 	 */
 	public static final String LATITUDE = "latitude";
+
+	/**
+	 * 当前的经度
+	 */
+	public static final String CUR_LONGITUDE = "curLongitude";
+	
+	/**
+	 * 当前的纬度
+	 */
+	public static final String CUR_LATITUDE = "curLatitude";
 }

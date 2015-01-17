@@ -76,6 +76,18 @@
         android:padding="0.5dip" >
 
         <Button
+            android:id="@+id/btnGetCurLocal"
+            android:layout_width="wrap_content"
+            android:layout_height="50dip"
+            android:layout_weight="1"
+            android:text="当前位置"
+            android:textColor="#5e5e5e"
+            android:textSize="18sp" />
+              
+         <ImageView
+             android:layout_width="1dip"
+             android:layout_height="wrap_content" />
+        <Button
             android:id="@+id/btnLocalSave"
             android:layout_width="wrap_content"
             android:layout_height="50dip"

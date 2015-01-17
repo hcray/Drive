@@ -20,6 +20,8 @@ public class LocationActivity extends Activity {
 
 	private EditText latitudeEdit;
 	
+	private Button btnGetCurLocal;
+
 	private Button btnLocalSave;
 
 	private Button btnLocalCancel;
@@ -29,6 +31,10 @@ public class LocationActivity extends Activity {
 	private Double lat;
 	
 	private Double lng;
+	//当前的经度
+	private Double curLongitude;
+	//当前的纬度
+	private Double curLatitude;
 	
 	private static final String TAG = "LocationActivity";
 
@@ -39,12 +45,13 @@ public class LocationActivity extends Activity {
 		Bundle extras = this.getIntent().getExtras();
 		if (extras != null) {
 			btnId = extras.getInt(CustomConstant.BUTTONID);
+			//保存的经纬度
 			lat = extras.getDouble(CustomConstant.LATITUDE);
 			lng = extras.getDouble(CustomConstant.LONGITUDE);
-			
-			Log.d(TAG, "get from lineActivity btnId: " + btnId + " lat: " + lat + " lng: " + lng);
-			
-			
+			//当前的经纬度
+			curLongitude = extras.getDouble(CustomConstant.CUR_LONGITUDE);
+			curLatitude = extras.getDouble(CustomConstant.CUR_LATITUDE);
+			Log.d(TAG, "get from lineActivity btnId: " + btnId + " lat: " + lat + " lng: " + lng + " curLongitude:" + curLongitude + " curLatitude:" + curLatitude);
 		}
 		
 		//经度
@@ -53,6 +60,8 @@ public class LocationActivity extends Activity {
 		//纬度
 		latitudeEdit = (EditText) this.findViewById(R.id.latitude_edit);
 		latitudeEdit.setText(lat.toString());
+		//获取当前位置
+		btnGetCurLocal = (Button) this.findViewById(R.id.btnGetCurLocal);
 		//保存按钮
 		btnLocalSave = (Button) this.findViewById(R.id.btnLocalSave);
 		//取消按钮
@@ -93,6 +102,15 @@ public class LocationActivity extends Activity {
 				finish();
 			}});
 		
+		btnGetCurLocal.setOnClickListener(new OnClickListener(){
+			@Override
+			public void onClick(View v) {
+				//当前经度
+				longitudeEdit.setText(curLongitude.toString());
+				//当前纬度
+				latitudeEdit.setText(curLatitude.toString());
+			}
+		});
 		btnLocalCancel.setOnClickListener(new OnClickListener(){
 			@Override
 			public void onClick(View v) {

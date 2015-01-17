@@ -73,6 +73,10 @@ public class LineActivity extends Activity implements OnLongClickListener{
 	private Button btnReset;
 	
 	private DbAdapter dbAdapter;
+	//当前的经度
+	private Double curLongitude;
+	//当前的纬度
+	private Double curLatitude;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -561,6 +565,9 @@ public class LineActivity extends Activity implements OnLongClickListener{
 		}
 		//哪个button的坐标
 		intent.putExtra(CustomConstant.BUTTONID, viewId);
+		//当前的经纬度
+		intent.putExtra(CustomConstant.CUR_LATITUDE, curLatitude);
+		intent.putExtra(CustomConstant.CUR_LONGITUDE, curLongitude);
 		startActivityForResult(intent, ACTIVITY_ITEM_ADD);
 		return true;
 	}
@@ -573,6 +580,9 @@ public class LineActivity extends Activity implements OnLongClickListener{
 		 */
 		public void onLocationChanged(Location location) {
 			updateView(location);
+			//当前的经纬度
+			curLongitude = location.getLongitude();
+			curLatitude = location.getLatitude();
 			Log.i(TAG, "时间：" + location.getTime());
 			Log.i(TAG, "经度：" + location.getLongitude());
 			Log.i(TAG, "纬度：" + location.getLatitude());
