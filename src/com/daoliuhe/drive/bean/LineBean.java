@@ -458,7 +458,7 @@ public class LineBean {
 				.append(" backCarLat:").append(backCarLat)
 				.append(" backCarLng:").append(backCarLng);		
 		
-		return super.toString();
+		return history.toString();
 	}
 	
 	

@@ -502,7 +502,62 @@ public class LineActivity extends Activity implements OnLongClickListener{
 				intent.putExtra(CustomConstant.LATITUDE, lineBean.getTurnRightLat());
 				intent.putExtra(CustomConstant.LONGITUDE, lineBean.getTurnRightLng());
 				break;
-		
+			case R.id.btnSidewalk:
+				intent.putExtra(CustomConstant.LATITUDE, lineBean.getSidewalkLat());
+				intent.putExtra(CustomConstant.LONGITUDE, lineBean.getSidewalkLng());
+				break;
+			case R.id.btnPassSidewalk:
+				intent.putExtra(CustomConstant.LATITUDE, lineBean.getPassSidewalkLat());
+				intent.putExtra(CustomConstant.LONGITUDE, lineBean.getPassSidewalkLng());
+				break;
+			case R.id.btnTurnLeft:
+				intent.putExtra(CustomConstant.LATITUDE, lineBean.getTurnLeftLat());
+				intent.putExtra(CustomConstant.LONGITUDE, lineBean.getTurnLeftLng());
+				break;
+			case R.id.btnAheadDirectLine:
+				intent.putExtra(CustomConstant.LATITUDE, lineBean.getAheadDirectLineLat());
+				intent.putExtra(CustomConstant.LONGITUDE, lineBean.getAheadDirectLineLng());
+				break;
+			case R.id.btnPassBusStation:
+				intent.putExtra(CustomConstant.LATITUDE, lineBean.getPassBusStationLat());
+				intent.putExtra(CustomConstant.LONGITUDE, lineBean.getPassBusStationLng());
+				break;
+			case R.id.btnDirectLine:
+				intent.putExtra(CustomConstant.LATITUDE, lineBean.getDirectLineLat());
+				intent.putExtra(CustomConstant.LONGITUDE, lineBean.getDirectLineLng());
+				break;
+			case R.id.btnPassSchool:
+				intent.putExtra(CustomConstant.LATITUDE, lineBean.getPassSchoolLat());
+				intent.putExtra(CustomConstant.LONGITUDE, lineBean.getPassSchoolLng());
+				break;
+			case R.id.btnChangeLanes:
+				intent.putExtra(CustomConstant.LATITUDE, lineBean.getChangeLanesLat());
+				intent.putExtra(CustomConstant.LONGITUDE, lineBean.getChangeLanesLng());
+				break;
+			case R.id.btnSlowdown:
+				intent.putExtra(CustomConstant.LATITUDE, lineBean.getSlowdownLat());
+				intent.putExtra(CustomConstant.LONGITUDE, lineBean.getSlowdownLng());
+				break;
+			case R.id.btnSpeedLimit:
+				intent.putExtra(CustomConstant.LATITUDE, lineBean.getSpeedLimitLat());
+				intent.putExtra(CustomConstant.LONGITUDE, lineBean.getSpeedLimitLng());
+				break;
+			case R.id.btnPassSchoolStation:
+				intent.putExtra(CustomConstant.LATITUDE, lineBean.getPassSchoolStationLat());
+				intent.putExtra(CustomConstant.LONGITUDE, lineBean.getPassSchoolStationLng());
+				break;
+			case R.id.btnTurn:
+				intent.putExtra(CustomConstant.LATITUDE, lineBean.getTurnLat());
+				intent.putExtra(CustomConstant.LONGITUDE, lineBean.getTurnLng());
+				break;
+			case R.id.btnPullOver:
+				intent.putExtra(CustomConstant.LATITUDE, lineBean.getPullOverLat());
+				intent.putExtra(CustomConstant.LONGITUDE, lineBean.getPullOverLng());
+				break;
+			case R.id.btnBackCar:
+				intent.putExtra(CustomConstant.LATITUDE, lineBean.getBackCarLat());
+				intent.putExtra(CustomConstant.LONGITUDE, lineBean.getBackCarLng());
+				break;
 		}
 		//哪个button的坐标
 		intent.putExtra(CustomConstant.BUTTONID, viewId);
@@ -605,7 +660,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 	 */
 	private void updateView(Location location) {
 		if (location != null) {
-			tvline.setText("设备位置信息\n\n经度：");
+			tvline.setText("设备位置信息\n经度：");
 			tvline.append(String.valueOf(location.getLongitude()));
 			tvline.append("\n纬度：");
 			tvline.append(String.valueOf(location.getLatitude()));
@@ -653,7 +708,6 @@ public class LineActivity extends Activity implements OnLongClickListener{
    
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		// TODO Auto-generated method stub
 		super.onActivityResult(requestCode, resultCode, data);
 		if(requestCode == ACTIVITY_ITEM_ADD && resultCode == RESULT_OK){
 			//保存线路
@@ -671,6 +725,62 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			case R.id.btnTurnRight:
 				lineBean.setTurnRightLat(lat);
 				lineBean.setTurnRightLng(lng);
+				break;
+			case R.id.btnSidewalk:
+				lineBean.setSidewalkLat(lat);
+				lineBean.setSidewalkLng(lng);
+				break;
+			case R.id.btnPassSidewalk:
+				lineBean.setPassSidewalkLat(lat);
+				lineBean.setPassSidewalkLng(lng);
+				break;
+			case R.id.btnTurnLeft:
+				lineBean.setTurnLeftLat(lat);
+				lineBean.setTurnLeftLng(lng);
+				break;
+			case R.id.btnAheadDirectLine:
+				lineBean.setAheadDirectLineLat(lat);
+				lineBean.setAheadDirectLineLng(lng);
+				break;
+			case R.id.btnPassBusStation:
+				lineBean.setPassBusStationLat(lat);
+				lineBean.setPassBusStationLng(lng);
+				break;
+			case R.id.btnDirectLine:
+				lineBean.setDirectLineLat(lat);
+				lineBean.setDirectLineLng(lng);
+				break;
+			case R.id.btnPassSchool:
+				lineBean.setPassSchoolLat(lat);
+				lineBean.setPassSchoolLng(lng);
+				break;
+			case R.id.btnChangeLanes:
+				lineBean.setChangeLanesLat(lat);
+				lineBean.setChangeLanesLng(lng);
+				break;
+			case R.id.btnSlowdown:
+				lineBean.setSlowdownLat(lat);
+				lineBean.setSlowdownLng(lng);
+				break;
+			case R.id.btnSpeedLimit:
+				lineBean.setSpeedLimitLat(lat);
+				lineBean.setSpeedLimitLng(lng);
+				break;
+			case R.id.btnPassSchoolStation:
+				lineBean.setPassSchoolStationLat(lat);
+				lineBean.setPassSchoolStationLng(lng);
+				break;
+			case R.id.btnTurn:
+				lineBean.setTurnLat(lat);
+				lineBean.setTurnLng(lng);
+				break;
+			case R.id.btnPullOver:
+				lineBean.setPullOverLat(lat);
+				lineBean.setPullOverLng(lng);
+				break;
+			case R.id.btnBackCar:
+				lineBean.setBackCarLat(lat);
+				lineBean.setBackCarLng(lng);
 				break;
 			}
 			boolean ret = dbAdapter.updateLine(lineBean);
