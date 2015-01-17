@@ -6,6 +6,7 @@ import java.util.Iterator;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.location.Criteria;
 import android.location.GpsSatellite;
 import android.location.GpsStatus;
@@ -29,6 +30,7 @@ import android.widget.Toast;
 import com.daoliuhe.drive.bean.LineBean;
 import com.daoliuhe.drive.tools.CustomConstant;
 import com.daoliuhe.drive.tools.DbAdapter;
+import com.daoliuhe.drive.tools.Distance;
 
 public class LineActivity extends Activity implements OnLongClickListener{
 
@@ -77,6 +79,12 @@ public class LineActivity extends Activity implements OnLongClickListener{
 	private Double curLongitude;
 	//当前的纬度
 	private Double curLatitude;
+	//播报距离
+    private Double distance;
+    //角度误差
+    private Double angleError;
+    //刷新频率
+    private Double refresh;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +92,17 @@ public class LineActivity extends Activity implements OnLongClickListener{
 		setContentView(R.layout.activity_line);
 		lineBean = new LineBean();
 		
+        SharedPreferences settings = getSharedPreferences(ParamActivity.SETTING_INFOS, 0);
+		//播报距离
+        String distanceValue =  settings.getString(CustomConstant.DISTANCE_KEY, "20");
+        distance = Double.parseDouble(distanceValue);
+        //角度误差
+        String angleErrorValue =  settings.getString(CustomConstant.ANGLEERROR_KEY, "50");
+        angleError = Double.parseDouble(angleErrorValue);
+        //刷新频率
+        String refreshValue =  settings.getString(CustomConstant.REFRESH_KEY, "200");
+        refresh = Double.parseDouble(refreshValue);
+        
 		//数据库
 		dbAdapter = new DbAdapter(this);
 		dbAdapter.open();
@@ -270,16 +289,6 @@ public class LineActivity extends Activity implements OnLongClickListener{
 				tvline.setText(R.string.toast01);
 				// id,左右声道, 音量, 优先级, 是否循环(0为不循环，-1为循环),播放比率(从0.5到2，一般为1，表示正常播放)
 				playMusic(1);
-			}
-		});
-		
-		
-		btnLights1.setOnLongClickListener(new OnLongClickListener(){
-
-			@Override
-			public boolean onLongClick(View v) {
-				// TODO Auto-generated method stub
-				return false;
 			}
 		});
 		
@@ -580,13 +589,152 @@ public class LineActivity extends Activity implements OnLongClickListener{
 		 */
 		public void onLocationChanged(Location location) {
 			updateView(location);
-			//当前的经纬度
-			curLongitude = location.getLongitude();
-			curLatitude = location.getLatitude();
 			Log.i(TAG, "时间：" + location.getTime());
 			Log.i(TAG, "经度：" + location.getLongitude());
 			Log.i(TAG, "纬度：" + location.getLatitude());
 			Log.i(TAG, "海拔：" + location.getAltitude());
+			//当前的经纬度
+			curLongitude = location.getLongitude();
+			curLatitude = location.getLatitude();
+			
+			Double turnRightLat = lineBean.getTurnLeftLat();
+			Double turnRightLng = lineBean.getTurnRightLng();
+			if(null != turnRightLat && null != turnRightLng && turnRightLat != 0 && turnRightLng != 0){
+				if(Distance.GetDistance(curLongitude, curLatitude, turnRightLng, turnRightLat) < distance){
+					tvline.setText(R.string.toast05);
+					playMusic(5);
+				}
+				
+			}
+			
+			Double sidewalkLat = lineBean.getSidewalkLat();
+			Double sidewalkLng = lineBean.getSidewalkLng();
+			if(null != sidewalkLat && null != sidewalkLng && 0 != sidewalkLat && 0 != sidewalkLng){
+				if(Distance.GetDistance(curLongitude, curLatitude, sidewalkLng, sidewalkLat) < distance){
+					tvline.setText(R.string.toast06);
+					playMusic(6);
+				}
+			}
+			
+			Double passSidewalkLat = lineBean.getPassSidewalkLat();
+			Double passSidewalkLng = lineBean.getPassSidewalkLng();
+			if(null != passSidewalkLat && null != passSidewalkLng && 0 != passSidewalkLat && 0 != passSidewalkLng){
+				if(Distance.GetDistance(curLongitude, curLatitude, passSidewalkLng, passSidewalkLat) < distance){
+					tvline.setText(R.string.toast07);
+					playMusic(7);
+				}
+			}
+			
+			Double turnLeftLat = lineBean.getTurnLat();
+			Double turnLeftLng = lineBean.getTurnLeftLng();
+			if(null != turnLeftLat && null != turnLeftLng && 0 != turnLeftLat && 0 != turnLeftLng){
+				if(Distance.GetDistance(curLongitude, curLatitude, turnLeftLng, turnLeftLat) < distance){
+					tvline.setText(R.string.toast08);
+					playMusic(8);
+				}
+			}
+			
+			Double aheadDirectLineLat = lineBean.getAheadDirectLineLat();
+			Double aheadDirectLineLng = lineBean.getAheadDirectLineLng();
+			if(null != aheadDirectLineLat && null != aheadDirectLineLng && 0 != aheadDirectLineLat && 0 != aheadDirectLineLng){
+				if(Distance.GetDistance(curLongitude, curLatitude, aheadDirectLineLng, aheadDirectLineLat) < distance){
+					tvline.setText(R.string.toast09);
+					playMusic(9);
+				}
+			}
+			
+			Double passBusStationLat = lineBean.getPassBusStationLat();
+			Double passBusStationLng = lineBean.getPassBusStationLng();
+			if(null != passBusStationLat && null != passBusStationLng && 0 != passBusStationLat && 0 != passBusStationLng){
+				if(Distance.GetDistance(curLongitude, curLatitude, passBusStationLng, passBusStationLat) < distance){
+					tvline.setText(R.string.toast10);
+					playMusic(10);
+				}
+			}
+			
+			Double directLineLat = lineBean.getDirectLineLat();
+			Double directLineLng = lineBean.getDirectLineLng();
+			if(null != directLineLat && null != directLineLng && 0 != directLineLat && 0 != directLineLng){
+				if(Distance.GetDistance(curLongitude, curLatitude, directLineLng, directLineLat) < distance){
+					tvline.setText(R.string.toast11);
+					playMusic(11);
+				}
+			}
+			
+			Double passSchoolLat = lineBean.getPassSchoolLat();
+			Double passSchoolLng = lineBean.getPassSchoolLng();
+			if(null != passSchoolLat && null != passSchoolLng && 0 != passSchoolLat && 0 != passSchoolLng){
+				if(Distance.GetDistance(curLongitude, curLatitude, passSchoolLng, passSchoolLat) < distance){
+					tvline.setText(R.string.toast12);
+					playMusic(12);
+				}
+			}
+			
+			Double changeLanesLat = lineBean.getChangeLanesLat();
+			Double changeLanesLng = lineBean.getChangeLanesLng();
+			if(null != changeLanesLat && null != changeLanesLng && 0 != changeLanesLat && 0 != changeLanesLng){
+				if(Distance.GetDistance(curLongitude, curLatitude, changeLanesLng, changeLanesLat) < distance){
+					tvline.setText(R.string.toast13);
+					playMusic(13);
+				}
+			}
+
+			Double slowdownLat = lineBean.getSlowdownLat();
+			Double slowdownLng = lineBean.getSlowdownLng();
+			if(null != slowdownLat && null != slowdownLng && 0 != slowdownLat && 0 != slowdownLng){
+				if(Distance.GetDistance(curLongitude, curLatitude, slowdownLng, slowdownLat) < distance){
+					tvline.setText(R.string.toast14);
+					playMusic(14);
+				}
+			}
+			
+			Double speedLimitLat = lineBean.getSpeedLimitLat();
+			Double speedLimitLng = lineBean.getSpeedLimitLng();
+			if(null != speedLimitLat && null != speedLimitLng && 0 != speedLimitLat && 0 != speedLimitLng){
+				if(Distance.GetDistance(curLongitude, curLatitude, speedLimitLng, speedLimitLat) < distance){
+					tvline.setText(R.string.toast15);
+					playMusic(15);
+				}
+			}
+
+			Double passSchoolStationLat = lineBean.getPassSchoolStationLat();
+			Double passSchoolStationLng = lineBean.getPassSchoolStationLng();
+			if(null != passSchoolStationLat && null != passSchoolStationLng && 0 != passSchoolStationLat && 0 != passSchoolStationLng){
+				if(Distance.GetDistance(curLongitude, curLatitude, passSchoolStationLng, passSchoolStationLat) < distance){
+					tvline.setText(R.string.toast16);
+					playMusic(16);
+				}
+			}
+			
+			Double turnLat = lineBean.getTurnLat();
+			Double turnLng = lineBean.getTurnLng();
+			if(null != turnLat && null != turnLng && 0 != turnLat && 0 != turnLng){
+				if(Distance.GetDistance(curLongitude, curLatitude, turnLng, turnLat) < distance){
+					tvline.setText(R.string.toast17);
+					playMusic(17);
+				}
+			}
+
+			Double pullOverLat = lineBean.getPullOverLat();
+			Double pullOverLng = lineBean.getPullOverLng();
+			if(null != pullOverLat && null != pullOverLng && 0 != pullOverLat && 0 != pullOverLng){
+				if(Distance.GetDistance(curLongitude, curLatitude, pullOverLng, pullOverLat) < distance){
+					tvline.setText(R.string.toast18);
+					playMusic(18);
+				}
+			}
+			
+			Double backCarLat = lineBean.getBackCarLat();
+			Double backCarLng = lineBean.getBackCarLng();
+			if(null != backCarLat && null != backCarLng && 0 != backCarLat && 0 != backCarLng){
+				if(Distance.GetDistance(curLongitude, curLatitude, backCarLng, backCarLat) < distance){
+					tvline.setText(R.string.toast19);
+					playMusic(19);
+				}
+			}
+
+			
+			
 		}
 
 		/**

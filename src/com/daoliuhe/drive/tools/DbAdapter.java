@@ -164,7 +164,7 @@ public class DbAdapter {
 			initialValues.put(KEY_LINE_NAME, lineName);
 		}
 		
-		Double turnRightLat = lineBean.getTurnLeftLat();
+		Double turnRightLat = lineBean.getTurnRightLat();
 		if(null != turnRightLat){
 			initialValues.put(KEY_TURNRIGHT_LAT, turnRightLat);
 		}
