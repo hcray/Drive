@@ -421,4 +421,45 @@ public class LineBean {
 	public void setBackCarLng(Double backCarLng) {
 		this.backCarLng = backCarLng;
 	}
+
+	@Override
+	public String toString() {
+		StringBuffer history = new StringBuffer();
+		history.append(" id:").append(id)
+				.append(" lineName:").append(lineName)
+				.append(" turnRightLat:").append(turnRightLat)
+				.append(" turnRightLng:").append(turnRightLng)
+				.append(" sidewalkLat:").append(sidewalkLat)
+				.append(" sidewalkLng:").append(sidewalkLng)
+				.append(" passSidewalkLat:").append(passSidewalkLat)
+				.append(" passSidewalkLng:").append(passSidewalkLng)
+				.append(" turnLeftLat:").append(turnLeftLat)
+				.append(" turnLeftLng:").append(turnLeftLng)
+				.append(" aheadDirectLineLat:").append(aheadDirectLineLat)
+				.append(" aheadDirectLineLng:").append(aheadDirectLineLng)
+				.append(" passBusStationLat:").append(passBusStationLat)
+				.append(" passBusStationLng:").append(passBusStationLng)
+				.append(" directLineLat:").append(directLineLat)
+				.append(" directLineLng:").append(directLineLng)
+				.append(" passSchoolLat:").append(passSchoolLat)
+				.append(" passSchoolLng:").append(passSchoolLng)
+				.append(" changeLanesLat:").append(changeLanesLat)
+				.append(" changeLanesLng:").append(changeLanesLng)
+				.append(" slowdownLat").append(slowdownLat)
+				.append(" slowdownLng").append(slowdownLng)
+				.append(" speedLimitLat:").append(speedLimitLat)
+				.append(" speedLimitLng:").append(speedLimitLng)
+				.append(" passSchoolStationLat:").append(passSchoolStationLat)
+				.append(" passSchoolStationLng:").append(passSchoolStationLng)
+				.append(" turnLat:").append(turnLat)
+				.append(" turnLng:").append(turnLng)
+				.append(" pullOverLat:").append(pullOverLat)
+				.append(" pullOverLng:").append(pullOverLng)
+				.append(" backCarLat:").append(backCarLat)
+				.append(" backCarLng:").append(backCarLng);		
+		
+		return super.toString();
+	}
+	
+	
 }

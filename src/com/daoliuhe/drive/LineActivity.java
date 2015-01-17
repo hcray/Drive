@@ -27,6 +27,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.daoliuhe.drive.bean.LineBean;
+import com.daoliuhe.drive.tools.CustomConstant;
 import com.daoliuhe.drive.tools.DbAdapter;
 
 public class LineActivity extends Activity implements OnLongClickListener{
@@ -498,13 +499,13 @@ public class LineActivity extends Activity implements OnLongClickListener{
 		int viewId = v.getId();
 		switch(viewId){
 			case R.id.btnTurnRight:
-				intent.putExtra("lat", lineBean.getTurnRightLat());
-				intent.putExtra("lng", lineBean.getTurnRightLng());
+				intent.putExtra(CustomConstant.LATITUDE, lineBean.getTurnRightLat());
+				intent.putExtra(CustomConstant.LONGITUDE, lineBean.getTurnRightLng());
 				break;
 		
 		}
 		//哪个button的坐标
-		intent.putExtra("btnId", viewId);
+		intent.putExtra(CustomConstant.BUTTONID, viewId);
 		startActivityForResult(intent, ACTIVITY_ITEM_ADD);
 		return true;
 	}
@@ -658,11 +659,13 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			//保存线路
 			Bundle bundle = data.getExtras();
 			//btnId
-			int btnId = bundle.getInt("btnId");
+			int btnId = bundle.getInt(CustomConstant.BUTTONID);
 			//纬度
-			Double lat = bundle.getDouble("lat");
+			Double lat = bundle.getDouble(CustomConstant.LATITUDE);
 			//经度
-			Double lng = bundle.getDouble("lng");
+			Double lng = bundle.getDouble(CustomConstant.LONGITUDE);
+			
+			Log.d(TAG, "onActivityResult() btnId: " + btnId + " lat: " + lat + " lng:　" + lng);
 			
 			switch (btnId) {
 			case R.id.btnTurnRight:
@@ -670,7 +673,8 @@ public class LineActivity extends Activity implements OnLongClickListener{
 				lineBean.setTurnRightLng(lng);
 				break;
 			}
-			dbAdapter.updateLine(lineBean);
+			boolean ret = dbAdapter.updateLine(lineBean);
+			Log.d(TAG, "updateLine ret: " + ret + " lineBean: " + lineBean.toString());
 		}
 	}
 

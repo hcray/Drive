@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="app_name">路考模拟仪</string>
     <string name="action_settings">设置</string>
     <string name="hello_world">Hello world!</string>
@@ -36,5 +35,5 @@
     <string name="toast18">点刹车 → 打右转向灯（注意：3秒后才能动方向盘）→ 停车 （正确的停车操作是：踩刹车降速至20码以下，保持踩刹车状态（右脚不能动），再踩离合（离合踩到底，此时右脚刹车一定不能动，否则会判停车不稳）；空挡、手刹，如果是晚上，得开启示宽灯和启警示灯；注意右边距，30cm以内，不能压线）</string>
     <string name="toast19">观察后视镜、左后视镜，确认安全后下车！</string>
     <string name="title_activity_line_name">LineNameActivity</string>
-
+    
 </resources>

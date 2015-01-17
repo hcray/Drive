@@ -21,4 +21,19 @@ public class CustomConstant {
 	 * 刷新频率 key
 	 */
 	public static final String REFRESH_KEY = "edtRefreshKey";
+	
+	/**
+	 * 按钮的id
+	 */
+	public static final String BUTTONID = "buttonId";
+	
+	/**
+	 * 经度
+	 */
+	public static final String LONGITUDE = "longitude";
+	
+	/**
+	 * 纬度
+	 */
+	public static final String LATITUDE = "latitude";
 }

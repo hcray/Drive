@@ -1,10 +1,12 @@
 package com.daoliuhe.drive;
 
+import com.daoliuhe.drive.tools.CustomConstant;
 import com.daoliuhe.drive.tools.DbAdapter;
 
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -27,6 +29,8 @@ public class LocationActivity extends Activity {
 	private Double lat;
 	
 	private Double lng;
+	
+	private static final String TAG = "LocationActivity";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -34,15 +38,21 @@ public class LocationActivity extends Activity {
 		setContentView(R.layout.activity_location);
 		Bundle extras = this.getIntent().getExtras();
 		if (extras != null) {
-			btnId = extras.getInt("btnId");
-			lat = extras.getDouble("lat");
-			lng = extras.getDouble("lng");
+			btnId = extras.getInt(CustomConstant.BUTTONID);
+			lat = extras.getDouble(CustomConstant.LATITUDE);
+			lng = extras.getDouble(CustomConstant.LONGITUDE);
+			
+			Log.d(TAG, "get from lineActivity btnId: " + btnId + " lat: " + lat + " lng: " + lng);
+			
+			
 		}
 		
 		//经度
 		longitudeEdit = (EditText) this.findViewById(R.id.longitude_edit);
+		longitudeEdit.setText(lng.toString());
 		//纬度
 		latitudeEdit = (EditText) this.findViewById(R.id.latitude_edit);
+		latitudeEdit.setText(lat.toString());
 		//保存按钮
 		btnLocalSave = (Button) this.findViewById(R.id.btnLocalSave);
 		//取消按钮
@@ -54,6 +64,7 @@ public class LocationActivity extends Activity {
 			public void onClick(View v) {
 				String longitudeEditValue = longitudeEdit.getText().toString();
 				String latitudeEditValue = latitudeEdit.getText().toString();
+				Log.d(TAG,"save onclick lat:"+latitudeEditValue + " lng:" + longitudeEditValue);
 				
 				//判断经度的输入是否为空
 				if (longitudeEditValue == null 
@@ -73,11 +84,11 @@ public class LocationActivity extends Activity {
 				
 				Intent mIntent = new Intent();
 				//按钮id
-				mIntent.putExtra("btnId", btnId);
+				mIntent.putExtra(CustomConstant.BUTTONID , btnId);
 				//经度
-				mIntent.putExtra("lng", Double.parseDouble(longitudeEditValue));
+				mIntent.putExtra(CustomConstant.LONGITUDE, Double.parseDouble(longitudeEditValue));
 				//纬度
-				mIntent.putExtra("lat", Double.parseDouble(latitudeEditValue));
+				mIntent.putExtra(CustomConstant.LATITUDE, Double.parseDouble(latitudeEditValue));
 				setResult(RESULT_OK, mIntent);
 				finish();
 			}});

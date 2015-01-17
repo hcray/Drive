@@ -328,7 +328,7 @@ public class DbAdapter {
 	}
 	
 	public boolean updateLine(LineBean lineBean){
-		Log.d(TAG,"updateLine()");
+		Log.d(TAG,"updateLine() lineBean: " + lineBean.toString());
 		
 		ContentValues initialValues = new ContentValues();
 		
@@ -337,7 +337,7 @@ public class DbAdapter {
 			initialValues.put(KEY_LINE_NAME, lineName);
 		}
 		
-		Double turnRightLat = lineBean.getTurnLeftLat();
+		Double turnRightLat = lineBean.getTurnRightLat();
 		if(null != turnRightLat){
 			initialValues.put(KEY_TURNRIGHT_LAT, turnRightLat);
 		}
@@ -489,6 +489,8 @@ public class DbAdapter {
 		
 		//id
 		Integer id = lineBean.getId();
+		
+		Log.d(TAG,"updateLine() initialValues: " + initialValues.toString());
 		
 		return  mDb.update(DATABASE_TABLE, initialValues, KEY_ID + "=" + id, null) > 0;
 	}
