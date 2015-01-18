@@ -119,6 +119,8 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			String lineName = extras.getString(DbAdapter.KEY_LINE_NAME);
 			if(null != lineName && !lineName.isEmpty()){
 				lineBean.setLineName(lineName);
+				//…Ë÷√±ÍÃ‚
+				setTitle(lineName);
 			}
 			Double turnRightLat = extras.getDouble(DbAdapter.KEY_TURNRIGHT_LAT);
 			if(null != turnRightLat){
