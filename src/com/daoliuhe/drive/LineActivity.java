@@ -799,7 +799,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 				int count = 0;
 				while (iters.hasNext() && count <= maxSatellites) {
 					GpsSatellite s = iters.next();
-					
+					s.getElevation();
 					count++;
 				}
 				System.out.println("ËÑË÷µ½£º" + count + "¿ÅÎÀÐÇ");
