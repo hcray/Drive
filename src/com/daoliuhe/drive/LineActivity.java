@@ -23,6 +23,7 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -90,6 +91,8 @@ public class LineActivity extends Activity implements OnLongClickListener{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_line);
+		//ÆÁÄ»³£ÁÁ
+		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON); 
 		lineBean = new LineBean();
 		
         SharedPreferences settings = getSharedPreferences(ParamActivity.SETTING_INFOS, 0);
