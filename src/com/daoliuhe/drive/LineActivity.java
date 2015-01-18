@@ -511,7 +511,9 @@ public class LineActivity extends Activity implements OnLongClickListener{
 	@Override
 	public boolean onLongClick(View v) {
 		Log.i(TAG, "view: " + v.getId());
-		
+		//获取最新的bean
+		lineBean = dbAdapter.selectLineBeanById(lineBean.getId());
+		//跳转至坐标录入页面
 		Intent intent = new Intent();
 		intent.setClass(LineActivity.this, LocationActivity.class);
 		int viewId = v.getId();
@@ -956,6 +958,15 @@ public class LineActivity extends Activity implements OnLongClickListener{
 		// Inflate the menu; this adds items to the action bar if it is present.
 		//getMenuInflater().inflate(R.menu.line, menu);
 		return true;
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		//如果媒体在播放，则暂停
+		if(mMediaPlayer != null && mMediaPlayer.isPlaying()){
+			mMediaPlayer.pause();
+		}
 	}
 
 	@Override
