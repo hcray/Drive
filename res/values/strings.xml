@@ -3,6 +3,7 @@
     <string name="app_name">路考模拟仪</string>
     <string name="action_settings">设置</string>
     <string name="hello_world">Hello world!</string>
+    <string name="gps_prepare">定位中</string>
     <string name="param_settings">参数设置</string>
     <string name="subject_three">科目三路线</string>
     <string name="title_activity_subject">路线列表</string>

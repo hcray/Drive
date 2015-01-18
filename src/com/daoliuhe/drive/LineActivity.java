@@ -1,22 +1,22 @@
 package com.daoliuhe.drive;
 
 import java.io.IOException;
-import java.util.Iterator;
 
 import android.app.Activity;
+import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
-import android.location.Criteria;
-import android.location.GpsSatellite;
-import android.location.GpsStatus;
 import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
-import android.location.LocationProvider;
 import android.media.MediaPlayer;
+import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Parcelable;
+import android.provider.Settings;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.Menu;
@@ -28,11 +28,16 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.amap.api.location.LocationManagerProxy;
 import com.daoliuhe.drive.bean.LineBean;
 import com.daoliuhe.drive.tools.CustomConstant;
 import com.daoliuhe.drive.tools.DbAdapter;
 import com.daoliuhe.drive.tools.Distance;
 
+/**
+ * @author CYY
+ *
+ */
 public class LineActivity extends Activity implements OnLongClickListener{
 
 	// private static final int ACTIVITY_LOGIN = 0;
@@ -47,7 +52,17 @@ public class LineActivity extends Activity implements OnLongClickListener{
 	private LineBean lineBean;
 	
 	// GPS定位
-	private LocationManager lm;
+	//private LocationManager lm;
+	
+	private LocationManagerProxy mLocationManagerProxy;
+
+	public static final String GPSLOCATION_BROADCAST_ACTION = "com.daoliuhe.drive.broadcast";
+
+	private PendingIntent mPendingIntent;
+
+	private Handler mHandler = new Handler() {
+
+	};
 
 	private TextView tvline;
 
@@ -105,8 +120,8 @@ public class LineActivity extends Activity implements OnLongClickListener{
         //刷新频率
         String refreshValue =  settings.getString(CustomConstant.REFRESH_KEY, "200");
         refresh = Double.parseDouble(refreshValue);
-        
-		//数据库
+
+        //数据库
 		dbAdapter = new DbAdapter(this);
 		dbAdapter.open();
 		
@@ -253,27 +268,27 @@ public class LineActivity extends Activity implements OnLongClickListener{
 		mMediaPlayer = new MediaPlayer();
 
 		tvline = (TextView) this.findViewById(R.id.tv_line);
-		tvline.setMovementMethod(ScrollingMovementMethod.getInstance()); 
+		tvline.setMovementMethod(ScrollingMovementMethod.getInstance());
 		
-		lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-		// 判断GPS是否正常启动
-		if (!lm.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-			Toast.makeText(this, "请开启GPS导航...", Toast.LENGTH_SHORT).show();
-			// 返回开启GPS导航设置界面
-			// Intent intent = new
-			// Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-			// startActivityForResult(intent,0);
-			// return;
-		}
+//		lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+//		// 判断GPS是否正常启动
+//		if (!lm.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+//			Toast.makeText(this, "请开启GPS导航...", Toast.LENGTH_SHORT).show();
+//			// 返回开启GPS导航设置界面
+//			// Intent intent = new
+//			// Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+//			// startActivityForResult(intent,0);
+//			// return;
+//		}
 
 		// 为获取地理位置信息时设置查询条件
-		String bestProvider = lm.getBestProvider(getCriteria(), true);
-		// 获取位置信息
-		// 如果不设置查询要求，getLastKnownLocation方法传人的参数为LocationManager.GPS_PROVIDER
-		Location location = lm.getLastKnownLocation(bestProvider);
-		updateView(location);
-		// 监听状态
-		lm.addGpsStatusListener(listener);
+//		String bestProvider = lm.getBestProvider(getCriteria(), true);
+//		// 获取位置信息
+//		// 如果不设置查询要求，getLastKnownLocation方法传人的参数为LocationManager.GPS_PROVIDER
+//		Location location = lm.getLastKnownLocation(bestProvider);
+//		updateView(location);
+//		// 监听状态
+//		lm.addGpsStatusListener(listener);
 		// 绑定监听，有4个参数
 		// 参数1，设备：有GPS_PROVIDER和NETWORK_PROVIDER两种
 		// 参数2，位置信息更新周期，单位毫秒
@@ -283,8 +298,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 
 		// 1秒更新一次，或最小位移变化超过1米更新一次；
 		// 注意：此处更新准确度非常低，推荐在service里面启动一个Thread，在run中sleep(10000);然后执行handler.sendMessage(),更新位置
-		lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 1,
-				locationListener);
+		//lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 1,locationListener);
 
 		btnLights1 = (Button) this.findViewById(R.id.btnLights1);
 		btnLights1.setOnClickListener(new OnClickListener() {
@@ -508,6 +522,87 @@ public class LineActivity extends Activity implements OnLongClickListener{
 
 	}
 	
+	
+	private BroadcastReceiver mGPSLocationReceiver = new BroadcastReceiver() {
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			// 接受广播
+			if (intent.getAction().equals(GPSLOCATION_BROADCAST_ACTION)) {
+
+				// 只进行一次定位，定位成功后移除定位请求
+				//mLocationManagerProxy.removeUpdates(mPendingIntent);
+
+				Bundle bundle = intent.getExtras();
+
+				// 获取bundle里的数据
+				Parcelable parcelable = bundle
+						.getParcelable(LocationManagerProxy.KEY_LOCATION_CHANGED);
+
+				Location location = (Location) parcelable;
+				if (location == null) {
+					return;
+				}
+				
+				updateView(location);
+				
+				
+//				curLongitude = location.getLongitude();
+//				curLatitude = location.getLatitude();
+//				float curBearing = location.getBearing();
+//				float curSpeed = location.getSpeed();
+				
+				fireHandle(location);
+				
+				
+//				// 定位成功回调信息，设置相关消息
+//				mLocationLatlngTextView.setText(location.getLatitude() + "  "
+//						+ location.getLongitude());
+//				mLocationAccurancyTextView.setText(String.valueOf(location
+//						.getAccuracy()));
+//				mLocationMethodTextView.setText(location.getProvider());
+//
+//				SimpleDateFormat df = new SimpleDateFormat(
+//						"yyyy-MM-dd HH:mm:ss");
+//				Date date = new Date(location.getTime());
+//
+//				mLocationTimeTextView.setText(df.format(date));
+
+			}
+
+		}
+	};
+
+	private void init() {
+		IntentFilter fliter = new IntentFilter(
+				ConnectivityManager.CONNECTIVITY_ACTION);
+		fliter.addAction(GPSLOCATION_BROADCAST_ACTION);
+		registerReceiver(mGPSLocationReceiver, fliter);
+		Intent intent = new Intent(GPSLOCATION_BROADCAST_ACTION);
+		mPendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0,
+				intent, 0);
+		mLocationManagerProxy = LocationManagerProxy.getInstance(this);
+		// 采用peddingIntent方式进行对定位调用
+		// 此方法为每隔固定时间会发起一次定位请求，为了减少电量消耗或网络流量消耗，
+		// 注意设置合适的定位时间的间隔（最小间隔支持为2000ms），并且在合适时间调用removeUpdates()方法来取消定位请求
+		// 在定位结束后，在合适的生命周期调用destroy()方法
+		// 其中如果间隔时间为-1，则定位只定一次
+		// 在单次定位情况下，定位无论成功与否，都无需调用removeUpdates()方法移除请求，定位sdk内部会移除
+
+		mLocationManagerProxy.requestLocationUpdates(
+				LocationManagerProxy.GPS_PROVIDER, refresh.longValue(), distance.floatValue(),
+				mPendingIntent);
+		// 如果一直定位失败则2min后停止定位
+//		mHandler.postDelayed(new Runnable() {
+//
+//			@Override
+//			public void run() {
+//				mLocationManagerProxy.removeUpdates(mPendingIntent);
+//			}
+//		}, 2 * 60 * 1000);
+
+	}
+
+	
 	@Override
 	public boolean onLongClick(View v) {
 		Log.i(TAG, "view: " + v.getId());
@@ -588,235 +683,95 @@ public class LineActivity extends Activity implements OnLongClickListener{
 		return true;
 	}
 	
-	// 位置监听
-	private LocationListener locationListener = new LocationListener() {
-
-		/**
-		 * 位置信息变化时触发
-		 */
-		public void onLocationChanged(Location location) {
-			updateView(location);
-			Log.i(TAG, "时间：" + location.getTime());
-			Log.i(TAG, "经度：" + location.getLongitude());
-			Log.i(TAG, "纬度：" + location.getLatitude());
-			Log.i(TAG, "海拔：" + location.getAltitude());
-			//当前的经纬度
-			curLongitude = location.getLongitude();
-			curLatitude = location.getLatitude();
-			
-			Double turnRightLat = lineBean.getTurnLeftLat();
-			Double turnRightLng = lineBean.getTurnRightLng();
-			if(null != turnRightLat && null != turnRightLng && turnRightLat != 0 && turnRightLng != 0){
-				if(Distance.GetDistance(curLongitude, curLatitude, turnRightLng, turnRightLat) < distance){
-					tvline.setText(R.string.toast05);
-					playMusic(5);
-				}
-				
-			}
-			
-			Double sidewalkLat = lineBean.getSidewalkLat();
-			Double sidewalkLng = lineBean.getSidewalkLng();
-			if(null != sidewalkLat && null != sidewalkLng && 0 != sidewalkLat && 0 != sidewalkLng){
-				if(Distance.GetDistance(curLongitude, curLatitude, sidewalkLng, sidewalkLat) < distance){
-					tvline.setText(R.string.toast06);
-					playMusic(6);
-				}
-			}
-			
-			Double passSidewalkLat = lineBean.getPassSidewalkLat();
-			Double passSidewalkLng = lineBean.getPassSidewalkLng();
-			if(null != passSidewalkLat && null != passSidewalkLng && 0 != passSidewalkLat && 0 != passSidewalkLng){
-				if(Distance.GetDistance(curLongitude, curLatitude, passSidewalkLng, passSidewalkLat) < distance){
-					tvline.setText(R.string.toast07);
-					playMusic(7);
-				}
-			}
-			
-			Double turnLeftLat = lineBean.getTurnLat();
-			Double turnLeftLng = lineBean.getTurnLeftLng();
-			if(null != turnLeftLat && null != turnLeftLng && 0 != turnLeftLat && 0 != turnLeftLng){
-				if(Distance.GetDistance(curLongitude, curLatitude, turnLeftLng, turnLeftLat) < distance){
-					tvline.setText(R.string.toast08);
-					playMusic(8);
-				}
-			}
-			
-			Double aheadDirectLineLat = lineBean.getAheadDirectLineLat();
-			Double aheadDirectLineLng = lineBean.getAheadDirectLineLng();
-			if(null != aheadDirectLineLat && null != aheadDirectLineLng && 0 != aheadDirectLineLat && 0 != aheadDirectLineLng){
-				if(Distance.GetDistance(curLongitude, curLatitude, aheadDirectLineLng, aheadDirectLineLat) < distance){
-					tvline.setText(R.string.toast09);
-					playMusic(9);
-				}
-			}
-			
-			Double passBusStationLat = lineBean.getPassBusStationLat();
-			Double passBusStationLng = lineBean.getPassBusStationLng();
-			if(null != passBusStationLat && null != passBusStationLng && 0 != passBusStationLat && 0 != passBusStationLng){
-				if(Distance.GetDistance(curLongitude, curLatitude, passBusStationLng, passBusStationLat) < distance){
-					tvline.setText(R.string.toast10);
-					playMusic(10);
-				}
-			}
-			
-			Double directLineLat = lineBean.getDirectLineLat();
-			Double directLineLng = lineBean.getDirectLineLng();
-			if(null != directLineLat && null != directLineLng && 0 != directLineLat && 0 != directLineLng){
-				if(Distance.GetDistance(curLongitude, curLatitude, directLineLng, directLineLat) < distance){
-					tvline.setText(R.string.toast11);
-					playMusic(11);
-				}
-			}
-			
-			Double passSchoolLat = lineBean.getPassSchoolLat();
-			Double passSchoolLng = lineBean.getPassSchoolLng();
-			if(null != passSchoolLat && null != passSchoolLng && 0 != passSchoolLat && 0 != passSchoolLng){
-				if(Distance.GetDistance(curLongitude, curLatitude, passSchoolLng, passSchoolLat) < distance){
-					tvline.setText(R.string.toast12);
-					playMusic(12);
-				}
-			}
-			
-			Double changeLanesLat = lineBean.getChangeLanesLat();
-			Double changeLanesLng = lineBean.getChangeLanesLng();
-			if(null != changeLanesLat && null != changeLanesLng && 0 != changeLanesLat && 0 != changeLanesLng){
-				if(Distance.GetDistance(curLongitude, curLatitude, changeLanesLng, changeLanesLat) < distance){
-					tvline.setText(R.string.toast13);
-					playMusic(13);
-				}
-			}
-
-			Double slowdownLat = lineBean.getSlowdownLat();
-			Double slowdownLng = lineBean.getSlowdownLng();
-			if(null != slowdownLat && null != slowdownLng && 0 != slowdownLat && 0 != slowdownLng){
-				if(Distance.GetDistance(curLongitude, curLatitude, slowdownLng, slowdownLat) < distance){
-					tvline.setText(R.string.toast14);
-					playMusic(14);
-				}
-			}
-			
-			Double speedLimitLat = lineBean.getSpeedLimitLat();
-			Double speedLimitLng = lineBean.getSpeedLimitLng();
-			if(null != speedLimitLat && null != speedLimitLng && 0 != speedLimitLat && 0 != speedLimitLng){
-				if(Distance.GetDistance(curLongitude, curLatitude, speedLimitLng, speedLimitLat) < distance){
-					tvline.setText(R.string.toast15);
-					playMusic(15);
-				}
-			}
-
-			Double passSchoolStationLat = lineBean.getPassSchoolStationLat();
-			Double passSchoolStationLng = lineBean.getPassSchoolStationLng();
-			if(null != passSchoolStationLat && null != passSchoolStationLng && 0 != passSchoolStationLat && 0 != passSchoolStationLng){
-				if(Distance.GetDistance(curLongitude, curLatitude, passSchoolStationLng, passSchoolStationLat) < distance){
-					tvline.setText(R.string.toast16);
-					playMusic(16);
-				}
-			}
-			
-			Double turnLat = lineBean.getTurnLat();
-			Double turnLng = lineBean.getTurnLng();
-			if(null != turnLat && null != turnLng && 0 != turnLat && 0 != turnLng){
-				if(Distance.GetDistance(curLongitude, curLatitude, turnLng, turnLat) < distance){
-					tvline.setText(R.string.toast17);
-					playMusic(17);
-				}
-			}
-
-			Double pullOverLat = lineBean.getPullOverLat();
-			Double pullOverLng = lineBean.getPullOverLng();
-			if(null != pullOverLat && null != pullOverLng && 0 != pullOverLat && 0 != pullOverLng){
-				if(Distance.GetDistance(curLongitude, curLatitude, pullOverLng, pullOverLat) < distance){
-					tvline.setText(R.string.toast18);
-					playMusic(18);
-				}
-			}
-			
-			Double backCarLat = lineBean.getBackCarLat();
-			Double backCarLng = lineBean.getBackCarLng();
-			if(null != backCarLat && null != backCarLng && 0 != backCarLat && 0 != backCarLng){
-				if(Distance.GetDistance(curLongitude, curLatitude, backCarLng, backCarLat) < distance){
-					tvline.setText(R.string.toast19);
-					playMusic(19);
-				}
-			}
-
-			
-			
-		}
-
-		/**
-		 * GPS状态变化时触发
-		 */
-		public void onStatusChanged(String provider, int status, Bundle extras) {
-			switch (status) {
-			// GPS状态为可见时
-			case LocationProvider.AVAILABLE:
-				Log.i(TAG, "当前GPS状态为可见状态");
-				break;
-			// GPS状态为服务区外时
-			case LocationProvider.OUT_OF_SERVICE:
-				Log.i(TAG, "当前GPS状态为服务区外状态");
-				break;
-			// GPS状态为暂停服务时
-			case LocationProvider.TEMPORARILY_UNAVAILABLE:
-				Log.i(TAG, "当前GPS状态为暂停服务状态");
-				break;
-			}
-		}
-
-		/**
-		 * GPS开启时触发
-		 */
-		public void onProviderEnabled(String provider) {
-			Location location = lm.getLastKnownLocation(provider);
-			updateView(location);
-		}
-
-		/**
-		 * GPS禁用时触发
-		 */
-		public void onProviderDisabled(String provider) {
-			updateView(null);
-		}
-
-	};
+//	// 位置监听
+//	private LocationListener locationListener = new LocationListener() {
+//		/**
+//		 * 位置信息变化时触发
+//		 */
+//		public void onLocationChanged(Location location) {
+//			updateView(location);
+//			Log.i(TAG, "时间：" + location.getTime());
+//			Log.i(TAG, "经度：" + location.getLongitude());
+//			Log.i(TAG, "纬度：" + location.getLatitude());
+//			Log.i(TAG, "海拔：" + location.getAltitude());
+//			//当前的经纬度
+//			curLongitude = location.getLongitude();
+//			curLatitude = location.getLatitude();
+//			fireHandle(curLongitude, curLatitude);
+//		}
+//
+//		/**
+//		 * GPS状态变化时触发
+//		 */
+//		public void onStatusChanged(String provider, int status, Bundle extras) {
+//			switch (status) {
+//			// GPS状态为可见时
+//			case LocationProvider.AVAILABLE:
+//				Log.i(TAG, "当前GPS状态为可见状态");
+//				break;
+//			// GPS状态为服务区外时
+//			case LocationProvider.OUT_OF_SERVICE:
+//				Log.i(TAG, "当前GPS状态为服务区外状态");
+//				break;
+//			// GPS状态为暂停服务时
+//			case LocationProvider.TEMPORARILY_UNAVAILABLE:
+//				Log.i(TAG, "当前GPS状态为暂停服务状态");
+//				break;
+//			}
+//		}
+//
+//		/**
+//		 * GPS开启时触发
+//		 */
+//		public void onProviderEnabled(String provider) {
+//			Location location = lm.getLastKnownLocation(provider);
+//			updateView(location);
+//		}
+//
+//		/**
+//		 * GPS禁用时触发
+//		 */
+//		public void onProviderDisabled(String provider) {
+//			updateView(null);
+//		}
+//	};
 
 	// 状态监听
-	GpsStatus.Listener listener = new GpsStatus.Listener() {
-		public void onGpsStatusChanged(int event) {
-			switch (event) {
-			// 第一次定位
-			case GpsStatus.GPS_EVENT_FIRST_FIX:
-				Log.i(TAG, "第一次定位");
-				break;
-			// 卫星状态改变
-			case GpsStatus.GPS_EVENT_SATELLITE_STATUS:
-				Log.i(TAG, "卫星状态改变");
-				// 获取当前状态
-				GpsStatus gpsStatus = lm.getGpsStatus(null);
-				// 获取卫星颗数的默认最大值
-				int maxSatellites = gpsStatus.getMaxSatellites();
-				// 创建一个迭代器保存所有卫星
-				Iterator<GpsSatellite> iters = gpsStatus.getSatellites().iterator();
-				int count = 0;
-				while (iters.hasNext() && count <= maxSatellites) {
-					GpsSatellite s = iters.next();
-					s.getElevation();
-					count++;
-				}
-				System.out.println("搜索到：" + count + "颗卫星");
-				break;
-			// 定位启动
-			case GpsStatus.GPS_EVENT_STARTED:
-				Log.i(TAG, "定位启动");
-				break;
-			// 定位结束
-			case GpsStatus.GPS_EVENT_STOPPED:
-				Log.i(TAG, "定位结束");
-				break;
-			}
-		};
-	};
+//	GpsStatus.Listener listener = new GpsStatus.Listener() {
+//		public void onGpsStatusChanged(int event) {
+//			switch (event) {
+//			// 第一次定位
+//			case GpsStatus.GPS_EVENT_FIRST_FIX:
+//				Log.i(TAG, "第一次定位");
+//				break;
+//			// 卫星状态改变
+//			case GpsStatus.GPS_EVENT_SATELLITE_STATUS:
+//				Log.i(TAG, "卫星状态改变");
+//				// 获取当前状态
+//				GpsStatus gpsStatus = lm.getGpsStatus(null);
+//				// 获取卫星颗数的默认最大值
+//				int maxSatellites = gpsStatus.getMaxSatellites();
+//				// 创建一个迭代器保存所有卫星
+//				Iterator<GpsSatellite> iters = gpsStatus.getSatellites().iterator();
+//				int count = 0;
+//				while (iters.hasNext() && count <= maxSatellites) {
+//					GpsSatellite s = iters.next();
+//					s.getElevation();
+//					count++;
+//				}
+//				System.out.println("搜索到：" + count + "颗卫星");
+//				break;
+//			// 定位启动
+//			case GpsStatus.GPS_EVENT_STARTED:
+//				Log.i(TAG, "定位启动");
+//				break;
+//			// 定位结束
+//			case GpsStatus.GPS_EVENT_STOPPED:
+//				Log.i(TAG, "定位结束");
+//				break;
+//			}
+//		};
+//	};
 
 	/**
 	 * 实时更新文本内容
@@ -829,33 +784,189 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			tvline.append(String.valueOf(location.getLongitude()));
 			tvline.append("\n纬度：");
 			tvline.append(String.valueOf(location.getLatitude()));
+			tvline.append("\n方向：");
+			tvline.append(String.valueOf(location.getBearing()));
+			tvline.append("\n速度：");
+			tvline.append(String.valueOf(location.getSpeed()));
 		} else {
 			// 清空EditText对象
 			tvline.setText("");
 		}
 	}
-
+	
+	
 	/**
-	 * 返回查询条件
-	 * 
-	 * @return
+	 * 到达指定位置激活相关的操作
+	 * @param location 当前的位置
 	 */
-	private Criteria getCriteria() {
-		Criteria criteria = new Criteria();
-		// 设置定位精确度 Criteria.ACCURACY_COARSE比较粗略，Criteria.ACCURACY_FINE则比较精细
-		criteria.setAccuracy(Criteria.ACCURACY_FINE);
-		// 设置是否要求速度
-		criteria.setSpeedRequired(false);
-		// 设置是否允许运营商收费
-		criteria.setCostAllowed(false);
-		// 设置是否需要方位信息
-		criteria.setBearingRequired(false);
-		// 设置是否需要海拔信息
-		criteria.setAltitudeRequired(false);
-		// 设置对电源的需求
-		criteria.setPowerRequirement(Criteria.POWER_LOW);
-		return criteria;
+	private void fireHandle(Location location){
+		//经度
+		Double curLongitude = location.getLongitude();
+		//纬度
+		Double curLatitude = location.getLatitude();
+		//方向
+		float curBearing = location.getBearing();
+		//速度
+		float curSpeed = location.getSpeed();
+		
+		Double turnRightLat = lineBean.getTurnLeftLat();
+		Double turnRightLng = lineBean.getTurnRightLng();
+		if(null != turnRightLat && null != turnRightLng && turnRightLat != 0 && turnRightLng != 0){
+			if(Distance.GetDistance(curLongitude, curLatitude, turnRightLng, turnRightLat) < distance){
+				tvline.setText(R.string.toast05);
+				playMusic(5);
+			}
+			
+		}
+		
+		Double sidewalkLat = lineBean.getSidewalkLat();
+		Double sidewalkLng = lineBean.getSidewalkLng();
+		if(null != sidewalkLat && null != sidewalkLng && 0 != sidewalkLat && 0 != sidewalkLng){
+			if(Distance.GetDistance(curLongitude, curLatitude, sidewalkLng, sidewalkLat) < distance){
+				tvline.setText(R.string.toast06);
+				playMusic(6);
+			}
+		}
+		
+		Double passSidewalkLat = lineBean.getPassSidewalkLat();
+		Double passSidewalkLng = lineBean.getPassSidewalkLng();
+		if(null != passSidewalkLat && null != passSidewalkLng && 0 != passSidewalkLat && 0 != passSidewalkLng){
+			if(Distance.GetDistance(curLongitude, curLatitude, passSidewalkLng, passSidewalkLat) < distance){
+				tvline.setText(R.string.toast07);
+				playMusic(7);
+			}
+		}
+		
+		Double turnLeftLat = lineBean.getTurnLat();
+		Double turnLeftLng = lineBean.getTurnLeftLng();
+		if(null != turnLeftLat && null != turnLeftLng && 0 != turnLeftLat && 0 != turnLeftLng){
+			if(Distance.GetDistance(curLongitude, curLatitude, turnLeftLng, turnLeftLat) < distance){
+				tvline.setText(R.string.toast08);
+				playMusic(8);
+			}
+		}
+		
+		Double aheadDirectLineLat = lineBean.getAheadDirectLineLat();
+		Double aheadDirectLineLng = lineBean.getAheadDirectLineLng();
+		if(null != aheadDirectLineLat && null != aheadDirectLineLng && 0 != aheadDirectLineLat && 0 != aheadDirectLineLng){
+			if(Distance.GetDistance(curLongitude, curLatitude, aheadDirectLineLng, aheadDirectLineLat) < distance){
+				tvline.setText(R.string.toast09);
+				playMusic(9);
+			}
+		}
+		
+		Double passBusStationLat = lineBean.getPassBusStationLat();
+		Double passBusStationLng = lineBean.getPassBusStationLng();
+		if(null != passBusStationLat && null != passBusStationLng && 0 != passBusStationLat && 0 != passBusStationLng){
+			if(Distance.GetDistance(curLongitude, curLatitude, passBusStationLng, passBusStationLat) < distance){
+				tvline.setText(R.string.toast10);
+				playMusic(10);
+			}
+		}
+		
+		Double directLineLat = lineBean.getDirectLineLat();
+		Double directLineLng = lineBean.getDirectLineLng();
+		if(null != directLineLat && null != directLineLng && 0 != directLineLat && 0 != directLineLng){
+			if(Distance.GetDistance(curLongitude, curLatitude, directLineLng, directLineLat) < distance){
+				tvline.setText(R.string.toast11);
+				playMusic(11);
+			}
+		}
+		
+		Double passSchoolLat = lineBean.getPassSchoolLat();
+		Double passSchoolLng = lineBean.getPassSchoolLng();
+		if(null != passSchoolLat && null != passSchoolLng && 0 != passSchoolLat && 0 != passSchoolLng){
+			if(Distance.GetDistance(curLongitude, curLatitude, passSchoolLng, passSchoolLat) < distance){
+				tvline.setText(R.string.toast12);
+				playMusic(12);
+			}
+		}
+		
+		Double changeLanesLat = lineBean.getChangeLanesLat();
+		Double changeLanesLng = lineBean.getChangeLanesLng();
+		if(null != changeLanesLat && null != changeLanesLng && 0 != changeLanesLat && 0 != changeLanesLng){
+			if(Distance.GetDistance(curLongitude, curLatitude, changeLanesLng, changeLanesLat) < distance){
+				tvline.setText(R.string.toast13);
+				playMusic(13);
+			}
+		}
+
+		Double slowdownLat = lineBean.getSlowdownLat();
+		Double slowdownLng = lineBean.getSlowdownLng();
+		if(null != slowdownLat && null != slowdownLng && 0 != slowdownLat && 0 != slowdownLng){
+			if(Distance.GetDistance(curLongitude, curLatitude, slowdownLng, slowdownLat) < distance){
+				tvline.setText(R.string.toast14);
+				playMusic(14);
+			}
+		}
+		
+		Double speedLimitLat = lineBean.getSpeedLimitLat();
+		Double speedLimitLng = lineBean.getSpeedLimitLng();
+		if(null != speedLimitLat && null != speedLimitLng && 0 != speedLimitLat && 0 != speedLimitLng){
+			if(Distance.GetDistance(curLongitude, curLatitude, speedLimitLng, speedLimitLat) < distance){
+				tvline.setText(R.string.toast15);
+				playMusic(15);
+			}
+		}
+
+		Double passSchoolStationLat = lineBean.getPassSchoolStationLat();
+		Double passSchoolStationLng = lineBean.getPassSchoolStationLng();
+		if(null != passSchoolStationLat && null != passSchoolStationLng && 0 != passSchoolStationLat && 0 != passSchoolStationLng){
+			if(Distance.GetDistance(curLongitude, curLatitude, passSchoolStationLng, passSchoolStationLat) < distance){
+				tvline.setText(R.string.toast16);
+				playMusic(16);
+			}
+		}
+		
+		Double turnLat = lineBean.getTurnLat();
+		Double turnLng = lineBean.getTurnLng();
+		if(null != turnLat && null != turnLng && 0 != turnLat && 0 != turnLng){
+			if(Distance.GetDistance(curLongitude, curLatitude, turnLng, turnLat) < distance){
+				tvline.setText(R.string.toast17);
+				playMusic(17);
+			}
+		}
+
+		Double pullOverLat = lineBean.getPullOverLat();
+		Double pullOverLng = lineBean.getPullOverLng();
+		if(null != pullOverLat && null != pullOverLng && 0 != pullOverLat && 0 != pullOverLng){
+			if(Distance.GetDistance(curLongitude, curLatitude, pullOverLng, pullOverLat) < distance){
+				tvline.setText(R.string.toast18);
+				playMusic(18);
+			}
+		}
+		
+		Double backCarLat = lineBean.getBackCarLat();
+		Double backCarLng = lineBean.getBackCarLng();
+		if(null != backCarLat && null != backCarLng && 0 != backCarLat && 0 != backCarLng){
+			if(Distance.GetDistance(curLongitude, curLatitude, backCarLng, backCarLat) < distance){
+				tvline.setText(R.string.toast19);
+				playMusic(19);
+			}
+		}
 	}
+
+//	/**
+//	 * 返回查询条件
+//	 * 
+//	 * @return
+//	 */
+//	private Criteria getCriteria() {
+//		Criteria criteria = new Criteria();
+//		// 设置定位精确度 Criteria.ACCURACY_COARSE比较粗略，Criteria.ACCURACY_FINE则比较精细
+//		criteria.setAccuracy(Criteria.ACCURACY_FINE);
+//		// 设置是否要求速度
+//		criteria.setSpeedRequired(false);
+//		// 设置是否允许运营商收费
+//		criteria.setCostAllowed(false);
+//		// 设置是否需要方位信息
+//		criteria.setBearingRequired(false);
+//		// 设置是否需要海拔信息
+//		criteria.setAltitudeRequired(false);
+//		// 设置对电源的需求
+//		criteria.setPowerRequirement(Criteria.POWER_LOW);
+//		return criteria;
+//	}
 	
 
 	/**
@@ -960,6 +1071,12 @@ public class LineActivity extends Activity implements OnLongClickListener{
 		return true;
 	}
 
+	
+	
+	/* 
+	 * 暂停
+	 * @see android.app.Activity#onPause()
+	 */
 	@Override
 	protected void onPause() {
 		super.onPause();
@@ -967,6 +1084,21 @@ public class LineActivity extends Activity implements OnLongClickListener{
 		if(mMediaPlayer != null && mMediaPlayer.isPlaying()){
 			mMediaPlayer.pause();
 		}
+		// 移除定位请求
+		mLocationManagerProxy.removeUpdates(mPendingIntent);
+		unregisterReceiver(mGPSLocationReceiver);
+		// 销毁定位
+		mLocationManagerProxy.destroy();
+	}
+
+	/* 
+	 * 恢复
+	 * @see android.app.Activity#onResume()
+	 */
+	@Override
+	protected void onResume() {
+		super.onResume();
+		init();
 	}
 
 	@Override
@@ -983,7 +1115,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			dbAdapter.close();
 		}
 		
-		lm.removeUpdates(locationListener);
+		//lm.removeUpdates(locationListener);
 	}
 	
 	/**

@@ -194,7 +194,7 @@ public class DbAdapter {
 			initialValues.put(KEY_PASSSIDEWALK_LNG, passSidewalkLng);
 		}
 		
-		Double turnLeftLat = lineBean.getTurnLat();
+		Double turnLeftLat = lineBean.getTurnLeftLat();
 		if(null != turnLeftLat){
 			initialValues.put(KEY_TURNLEFT_LAT, turnLeftLat);
 		}

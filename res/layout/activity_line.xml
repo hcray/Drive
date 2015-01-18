@@ -6,7 +6,7 @@
     <TextView
         android:textSize="20.0dip"
         android:id="@+id/tv_line"
-        android:text="@string/hello_world"
+        android:text="@string/gps_prepare"
         android:scrollbars="vertical"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
