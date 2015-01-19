@@ -8,27 +8,26 @@
     <uses-sdk
         android:minSdkVersion="11"
         android:targetSdkVersion="14" />
-    
+
     <uses-permission android:name="android.permission.INTERNET" />
-	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-	<uses-permission android:name="android.permission.READ_PHONE_STATE" />
-	<uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-	<uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
-	<!-- 
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-	 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
+    <!--
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    -->
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-        
         <meta-data
             android:name="com.amap.api.v2.apikey"
             android:value="e9946becb0af8c1516190bd2f56c1143" />
@@ -43,7 +42,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name="com.daoliuhe.drive.ui.SubjectActivity"
             android:label="@string/title_activity_subject"
@@ -72,9 +70,14 @@
         </service>
 
         <activity
-        	android:name="com.daoliuhe.drive.ui.LineNameActivity"
-            android:label="@string/title_activity_line_name" 
+            android:name="com.daoliuhe.drive.ui.LineNameActivity"
+            android:label="@string/title_activity_line_name"
             android:screenOrientation="landscape" >
+        </activity>
+        <activity
+            android:name="com.daoliuhe.drive.ui.ScoringActivity"
+            android:label="@string/title_activity_scoring" 
+            android:screenOrientation="landscape">
         </activity>
     </application>
 
