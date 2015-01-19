@@ -1,4 +1,4 @@
-package com.daoliuhe.drive;
+package com.daoliuhe.drive.ui;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
@@ -10,6 +10,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.daoliuhe.drive.R;
+import com.daoliuhe.drive.R.id;
+import com.daoliuhe.drive.R.layout;
 import com.daoliuhe.drive.tools.CustomConstant;
 
 public class ParamActivity extends Activity {

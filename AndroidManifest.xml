@@ -34,7 +34,7 @@
             android:value="e9946becb0af8c1516190bd2f56c1143" />
 
         <activity
-            android:name="com.daoliuhe.drive.MainActivity"
+            android:name="com.daoliuhe.drive.ui.MainActivity"
             android:label="@string/app_name"
             android:screenOrientation="landscape" >
             <intent-filter>
@@ -45,34 +45,34 @@
         </activity>
 
         <activity
-            android:name="com.daoliuhe.drive.SubjectActivity"
+            android:name="com.daoliuhe.drive.ui.SubjectActivity"
             android:label="@string/title_activity_subject"
             android:screenOrientation="landscape" >
         </activity>
         <activity
-            android:name="com.daoliuhe.drive.ParamActivity"
+            android:name="com.daoliuhe.drive.ui.ParamActivityity"
             android:label="@string/title_activity_param"
             android:screenOrientation="landscape" >
         </activity>
         <activity
-            android:name="com.daoliuhe.drive.LineActivity"
+            android:name="com.daoliuhe.drive.ui.LineActivity"
             android:label="@string/title_activity_line"
             android:screenOrientation="landscape" >
         </activity>
         <activity
-            android:name="com.daoliuhe.drive.LocationActivity"
+            android:name="com.daoliuhe.drive.ui.LocationActivity"
             android:label="@string/title_activity_location"
             android:screenOrientation="landscape" >
         </activity>
 
         <service
-            android:name="com.daoliuhe.drive.SoundService"
+            android:name="com.daoliuhe.drive.ui.SoundService"
             android:enabled="true"
             android:exported="true" >
         </service>
 
         <activity
-            android:name="com.daoliuhe.drive.LineNameActivity"
+        	android:name="com.daoliuhe.drive.ui.LineNameActivity"
             android:label="@string/title_activity_line_name" 
             android:screenOrientation="landscape" >
         </activity>

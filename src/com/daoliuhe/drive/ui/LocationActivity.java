@@ -1,5 +1,8 @@
-package com.daoliuhe.drive;
+package com.daoliuhe.drive.ui;
 
+import com.daoliuhe.drive.R;
+import com.daoliuhe.drive.R.id;
+import com.daoliuhe.drive.R.layout;
 import com.daoliuhe.drive.tools.CustomConstant;
 import com.daoliuhe.drive.tools.DbAdapter;
 

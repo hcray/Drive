@@ -1,6 +1,9 @@
-package com.daoliuhe.drive;
+package com.daoliuhe.drive.ui;
 
 import java.io.IOException;
+
+import com.daoliuhe.drive.R;
+import com.daoliuhe.drive.R.raw;
 
 import android.app.Service;
 import android.content.Intent;

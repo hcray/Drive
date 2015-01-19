@@ -1,4 +1,4 @@
-package com.daoliuhe.drive;
+package com.daoliuhe.drive.ui;
 
 import java.util.List;
 
@@ -17,6 +17,10 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.daoliuhe.drive.R;
+import com.daoliuhe.drive.R.id;
+import com.daoliuhe.drive.R.layout;
+import com.daoliuhe.drive.R.string;
 import com.daoliuhe.drive.bean.LineBean;
 import com.daoliuhe.drive.tools.DbAdapter;
 

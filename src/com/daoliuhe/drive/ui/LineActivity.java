@@ -1,4 +1,4 @@
-package com.daoliuhe.drive;
+package com.daoliuhe.drive.ui;
 
 import java.io.IOException;
 
@@ -29,6 +29,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.amap.api.location.LocationManagerProxy;
+import com.daoliuhe.drive.R;
+import com.daoliuhe.drive.R.id;
+import com.daoliuhe.drive.R.layout;
+import com.daoliuhe.drive.R.raw;
+import com.daoliuhe.drive.R.string;
 import com.daoliuhe.drive.bean.LineBean;
 import com.daoliuhe.drive.tools.CustomConstant;
 import com.daoliuhe.drive.tools.DbAdapter;
