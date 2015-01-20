@@ -354,7 +354,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			public void onClick(View v) {
 				tvline.setText(R.string.toast05);
 				playMusic(5);
-
+				openScoring(5);
 			}
 		});
 
@@ -1121,6 +1121,18 @@ public class LineActivity extends Activity implements OnLongClickListener{
 		}
 		
 		//lm.removeUpdates(locationListener);
+	}
+	
+	
+	/**
+	 * 打开评分政策
+	 * @param id
+	 */
+	public void openScoring(int id){
+		Intent intent = new Intent();
+		intent.setClass(LineActivity.this, ScoringActivity.class);
+		intent.putExtra(CustomConstant.SELECT_ITEM, id);
+		startActivity(intent);
 	}
 	
 	/**

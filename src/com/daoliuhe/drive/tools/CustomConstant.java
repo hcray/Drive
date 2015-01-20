@@ -46,4 +46,10 @@ public class CustomConstant {
 	 * 当前的纬度
 	 */
 	public static final String CUR_LATITUDE = "curLatitude";
+	
+	
+	/**
+	 * 当前选中的项目
+	 */
+	public static final String SELECT_ITEM = "selectItem";
 }

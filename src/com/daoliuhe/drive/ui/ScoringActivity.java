@@ -1,12 +1,11 @@
 package com.daoliuhe.drive.ui;
 
-import com.daoliuhe.drive.R;
-import com.daoliuhe.drive.R.layout;
-import com.daoliuhe.drive.R.menu;
-
-import android.os.Bundle;
 import android.app.Activity;
+import android.os.Bundle;
+import android.os.Handler;
 import android.view.Menu;
+
+import com.daoliuhe.drive.R;
 
 public class ScoringActivity extends Activity {
 
@@ -14,8 +13,13 @@ public class ScoringActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_scoring);
-		
-		
+		//5√Î∫Ûπÿ±’
+		Handler handler = new Handler();  
+        handler.postDelayed(new Runnable() {  
+            public void run() {  
+                finish();
+            }  
+        }, 5000);
 	}
 
 	@Override
