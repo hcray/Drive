@@ -1,4 +1,4 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,9 +8,39 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".ScoringActivity" >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+    <RelativeLayout
+        android:id="@+id/Scoring_leftRellay"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@drawable/sidestyle">
 
-</RelativeLayout>
+        <ListView
+            android:id="@+id/leftList"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:divider="#8a8a8a"
+            android:dividerHeight="1dip"
+            android:drawSelectorOnTop="false"
+            android:scrollbars="vertical" >
+        </ListView>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/Scoring_rightRellay"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="4" >
+
+        <ListView
+            android:id="@+id/rightList"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:divider="#8a8a8a"
+            android:dividerHeight="1dip"
+            android:drawSelectorOnTop="false"
+            android:scrollbars="vertical" >
+        </ListView>
+    </RelativeLayout>
+
+</LinearLayout>
