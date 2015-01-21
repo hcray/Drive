@@ -1,14 +1,8 @@
 package com.daoliuhe.drive.ui;
 
-import com.daoliuhe.drive.R;
-import com.daoliuhe.drive.R.id;
-import com.daoliuhe.drive.R.layout;
-import com.daoliuhe.drive.tools.CustomConstant;
-import com.daoliuhe.drive.tools.DbAdapter;
-
-import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -16,6 +10,9 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.daoliuhe.drive.R;
+import com.daoliuhe.drive.tools.CustomConstant;
 
 public class LocationActivity extends Activity {
 	

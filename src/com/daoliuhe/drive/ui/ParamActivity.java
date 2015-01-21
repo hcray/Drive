@@ -11,8 +11,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.daoliuhe.drive.R;
-import com.daoliuhe.drive.R.id;
-import com.daoliuhe.drive.R.layout;
 import com.daoliuhe.drive.tools.CustomConstant;
 
 public class ParamActivity extends Activity {

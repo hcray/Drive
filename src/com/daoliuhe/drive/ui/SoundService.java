@@ -2,14 +2,13 @@ package com.daoliuhe.drive.ui;
 
 import java.io.IOException;
 
-import com.daoliuhe.drive.R;
-import com.daoliuhe.drive.R.raw;
-
 import android.app.Service;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.IBinder;
+
+import com.daoliuhe.drive.R;
 
 public class SoundService extends Service {
 	//多媒体对象
