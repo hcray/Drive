@@ -1,5 +1,6 @@
 package com.daoliuhe.drive.ui;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
@@ -83,7 +84,12 @@ public class SubjectActivity extends Activity {
 	private void renderListView(){
 		subjectList=  (ListView)this.findViewById(R.id.subjectList);
         lineList = dbAdapter.selectAllLine();
-        ListViewActivityAdapter adapter = new ListViewActivityAdapter(this, lineList);
+        List<String> viewList = new ArrayList<String>();
+        for(LineBean bean : lineList){
+        	viewList.add(bean.getLineName());
+        }
+        
+        ListViewActivityAdapter adapter = new ListViewActivityAdapter(this, viewList);
         subjectList.setAdapter(adapter);
         
         OnItemClickListener listener =  new OnItemClickListener(){

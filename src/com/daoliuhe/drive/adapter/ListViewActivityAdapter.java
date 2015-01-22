@@ -10,18 +10,17 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.daoliuhe.drive.R;
-import com.daoliuhe.drive.bean.LineBean;
 
 public class ListViewActivityAdapter extends BaseAdapter {
 	private LayoutInflater mInflater;
 	
-	private List<LineBean> lineList;
+	private List<String> lineList;
 	
 	static class ViewHolder {
 		public TextView tvLineName;
 	}
 	
-	public ListViewActivityAdapter(Context context, List<LineBean> lineList){
+	public ListViewActivityAdapter(Context context, List<String> lineList){
 		this.mInflater = LayoutInflater.from(context);
 		this.lineList = lineList;
 	}
@@ -52,7 +51,7 @@ public class ListViewActivityAdapter extends BaseAdapter {
 		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}
-		holder.tvLineName.setText(lineList.get(position).getLineName());
+		holder.tvLineName.setText(lineList.get(position));
 		return convertView;
 	}
 
