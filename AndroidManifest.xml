@@ -48,7 +48,7 @@
             android:screenOrientation="landscape" >
         </activity>
         <activity
-            android:name="com.daoliuhe.drive.ui.ParamActivityity"
+            android:name="com.daoliuhe.drive.ui.ParamActivity"
             android:label="@string/title_activity_param"
             android:screenOrientation="landscape" >
         </activity>
