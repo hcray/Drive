@@ -2,6 +2,7 @@ package com.daoliuhe.drive.ui;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -13,6 +14,8 @@ import com.daoliuhe.drive.R;
 public class MainActivity extends Activity {
 	// 科目三
 	private Button btnSubjectThree;
+	// 科目三
+	private Button btnSubjectThreeVideo;
 	// 参数设置
 	private Button btnParamSettings;
 
@@ -32,6 +35,18 @@ public class MainActivity extends Activity {
 			}
 		});
 
+		btnSubjectThreeVideo = (Button) this.findViewById(R.id.btnSubjectThreeVideo);
+		btnSubjectThreeVideo.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				// 视频播放
+				Intent intent = new Intent(Intent.ACTION_VIEW);
+				String uri = "android.resource://" + getPackageName() + "/" + R.raw.s3;
+				intent.setDataAndType(Uri.parse(uri) ,"video/mp4");
+				startActivity(intent);
+			}
+		});
+		
 		btnParamSettings = (Button) this.findViewById(R.id.btnParamSettings);
 		btnParamSettings.setOnClickListener(new OnClickListener() {
 			@Override
@@ -48,7 +63,7 @@ public class MainActivity extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		//getMenuInflater().inflate(R.menu.main, menu);
+		// getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
 

@@ -7,6 +7,7 @@
     <string name="gps_prepare">定位中</string>
     <string name="param_settings">参数设置</string>
     <string name="subject_three">科目三路线</string>
+    <string name="subject_three_video">科目三视频</string>
     <string name="title_activity_subject">路线列表</string>
     <string name="line_list">线路</string>
     <string name="title_activity_param">参数设置</string>

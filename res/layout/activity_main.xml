@@ -19,6 +19,13 @@
             android:layout_height="wrap_content"
             android:text="@string/subject_three" >
         </Button>
+        
+        <Button
+            android:id="@+id/btnSubjectThreeVideo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/subject_three_video" >
+        </Button>
 
         <Button
             android:id="@+id/btnParamSettings"
