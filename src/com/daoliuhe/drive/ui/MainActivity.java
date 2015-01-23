@@ -40,8 +40,8 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				//  ”∆µ≤•∑≈
-				Intent intent = new Intent(Intent.ACTION_VIEW);
 				String uri = "android.resource://" + getPackageName() + "/" + R.raw.s3;
+				Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
 				intent.setDataAndType(Uri.parse(uri) ,"video/mp4");
 				startActivity(intent);
 			}
