@@ -84,6 +84,16 @@ public class ScoringActivity extends Activity {
 		leftList.add("³¬³µ");
 		leftList.add("µôÍ·");
 		
+		//1
+		rightList.add("");
+		rightList.add("");
+		rightList.add("");
+		rightList.add("");
+		rightList.add("");
+		rightList.add("");
+		rightList.add("");
+		rightList.add("");
+
 		rightList.add("");
 	}
 
