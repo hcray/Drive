@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Menu;
+import android.view.MotionEvent;
 import android.widget.ListView;
 
 import com.daoliuhe.drive.R;
@@ -20,6 +21,9 @@ public class ScoringActivity extends Activity {
 	private List<String> leftList = new ArrayList<String>();
 	
 	private List<String> rightList = new ArrayList<String>();
+	
+	//关闭页面标志
+	private boolean closeFlag = true;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +46,10 @@ public class ScoringActivity extends Activity {
 		Handler handler = new Handler();  
         handler.postDelayed(new Runnable() {  
             public void run() {  
-                finish();
+                //如果没有操作，则关闭
+            	if(closeFlag){
+                	finish();
+                }
             }  
         }, 5000);
 	}
@@ -54,6 +61,14 @@ public class ScoringActivity extends Activity {
 		return true;
 	}
 	
+	@Override
+	public boolean onTouchEvent(MotionEvent event) {
+		if(closeFlag){
+			closeFlag = false;
+		}
+		return super.onTouchEvent(event);
+	}
+
 	private void initList(){
 		leftList.add("上车准备");
 		leftList.add("起步");
