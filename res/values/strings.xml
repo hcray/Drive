@@ -39,5 +39,151 @@
     <string name="toast19">观察后视镜、左后视镜，确认安全后下车！</string>
     <string name="title_activity_line_name">LineNameActivity</string>
     <string name="title_activity_scoring">评分标准</string>
+    <string name="item1">1、上车准备</string>
+
+    <string-array name="item1Detail">
+        <item>1.1、车门上车前，不绕车一周检查车辆外观及安全状况，不及格。</item>
+        <item>1.2、打开车门前，不观察后方交通情况，不合格。</item>
+        <item>1.3、启动机器前，不调整驾驶座椅、后视镜、检查仪表，扣5分。</item>
+        <item>1.4、启动机器时，变速器操纵杆未臵于空挡（驻车挡），扣10分。</item>
+        <item>1.5、启动机器后，不及时松开启动开关，扣10分。</item>
+        <item>1.6、启动机器后，车门未关闭，不合格。</item>
+        <item>1.7、启动机器后，不系安全带，不合格。</item>
+    </string-array>
+
+    <string name="item2">2、起步</string>
+
+    <string-array name="item2Detail">
+        <item>2.1、起步前，不侧头看后视镜，观察左、后方交通情况，不合格。</item>
+        <item>2.2、起步前，不开左转向灯，扣20分；开左转向灯少于3秒，扣10分。</item>
+        <item>2.3、起步超过1分钟，判“不按照考试员指令驾驶，考试不合格”，不松驻车制动器，扣10 分。</item>
+        <item>2.4、起步时不松驻车制动器，扣10分。</item>
+        <item>2.5、起步时车辆发生闯动，扣10分。</item>
+        <item>2.6、起步时发动机熄火一次，扣10分。</item>
+        <item>2.7、起步时加速踏板控制不当，致使发动机转速过高，扣15分。</item>
+        <item>2.8、起步时车辆后溜距离大于30厘米，不合格。小于30厘米，扣20分。</item>
+        <item>2.9、起步时不能合理使用喇叭（鸣笛两声），扣10分。</item>
+        <item>2.10、夜间行车时不能正确开启灯光（远光灯、近光灯）等，不合格。</item>
+    </string-array>
+
+    <string name="item3">3、直线行驶</string>
+
+    <string-array name="item3Detail">
+        <item>3.1、方向控制不稳，不能保持车辆直线运动状态，不合格。</item>
+        <item>3.2、遇前车制动或车距缩短时，不能及时采取减速措施，不合格。</item>
+        <item>3.3、超过20秒，不通过后视镜观察后方交通情况，扣10分。</item>
+        <item>3.4、未及时发现路面障碍物，未及时采取减速措施，扣10分。</item>
+        <item>3.5、不了解车辆行驶速度，扣10分。</item>
+    </string-array>
+
+    <string name="item4">4、加减挡位</string>
+
+    <string-array name="item4Detail">
+        <item>4.1、在换挡过程，如果用眼睛看着变速器操控杆换挡视为不合格。</item>
+        <item>4.2、车辆运行速度要与挡位匹配。</item>
+        <item>4.3、根据路况和车速，合理加减挡，换挡要及时、平顺。</item>
+        <item>4.4、要按指令平稳加减挡。</item>
+    </string-array>
+
+    <string name="item5">5、变更车道</string>
+
+    <string-array name="item5Detail">
+        <item>5.1、变更车道前，不通过内、外后视镜观察后方道路交通情况，不合格。</item>
+        <item>5.2、变更车道前，要使用对应的转向灯，且开灯时间不得少于3秒，不打转向灯，扣20分。少于3秒，扣10分。</item>
+        <item>5.3、变更车道时，判断车辆安全距离不合理，妨碍他正常行驶，不合格。</item>
+        <item>5.4、连续变更两条或两条以上车道，不合格。</item>
+    </string-array>
+
+    <string name="item6">6、通过路口</string>
+
+    <string-array name="item6Detail">
+        <item>6.1、通过路口要根据指令选准车道（直行、左转和右转），选错不合格。</item>
+        <item>6.2、通过路口不按规定避让行人和优先通行的车辆，不合格。</item>
+        <item>6.3、通过路口不按规定减速慢行或停车瞭望，不合格。</item>
+        <item>6.4、直行通过路口，不观察左、右方交通情况，不合格。</item>
+        <item>6.5、转弯通过路口，未观察侧前方或侧后方交通情况，不合格。</item>
+        <item>6.6、转弯通过路口，不打转向灯扣20分，少于3秒扣10分。</item>
+        <item>6.7、左转通过路口，未靠路口中心点左侧转弯，不合格。</item>
+        <item>6.8、路口交通阻时，将车辆驶入路口内等候，不合格。</item>
+        <item>6.9、参加夜间考试，通过路口前要使用远近灯交替示意。</item>
+    </string-array>
+
+    <string name="item7">7、通过人行横道</string>
+
+    <string-array name="item7Detail">
+        <item>7.1、不观察左、右交通情况，不合格。</item>
+        <item>7.2、不按规定减速慢行，不合格。</item>
+        <item>7.3、遇行人通过人行横道不停车让行，不合格。</item>
+        <item>7.4、不主动避让优先通过车辆、行人、非机动车等，不合格。</item>
+        <item>7.5、夜间考试，必须使用远近灯交替示意。</item>
+    </string-array>
+
+    <string name="item8">8、通过学校区域</string>
+
+    <string-array name="item8Detail">
+        <item>8.1、不观察左、右交通情况，不合格。</item>
+        <item>8.2、不按规定减速慢行，不合格。</item>
+        <item>8.3、遇行人通过人行横道不停车让行，不合格。</item>
+        <item>8.4、不主动避让优先通过车辆、行人、非机动车等，不合格。</item>
+        <item>8.5、夜间考试，必须使用远近灯交替示意。</item>
+    </string-array>
+
+    <string name="item9">9、通过公交车站</string>
+
+    <string-array name="item9Detail">
+        <item>9.1、不观察左、右交通情况，不合格。</item>
+        <item>9.2、不按规定减速慢行，不合格。</item>
+        <item>9.3、遇行人通过人行横道不停车让行，不合格。</item>
+        <item>9.4、不主动避让优先通过车辆、行人、非机动车等，不合格。</item>
+        <item>9.5、夜间考试，必须使用远近灯交替示意。</item>
+    </string-array>
+
+    <string name="item10">10、会车</string>
+
+    <string-array name="item10Detail">
+        <item>10.1、在没有中心隔离设施或中心线的道路上会车时，不减速靠右行驶，与行人、他车未保持安全距离，不合格。</item>
+        <item>10.2、会车困难时不让行，不合。</item>
+        <item>10.3、横向安全间距判断差，紧急转向避让相对方向过来车，不合格。</item>
+        <item>10.4、夜间考试，按照规定使用远近灯交替示意。</item>
+    </string-array>
+
+    <string name="item11">11、超车</string>
+
+    <string-array name="item11Detail">
+        <item>11.1、超车前要使用左转向灯，不开转向灯扣20分，少于3秒扣10分。</item>
+        <item>11.2、超车前通过内、外后视镜观察后方和左侧交通情况，不合格。</item>
+        <item>11.3、超车时间选择不合理，影响其他车辆正常行驶，不合格。</item>
+        <item>11.4、超车时未与被超车辆保持安全距离，不合格。</item>
+        <item>11.5、超车后急转向驶回本车道，妨碍被超车辆正常行驶，不合格。</item>
+        <item>11.6、在中心线或同向只有一条车道的道路上从右侧超车，不合格。</item>
+        <item>11.7、当后车发出超车信号时，具备让车条件不减速靠右让行，扣10分。</item>
+        <item>11.8、超车时，要侧头观察被超车动态。</item>
+        <item>11.9、夜间考试，超车时要变换使用远、近灯提醒被超越车辆。</item>
+    </string-array>
+
+    <string name="item12">12、掉头</string>
+
+    <string-array name="item12Detail">
+        <item>12.1、掉头前，不能正确观察交通情况选择掉头时机，不合格。</item>
+        <item>12.2、掉头前，掉头地点选择不当，不合格。</item>
+        <item>12.3、掉头前，要先发出掉头信号。</item>
+        <item>12.4、掉头时，妨碍正常行驶的其他车辆和行人通行，不合格。</item>
+        <item>12.5、掉头时，一定要减速，缓慢掉头。</item>
+        <item>12.6、掉头时，应将双脚放在离合、脚刹上方，做好随时停车准备。</item>
+    </string-array>
+
+    <string name="item13">13、靠边停车</string>
+
+    <string-array name="item13Detail">
+        <item>13.1、停车前，不通过内、外后视镜观察后方和右侧交通情况，不合格。</item>
+        <item>13.2、停车后，车身超过道路右侧边缘线或者人行道边缘，不合格。</item>
+        <item>13.3、停车后，在车内开门前不侧头观察侧后方和左侧交通情况，不合格。</item>
+        <item>13.4、停车后，车身距离道路右侧边缘线或者人行道边缘大于30厘米，扣20分。</item>
+        <item>13.5、停车后，未拉紧驻车制动器，扣20分。</item>
+        <item>13.6、拉紧驻车制动器前放松行车制动踏板，扣10分。</item>
+        <item>13.7、下车后不关车门，扣10分。</item>
+        <item>13.8、下车前不将发动机熄火，扣5分。</item>
+        <item>13.9、夜间在路边临时停车不关闭前照灯或不开启警示灯，扣5分。</item>
+    </string-array>
 
 </resources>
