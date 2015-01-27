@@ -8,14 +8,19 @@ import android.app.Activity;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 import android.widget.ListView;
 
 import com.daoliuhe.drive.R;
 import com.daoliuhe.drive.adapter.ListViewActivityAdapter;
 
 public class ScoringActivity extends Activity {
+	private static final String TAG = "ScoringActivity";
+	
 	private ListView leftListView;
 	
 	private ListView rightListView;
@@ -31,12 +36,27 @@ public class ScoringActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_scoring);
-
+		
 		initList();
+		
+		OnTouchListener touchListener = new OnTouchListener(){
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				Log.d(TAG, "onTouch() closeFlag: " + closeFlag);
+				if(closeFlag){
+					closeFlag = false;
+				}
+				return false;
+			}
+		};
 		
 		leftListView = (ListView) this.findViewById(R.id.leftList);
 		
+		leftListView.setOnTouchListener(touchListener);
+		
 		rightListView = (ListView) this.findViewById(R.id.rightList);
+		
+		rightListView.setOnTouchListener(touchListener);
 		
 		ListViewActivityAdapter adapterLeft = new ListViewActivityAdapter(this, leftList);
 		leftListView.setAdapter(adapterLeft);
@@ -49,6 +69,7 @@ public class ScoringActivity extends Activity {
         handler.postDelayed(new Runnable() {  
             public void run() {  
                 //如果没有操作，则关闭
+            	Log.d(TAG, "closeFlag: " + closeFlag);
             	if(closeFlag){
                 	finish();
                 }
@@ -59,12 +80,13 @@ public class ScoringActivity extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.scoring, menu);
+		//getMenuInflater().inflate(R.menu.scoring, menu);
 		return true;
 	}
 	
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
+		Log.d(TAG, "onTouchEvent() closeFlag: " + closeFlag);
 		if(closeFlag){
 			closeFlag = false;
 		}
