@@ -24,7 +24,7 @@
 
 		<TableLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
 		    <TableRow android:layout_width="fill_parent" android:layout_height="wrap_content">
-		        <Button
+		       <Button
 		       android:id="@+id/btnLights1"
 		       android:layout_width="wrap_content"
 		       android:layout_height="wrap_content"
@@ -61,17 +61,35 @@
 		       android:textSize="18sp" />
 	           
 	           <Button
-		       android:id="@+id/btnTurnRight"
+		       android:id="@+id/btnTurnLeft"
 		       android:layout_width="wrap_content"
 		       android:layout_height="wrap_content"
 		       android:layout_weight="1"
-		       android:text="前方路口右转"
+		       android:text="前方路口左转"
 		       android:textColor="#5e5e5e"
 		       android:textSize="18sp" />
 		    </TableRow>
 		    
 		    <TableRow android:layout_width="fill_parent" android:layout_height="wrap_content">
 	           <Button
+		       android:id="@+id/btnTurnRight"
+		       android:layout_width="wrap_content"
+		       android:layout_height="wrap_content"
+		       android:layout_weight="1"
+		       android:text="前方路口右转"
+		       android:textColor="#5e5e5e"
+		       android:textSize="18sp" />     
+	           
+	           <Button
+		       android:id="@+id/btnAheadDirectLine"
+		       android:layout_width="wrap_content"
+		       android:layout_height="wrap_content"
+		       android:layout_weight="1"
+		       android:text="前方路口直行"
+		       android:textColor="#5e5e5e"
+		       android:textSize="18sp" />
+		        
+		       <Button
 		       android:id="@+id/btnSidewalk"
 		       android:layout_width="wrap_content"
 		       android:layout_height="wrap_content"
@@ -86,24 +104,6 @@
 		       android:layout_height="wrap_content"
 		       android:layout_weight="1"
 		       android:text="通过人行横道"
-		       android:textColor="#5e5e5e"
-		       android:textSize="18sp" />
-	           
-	           <Button
-		       android:id="@+id/btnTurnLeft"
-		       android:layout_width="wrap_content"
-		       android:layout_height="wrap_content"
-		       android:layout_weight="1"
-		       android:text="前方路口左转"
-		       android:textColor="#5e5e5e"
-		       android:textSize="18sp" />
-	           
-	           <Button
-		       android:id="@+id/btnAheadDirectLine"
-		       android:layout_width="wrap_content"
-		       android:layout_height="wrap_content"
-		       android:layout_weight="1"
-		       android:text="前方路口直行"
 		       android:textColor="#5e5e5e"
 		       android:textSize="18sp" />
 	           
