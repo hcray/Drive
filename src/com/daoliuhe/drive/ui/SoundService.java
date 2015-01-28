@@ -69,85 +69,81 @@ public class SoundService extends Service {
         	Uri uri = null;
         	
         	switch(MSG){
-				case 1: 
-					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd01);
-					break;
-				
-				case 2: 
-					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd02);
-					break;
-				
-				case 3: 
-					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd03);
-					break;
-				
-				case 4: 
-					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd04);
-					break;
-				
-				case 5: 
-					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd05);
-					break;
-				
-				case 6: 
-					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd06);
-					break;
-				
-				case 7: 
-					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd07);
-					break;
-				
-				case 8: 
-					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd08);
-					break;
-				
-				case 9: 
-					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd09);
-					break;
-				
-				case 10: 
-					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd10);
-					break;
-				
-				case 11: 
-					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd11);
-					break;
-				
-				case 12: 
-					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd12);
-					break;
-				
-				case 13: 
-					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd13);
-					break;
-				
-				case 14: 
-					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd14);
-					break;
-				
-				case 15:
-					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd15);
-					break;
-				
-				case 16: 
-					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd16);
-					break;
-				
-				case 17: 
-					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd17);
-					break;
-				
-				case 18: 
-					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd18);
-					break;
-				
-				case 19: 
-					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd19);
-					break;
-				
-				default:
-					//mMediaPlayer.stop();
-					break;
+        	case R.id.btnLights1: 
+				uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.light01);
+				break;
+			
+			case R.id.btnLights2: 
+				uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.light02);
+				break;
+			
+			case R.id.btnLights3: 
+				uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.light03);
+				break;
+			
+			case R.id.btnLights4: 
+				uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.light04);
+				break;
+			
+			case R.id.btnStart: 
+				uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.start);
+				break;
+			
+			case R.id.btnChangeLanes: 
+				uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.change_lanes);
+				break;
+			
+			case R.id.btnAheadDirectLine: 
+				uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.ahead_direct_line);
+				break;
+			
+			case R.id.btnTurnLeft: 
+				uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.turn_left);
+				break;
+			
+			case R.id.btnTurnRight: 
+				uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.turn_right);
+				break;
+			
+			case R.id.btnSidewalk: 
+				uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.sidewalk);
+				break;
+			
+			case R.id.btnPassSchool: 
+				uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.pass_school);
+				break;
+			
+			case R.id.btnPassBusStation: 
+				uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.pass_bus_station);
+				break;
+			
+			case R.id.btnPassSidewalk: 
+				uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.pass_sidewalk);
+				break;
+			
+			case R.id.btnDirectLine: 
+				uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.direct_line);
+				break;
+			
+			case R.id.btnEndDirectLine:
+				uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.end_direct_line);
+				break;
+			
+			case R.id.btnOvertake: 
+				uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.overtake);
+				break;
+			
+			case R.id.btnTurn: 
+				uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.turn);
+				break;
+			
+			case R.id.btnPullOver : 
+				uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.pull_over);
+				break;
+			
+			default:
+				//mMediaPlayer.stop();
+				break;
         	}
         	
         	if(null != uri){

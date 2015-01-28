@@ -99,42 +99,60 @@ public class SubjectActivity extends Activity {
 				int id = lineList.get(position).getId();
 				String lineName = lineList.get(position).getLineName();
 				
+				Double changeLanesLat = lineList.get(position).getChangeLanesLat();
+				Double changeLanesLng = lineList.get(position).getChangeLanesLng();
+				Double aheadDirectLineLat = lineList.get(position).getAheadDirectLineLat();
+				Double aheadDirectLineLng = lineList.get(position).getAheadDirectLineLng();
+				Double turnLeftLat = lineList.get(position).getTurnLat();
+				Double turnLeftLng = lineList.get(position).getTurnLng();
 				Double turnRightLat = lineList.get(position).getTurnRightLat();
 				Double turnRightLng = lineList.get(position).getTurnRightLng();
 				Double sidewalkLat = lineList.get(position).getSidewalkLat();
 				Double sidewalkLng = lineList.get(position).getSidewalkLng();
-				Double passSidewalkLat = lineList.get(position).getPassSidewalkLat();
-				Double passSidewalkLng = lineList.get(position).getPassSidewalkLng();
-				Double turnLeftLat = lineList.get(position).getTurnLat();
-				Double turnLeftLng = lineList.get(position).getTurnLng();
-				Double aheadDirectLineLat = lineList.get(position).getAheadDirectLineLat();
-				Double aheadDirectLineLng = lineList.get(position).getAheadDirectLineLng();
-				Double passBusStationLat = lineList.get(position).getPassBusStationLat();
-				Double passBusStationLng = lineList.get(position).getPassBusStationLng();
-				Double directLineLat = lineList.get(position).getDirectLineLat();
-				Double directLineLng = lineList.get(position).getDirectLineLng();
+				
 				Double passSchoolLat = lineList.get(position).getPassSchoolLat();
 				Double passSchoolLng = lineList.get(position).getPassSchoolLng();
-				Double changeLanesLat = lineList.get(position).getChangeLanesLat();
-				Double changeLanesLng = lineList.get(position).getChangeLanesLng();
-				Double slowdownLat = lineList.get(position).getSlowdownLat();
-				Double slowdownLng = lineList.get(position).getSlowdownLng();
-				Double speedLimitLat = lineList.get(position).getSpeedLimitLat();
-				Double speedLimitLng = lineList.get(position).getSpeedLimitLng();
-				Double passSchoolStationLat = lineList.get(position).getPassSchoolStationLat();
-				Double passSchoolStationLng = lineList.get(position).getPassSchoolStationLng();
+				Double passBusStationLat = lineList.get(position).getPassBusStationLat();
+				Double passBusStationLng = lineList.get(position).getPassBusStationLng();
+				Double passSidewalkLat = lineList.get(position).getPassSidewalkLat();
+				Double passSidewalkLng = lineList.get(position).getPassSidewalkLng();
+				Double directLineLat = lineList.get(position).getDirectLineLat();
+				Double directLineLng = lineList.get(position).getDirectLineLng();
+				Double endDirectLineLat = lineList.get(position).getEndDirectLineLat();
+				Double endDirectLineLng = lineList.get(position).getEndDirectLineLng();
+				
+				Double overtakeLat = lineList.get(position).getOvertakeLat();
+				Double overtakeLng = lineList.get(position).getOvertakeLng();
 				Double turnLat = lineList.get(position).getTurnLat();
 				Double turnLng = lineList.get(position).getTurnLng();
 				Double pullOverLat = lineList.get(position).getPullOverLat();
 				Double pullOverLng = lineList.get(position).getPullOverLng();
-				Double backCarLat = lineList.get(position).getBackCarLat();
-				Double backCarLng = lineList.get(position).getBackCarLng();
+				Double passingLat = lineList.get(position).getPassingLat();
+				Double passingLng = lineList.get(position).getPassingLng();
 				
 				Intent intent = new Intent();
 				intent.setClass(SubjectActivity.this, LineActivity.class);
 				intent.putExtra(DbAdapter.KEY_ID, id);
 				intent.putExtra(DbAdapter.KEY_LINE_NAME, lineName);
 				
+				if(null != changeLanesLat){
+					intent.putExtra(DbAdapter.KEY_CHANGELANES_LAT, changeLanesLat);
+				}
+				if(null != changeLanesLng){
+					intent.putExtra(DbAdapter.KEY_CHANGELANES_LNG, changeLanesLng);
+				}
+				if(null != aheadDirectLineLat){
+					intent.putExtra(DbAdapter.KEY_AHEADDIRECTLINE_LAT, aheadDirectLineLat);
+				}
+				if(null != aheadDirectLineLng){
+					intent.putExtra(DbAdapter.KEY_AHEADDIRECTLINE_LNG, aheadDirectLineLng);
+				}
+				if(null != turnLeftLat){
+					intent.putExtra(DbAdapter.KEY_TURNLEFT_LAT, turnLeftLat);
+				}
+				if(null != turnLeftLng){
+					intent.putExtra(DbAdapter.KEY_TURNLEFT_LNG, turnLeftLng);
+				}
 				if(null != turnRightLat){
 					intent.putExtra(DbAdapter.KEY_TURNRIGHT_LAT, turnRightLat);
 				}
@@ -147,23 +165,11 @@ public class SubjectActivity extends Activity {
 				if(null != sidewalkLng){
 					intent.putExtra(DbAdapter.KEY_SIDEWALK_LNG, sidewalkLng);
 				}
-				if(null != passSidewalkLat){
-					intent.putExtra(DbAdapter.KEY_PASSSIDEWALK_LAT, passSidewalkLat);
+				if(null != passSchoolLat){
+					intent.putExtra(DbAdapter.KEY_PASSSCHOOL_LAT, passSchoolLat);
 				}
-				if(null != passSidewalkLng){
-					intent.putExtra(DbAdapter.KEY_PASSSIDEWALK_LNG, passSidewalkLng);
-				}
-				if(null != turnLeftLat){
-					intent.putExtra(DbAdapter.KEY_TURNLEFT_LAT, turnLeftLat);
-				}
-				if(null != turnLeftLng){
-					intent.putExtra(DbAdapter.KEY_TURNLEFT_LNG, turnLeftLng);
-				}
-				if(null != aheadDirectLineLat){
-					intent.putExtra(DbAdapter.KEY_AHEADDIRECTLINE_LAT, aheadDirectLineLat);
-				}
-				if(null != aheadDirectLineLng){
-					intent.putExtra(DbAdapter.KEY_AHEADDIRECTLINE_LNG, aheadDirectLineLng);
+				if(null != passSchoolLng){
+					intent.putExtra(DbAdapter.KEY_PASSSCHOOL_LNG, passSchoolLng);
 				}
 				if(null != passBusStationLat){
 					intent.putExtra(DbAdapter.KEY_PASSBUSSTATION_LAT, passBusStationLat);
@@ -171,41 +177,29 @@ public class SubjectActivity extends Activity {
 				if(null != passBusStationLng){
 					intent.putExtra(DbAdapter.KEY_PASSBUSSTATION_LNG, passBusStationLng);
 				}
+				if(null != passSidewalkLat){
+					intent.putExtra(DbAdapter.KEY_PASSSIDEWALK_LAT, passSidewalkLat);
+				}
+				if(null != passSidewalkLng){
+					intent.putExtra(DbAdapter.KEY_PASSSIDEWALK_LNG, passSidewalkLng);
+				}
 				if(null != directLineLat){
 					intent.putExtra(DbAdapter.KEY_DIRECTLINE_LAT, directLineLat);
 				}
 				if(null != directLineLng){
 					intent.putExtra(DbAdapter.KEY_DIRECTLINE_LNG, directLineLng);
 				}
-				if(null != passSchoolLat){
-					intent.putExtra(DbAdapter.KEY_PASSSCHOOL_LAT, passSchoolLat);
+				if(null != endDirectLineLat){
+					intent.putExtra(DbAdapter.KEY_ENDDIRECTLINE_LAT, endDirectLineLat);
 				}
-				if(null != passSchoolLng){
-					intent.putExtra(DbAdapter.KEY_PASSSCHOOL_LNG, passSchoolLng);
+				if(null != endDirectLineLng){
+					intent.putExtra(DbAdapter.KEY_ENDDIRECTLINE_LNG, endDirectLineLng);
 				}
-				if(null != changeLanesLat){
-					intent.putExtra(DbAdapter.KEY_CHANGELANES_LAT, changeLanesLat);
+				if(null != overtakeLat){
+					intent.putExtra(DbAdapter.KEY_OVERTAKE_LAT, overtakeLat);
 				}
-				if(null != changeLanesLng){
-					intent.putExtra(DbAdapter.KEY_CHANGELANES_LNG, changeLanesLng);
-				}
-				if(null != slowdownLat){
-					intent.putExtra(DbAdapter.KEY_SLOWDOWN_LAT, slowdownLat);
-				}
-				if(null != slowdownLng){
-					intent.putExtra(DbAdapter.KEY_SLOWDOWN_LNG, slowdownLng);
-				}
-				if(null != speedLimitLat){
-					intent.putExtra(DbAdapter.KEY_SPEEDLIMIT_LAT, speedLimitLat);
-				}
-				if(null != speedLimitLng){
-					intent.putExtra(DbAdapter.KEY_SPEEDLIMIT_LNG, speedLimitLng);
-				}
-				if(null != passSchoolStationLat){
-					intent.putExtra(DbAdapter.KEY_PASSSCHOOLSTATION_LAT, passSchoolStationLat);
-				}
-				if(null != passSchoolStationLng){
-					intent.putExtra(DbAdapter.KEY_PASSSCHOOLSTATION_LNG, passSchoolStationLng);
+				if(null != overtakeLng){
+					intent.putExtra(DbAdapter.KEY_OVERTAKE_LNG, overtakeLng);
 				}
 				if(null != turnLat){
 					intent.putExtra(DbAdapter.KEY_TURN_LAT, turnLat);
@@ -219,11 +213,11 @@ public class SubjectActivity extends Activity {
 				if(null != pullOverLng){
 					intent.putExtra(DbAdapter.KEY_PULLOVER_LNG, pullOverLng);
 				}
-				if(null != backCarLat){
-					intent.putExtra(DbAdapter.KEY_BACKCAR_LAT, backCarLat);
+				if(null != passingLat){
+					intent.putExtra(DbAdapter.KEY_PASSING_LAT, passingLat);
 				}
-				if(null != backCarLng){
-					intent.putExtra(DbAdapter.KEY_BACKCAR_LNG, backCarLng);
+				if(null != passingLng){
+					intent.putExtra(DbAdapter.KEY_PASSING_LNG, passingLng);
 				}
 				startActivityForResult(intent, ACTIVITY_ITEMVIEW);
 			}

@@ -69,24 +69,24 @@ public class LineActivity extends Activity implements OnLongClickListener{
 	private Button btnLights2;
 	private Button btnLights3;
 	private Button btnLights4;
-	private Button btnTurnRight;
+	private Button btnStart;
 
-	private Button btnSidewalk;
-	private Button btnPassSidewalk;
-	private Button btnTurnLeft;
-	private Button btnAheadDirectLine;
-	private Button btnPassBusStation;
-
-	private Button btnDirectLine;
-	private Button btnPassSchool;
 	private Button btnChangeLanes;
-	private Button btnSlowdown;
-	private Button btnSpeedLimit;
+	private Button btnAheadDirectLine;
+	private Button btnTurnLeft;
+	private Button btnTurnRight;
+	private Button btnSidewalk;
 
-	private Button btnPassSchoolStation;
+	private Button btnPassSchool;
+	private Button btnPassBusStation;
+	private Button btnPassSidewalk;
+	private Button btnDirectLine;
+	private Button btnEndDirectLine;
+
+	private Button btnOvertake;
 	private Button btnTurn;
 	private Button btnPullOver;
-	private Button btnBackCar;
+	private Button btnPassing;
 	private Button btnReset;
 	
 	private DbAdapter dbAdapter;
@@ -136,6 +136,30 @@ public class LineActivity extends Activity implements OnLongClickListener{
 				//设置标题
 				setTitle(lineName);
 			}
+			Double changeLanesLat = extras.getDouble(DbAdapter.KEY_CHANGELANES_LAT);
+			if(null != changeLanesLat){
+				lineBean.setChangeLanesLat(changeLanesLat);
+			}
+			Double changeLanesLng = extras.getDouble(DbAdapter.KEY_CHANGELANES_LNG);
+			if(null != changeLanesLng){
+				lineBean.setChangeLanesLng(changeLanesLng);
+			}
+			Double aheadDirectLineLat = extras.getDouble(DbAdapter.KEY_AHEADDIRECTLINE_LAT);
+			if(null != aheadDirectLineLat){
+				lineBean.setAheadDirectLineLat(aheadDirectLineLat);
+			}
+			Double aheadDirectLineLng = extras.getDouble(DbAdapter.KEY_AHEADDIRECTLINE_LNG);
+			if(null != aheadDirectLineLng){
+				lineBean.setAheadDirectLineLng(aheadDirectLineLng);
+			}
+			Double turnLeftLat = extras.getDouble(DbAdapter.KEY_TURNLEFT_LAT);
+			if(null != turnLeftLat){
+				lineBean.setTurnLeftLat(turnLeftLat);
+			}
+			Double turnLeftLng = extras.getDouble(DbAdapter.KEY_TURNLEFT_LNG);
+			if(null != turnLeftLng){
+				lineBean.setTurnLeftLng(turnLeftLng);
+			}
 			Double turnRightLat = extras.getDouble(DbAdapter.KEY_TURNRIGHT_LAT);
 			if(null != turnRightLat){
 				lineBean.setTurnRightLat(turnRightLat);
@@ -152,29 +176,13 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			if(null != sidewalkLng){
 				lineBean.setSidewalkLng(sidewalkLng);
 			}
-			Double passSidewalkLat = extras.getDouble(DbAdapter.KEY_PASSSIDEWALK_LAT);
-			if(null != passSidewalkLat){
-				lineBean.setPassSidewalkLat(passSidewalkLat);
+			Double passSchoolLat = extras.getDouble(DbAdapter.KEY_PASSSCHOOL_LAT);
+			if(null != passSchoolLat){
+				lineBean.setPassSchoolLat(passSchoolLat);
 			}
-			Double passSidewalkLng = extras.getDouble(DbAdapter.KEY_PASSSIDEWALK_LNG);
-			if(null != passSidewalkLng){
-				lineBean.setPassSidewalkLng(passSidewalkLng);
-			}
-			Double turnLeftLat = extras.getDouble(DbAdapter.KEY_TURNLEFT_LAT);
-			if(null != turnLeftLat){
-				lineBean.setTurnLeftLat(turnLeftLat);
-			}
-			Double turnLeftLng = extras.getDouble(DbAdapter.KEY_TURNLEFT_LNG);
-			if(null != turnLeftLng){
-				lineBean.setTurnLeftLng(turnLeftLng);
-			}
-			Double aheadDirectLineLat = extras.getDouble(DbAdapter.KEY_AHEADDIRECTLINE_LAT);
-			if(null != aheadDirectLineLat){
-				lineBean.setAheadDirectLineLat(aheadDirectLineLat);
-			}
-			Double aheadDirectLineLng = extras.getDouble(DbAdapter.KEY_AHEADDIRECTLINE_LNG);
-			if(null != aheadDirectLineLng){
-				lineBean.setAheadDirectLineLng(aheadDirectLineLng);
+			Double passSchoolLng = extras.getDouble(DbAdapter.KEY_PASSSCHOOL_LNG);
+			if(null != passSchoolLng){
+				lineBean.setPassSchoolLng(passSchoolLng);
 			}
 			Double passBusStationLat = extras.getDouble(DbAdapter.KEY_PASSBUSSTATION_LAT);
 			if(null != passBusStationLat){
@@ -184,6 +192,14 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			if(null != passBusStationLng){
 				lineBean.setPassBusStationLng(passBusStationLng);
 			}
+			Double passSidewalkLat = extras.getDouble(DbAdapter.KEY_PASSSIDEWALK_LAT);
+			if(null != passSidewalkLat){
+				lineBean.setPassSidewalkLat(passSidewalkLat);
+			}
+			Double passSidewalkLng = extras.getDouble(DbAdapter.KEY_PASSSIDEWALK_LNG);
+			if(null != passSidewalkLng){
+				lineBean.setPassSidewalkLng(passSidewalkLng);
+			}
 			Double directLineLat = extras.getDouble(DbAdapter.KEY_DIRECTLINE_LAT);
 			if(null != directLineLat){
 				lineBean.setDirectLineLat(directLineLat);
@@ -192,45 +208,23 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			if(null != directLineLng){
 				lineBean.setDirectLineLng(directLineLng);
 			}
-			Double passSchoolLat = extras.getDouble(DbAdapter.KEY_PASSSCHOOL_LAT);
-			if(null != passSchoolLat){
-				lineBean.setPassSchoolLat(passSchoolLat);
+			Double endDirectLineLat = extras.getDouble(DbAdapter.KEY_ENDDIRECTLINE_LAT);
+			if(null != endDirectLineLat){
+				lineBean.setEndDirectLineLat(endDirectLineLat);
 			}
-			Double passSchoolLng = extras.getDouble(DbAdapter.KEY_PASSSCHOOL_LNG);
-			if(null != passSchoolLng){
-				lineBean.setPassSchoolLng(passSchoolLng);
+			Double endDirectLineLng = extras.getDouble(DbAdapter.KEY_ENDDIRECTLINE_LNG);
+			if(null != endDirectLineLng){
+				lineBean.setEndDirectLineLng(endDirectLineLng);
 			}
-			Double changeLanesLat = extras.getDouble(DbAdapter.KEY_CHANGELANES_LAT);
-			if(null != changeLanesLat){
-				lineBean.setChangeLanesLat(changeLanesLat);
+		
+		
+			Double overtakeLat = extras.getDouble(DbAdapter.KEY_OVERTAKE_LAT);
+			if(null != overtakeLat){
+				lineBean.setOvertakeLat(overtakeLat);
 			}
-			Double changeLanesLng = extras.getDouble(DbAdapter.KEY_CHANGELANES_LNG);
-			if(null != changeLanesLng){
-				lineBean.setChangeLanesLng(changeLanesLng);
-			}
-			Double slowdownLat = extras.getDouble(DbAdapter.KEY_SLOWDOWN_LAT);
-			if(null != slowdownLat){
-				lineBean.setSlowdownLat(slowdownLat);
-			}
-			Double slowdownLng = extras.getDouble(DbAdapter.KEY_SLOWDOWN_LNG);
-			if(null != slowdownLng){
-				lineBean.setSlowdownLng(slowdownLng);
-			}
-			Double speedLimitLat = extras.getDouble(DbAdapter.KEY_SPEEDLIMIT_LAT);
-			if(null != speedLimitLat){
-				lineBean.setSpeedLimitLat(speedLimitLat);
-			}
-			Double speedLimitLng = extras.getDouble(DbAdapter.KEY_SPEEDLIMIT_LNG);
-			if(null != speedLimitLng){
-				lineBean.setSpeedLimitLng(speedLimitLng);
-			}
-			Double passSchoolStationLat = extras.getDouble(DbAdapter.KEY_PASSSCHOOLSTATION_LAT);
-			if(null != passSchoolStationLat){
-				lineBean.setPassSchoolStationLat(passSchoolStationLat);
-			}
-			Double passSchoolStationLng = extras.getDouble(DbAdapter.KEY_PASSSCHOOLSTATION_LNG);
-			if(null != passSchoolStationLng){
-				lineBean.setPassSchoolStationLng(passSchoolStationLng);
+			Double overtakeLng = extras.getDouble(DbAdapter.KEY_OVERTAKE_LNG);
+			if(null != overtakeLng){
+				lineBean.setOvertakeLng(overtakeLng);
 			}
 			Double turnLat = extras.getDouble(DbAdapter.KEY_TURN_LAT);
 			if(null != turnLat){
@@ -248,13 +242,13 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			if(null != pullOverLng){
 				lineBean.setPullOverLng(pullOverLng);
 			}
-			Double backCarLat = extras.getDouble(DbAdapter.KEY_BACKCAR_LAT);
-			if(null != backCarLat){
-				lineBean.setBackCarLat(backCarLat);
+			Double passingLat = extras.getDouble(DbAdapter.KEY_PASSING_LAT);
+			if(null != passingLat){
+				lineBean.setPassingLat(passingLat);
 			}
-			Double backCarLng = extras.getDouble(DbAdapter.KEY_BACKCAR_LNG);
-			if(null != backCarLng){
-				lineBean.setBackCarLng(backCarLng);
+			Double passingLng = extras.getDouble(DbAdapter.KEY_PASSING_LNG);
+			if(null != passingLng){
+				lineBean.setPassingLng(passingLng);
 			}
 		}
 		
@@ -306,7 +300,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			public void onClick(View v) {
 				tvline.setText(R.string.toast01);
 				// id,左右声道, 音量, 优先级, 是否循环(0为不循环，-1为循环),播放比率(从0.5到2，一般为1，表示正常播放)
-				playMusic(1);
+				playMusic(v.getId());
 			}
 		});
 		
@@ -316,7 +310,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			@Override
 			public void onClick(View v) {
 				tvline.setText(R.string.toast02);
-				playMusic(2);
+				playMusic(v.getId());
 
 			}
 		});
@@ -326,7 +320,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			@Override
 			public void onClick(View v) {
 				tvline.setText(R.string.toast03);
-				playMusic(3);
+				playMusic(v.getId());
 
 			}
 		});
@@ -336,41 +330,43 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			@Override
 			public void onClick(View v) {
 				tvline.setText(R.string.toast04);
-				playMusic(4);
+				playMusic(v.getId());
 
 			}
 		});
-		btnTurnRight = (Button) this.findViewById(R.id.btnTurnRight);
-		btnTurnRight.setOnLongClickListener(this);
-		btnTurnRight.setOnClickListener(new OnClickListener() {
-
+		
+		
+		btnStart = (Button) this.findViewById(R.id.btnStart);
+		btnStart.setOnLongClickListener(this);
+		btnStart.setOnClickListener(new OnClickListener() {
+			
 			@Override
 			public void onClick(View v) {
 				tvline.setText(R.string.toast05);
-				playMusic(5);
+				playMusic(v.getId());
 				openScoring(5);
 			}
 		});
-
-		btnSidewalk = (Button) this.findViewById(R.id.btnSidewalk);
-		btnSidewalk.setOnLongClickListener(this);
-		btnSidewalk.setOnClickListener(new OnClickListener() {
-
+		
+		btnChangeLanes = (Button) this.findViewById(R.id.btnChangeLanes);
+		btnChangeLanes.setOnLongClickListener(this);
+		btnChangeLanes.setOnClickListener(new OnClickListener() {
+			
 			@Override
 			public void onClick(View v) {
 				tvline.setText(R.string.toast06);
-				playMusic(6);
-
+				playMusic(v.getId());
+				
 			}
 		});
-		btnPassSidewalk = (Button) this.findViewById(R.id.btnPassSidewalk);
-		btnPassSidewalk.setOnLongClickListener(this);
-		btnPassSidewalk.setOnClickListener(new OnClickListener() {
+		btnAheadDirectLine = (Button) this.findViewById(R.id.btnAheadDirectLine);
+		btnAheadDirectLine.setOnLongClickListener(this);
+		btnAheadDirectLine.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				tvline.setText(R.string.toast07);
-				playMusic(7);
+				playMusic(v.getId());
 
 			}
 		});
@@ -381,18 +377,41 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			@Override
 			public void onClick(View v) {
 				tvline.setText(R.string.toast08);
-				playMusic(8);
+				playMusic(v.getId());
 
 			}
 		});
-		btnAheadDirectLine = (Button) this.findViewById(R.id.btnAheadDirectLine);
-		btnAheadDirectLine.setOnLongClickListener(this);
-		btnAheadDirectLine.setOnClickListener(new OnClickListener() {
+		btnTurnRight = (Button) this.findViewById(R.id.btnTurnRight);
+		btnTurnRight.setOnLongClickListener(this);
+		btnTurnRight.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				tvline.setText(R.string.toast09);
-				playMusic(9);
+				playMusic(v.getId());
+
+			}
+		});
+		btnSidewalk = (Button) this.findViewById(R.id.btnSidewalk);
+		btnSidewalk.setOnLongClickListener(this);
+		btnSidewalk.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				tvline.setText(R.string.toast10);
+				playMusic(v.getId());
+
+			}
+		});
+
+		btnPassSchool = (Button) this.findViewById(R.id.btnPassSchool);
+		btnPassSchool.setOnLongClickListener(this);
+		btnPassSchool.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				tvline.setText(R.string.toast11);
+				playMusic(v.getId());
 
 			}
 		});
@@ -402,76 +421,53 @@ public class LineActivity extends Activity implements OnLongClickListener{
 
 			@Override
 			public void onClick(View v) {
-				tvline.setText(R.string.toast10);
-				playMusic(10);
+				tvline.setText(R.string.toast12);
+				playMusic(v.getId());
 
 			}
 		});
+		btnPassSidewalk = (Button) this.findViewById(R.id.btnPassSidewalk);
+		btnPassSidewalk.setOnLongClickListener(this);
+		btnPassSidewalk.setOnClickListener(new OnClickListener() {
 
+			@Override
+			public void onClick(View v) {
+				tvline.setText(R.string.toast13);
+				playMusic(v.getId());
+
+			}
+		});
 		btnDirectLine = (Button) this.findViewById(R.id.btnDirectLine);
 		btnDirectLine.setOnLongClickListener(this);
 		btnDirectLine.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				tvline.setText(R.string.toast11);
-				playMusic(11);
-
-			}
-		});
-		btnPassSchool = (Button) this.findViewById(R.id.btnPassSchool);
-		btnPassSchool.setOnLongClickListener(this);
-		btnPassSchool.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				tvline.setText(R.string.toast12);
-				playMusic(12);
-
-			}
-		});
-		btnChangeLanes = (Button) this.findViewById(R.id.btnChangeLanes);
-		btnChangeLanes.setOnLongClickListener(this);
-		btnChangeLanes.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				tvline.setText(R.string.toast13);
-				playMusic(13);
-
-			}
-		});
-		btnSlowdown = (Button) this.findViewById(R.id.btnSlowdown);
-		btnSlowdown.setOnLongClickListener(this);
-		btnSlowdown.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
 				tvline.setText(R.string.toast14);
-				playMusic(14);
+				playMusic(v.getId());
 
 			}
 		});
-		btnSpeedLimit = (Button) this.findViewById(R.id.btnSpeedLimit);
-		btnSpeedLimit.setOnLongClickListener(this);
-		btnSpeedLimit.setOnClickListener(new OnClickListener() {
+		btnEndDirectLine = (Button) this.findViewById(R.id.btnEndDirectLine);
+		btnEndDirectLine.setOnLongClickListener(this);
+		btnEndDirectLine.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				tvline.setText(R.string.toast15);
-				playMusic(15);
+				playMusic(v.getId());
 
 			}
 		});
 
-		btnPassSchoolStation = (Button) this.findViewById(R.id.btnPassSchoolStation);
-		btnPassSchoolStation.setOnLongClickListener(this);
-		btnPassSchoolStation.setOnClickListener(new OnClickListener() {
+		btnOvertake = (Button) this.findViewById(R.id.btnOvertake);
+		btnOvertake.setOnLongClickListener(this);
+		btnOvertake.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				tvline.setText(R.string.toast16);
-				playMusic(16);
+				playMusic(v.getId());
 
 			}
 		});
@@ -482,7 +478,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			@Override
 			public void onClick(View v) {
 				tvline.setText(R.string.toast17);
-				playMusic(17);
+				playMusic(v.getId());
 
 			}
 		});
@@ -493,18 +489,18 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			@Override
 			public void onClick(View v) {
 				tvline.setText(R.string.toast18);
-				playMusic(18);
+				playMusic(v.getId());
 
 			}
 		});
-		btnBackCar = (Button) this.findViewById(R.id.btnBackCar);
-		btnBackCar.setOnLongClickListener(this);
-		btnBackCar.setOnClickListener(new OnClickListener() {
+		btnPassing = (Button) this.findViewById(R.id.btnPassing);
+		btnPassing.setOnLongClickListener(this);
+		btnPassing.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				tvline.setText(R.string.toast19);
-				playMusic(19);
+				playMusic(v.getId());
 
 			}
 		});
@@ -514,7 +510,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			@Override
 			public void onClick(View v) {
 				tvline.setText("");
-				playMusic(20);
+				playMusic(v.getId());
 
 			}
 		});
@@ -612,53 +608,45 @@ public class LineActivity extends Activity implements OnLongClickListener{
 		intent.setClass(LineActivity.this, LocationActivity.class);
 		int viewId = v.getId();
 		switch(viewId){
-			case R.id.btnTurnRight:
-				intent.putExtra(CustomConstant.LATITUDE, lineBean.getTurnRightLat());
-				intent.putExtra(CustomConstant.LONGITUDE, lineBean.getTurnRightLng());
-				break;
-			case R.id.btnSidewalk:
-				intent.putExtra(CustomConstant.LATITUDE, lineBean.getSidewalkLat());
-				intent.putExtra(CustomConstant.LONGITUDE, lineBean.getSidewalkLng());
-				break;
-			case R.id.btnPassSidewalk:
-				intent.putExtra(CustomConstant.LATITUDE, lineBean.getPassSidewalkLat());
-				intent.putExtra(CustomConstant.LONGITUDE, lineBean.getPassSidewalkLng());
-				break;
-			case R.id.btnTurnLeft:
-				intent.putExtra(CustomConstant.LATITUDE, lineBean.getTurnLeftLat());
-				intent.putExtra(CustomConstant.LONGITUDE, lineBean.getTurnLeftLng());
+			case R.id.btnChangeLanes:
+				intent.putExtra(CustomConstant.LATITUDE, lineBean.getChangeLanesLat());
+				intent.putExtra(CustomConstant.LONGITUDE, lineBean.getChangeLanesLng());
 				break;
 			case R.id.btnAheadDirectLine:
 				intent.putExtra(CustomConstant.LATITUDE, lineBean.getAheadDirectLineLat());
 				intent.putExtra(CustomConstant.LONGITUDE, lineBean.getAheadDirectLineLng());
 				break;
-			case R.id.btnPassBusStation:
-				intent.putExtra(CustomConstant.LATITUDE, lineBean.getPassBusStationLat());
-				intent.putExtra(CustomConstant.LONGITUDE, lineBean.getPassBusStationLng());
+			case R.id.btnTurnLeft:
+				intent.putExtra(CustomConstant.LATITUDE, lineBean.getTurnLeftLat());
+				intent.putExtra(CustomConstant.LONGITUDE, lineBean.getTurnLeftLng());
 				break;
-			case R.id.btnDirectLine:
-				intent.putExtra(CustomConstant.LATITUDE, lineBean.getDirectLineLat());
-				intent.putExtra(CustomConstant.LONGITUDE, lineBean.getDirectLineLng());
+			case R.id.btnTurnRight:
+				intent.putExtra(CustomConstant.LATITUDE, lineBean.getTurnRightLat());
+				intent.putExtra(CustomConstant.LONGITUDE, lineBean.getTurnRightLng());
 				break;
 			case R.id.btnPassSchool:
 				intent.putExtra(CustomConstant.LATITUDE, lineBean.getPassSchoolLat());
 				intent.putExtra(CustomConstant.LONGITUDE, lineBean.getPassSchoolLng());
 				break;
-			case R.id.btnChangeLanes:
-				intent.putExtra(CustomConstant.LATITUDE, lineBean.getChangeLanesLat());
-				intent.putExtra(CustomConstant.LONGITUDE, lineBean.getChangeLanesLng());
+			case R.id.btnPassBusStation:
+				intent.putExtra(CustomConstant.LATITUDE, lineBean.getPassBusStationLat());
+				intent.putExtra(CustomConstant.LONGITUDE, lineBean.getPassBusStationLng());
 				break;
-			case R.id.btnSlowdown:
-				intent.putExtra(CustomConstant.LATITUDE, lineBean.getSlowdownLat());
-				intent.putExtra(CustomConstant.LONGITUDE, lineBean.getSlowdownLng());
+			case R.id.btnPassSidewalk:
+				intent.putExtra(CustomConstant.LATITUDE, lineBean.getPassSidewalkLat());
+				intent.putExtra(CustomConstant.LONGITUDE, lineBean.getPassSidewalkLng());
 				break;
-			case R.id.btnSpeedLimit:
-				intent.putExtra(CustomConstant.LATITUDE, lineBean.getSpeedLimitLat());
-				intent.putExtra(CustomConstant.LONGITUDE, lineBean.getSpeedLimitLng());
+			case R.id.btnDirectLine:
+				intent.putExtra(CustomConstant.LATITUDE, lineBean.getDirectLineLat());
+				intent.putExtra(CustomConstant.LONGITUDE, lineBean.getDirectLineLng());
 				break;
-			case R.id.btnPassSchoolStation:
-				intent.putExtra(CustomConstant.LATITUDE, lineBean.getPassSchoolStationLat());
-				intent.putExtra(CustomConstant.LONGITUDE, lineBean.getPassSchoolStationLng());
+			case R.id.btnEndDirectLine:
+				intent.putExtra(CustomConstant.LATITUDE, lineBean.getEndDirectLineLat());
+				intent.putExtra(CustomConstant.LONGITUDE, lineBean.getEndDirectLineLng());
+				break;
+			case R.id.btnOvertake:
+				intent.putExtra(CustomConstant.LATITUDE, lineBean.getOvertakeLat());
+				intent.putExtra(CustomConstant.LONGITUDE, lineBean.getOvertakeLng());
 				break;
 			case R.id.btnTurn:
 				intent.putExtra(CustomConstant.LATITUDE, lineBean.getTurnLat());
@@ -668,9 +656,9 @@ public class LineActivity extends Activity implements OnLongClickListener{
 				intent.putExtra(CustomConstant.LATITUDE, lineBean.getPullOverLat());
 				intent.putExtra(CustomConstant.LONGITUDE, lineBean.getPullOverLng());
 				break;
-			case R.id.btnBackCar:
-				intent.putExtra(CustomConstant.LATITUDE, lineBean.getBackCarLat());
-				intent.putExtra(CustomConstant.LONGITUDE, lineBean.getBackCarLng());
+			case R.id.btnPassing:
+				intent.putExtra(CustomConstant.LATITUDE, lineBean.getPassingLat());
+				intent.putExtra(CustomConstant.LONGITUDE, lineBean.getPassingLng());
 				break;
 		}
 		//哪个button的坐标
@@ -808,121 +796,100 @@ public class LineActivity extends Activity implements OnLongClickListener{
 		//速度
 		float curSpeed = location.getSpeed();
 		
-		Double turnRightLat = lineBean.getTurnLeftLat();
-		Double turnRightLng = lineBean.getTurnRightLng();
-		if(null != turnRightLat && null != turnRightLng && turnRightLat != 0 && turnRightLng != 0){
-			if(Distance.GetDistance(curLongitude, curLatitude, turnRightLng, turnRightLat) < distance){
-				tvline.setText(R.string.toast05);
-				playMusic(5);
-			}
-			
-		}
-		
-		Double sidewalkLat = lineBean.getSidewalkLat();
-		Double sidewalkLng = lineBean.getSidewalkLng();
-		if(null != sidewalkLat && null != sidewalkLng && 0 != sidewalkLat && 0 != sidewalkLng){
-			if(Distance.GetDistance(curLongitude, curLatitude, sidewalkLng, sidewalkLat) < distance){
+		Double changeLanesLat = lineBean.getChangeLanesLat();
+		Double changeLanesLng = lineBean.getChangeLanesLng();
+		if(null != changeLanesLat && null != changeLanesLng && 0 != changeLanesLat && 0 != changeLanesLng){
+			if(Distance.GetDistance(curLongitude, curLatitude, changeLanesLng, changeLanesLat) < distance){
 				tvline.setText(R.string.toast06);
-				playMusic(6);
+				playMusic(R.id.btnChangeLanes);
 			}
 		}
-		
-		Double passSidewalkLat = lineBean.getPassSidewalkLat();
-		Double passSidewalkLng = lineBean.getPassSidewalkLng();
-		if(null != passSidewalkLat && null != passSidewalkLng && 0 != passSidewalkLat && 0 != passSidewalkLng){
-			if(Distance.GetDistance(curLongitude, curLatitude, passSidewalkLng, passSidewalkLat) < distance){
+		Double aheadDirectLineLat = lineBean.getAheadDirectLineLat();
+		Double aheadDirectLineLng = lineBean.getAheadDirectLineLng();
+		if(null != aheadDirectLineLat && null != aheadDirectLineLng && 0 != aheadDirectLineLat && 0 != aheadDirectLineLng){
+			if(Distance.GetDistance(curLongitude, curLatitude, aheadDirectLineLng, aheadDirectLineLat) < distance){
 				tvline.setText(R.string.toast07);
-				playMusic(7);
+				playMusic(R.id.btnAheadDirectLine);
 			}
 		}
-		
 		Double turnLeftLat = lineBean.getTurnLat();
 		Double turnLeftLng = lineBean.getTurnLeftLng();
 		if(null != turnLeftLat && null != turnLeftLng && 0 != turnLeftLat && 0 != turnLeftLng){
 			if(Distance.GetDistance(curLongitude, curLatitude, turnLeftLng, turnLeftLat) < distance){
 				tvline.setText(R.string.toast08);
-				playMusic(8);
+				playMusic(R.id.btnTurnLeft);
 			}
 		}
-		
-		Double aheadDirectLineLat = lineBean.getAheadDirectLineLat();
-		Double aheadDirectLineLng = lineBean.getAheadDirectLineLng();
-		if(null != aheadDirectLineLat && null != aheadDirectLineLng && 0 != aheadDirectLineLat && 0 != aheadDirectLineLng){
-			if(Distance.GetDistance(curLongitude, curLatitude, aheadDirectLineLng, aheadDirectLineLat) < distance){
+		Double turnRightLat = lineBean.getTurnRightLat();
+		Double turnRightLng = lineBean.getTurnRightLng();
+		if(null != turnRightLat && null != turnRightLng && turnRightLat != 0 && turnRightLng != 0){
+			if(Distance.GetDistance(curLongitude, curLatitude, turnRightLng, turnRightLat) < distance){
 				tvline.setText(R.string.toast09);
-				playMusic(9);
+				playMusic(R.id.btnTurnRight);
 			}
 		}
-		
-		Double passBusStationLat = lineBean.getPassBusStationLat();
-		Double passBusStationLng = lineBean.getPassBusStationLng();
-		if(null != passBusStationLat && null != passBusStationLng && 0 != passBusStationLat && 0 != passBusStationLng){
-			if(Distance.GetDistance(curLongitude, curLatitude, passBusStationLng, passBusStationLat) < distance){
+		Double sidewalkLat = lineBean.getSidewalkLat();
+		Double sidewalkLng = lineBean.getSidewalkLng();
+		if(null != sidewalkLat && null != sidewalkLng && 0 != sidewalkLat && 0 != sidewalkLng){
+			if(Distance.GetDistance(curLongitude, curLatitude, sidewalkLng, sidewalkLat) < distance){
 				tvline.setText(R.string.toast10);
-				playMusic(10);
+				playMusic(R.id.btnSidewalk);
 			}
 		}
-		
-		Double directLineLat = lineBean.getDirectLineLat();
-		Double directLineLng = lineBean.getDirectLineLng();
-		if(null != directLineLat && null != directLineLng && 0 != directLineLat && 0 != directLineLng){
-			if(Distance.GetDistance(curLongitude, curLatitude, directLineLng, directLineLat) < distance){
-				tvline.setText(R.string.toast11);
-				playMusic(11);
-			}
-		}
-		
 		Double passSchoolLat = lineBean.getPassSchoolLat();
 		Double passSchoolLng = lineBean.getPassSchoolLng();
 		if(null != passSchoolLat && null != passSchoolLng && 0 != passSchoolLat && 0 != passSchoolLng){
 			if(Distance.GetDistance(curLongitude, curLatitude, passSchoolLng, passSchoolLat) < distance){
+				tvline.setText(R.string.toast11);
+				playMusic(R.id.btnPassSchool);
+			}
+		}
+		Double passBusStationLat = lineBean.getPassBusStationLat();
+		Double passBusStationLng = lineBean.getPassBusStationLng();
+		if(null != passBusStationLat && null != passBusStationLng && 0 != passBusStationLat && 0 != passBusStationLng){
+			if(Distance.GetDistance(curLongitude, curLatitude, passBusStationLng, passBusStationLat) < distance){
 				tvline.setText(R.string.toast12);
-				playMusic(12);
+				playMusic(R.id.btnPassBusStation);
 			}
 		}
-		
-		Double changeLanesLat = lineBean.getChangeLanesLat();
-		Double changeLanesLng = lineBean.getChangeLanesLng();
-		if(null != changeLanesLat && null != changeLanesLng && 0 != changeLanesLat && 0 != changeLanesLng){
-			if(Distance.GetDistance(curLongitude, curLatitude, changeLanesLng, changeLanesLat) < distance){
+		Double passSidewalkLat = lineBean.getPassSidewalkLat();
+		Double passSidewalkLng = lineBean.getPassSidewalkLng();
+		if(null != passSidewalkLat && null != passSidewalkLng && 0 != passSidewalkLat && 0 != passSidewalkLng){
+			if(Distance.GetDistance(curLongitude, curLatitude, passSidewalkLng, passSidewalkLat) < distance){
 				tvline.setText(R.string.toast13);
-				playMusic(13);
+				playMusic(R.id.btnPassSidewalk);
 			}
 		}
-
-		Double slowdownLat = lineBean.getSlowdownLat();
-		Double slowdownLng = lineBean.getSlowdownLng();
-		if(null != slowdownLat && null != slowdownLng && 0 != slowdownLat && 0 != slowdownLng){
-			if(Distance.GetDistance(curLongitude, curLatitude, slowdownLng, slowdownLat) < distance){
+		Double directLineLat = lineBean.getDirectLineLat();
+		Double directLineLng = lineBean.getDirectLineLng();
+		if(null != directLineLat && null != directLineLng && 0 != directLineLat && 0 != directLineLng){
+			if(Distance.GetDistance(curLongitude, curLatitude, directLineLng, directLineLat) < distance){
 				tvline.setText(R.string.toast14);
-				playMusic(14);
+				playMusic(R.id.btnDirectLine);
 			}
 		}
-		
-		Double speedLimitLat = lineBean.getSpeedLimitLat();
-		Double speedLimitLng = lineBean.getSpeedLimitLng();
-		if(null != speedLimitLat && null != speedLimitLng && 0 != speedLimitLat && 0 != speedLimitLng){
-			if(Distance.GetDistance(curLongitude, curLatitude, speedLimitLng, speedLimitLat) < distance){
+		Double endDirectLineLat = lineBean.getEndDirectLineLat();
+		Double endDirectLineLng = lineBean.getEndDirectLineLng();
+		if(null != endDirectLineLat && null != endDirectLineLng && 0 != endDirectLineLat && 0 != endDirectLineLng){
+			if(Distance.GetDistance(curLongitude, curLatitude, endDirectLineLng, endDirectLineLat) < distance){
 				tvline.setText(R.string.toast15);
-				playMusic(15);
+				playMusic(R.id.btnEndDirectLine);
 			}
 		}
-
-		Double passSchoolStationLat = lineBean.getPassSchoolStationLat();
-		Double passSchoolStationLng = lineBean.getPassSchoolStationLng();
-		if(null != passSchoolStationLat && null != passSchoolStationLng && 0 != passSchoolStationLat && 0 != passSchoolStationLng){
-			if(Distance.GetDistance(curLongitude, curLatitude, passSchoolStationLng, passSchoolStationLat) < distance){
+		Double overtakeLat = lineBean.getOvertakeLat();
+		Double overtakeLng = lineBean.getOvertakeLng();
+		if(null != overtakeLat && null != overtakeLng && 0 != overtakeLat && 0 != overtakeLng){
+			if(Distance.GetDistance(curLongitude, curLatitude, overtakeLng, overtakeLat) < distance){
 				tvline.setText(R.string.toast16);
-				playMusic(16);
+				playMusic(R.id.btnOvertake);
 			}
 		}
-		
 		Double turnLat = lineBean.getTurnLat();
 		Double turnLng = lineBean.getTurnLng();
 		if(null != turnLat && null != turnLng && 0 != turnLat && 0 != turnLng){
 			if(Distance.GetDistance(curLongitude, curLatitude, turnLng, turnLat) < distance){
 				tvline.setText(R.string.toast17);
-				playMusic(17);
+				playMusic(R.id.btnTurn);
 			}
 		}
 
@@ -931,16 +898,16 @@ public class LineActivity extends Activity implements OnLongClickListener{
 		if(null != pullOverLat && null != pullOverLng && 0 != pullOverLat && 0 != pullOverLng){
 			if(Distance.GetDistance(curLongitude, curLatitude, pullOverLng, pullOverLat) < distance){
 				tvline.setText(R.string.toast18);
-				playMusic(18);
+				playMusic(R.id.btnPullOver);
 			}
 		}
 		
-		Double backCarLat = lineBean.getBackCarLat();
-		Double backCarLng = lineBean.getBackCarLng();
-		if(null != backCarLat && null != backCarLng && 0 != backCarLat && 0 != backCarLng){
-			if(Distance.GetDistance(curLongitude, curLatitude, backCarLng, backCarLat) < distance){
+		Double passingLat = lineBean.getPassingLat();
+		Double passingLng = lineBean.getPassingLng();
+		if(null != passingLat && null != passingLng && 0 != passingLat && 0 != passingLng){
+			if(Distance.GetDistance(curLongitude, curLatitude, passingLng, passingLat) < distance){
 				tvline.setText(R.string.toast19);
-				playMusic(19);
+				playMusic(R.id.btnPassing);
 			}
 		}
 	}
@@ -997,6 +964,18 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			Log.d(TAG, "onActivityResult() btnId: " + btnId + " lat: " + lat + " lng:　" + lng);
 			
 			switch (btnId) {
+			case R.id.btnChangeLanes:
+				lineBean.setChangeLanesLat(lat);
+				lineBean.setChangeLanesLng(lng);
+				break;
+			case R.id.btnAheadDirectLine:
+				lineBean.setAheadDirectLineLat(lat);
+				lineBean.setAheadDirectLineLng(lng);
+				break;
+			case R.id.btnTurnLeft:
+				lineBean.setTurnLeftLat(lat);
+				lineBean.setTurnLeftLng(lng);
+				break;
 			case R.id.btnTurnRight:
 				lineBean.setTurnRightLat(lat);
 				lineBean.setTurnRightLng(lng);
@@ -1005,45 +984,29 @@ public class LineActivity extends Activity implements OnLongClickListener{
 				lineBean.setSidewalkLat(lat);
 				lineBean.setSidewalkLng(lng);
 				break;
-			case R.id.btnPassSidewalk:
-				lineBean.setPassSidewalkLat(lat);
-				lineBean.setPassSidewalkLng(lng);
-				break;
-			case R.id.btnTurnLeft:
-				lineBean.setTurnLeftLat(lat);
-				lineBean.setTurnLeftLng(lng);
-				break;
-			case R.id.btnAheadDirectLine:
-				lineBean.setAheadDirectLineLat(lat);
-				lineBean.setAheadDirectLineLng(lng);
+			case R.id.btnPassSchool:
+				lineBean.setPassSchoolLat(lat);
+				lineBean.setPassSchoolLng(lng);
 				break;
 			case R.id.btnPassBusStation:
 				lineBean.setPassBusStationLat(lat);
 				lineBean.setPassBusStationLng(lng);
 				break;
+			case R.id.btnPassSidewalk:
+				lineBean.setPassSidewalkLat(lat);
+				lineBean.setPassSidewalkLng(lng);
+				break;
 			case R.id.btnDirectLine:
 				lineBean.setDirectLineLat(lat);
 				lineBean.setDirectLineLng(lng);
 				break;
-			case R.id.btnPassSchool:
-				lineBean.setPassSchoolLat(lat);
-				lineBean.setPassSchoolLng(lng);
+			case R.id.btnEndDirectLine:
+				lineBean.setEndDirectLineLat(lat);
+				lineBean.setEndDirectLineLng(lng);
 				break;
-			case R.id.btnChangeLanes:
-				lineBean.setChangeLanesLat(lat);
-				lineBean.setChangeLanesLng(lng);
-				break;
-			case R.id.btnSlowdown:
-				lineBean.setSlowdownLat(lat);
-				lineBean.setSlowdownLng(lng);
-				break;
-			case R.id.btnSpeedLimit:
-				lineBean.setSpeedLimitLat(lat);
-				lineBean.setSpeedLimitLng(lng);
-				break;
-			case R.id.btnPassSchoolStation:
-				lineBean.setPassSchoolStationLat(lat);
-				lineBean.setPassSchoolStationLng(lng);
+			case R.id.btnOvertake:
+				lineBean.setOvertakeLat(lat);
+				lineBean.setOvertakeLng(lng);
 				break;
 			case R.id.btnTurn:
 				lineBean.setTurnLat(lat);
@@ -1053,9 +1016,9 @@ public class LineActivity extends Activity implements OnLongClickListener{
 				lineBean.setPullOverLat(lat);
 				lineBean.setPullOverLng(lng);
 				break;
-			case R.id.btnBackCar:
-				lineBean.setBackCarLat(lat);
-				lineBean.setBackCarLng(lng);
+			case R.id.btnPassing:
+				lineBean.setPassingLat(lat);
+				lineBean.setPassingLng(lng);
 				break;
 			}
 			boolean ret = dbAdapter.updateLine(lineBean);
@@ -1080,9 +1043,9 @@ public class LineActivity extends Activity implements OnLongClickListener{
 	protected void onPause() {
 		super.onPause();
 		//如果媒体在播放，则暂停
-		if(mMediaPlayer != null && mMediaPlayer.isPlaying()){
-			mMediaPlayer.pause();
-		}
+		//if(mMediaPlayer != null && mMediaPlayer.isPlaying()){
+		//	mMediaPlayer.pause();
+		//}
 		// 移除定位请求
 		mLocationManagerProxy.removeUpdates(mPendingIntent);
 		unregisterReceiver(mGPSLocationReceiver);
@@ -1140,80 +1103,76 @@ public class LineActivity extends Activity implements OnLongClickListener{
         	Uri uri = null;
         	
         	switch(id){
-				case 1: 
-					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd01);
+				case R.id.btnLights1: 
+					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.light01);
 					break;
 				
-				case 2: 
-					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd02);
+				case R.id.btnLights2: 
+					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.light02);
 					break;
 				
-				case 3: 
-					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd03);
+				case R.id.btnLights3: 
+					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.light03);
 					break;
 				
-				case 4: 
-					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd04);
+				case R.id.btnLights4: 
+					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.light04);
 					break;
 				
-				case 5: 
-					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd05);
+				case R.id.btnStart: 
+					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.start);
 					break;
 				
-				case 6: 
-					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd06);
+				case R.id.btnChangeLanes: 
+					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.change_lanes);
 					break;
 				
-				case 7: 
-					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd07);
+				case R.id.btnAheadDirectLine: 
+					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.ahead_direct_line);
 					break;
 				
-				case 8: 
-					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd08);
+				case R.id.btnTurnLeft: 
+					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.turn_left);
 					break;
 				
-				case 9: 
-					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd09);
+				case R.id.btnTurnRight: 
+					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.turn_right);
 					break;
 				
-				case 10: 
-					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd10);
+				case R.id.btnSidewalk: 
+					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.sidewalk);
 					break;
 				
-				case 11: 
-					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd11);
+				case R.id.btnPassSchool: 
+					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.pass_school);
 					break;
 				
-				case 12: 
-					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd12);
+				case R.id.btnPassBusStation: 
+					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.pass_bus_station);
 					break;
 				
-				case 13: 
-					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd13);
+				case R.id.btnPassSidewalk: 
+					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.pass_sidewalk);
 					break;
 				
-				case 14: 
-					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd14);
+				case R.id.btnDirectLine: 
+					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.direct_line);
 					break;
 				
-				case 15:
-					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd15);
+				case R.id.btnEndDirectLine:
+					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.end_direct_line);
 					break;
 				
-				case 16: 
-					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd16);
+				case R.id.btnOvertake: 
+					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.overtake);
 					break;
 				
-				case 17: 
-					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd17);
+				case R.id.btnTurn: 
+					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.turn);
 					break;
 				
-				case 18: 
-					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd18);
-					break;
-				
-				case 19: 
-					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.snd19);
+				case R.id.btnPullOver : 
+					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.pull_over);
 					break;
 				
 				default:
