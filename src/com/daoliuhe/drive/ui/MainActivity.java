@@ -2,7 +2,6 @@ package com.daoliuhe.drive.ui;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -10,6 +9,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 
 import com.daoliuhe.drive.R;
+import com.daoliuhe.drive.tools.CustomConstant;
 
 public class MainActivity extends Activity {
 	// ¿ÆÄ¿Èý
@@ -47,6 +47,7 @@ public class MainActivity extends Activity {
 				
 				Intent intent = new Intent();
 				intent.setClass(MainActivity.this, VideoPlayerActivity.class);
+				intent.putExtra(CustomConstant.VIDEO_ID, R.raw.s3);
 				startActivity(intent);
 			}
 		});

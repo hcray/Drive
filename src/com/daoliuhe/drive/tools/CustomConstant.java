@@ -52,4 +52,9 @@ public class CustomConstant {
 	 * 当前选中的项目
 	 */
 	public static final String SELECT_ITEM = "selectItem";
+	
+	/**
+	 * 视频播放的id 
+	 */
+	public static final String VIDEO_ID = "videoId";
 }

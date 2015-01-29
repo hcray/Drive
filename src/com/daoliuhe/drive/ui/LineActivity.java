@@ -14,7 +14,6 @@ import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
 import android.os.Parcelable;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
@@ -59,9 +58,9 @@ public class LineActivity extends Activity implements OnLongClickListener{
 
 	private PendingIntent mPendingIntent;
 
-	private Handler mHandler = new Handler() {
-
-	};
+	//private Handler mHandler = new Handler() {
+	//
+	//};
 
 	private TextView tvline;
 
