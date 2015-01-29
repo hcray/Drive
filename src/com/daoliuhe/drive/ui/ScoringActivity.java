@@ -18,6 +18,7 @@ import android.widget.ListView;
 
 import com.daoliuhe.drive.R;
 import com.daoliuhe.drive.adapter.ListViewActivityAdapter;
+import com.daoliuhe.drive.tools.CustomConstant;
 
 public class ScoringActivity extends Activity {
 	private static final String TAG = "ScoringActivity";
@@ -40,7 +41,13 @@ public class ScoringActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_scoring);
 		
-		initList(0);
+		Bundle extras = this.getIntent().getExtras();
+		int videoPlayerId = 0;
+		if (extras != null) {
+			videoPlayerId = extras.getInt(CustomConstant.SELECT_ITEM);
+		}
+		
+		initList(videoPlayerId);
 		
 		OnTouchListener touchListener = new OnTouchListener(){
 			@Override
@@ -170,20 +177,6 @@ public class ScoringActivity extends Activity {
 		String item12Name = this.getResources().getString(R.string.item12);
 		String item13Name = this.getResources().getString(R.string.item13);
 		
-		leftList.add(item1Name );
-		leftList.add(item2Name );
-		leftList.add(item3Name );
-		leftList.add(item4Name );
-		leftList.add(item5Name );
-		leftList.add(item6Name );
-		leftList.add(item7Name );
-		leftList.add(item8Name );
-		leftList.add(item9Name );
-		leftList.add(item10Name);
-		leftList.add(item11Name);
-		leftList.add(item12Name);
-		leftList.add(item13Name);
-		
 		String[] item1Detail = this.getResources().getStringArray(R.array.item1Detail);
 		String[] item2Detail = this.getResources().getStringArray(R.array.item2Detail);
 		String[] item3Detail = this.getResources().getStringArray(R.array.item3Detail);
@@ -197,20 +190,91 @@ public class ScoringActivity extends Activity {
 		String[] item11Detail = this.getResources().getStringArray(R.array.item11Detail);
 		String[] item12Detail = this.getResources().getStringArray(R.array.item12Detail);
 		String[] item13Detail = this.getResources().getStringArray(R.array.item13Detail);
-		//添加项目明细
-		rightList.addAll(Arrays.asList(item1Detail ));
-		rightList.addAll(Arrays.asList(item2Detail ));
-		rightList.addAll(Arrays.asList(item3Detail ));
-		rightList.addAll(Arrays.asList(item4Detail ));
-		rightList.addAll(Arrays.asList(item5Detail ));
-		rightList.addAll(Arrays.asList(item6Detail ));
-		rightList.addAll(Arrays.asList(item7Detail ));
-		rightList.addAll(Arrays.asList(item8Detail ));
-		rightList.addAll(Arrays.asList(item9Detail ));
-		rightList.addAll(Arrays.asList(item10Detail));
-		rightList.addAll(Arrays.asList(item11Detail));
-		rightList.addAll(Arrays.asList(item12Detail));
-		rightList.addAll(Arrays.asList(item13Detail));
+		
+		switch(id){
+		case 1: 
+			leftList.add(item1Name );
+			rightList.addAll(Arrays.asList(item1Detail ));
+			break;
+		case 2: 
+			leftList.add(item2Name );
+			rightList.addAll(Arrays.asList(item2Detail ));
+			break;
+		case 3: 
+			leftList.add(item3Name );
+			rightList.addAll(Arrays.asList(item3Detail ));
+			break;
+		case 4: 
+			leftList.add(item4Name );
+			rightList.addAll(Arrays.asList(item4Detail ));
+			break;
+		case 5: 
+			leftList.add(item5Name );
+			rightList.addAll(Arrays.asList(item5Detail ));
+			break;
+		case 6: 
+			leftList.add(item6Name );
+			rightList.addAll(Arrays.asList(item6Detail ));
+			break;
+		case 7:
+			leftList.add(item7Name );
+			rightList.addAll(Arrays.asList(item7Detail ));
+			break;
+		case 8: 
+			leftList.add(item8Name );
+			rightList.addAll(Arrays.asList(item8Detail ));
+			break;
+		case 9: 
+			leftList.add(item9Name );
+			rightList.addAll(Arrays.asList(item9Detail ));
+			break;
+		case 10: 
+			leftList.add(item10Name );
+			rightList.addAll(Arrays.asList(item10Detail ));
+			break;
+		case 11: 
+			leftList.add(item11Name );
+			rightList.addAll(Arrays.asList(item11Detail ));
+			break;
+		case 12: 
+			leftList.add(item12Name );
+			rightList.addAll(Arrays.asList(item12Detail ));
+			break;
+		case 13: 
+			leftList.add(item13Name );
+			rightList.addAll(Arrays.asList(item13Detail ));
+			break;
+		default:
+			leftList.add(item1Name );
+			leftList.add(item2Name );
+			leftList.add(item3Name );
+			leftList.add(item4Name );
+			leftList.add(item5Name );
+			leftList.add(item6Name );
+			leftList.add(item7Name );
+			leftList.add(item8Name );
+			leftList.add(item9Name );
+			leftList.add(item10Name);
+			leftList.add(item11Name);
+			leftList.add(item12Name);
+			leftList.add(item13Name);
+			//添加项目明细
+			rightList.addAll(Arrays.asList(item1Detail ));
+			rightList.addAll(Arrays.asList(item2Detail ));
+			rightList.addAll(Arrays.asList(item3Detail ));
+			rightList.addAll(Arrays.asList(item4Detail ));
+			rightList.addAll(Arrays.asList(item5Detail ));
+			rightList.addAll(Arrays.asList(item6Detail ));
+			rightList.addAll(Arrays.asList(item7Detail ));
+			rightList.addAll(Arrays.asList(item8Detail ));
+			rightList.addAll(Arrays.asList(item9Detail ));
+			rightList.addAll(Arrays.asList(item10Detail));
+			rightList.addAll(Arrays.asList(item11Detail));
+			rightList.addAll(Arrays.asList(item12Detail));
+			rightList.addAll(Arrays.asList(item13Detail));
+			break;
+		}
+		
 	}
 	
 	/**

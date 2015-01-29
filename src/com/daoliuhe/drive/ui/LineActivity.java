@@ -343,7 +343,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			public void onClick(View v) {
 				tvline.setText(R.string.toast05);
 				playMusic(v.getId());
-				openScoring(5);
+				openScoring(2);
 			}
 		});
 		
@@ -355,7 +355,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			public void onClick(View v) {
 				tvline.setText(R.string.toast06);
 				playMusic(v.getId());
-				
+				openScoring(5);
 			}
 		});
 		btnAheadDirectLine = (Button) this.findViewById(R.id.btnAheadDirectLine);
@@ -366,7 +366,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			public void onClick(View v) {
 				tvline.setText(R.string.toast07);
 				playMusic(v.getId());
-
+				openScoring(3);
 			}
 		});
 		btnTurnLeft = (Button) this.findViewById(R.id.btnTurnLeft);
@@ -377,7 +377,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			public void onClick(View v) {
 				tvline.setText(R.string.toast08);
 				playMusic(v.getId());
-
+				openScoring(6);
 			}
 		});
 		btnTurnRight = (Button) this.findViewById(R.id.btnTurnRight);
@@ -388,7 +388,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			public void onClick(View v) {
 				tvline.setText(R.string.toast09);
 				playMusic(v.getId());
-
+				openScoring(6);
 			}
 		});
 		btnSidewalk = (Button) this.findViewById(R.id.btnSidewalk);
@@ -399,7 +399,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			public void onClick(View v) {
 				tvline.setText(R.string.toast10);
 				playMusic(v.getId());
-
+				openScoring(7);
 			}
 		});
 
@@ -411,7 +411,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			public void onClick(View v) {
 				tvline.setText(R.string.toast11);
 				playMusic(v.getId());
-
+				openScoring(8);
 			}
 		});
 		btnPassBusStation = (Button) this.findViewById(R.id.btnPassBusStation);
@@ -422,7 +422,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			public void onClick(View v) {
 				tvline.setText(R.string.toast12);
 				playMusic(v.getId());
-
+				openScoring(9);
 			}
 		});
 		btnPassSidewalk = (Button) this.findViewById(R.id.btnPassSidewalk);
@@ -433,7 +433,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			public void onClick(View v) {
 				tvline.setText(R.string.toast13);
 				playMusic(v.getId());
-
+				openScoring(7);
 			}
 		});
 		btnDirectLine = (Button) this.findViewById(R.id.btnDirectLine);
@@ -444,7 +444,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			public void onClick(View v) {
 				tvline.setText(R.string.toast14);
 				playMusic(v.getId());
-
+				openScoring(3);
 			}
 		});
 		btnEndDirectLine = (Button) this.findViewById(R.id.btnEndDirectLine);
@@ -455,7 +455,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			public void onClick(View v) {
 				tvline.setText(R.string.toast15);
 				playMusic(v.getId());
-
+				openScoring(3);
 			}
 		});
 
@@ -467,7 +467,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			public void onClick(View v) {
 				tvline.setText(R.string.toast16);
 				playMusic(v.getId());
-
+				openScoring(11);
 			}
 		});
 		btnTurn = (Button) this.findViewById(R.id.btnTurn);
@@ -478,7 +478,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			public void onClick(View v) {
 				tvline.setText(R.string.toast17);
 				playMusic(v.getId());
-
+				openScoring(12);
 			}
 		});
 		btnPullOver = (Button) this.findViewById(R.id.btnPullOver);
@@ -489,7 +489,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			public void onClick(View v) {
 				tvline.setText(R.string.toast18);
 				playMusic(v.getId());
-
+				openScoring(13);
 			}
 		});
 		btnPassing = (Button) this.findViewById(R.id.btnPassing);
@@ -500,7 +500,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			public void onClick(View v) {
 				tvline.setText(R.string.toast19);
 				playMusic(v.getId());
-
+				openScoring(10);
 			}
 		});
 		btnReset = (Button) this.findViewById(R.id.btnReset);
