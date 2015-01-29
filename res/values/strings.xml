@@ -186,4 +186,6 @@
         <item>13.9、夜间在路边临时停车不关闭前照灯或不开启警示灯，扣5分。</item>
     </string-array>
 
+    <string name="title_activity_video_player">视频播放器</string>
+
 </resources>
