@@ -4,8 +4,11 @@ import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.MediaController;
 import android.widget.VideoView;
 
@@ -17,6 +20,9 @@ public class VideoPlayerActivity extends Activity {
 	private VideoView videoPlayer;  
 	 
 	MediaController mediaco;
+	
+	//返回按钮
+	private Button btnEndPlayer;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +33,17 @@ public class VideoPlayerActivity extends Activity {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.activity_video_player);
+		
+		
+		btnEndPlayer = (Button) findViewById(R.id.btnEndPlayer);
+        OnClickListener btnEndPlayerClick = new OnClickListener(){
+			@Override
+			public void onClick(View v) {
+				//取消
+				finish();
+			}
+        };
+        btnEndPlayer.setOnClickListener(btnEndPlayerClick);
 		
 		Bundle extras = this.getIntent().getExtras();
 		

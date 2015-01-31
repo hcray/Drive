@@ -9,8 +9,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.daoliuhe.drive.R;
@@ -35,11 +37,25 @@ public class SubjectActivity extends Activity {
 	//private RelativeLayout  layout;
 	
 	private List<LineBean> lineList;
+	
+	//返回按钮
+	private Button btnSubjectReturn;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_subject);
+		
+		
+		btnSubjectReturn = (Button) this.findViewById(R.id.btnSubjectReturn);
+		OnClickListener btnSubjectReturnClick = new OnClickListener(){
+				@Override
+				public void onClick(View v) {
+				//取消
+				finish();
+			}
+		};
+		btnSubjectReturn.setOnClickListener(btnSubjectReturnClick);
 		
 		//layout = (RelativeLayout ) this.findViewById(R.id.subject_relativeLayout);
 		//数据库

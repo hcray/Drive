@@ -11,7 +11,7 @@
         android:id="@+id/tvLineName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="6dip"
+        android:layout_marginTop="10dip"
         android:text=""
         android:textColor="#5e5e5e"
         android:textSize="16sp" />

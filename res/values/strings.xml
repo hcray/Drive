@@ -8,6 +8,7 @@
     <string name="param_settings">参数设置</string>
     <string name="subject_three">科目三路线</string>
     <string name="subject_three_video">科目三视频</string>
+    <string name="end_player">返回</string>
     <string name="title_activity_subject">路线列表</string>
     <string name="line_list">线路</string>
     <string name="title_activity_param">参数设置</string>
@@ -187,5 +188,6 @@
     </string-array>
 
     <string name="title_activity_video_player">视频播放器</string>
+    <string name="main_logo"></string>
 
 </resources>
