@@ -36,6 +36,7 @@
         android:layout_weight="4" >
 
         <TableLayout
+            android:id="@+id/lineTable"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content" >
 
@@ -253,24 +254,19 @@
                     android:textColor="#5e5e5e"
                     android:textSize="20sp" />
             </TableRow>
-
-            <TableRow
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dip"
-                android:layout_marginTop="10dip" >
-
-                <TextView
-                    android:id="@+id/tv_line"
-                    android:layout_width="fill_parent"
-                    android:layout_height="30dp"
-                    android:maxLines="10"
-                    android:scrollbars="vertical"
-                    android:singleLine="false"
-                    android:text="@string/gps_prepare"
-                    android:textSize="20.0dip" />
-            </TableRow>
         </TableLayout>
+        
+        <TextView
+            android:id="@+id/tv_line"
+            android:layout_below="@+id/lineTable"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:maxLines="10"
+            android:scrollbars="vertical"
+            android:singleLine="false"
+            android:text="@string/gps_prepare"
+            android:textSize="20.0dip"
+            />
     </RelativeLayout>
 
 </LinearLayout>
