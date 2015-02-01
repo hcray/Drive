@@ -565,10 +565,10 @@ public class LineActivity extends Activity implements OnLongClickListener{
 				updateView(location);
 				
 				
-//				curLongitude = location.getLongitude();
-//				curLatitude = location.getLatitude();
-//				float curBearing = location.getBearing();
-//				float curSpeed = location.getSpeed();
+				curLongitude = location.getLongitude();
+				curLatitude = location.getLatitude();
+				float curBearing = location.getBearing();
+				float curSpeed = location.getSpeed();
 				
 				fireHandle(location);
 				
@@ -826,6 +826,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			if(Distance.GetDistance(curLongitude, curLatitude, changeLanesLng, changeLanesLat) < distance){
 				tvline.setText(R.string.toast06);
 				playMusic(R.id.btnChangeLanes);
+				openScoring(5);
 			}
 		}
 		Double aheadDirectLineLat = lineBean.getAheadDirectLineLat();
@@ -834,6 +835,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			if(Distance.GetDistance(curLongitude, curLatitude, aheadDirectLineLng, aheadDirectLineLat) < distance){
 				tvline.setText(R.string.toast07);
 				playMusic(R.id.btnAheadDirectLine);
+				openScoring(3);
 			}
 		}
 		Double turnLeftLat = lineBean.getTurnLat();
@@ -842,6 +844,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			if(Distance.GetDistance(curLongitude, curLatitude, turnLeftLng, turnLeftLat) < distance){
 				tvline.setText(R.string.toast08);
 				playMusic(R.id.btnTurnLeft);
+				openScoring(6);
 			}
 		}
 		Double turnRightLat = lineBean.getTurnRightLat();
@@ -850,6 +853,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			if(Distance.GetDistance(curLongitude, curLatitude, turnRightLng, turnRightLat) < distance){
 				tvline.setText(R.string.toast09);
 				playMusic(R.id.btnTurnRight);
+				openScoring(6);
 			}
 		}
 		Double sidewalkLat = lineBean.getSidewalkLat();
@@ -858,6 +862,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			if(Distance.GetDistance(curLongitude, curLatitude, sidewalkLng, sidewalkLat) < distance){
 				tvline.setText(R.string.toast10);
 				playMusic(R.id.btnSidewalk);
+				openScoring(7);
 			}
 		}
 		Double passSchoolLat = lineBean.getPassSchoolLat();
@@ -866,6 +871,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			if(Distance.GetDistance(curLongitude, curLatitude, passSchoolLng, passSchoolLat) < distance){
 				tvline.setText(R.string.toast11);
 				playMusic(R.id.btnPassSchool);
+				openScoring(8);
 			}
 		}
 		Double passBusStationLat = lineBean.getPassBusStationLat();
@@ -874,6 +880,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			if(Distance.GetDistance(curLongitude, curLatitude, passBusStationLng, passBusStationLat) < distance){
 				tvline.setText(R.string.toast12);
 				playMusic(R.id.btnPassBusStation);
+				openScoring(9);
 			}
 		}
 		Double passSidewalkLat = lineBean.getPassSidewalkLat();
@@ -882,6 +889,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			if(Distance.GetDistance(curLongitude, curLatitude, passSidewalkLng, passSidewalkLat) < distance){
 				tvline.setText(R.string.toast13);
 				playMusic(R.id.btnPassSidewalk);
+				openScoring(7);
 			}
 		}
 		Double directLineLat = lineBean.getDirectLineLat();
@@ -890,6 +898,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			if(Distance.GetDistance(curLongitude, curLatitude, directLineLng, directLineLat) < distance){
 				tvline.setText(R.string.toast14);
 				playMusic(R.id.btnDirectLine);
+				openScoring(3);
 			}
 		}
 		Double endDirectLineLat = lineBean.getEndDirectLineLat();
@@ -898,6 +907,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			if(Distance.GetDistance(curLongitude, curLatitude, endDirectLineLng, endDirectLineLat) < distance){
 				tvline.setText(R.string.toast15);
 				playMusic(R.id.btnEndDirectLine);
+				openScoring(3);
 			}
 		}
 		Double overtakeLat = lineBean.getOvertakeLat();
@@ -906,6 +916,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			if(Distance.GetDistance(curLongitude, curLatitude, overtakeLng, overtakeLat) < distance){
 				tvline.setText(R.string.toast16);
 				playMusic(R.id.btnOvertake);
+				openScoring(11);
 			}
 		}
 		Double turnLat = lineBean.getTurnLat();
@@ -914,6 +925,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			if(Distance.GetDistance(curLongitude, curLatitude, turnLng, turnLat) < distance){
 				tvline.setText(R.string.toast17);
 				playMusic(R.id.btnTurn);
+				openScoring(12);
 			}
 		}
 
@@ -923,6 +935,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			if(Distance.GetDistance(curLongitude, curLatitude, pullOverLng, pullOverLat) < distance){
 				tvline.setText(R.string.toast18);
 				playMusic(R.id.btnPullOver);
+				openScoring(13);
 			}
 		}
 		
@@ -932,6 +945,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			if(Distance.GetDistance(curLongitude, curLatitude, passingLng, passingLat) < distance){
 				tvline.setText(R.string.toast19);
 				playMusic(R.id.btnPassing);
+				openScoring(10);
 			}
 		}
 	}

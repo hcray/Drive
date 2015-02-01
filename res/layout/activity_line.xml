@@ -14,18 +14,29 @@
         android:background="@drawable/sidestyle"
         android:gravity="bottom" >
 
+        <TextView
+            android:id="@+id/tv_line"
+            android:layout_width="fill_parent"
+            android:layout_height="150dp"
+            android:maxLines="10"
+            android:scrollbars="vertical"
+            android:singleLine="false"
+            android:text="@string/gps_prepare"
+            android:textSize="20.0dip" />
+
         <Button
             android:id="@+id/btnScoring"
+            android:layout_below="@id/tv_line"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/title_activity_scoring" >
         </Button>
-        
+
         <Button
             android:id="@+id/btnLineReturn"
-            android:layout_below="@id/btnScoring"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@id/btnScoring"
             android:text="@string/end_player" >
         </Button>
     </RelativeLayout>
@@ -255,18 +266,6 @@
                     android:textSize="20sp" />
             </TableRow>
         </TableLayout>
-        
-        <TextView
-            android:id="@+id/tv_line"
-            android:layout_below="@+id/lineTable"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:maxLines="10"
-            android:scrollbars="vertical"
-            android:singleLine="false"
-            android:text="@string/gps_prepare"
-            android:textSize="20.0dip"
-            />
     </RelativeLayout>
 
 </LinearLayout>
