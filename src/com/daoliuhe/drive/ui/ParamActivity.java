@@ -20,6 +20,8 @@ public class ParamActivity extends Activity {
 	private Button btnParamSave;
 	//取消按钮
 	private Button btnParamCancel;
+	//返回
+	private Button btnParamReturn;
 
 	//播报距离
 	private EditText edtDistance;
@@ -35,6 +37,8 @@ public class ParamActivity extends Activity {
 		
 		btnParamSave = (Button) this.findViewById(R.id.btnParamSave);
 		btnParamCancel = (Button) this.findViewById(R.id.btnParamCancel);
+		btnParamReturn = (Button) this.findViewById(R.id.btnParamReturn);
+		
 		edtDistance = (EditText) this.findViewById(R.id.edtDistance);
 		edtAngleError = (EditText) this.findViewById(R.id.edtAngleError);
 		edtRefresh = (EditText) this.findViewById(R.id.edtRefresh);
@@ -105,7 +109,7 @@ public class ParamActivity extends Activity {
 			}
         };
         btnParamCancel.setOnClickListener(btnParamCancelClick);
-		
+        btnParamReturn.setOnClickListener(btnParamCancelClick);
 	}
 
 	@Override

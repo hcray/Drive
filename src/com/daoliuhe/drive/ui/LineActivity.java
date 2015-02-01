@@ -87,6 +87,8 @@ public class LineActivity extends Activity implements OnLongClickListener{
 	private Button btnPullOver;
 	private Button btnPassing;
 	private Button btnReset;
+
+	private Button btnLineReturn;
 	
 	private DbAdapter dbAdapter;
 	//当前的经度
@@ -261,6 +263,18 @@ public class LineActivity extends Activity implements OnLongClickListener{
 
 		tvline = (TextView) this.findViewById(R.id.tv_line);
 		tvline.setMovementMethod(ScrollingMovementMethod.getInstance());
+		
+		//返回
+		btnLineReturn = (Button) this.findViewById(R.id.btnLineReturn);
+		OnClickListener btnLineReturnClick = new OnClickListener(){
+			@Override
+			public void onClick(View v) {
+				//取消
+				finish();
+			}
+		};
+		btnLineReturn.setOnClickListener(btnLineReturnClick);
+		
 		
 //		lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 //		// 判断GPS是否正常启动
