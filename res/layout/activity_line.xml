@@ -15,7 +15,15 @@
         android:gravity="bottom" >
 
         <Button
+            android:id="@+id/btnScoring"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/title_activity_scoring" >
+        </Button>
+        
+        <Button
             android:id="@+id/btnLineReturn"
+            android:layout_below="@id/btnScoring"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/end_player" >

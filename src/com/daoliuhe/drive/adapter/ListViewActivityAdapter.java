@@ -46,7 +46,7 @@ public class ListViewActivityAdapter extends BaseAdapter {
 		if (convertView == null) {
 			holder = new ViewHolder();
 			convertView = mInflater.inflate(R.layout.atom_item, null);
-			holder.tvLineName = (TextView) convertView.findViewById(R.id.tvLineName);
+			holder.tvLineName = (TextView) convertView.findViewById(R.id.tvItemLineName);
 			convertView.setTag(holder);
 		} else {
 			holder = (ViewHolder) convertView.getTag();

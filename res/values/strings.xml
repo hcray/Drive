@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">路考模拟仪</string>
+    <string name="app_name">路考仪</string>
     <string name="action_settings">设置</string>
     <string name="hello_world">Hello world!</string>
     <string name="gps_prepare">定位中</string>

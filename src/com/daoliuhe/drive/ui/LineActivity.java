@@ -88,6 +88,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 	private Button btnPassing;
 	private Button btnReset;
 
+	private Button btnScoring;
 	private Button btnLineReturn;
 	
 	private DbAdapter dbAdapter;
@@ -264,6 +265,16 @@ public class LineActivity extends Activity implements OnLongClickListener{
 		tvline = (TextView) this.findViewById(R.id.tv_line);
 		tvline.setMovementMethod(ScrollingMovementMethod.getInstance());
 		
+		//评分标准
+		btnScoring = (Button) this.findViewById(R.id.btnScoring);
+		OnClickListener btnScoringClick = new OnClickListener(){
+			@Override
+			public void onClick(View v) {
+				//打开评分标准
+				openScoring(0);
+			}
+		};
+		btnScoring.setOnClickListener(btnScoringClick);
 		//返回
 		btnLineReturn = (Button) this.findViewById(R.id.btnLineReturn);
 		OnClickListener btnLineReturnClick = new OnClickListener(){
