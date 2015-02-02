@@ -38,7 +38,7 @@
             android:stretchColumns="0" >
 
             <TableRow
-                android:id="@+id/registuser_tablerow1"
+                android:id="@+id/param_tablerow_distance"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal" >
@@ -66,7 +66,7 @@
             </TableRow>
 
             <TableRow
-                android:id="@+id/registuser_tablerow1"
+                android:id="@+id/param_tablerow_angleError"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal" >
@@ -94,7 +94,7 @@
             </TableRow>
 
             <TableRow
-                android:id="@+id/registuser_tablerow1"
+                android:id="@+id/param_tablerow_refresh"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal" >
