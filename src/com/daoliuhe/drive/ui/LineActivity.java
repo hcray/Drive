@@ -322,7 +322,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 
 			@Override
 			public void onClick(View v) {
-				tvline.setText(R.string.toast01);
+				//tvline.setText(R.string.toast01);
 				// id,左右声道, 音量, 优先级, 是否循环(0为不循环，-1为循环),播放比率(从0.5到2，一般为1，表示正常播放)
 				playMusic(v.getId());
 			}
@@ -333,7 +333,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 
 			@Override
 			public void onClick(View v) {
-				tvline.setText(R.string.toast02);
+				//tvline.setText(R.string.toast02);
 				playMusic(v.getId());
 
 			}
@@ -343,7 +343,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 
 			@Override
 			public void onClick(View v) {
-				tvline.setText(R.string.toast03);
+				//tvline.setText(R.string.toast03);
 				playMusic(v.getId());
 
 			}
@@ -353,7 +353,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 
 			@Override
 			public void onClick(View v) {
-				tvline.setText(R.string.toast04);
+				//tvline.setText(R.string.toast04);
 				playMusic(v.getId());
 
 			}
@@ -366,7 +366,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			
 			@Override
 			public void onClick(View v) {
-				tvline.setText(R.string.toast05);
+				//tvline.setText(R.string.toast05);
 				playMusic(v.getId());
 				openScoring(2);
 			}
@@ -378,7 +378,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			
 			@Override
 			public void onClick(View v) {
-				tvline.setText(R.string.toast06);
+				//tvline.setText(R.string.toast06);
 				playMusic(v.getId());
 				openScoring(5);
 			}
@@ -389,7 +389,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 
 			@Override
 			public void onClick(View v) {
-				tvline.setText(R.string.toast07);
+				//tvline.setText(R.string.toast07);
 				playMusic(v.getId());
 				openScoring(3);
 			}
@@ -400,7 +400,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 
 			@Override
 			public void onClick(View v) {
-				tvline.setText(R.string.toast08);
+				//tvline.setText(R.string.toast08);
 				playMusic(v.getId());
 				openScoring(6);
 			}
@@ -411,7 +411,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 
 			@Override
 			public void onClick(View v) {
-				tvline.setText(R.string.toast09);
+				//tvline.setText(R.string.toast09);
 				playMusic(v.getId());
 				openScoring(6);
 			}
@@ -422,7 +422,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 
 			@Override
 			public void onClick(View v) {
-				tvline.setText(R.string.toast10);
+				//tvline.setText(R.string.toast10);
 				playMusic(v.getId());
 				openScoring(7);
 			}
@@ -434,7 +434,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 
 			@Override
 			public void onClick(View v) {
-				tvline.setText(R.string.toast11);
+				//tvline.setText(R.string.toast11);
 				playMusic(v.getId());
 				openScoring(8);
 			}
@@ -445,7 +445,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 
 			@Override
 			public void onClick(View v) {
-				tvline.setText(R.string.toast12);
+				//tvline.setText(R.string.toast12);
 				playMusic(v.getId());
 				openScoring(9);
 			}
@@ -456,7 +456,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 
 			@Override
 			public void onClick(View v) {
-				tvline.setText(R.string.toast13);
+				//tvline.setText(R.string.toast13);
 				playMusic(v.getId());
 				openScoring(7);
 			}
@@ -467,7 +467,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 
 			@Override
 			public void onClick(View v) {
-				tvline.setText(R.string.toast14);
+				//tvline.setText(R.string.toast14);
 				playMusic(v.getId());
 				openScoring(3);
 			}
@@ -478,7 +478,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 
 			@Override
 			public void onClick(View v) {
-				tvline.setText(R.string.toast15);
+				//tvline.setText(R.string.toast15);
 				playMusic(v.getId());
 				openScoring(3);
 			}
@@ -490,7 +490,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 
 			@Override
 			public void onClick(View v) {
-				tvline.setText(R.string.toast16);
+				//tvline.setText(R.string.toast16);
 				playMusic(v.getId());
 				openScoring(11);
 			}
@@ -501,7 +501,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 
 			@Override
 			public void onClick(View v) {
-				tvline.setText(R.string.toast17);
+				//tvline.setText(R.string.toast17);
 				playMusic(v.getId());
 				openScoring(12);
 			}
@@ -512,7 +512,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 
 			@Override
 			public void onClick(View v) {
-				tvline.setText(R.string.toast18);
+				//tvline.setText(R.string.toast18);
 				playMusic(v.getId());
 				openScoring(13);
 			}
@@ -523,7 +523,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 
 			@Override
 			public void onClick(View v) {
-				tvline.setText(R.string.toast19);
+				//tvline.setText(R.string.toast19);
 				playMusic(v.getId());
 				openScoring(10);
 			}
@@ -533,7 +533,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 
 			@Override
 			public void onClick(View v) {
-				tvline.setText("");
+				//tvline.setText("");
 				playMusic(v.getId());
 
 			}
@@ -791,13 +791,13 @@ public class LineActivity extends Activity implements OnLongClickListener{
 	 */
 	private void updateView(Location location) {
 		if (location != null) {
-			tvline.setText("设备位置信息\n经度：");
+			tvline.setText("location info\nLongitude：");
 			tvline.append(String.valueOf(location.getLongitude()));
-			tvline.append("\n纬度：");
+			tvline.append("\nLatitude：");
 			tvline.append(String.valueOf(location.getLatitude()));
-			tvline.append("\n方向：");
+			tvline.append("\nBearing：");
 			tvline.append(String.valueOf(location.getBearing()));
-			tvline.append("\n速度：");
+			tvline.append("\nSpeed：");
 			tvline.append(String.valueOf(location.getSpeed()));
 		} else {
 			// 清空EditText对象
@@ -824,7 +824,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 		Double changeLanesLng = lineBean.getChangeLanesLng();
 		if(null != changeLanesLat && null != changeLanesLng && 0 != changeLanesLat && 0 != changeLanesLng){
 			if(Distance.GetDistance(curLongitude, curLatitude, changeLanesLng, changeLanesLat) < distance){
-				tvline.setText(R.string.toast06);
+				//tvline.setText(R.string.toast06);
 				playMusic(R.id.btnChangeLanes);
 				openScoring(5);
 			}
@@ -833,7 +833,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 		Double aheadDirectLineLng = lineBean.getAheadDirectLineLng();
 		if(null != aheadDirectLineLat && null != aheadDirectLineLng && 0 != aheadDirectLineLat && 0 != aheadDirectLineLng){
 			if(Distance.GetDistance(curLongitude, curLatitude, aheadDirectLineLng, aheadDirectLineLat) < distance){
-				tvline.setText(R.string.toast07);
+				//tvline.setText(R.string.toast07);
 				playMusic(R.id.btnAheadDirectLine);
 				openScoring(3);
 			}
@@ -842,7 +842,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 		Double turnLeftLng = lineBean.getTurnLeftLng();
 		if(null != turnLeftLat && null != turnLeftLng && 0 != turnLeftLat && 0 != turnLeftLng){
 			if(Distance.GetDistance(curLongitude, curLatitude, turnLeftLng, turnLeftLat) < distance){
-				tvline.setText(R.string.toast08);
+				//tvline.setText(R.string.toast08);
 				playMusic(R.id.btnTurnLeft);
 				openScoring(6);
 			}
@@ -851,7 +851,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 		Double turnRightLng = lineBean.getTurnRightLng();
 		if(null != turnRightLat && null != turnRightLng && turnRightLat != 0 && turnRightLng != 0){
 			if(Distance.GetDistance(curLongitude, curLatitude, turnRightLng, turnRightLat) < distance){
-				tvline.setText(R.string.toast09);
+				//tvline.setText(R.string.toast09);
 				playMusic(R.id.btnTurnRight);
 				openScoring(6);
 			}
@@ -860,7 +860,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 		Double sidewalkLng = lineBean.getSidewalkLng();
 		if(null != sidewalkLat && null != sidewalkLng && 0 != sidewalkLat && 0 != sidewalkLng){
 			if(Distance.GetDistance(curLongitude, curLatitude, sidewalkLng, sidewalkLat) < distance){
-				tvline.setText(R.string.toast10);
+				//tvline.setText(R.string.toast10);
 				playMusic(R.id.btnSidewalk);
 				openScoring(7);
 			}
@@ -869,7 +869,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 		Double passSchoolLng = lineBean.getPassSchoolLng();
 		if(null != passSchoolLat && null != passSchoolLng && 0 != passSchoolLat && 0 != passSchoolLng){
 			if(Distance.GetDistance(curLongitude, curLatitude, passSchoolLng, passSchoolLat) < distance){
-				tvline.setText(R.string.toast11);
+				//tvline.setText(R.string.toast11);
 				playMusic(R.id.btnPassSchool);
 				openScoring(8);
 			}
@@ -878,7 +878,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 		Double passBusStationLng = lineBean.getPassBusStationLng();
 		if(null != passBusStationLat && null != passBusStationLng && 0 != passBusStationLat && 0 != passBusStationLng){
 			if(Distance.GetDistance(curLongitude, curLatitude, passBusStationLng, passBusStationLat) < distance){
-				tvline.setText(R.string.toast12);
+				//tvline.setText(R.string.toast12);
 				playMusic(R.id.btnPassBusStation);
 				openScoring(9);
 			}
@@ -887,7 +887,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 		Double passSidewalkLng = lineBean.getPassSidewalkLng();
 		if(null != passSidewalkLat && null != passSidewalkLng && 0 != passSidewalkLat && 0 != passSidewalkLng){
 			if(Distance.GetDistance(curLongitude, curLatitude, passSidewalkLng, passSidewalkLat) < distance){
-				tvline.setText(R.string.toast13);
+				//tvline.setText(R.string.toast13);
 				playMusic(R.id.btnPassSidewalk);
 				openScoring(7);
 			}
@@ -896,7 +896,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 		Double directLineLng = lineBean.getDirectLineLng();
 		if(null != directLineLat && null != directLineLng && 0 != directLineLat && 0 != directLineLng){
 			if(Distance.GetDistance(curLongitude, curLatitude, directLineLng, directLineLat) < distance){
-				tvline.setText(R.string.toast14);
+				//tvline.setText(R.string.toast14);
 				playMusic(R.id.btnDirectLine);
 				openScoring(3);
 			}
@@ -905,7 +905,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 		Double endDirectLineLng = lineBean.getEndDirectLineLng();
 		if(null != endDirectLineLat && null != endDirectLineLng && 0 != endDirectLineLat && 0 != endDirectLineLng){
 			if(Distance.GetDistance(curLongitude, curLatitude, endDirectLineLng, endDirectLineLat) < distance){
-				tvline.setText(R.string.toast15);
+				//tvline.setText(R.string.toast15);
 				playMusic(R.id.btnEndDirectLine);
 				openScoring(3);
 			}
@@ -914,7 +914,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 		Double overtakeLng = lineBean.getOvertakeLng();
 		if(null != overtakeLat && null != overtakeLng && 0 != overtakeLat && 0 != overtakeLng){
 			if(Distance.GetDistance(curLongitude, curLatitude, overtakeLng, overtakeLat) < distance){
-				tvline.setText(R.string.toast16);
+				//tvline.setText(R.string.toast16);
 				playMusic(R.id.btnOvertake);
 				openScoring(11);
 			}
@@ -923,7 +923,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 		Double turnLng = lineBean.getTurnLng();
 		if(null != turnLat && null != turnLng && 0 != turnLat && 0 != turnLng){
 			if(Distance.GetDistance(curLongitude, curLatitude, turnLng, turnLat) < distance){
-				tvline.setText(R.string.toast17);
+				//tvline.setText(R.string.toast17);
 				playMusic(R.id.btnTurn);
 				openScoring(12);
 			}
@@ -933,7 +933,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 		Double pullOverLng = lineBean.getPullOverLng();
 		if(null != pullOverLat && null != pullOverLng && 0 != pullOverLat && 0 != pullOverLng){
 			if(Distance.GetDistance(curLongitude, curLatitude, pullOverLng, pullOverLat) < distance){
-				tvline.setText(R.string.toast18);
+				//tvline.setText(R.string.toast18);
 				playMusic(R.id.btnPullOver);
 				openScoring(13);
 			}
@@ -943,7 +943,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 		Double passingLng = lineBean.getPassingLng();
 		if(null != passingLat && null != passingLng && 0 != passingLat && 0 != passingLng){
 			if(Distance.GetDistance(curLongitude, curLatitude, passingLng, passingLat) < distance){
-				tvline.setText(R.string.toast19);
+				//tvline.setText(R.string.toast19);
 				playMusic(R.id.btnPassing);
 				openScoring(10);
 			}

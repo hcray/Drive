@@ -6,6 +6,12 @@ buildscript {
         classpath 'com.android.tools.build:gradle:0.14+'
     }
 }
+
+//添加编码
+tasks.withType(JavaCompile) { 
+	options.encoding = "GBK" 
+} 
+
 apply plugin: 'android'
 
 dependencies {
@@ -58,5 +64,3 @@ android {
 		} 
 	}
 }
-//添加编码
-tasks.withType(JavaCompile) { options.encoding = "UTF-8" } 
