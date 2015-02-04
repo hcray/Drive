@@ -15,9 +15,25 @@
         android:layout_weight="1" >
 
         <Button
+            android:id="@+id/btnSubjectTwo"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/subject_two" >
+        </Button>
+
+        <Button
+            android:id="@+id/btnSubjectTwoVideo"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btnSubjectTwo"
+            android:text="@string/subject_two_video" >
+        </Button>
+        
+        <Button
             android:id="@+id/btnSubjectThree"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@id/btnSubjectTwoVideo"
             android:text="@string/subject_three" >
         </Button>
 

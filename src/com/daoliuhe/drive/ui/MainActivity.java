@@ -12,9 +12,13 @@ import com.daoliuhe.drive.R;
 import com.daoliuhe.drive.tools.CustomConstant;
 
 public class MainActivity extends Activity {
-	// 科目三
+	//科目二路线
+	private Button btnSubjectTwo;
+	//科目二视频
+	private Button btnSubjectTwoVideo;
+	// 科目三路线
 	private Button btnSubjectThree;
-	// 科目三
+	// 科目三视频
 	private Button btnSubjectThreeVideo;
 	// 参数设置
 	private Button btnParamSettings;
@@ -23,7 +27,23 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+		//科目二路线
+		btnSubjectTwo = (Button) this.findViewById(R.id.btnSubjectTwo);
 
+		//科目二视频
+		btnSubjectTwoVideo = (Button) this.findViewById(R.id.btnSubjectTwoVideo);
+		btnSubjectTwoVideo.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent();
+				intent.setClass(MainActivity.this, VideoPlayerActivity.class);
+				intent.putExtra(CustomConstant.VIDEO_ID, R.raw.s2);
+				startActivity(intent);
+			}
+		});
+		
+		// 科目三路线
 		btnSubjectThree = (Button) this.findViewById(R.id.btnSubjectThree);
 		btnSubjectThree.setOnClickListener(new OnClickListener() {
 			@Override
@@ -35,6 +55,7 @@ public class MainActivity extends Activity {
 			}
 		});
 
+		// 科目三视频
 		btnSubjectThreeVideo = (Button) this.findViewById(R.id.btnSubjectThreeVideo);
 		btnSubjectThreeVideo.setOnClickListener(new OnClickListener() {
 			@Override
