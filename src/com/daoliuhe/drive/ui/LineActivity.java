@@ -113,13 +113,13 @@ public class LineActivity extends Activity implements OnLongClickListener{
 		
         SharedPreferences settings = getSharedPreferences(ParamActivity.SETTING_INFOS, 0);
 		//播报距离
-        String distanceValue =  settings.getString(CustomConstant.DISTANCE_KEY, "20");
+        String distanceValue =  settings.getString(CustomConstant.DISTANCE_KEY, CustomConstant.DISTANCE_VALUE);
         distance = Double.parseDouble(distanceValue);
         //角度误差
-        String angleErrorValue =  settings.getString(CustomConstant.ANGLEERROR_KEY, "50");
+        String angleErrorValue =  settings.getString(CustomConstant.ANGLEERROR_KEY, CustomConstant.ANGLEERROR_VALUE);
         angleError = Double.parseDouble(angleErrorValue);
         //刷新频率
-        String refreshValue =  settings.getString(CustomConstant.REFRESH_KEY, "200");
+        String refreshValue =  settings.getString(CustomConstant.REFRESH_KEY, CustomConstant.REFRESH_VALUE);
         refresh = Double.parseDouble(refreshValue);
 
         //数据库
@@ -570,7 +570,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 				float curBearing = location.getBearing();
 				float curSpeed = location.getSpeed();
 				
-				fireHandle(location);
+				fireHandler(location);
 				
 				
 //				// 定位成功回调信息，设置相关消息
@@ -647,6 +647,10 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			case R.id.btnTurnRight:
 				intent.putExtra(CustomConstant.LATITUDE, lineBean.getTurnRightLat());
 				intent.putExtra(CustomConstant.LONGITUDE, lineBean.getTurnRightLng());
+				break;
+			case R.id.btnSidewalk:
+				intent.putExtra(CustomConstant.LATITUDE, lineBean.getSidewalkLat());
+				intent.putExtra(CustomConstant.LONGITUDE, lineBean.getSidewalkLng());
 				break;
 			case R.id.btnPassSchool:
 				intent.putExtra(CustomConstant.LATITUDE, lineBean.getPassSchoolLat());
@@ -810,7 +814,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 	 * 到达指定位置激活相关的操作
 	 * @param location 当前的位置
 	 */
-	private void fireHandle(Location location){
+	private void fireHandler(Location location){
 		//经度
 		Double curLongitude = location.getLongitude();
 		//纬度

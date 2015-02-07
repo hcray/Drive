@@ -11,16 +11,28 @@ public class CustomConstant {
 	 * 播报距离 key
 	 */
 	public static final String DISTANCE_KEY = "edtDistanceKey";
+	/**
+	 * 播报距离 value 默认值
+	 */
+	public static final String DISTANCE_VALUE = "10";
 	
 	/**
 	 * 角度误差 key
 	 */
 	public static final String ANGLEERROR_KEY = "edtAngleErrorKey";
+	/**
+	 * 角度误差 value 默认值
+	 */
+	public static final String ANGLEERROR_VALUE = "50";
 	
 	/**
 	 * 刷新频率 key
 	 */
 	public static final String REFRESH_KEY = "edtRefreshKey";
+	/**
+	 * 刷新频率 value 默认值
+	 */
+	public static final String REFRESH_VALUE = "200";
 	
 	/**
 	 * 按钮的id

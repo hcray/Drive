@@ -50,11 +50,11 @@ public class ParamActivity extends Activity {
 		// Restore preferences
         SharedPreferences settings = getSharedPreferences(SETTING_INFOS, 0);
 		//播报距离
-        String distanceValue =  settings.getString(CustomConstant.DISTANCE_KEY, "20");
+        String distanceValue =  settings.getString(CustomConstant.DISTANCE_KEY, CustomConstant.DISTANCE_VALUE);
         //角度误差
-        String angleErrorValue =  settings.getString(CustomConstant.ANGLEERROR_KEY, "50");
+        String angleErrorValue =  settings.getString(CustomConstant.ANGLEERROR_KEY, CustomConstant.ANGLEERROR_VALUE);
         //刷新频率
-        String refreshValue =  settings.getString(CustomConstant.REFRESH_KEY, "200");
+        String refreshValue =  settings.getString(CustomConstant.REFRESH_KEY, CustomConstant.REFRESH_VALUE);
         //设值
         edtDistance.setText(distanceValue);
         edtAngleError.setText(angleErrorValue);
@@ -109,11 +109,11 @@ public class ParamActivity extends Activity {
 			public void onClick(View v) {
 				SharedPreferences settings = getSharedPreferences(SETTING_INFOS, 0);
 				//播报距离
-		        String distanceValue = "20";
+		        String distanceValue = CustomConstant.DISTANCE_VALUE;
 		        //角度误差
-		        String angleErrorValue = "50";
+		        String angleErrorValue = CustomConstant.ANGLEERROR_VALUE;
 		        //刷新频率
-		        String refreshValue = "200";
+		        String refreshValue = CustomConstant.REFRESH_VALUE;
 		        //恢复页面的值
 		        edtDistance.setText(distanceValue);
 				edtAngleError.setText(angleErrorValue);
