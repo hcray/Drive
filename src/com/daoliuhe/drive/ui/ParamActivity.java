@@ -18,6 +18,8 @@ public class ParamActivity extends Activity {
 	//private static final int ACTIVITY_LOGIN = 0;
 	//保存按钮
 	private Button btnParamSave;
+	//恢复默认
+	private Button btnParamRestore;
 	//取消按钮
 	private Button btnParamCancel;
 	//返回
@@ -36,6 +38,7 @@ public class ParamActivity extends Activity {
 		setContentView(R.layout.activity_param);
 		
 		btnParamSave = (Button) this.findViewById(R.id.btnParamSave);
+		btnParamRestore = (Button) this.findViewById(R.id.btnParamRestore);
 		btnParamCancel = (Button) this.findViewById(R.id.btnParamCancel);
 		btnParamReturn = (Button) this.findViewById(R.id.btnParamReturn);
 		
@@ -99,6 +102,31 @@ public class ParamActivity extends Activity {
 			}
 		};
 		btnParamSave.setOnClickListener(btnParamSaveClick);
+		
+		btnParamRestore.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				SharedPreferences settings = getSharedPreferences(SETTING_INFOS, 0);
+				//播报距离
+		        String distanceValue = "20";
+		        //角度误差
+		        String angleErrorValue = "50";
+		        //刷新频率
+		        String refreshValue = "200";
+		        //恢复页面的值
+		        edtDistance.setText(distanceValue);
+				edtAngleError.setText(angleErrorValue);
+				edtRefresh.setText(refreshValue);
+		        //保存
+				settings.edit()
+				.putString(CustomConstant.DISTANCE_KEY, distanceValue)
+				.putString(CustomConstant.ANGLEERROR_KEY, angleErrorValue)
+				.putString(CustomConstant.REFRESH_KEY, refreshValue)
+				.commit();
+				
+			}
+		});
 		
 		
         OnClickListener btnParamCancelClick = new OnClickListener(){
