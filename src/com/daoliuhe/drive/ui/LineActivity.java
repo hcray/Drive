@@ -567,7 +567,9 @@ public class LineActivity extends Activity implements OnLongClickListener{
 				
 				curLongitude = location.getLongitude();
 				curLatitude = location.getLatitude();
+				//返回定位方位（方向），以度为单位，与正北方向顺时针的角度。
 				float curBearing = location.getBearing();
+				//返回定位速度 ，单位：米/秒，如果此位置不具有速度，则返回0.0 。
 				float curSpeed = location.getSpeed();
 				
 				fireHandler(location);
