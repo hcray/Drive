@@ -19,7 +19,7 @@
         <Button
             android:id="@+id/btnParamReturn"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:text="@string/end_player" >
         </Button>
     </RelativeLayout>
@@ -133,7 +133,7 @@
             <Button
                 android:id="@+id/btnParamRestore"
                 android:layout_width="wrap_content"
-                android:layout_height="50dip"
+                android:layout_height="60dp"
                 android:layout_weight="1"
                 android:text="恢复默认"
                 android:textColor="#5e5e5e"
@@ -142,7 +142,7 @@
             <Button
                 android:id="@+id/btnParamSave"
                 android:layout_width="wrap_content"
-                android:layout_height="50dip"
+                android:layout_height="60dp"
                 android:layout_weight="1"
                 android:text="保存"
                 android:textColor="#5e5e5e"
@@ -151,7 +151,7 @@
             <Button
                 android:id="@+id/btnParamCancel"
                 android:layout_width="wrap_content"
-                android:layout_height="50dip"
+                android:layout_height="60dp"
                 android:layout_weight="1"
                 android:text="取消"
                 android:textColor="#5e5e5e"

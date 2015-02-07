@@ -17,7 +17,7 @@
         <TextView
             android:id="@+id/tv_line"
             android:layout_width="fill_parent"
-            android:layout_height="150dp"
+            android:layout_height="250dp"
             android:maxLines="10"
             android:scrollbars="vertical"
             android:singleLine="false"
@@ -28,14 +28,14 @@
             android:id="@+id/btnScoring"
             android:layout_below="@id/tv_line"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:text="@string/title_activity_scoring" >
         </Button>
 
         <Button
             android:id="@+id/btnLineReturn"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:layout_below="@id/btnScoring"
             android:text="@string/end_player" >
         </Button>
@@ -60,7 +60,7 @@
                 <Button
                     android:id="@+id/btnLights1"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="70dp"
                     android:layout_weight="1"
                     android:text="模拟灯光操作一"
                     android:textColor="#5e5e5e"
@@ -69,7 +69,7 @@
                 <Button
                     android:id="@+id/btnLights2"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="70dp"
                     android:layout_weight="1"
                     android:text="模拟灯光操作二"
                     android:textColor="#5e5e5e"
@@ -78,7 +78,7 @@
                 <Button
                     android:id="@+id/btnLights3"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="70dp"
                     android:layout_weight="1"
                     android:text="模拟灯光操作三"
                     android:textColor="#5e5e5e"
@@ -87,7 +87,7 @@
                 <Button
                     android:id="@+id/btnLights4"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="70dp"
                     android:layout_weight="1"
                     android:text="模拟灯光操作四"
                     android:textColor="#5e5e5e"
@@ -103,7 +103,7 @@
                 <Button
                     android:id="@+id/btnStart"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="70dp"
                     android:layout_weight="1"
                     android:text="启动"
                     android:textColor="#5e5e5e"
@@ -112,7 +112,7 @@
                 <Button
                     android:id="@+id/btnChangeLanes"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="70dp"
                     android:layout_weight="1"
                     android:text="变更车道"
                     android:textColor="#5e5e5e"
@@ -121,7 +121,7 @@
                 <Button
                     android:id="@+id/btnAheadDirectLine"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="70dp"
                     android:layout_weight="1"
                     android:text="前方路口直行"
                     android:textColor="#5e5e5e"
@@ -130,7 +130,7 @@
                 <Button
                     android:id="@+id/btnTurnLeft"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="70dp"
                     android:layout_weight="1"
                     android:text="前方路口左转"
                     android:textColor="#5e5e5e"
@@ -146,7 +146,7 @@
                 <Button
                     android:id="@+id/btnTurnRight"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="70dp"
                     android:layout_weight="1"
                     android:text="前方路口右转"
                     android:textColor="#5e5e5e"
@@ -155,7 +155,7 @@
                 <Button
                     android:id="@+id/btnSidewalk"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="70dp"
                     android:layout_weight="1"
                     android:text="前方人行横道"
                     android:textColor="#5e5e5e"
@@ -164,7 +164,7 @@
                 <Button
                     android:id="@+id/btnPassSchool"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="70dp"
                     android:layout_weight="1"
                     android:text="通过学校区域"
                     android:textColor="#5e5e5e"
@@ -173,7 +173,7 @@
                 <Button
                     android:id="@+id/btnPassBusStation"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="70dp"
                     android:layout_weight="1"
                     android:text="通过公共汽车站"
                     android:textColor="#5e5e5e"
@@ -189,7 +189,7 @@
                 <Button
                     android:id="@+id/btnPassSidewalk"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="70dp"
                     android:layout_weight="1"
                     android:text="通过人行横道"
                     android:textColor="#5e5e5e"
@@ -198,7 +198,7 @@
                 <Button
                     android:id="@+id/btnDirectLine"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="70dp"
                     android:layout_weight="1"
                     android:text="直线行驶"
                     android:textColor="#5e5e5e"
@@ -207,7 +207,7 @@
                 <Button
                     android:id="@+id/btnEndDirectLine"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="70dp"
                     android:layout_weight="1"
                     android:text="结束直线行驶"
                     android:textColor="#5e5e5e"
@@ -216,7 +216,7 @@
                 <Button
                     android:id="@+id/btnOvertake"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="70dp"
                     android:layout_weight="1"
                     android:text="超车"
                     android:textColor="#5e5e5e"
@@ -232,7 +232,7 @@
                 <Button
                     android:id="@+id/btnTurn"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="70dp"
                     android:layout_weight="1"
                     android:text="前方掉头"
                     android:textColor="#5e5e5e"
@@ -241,7 +241,7 @@
                 <Button
                     android:id="@+id/btnPullOver"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="70dp"
                     android:layout_weight="1"
                     android:text="请靠边停车"
                     android:textColor="#5e5e5e"
@@ -250,7 +250,7 @@
                 <Button
                     android:id="@+id/btnPassing"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="70dp"
                     android:layout_weight="1"
                     android:text="会车"
                     android:textColor="#5e5e5e"
@@ -259,7 +259,7 @@
                 <Button
                     android:id="@+id/btnReset"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="70dp"
                     android:layout_weight="1"
                     android:text="重置"
                     android:textColor="#5e5e5e"

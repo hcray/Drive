@@ -78,7 +78,7 @@
         <Button
             android:id="@+id/btnGetCurLocal"
             android:layout_width="wrap_content"
-            android:layout_height="50dip"
+            android:layout_height="60dp"
             android:layout_weight="1"
             android:text="当前位置"
             android:textColor="#5e5e5e"
@@ -90,7 +90,7 @@
         <Button
             android:id="@+id/btnLocalSave"
             android:layout_width="wrap_content"
-            android:layout_height="50dip"
+            android:layout_height="60dp"
             android:layout_weight="1"
             android:text="保存"
             android:textColor="#5e5e5e"
@@ -103,7 +103,7 @@
         <Button
             android:id="@+id/btnLocalCancel"
             android:layout_width="wrap_content"
-            android:layout_height="50dip"
+            android:layout_height="60dp"
             android:layout_weight="1"
             android:text="取消"
             android:textColor="#5e5e5e"

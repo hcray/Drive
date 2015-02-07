@@ -361,7 +361,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 		
 		
 		btnStart = (Button) this.findViewById(R.id.btnStart);
-		btnStart.setOnLongClickListener(this);
+		//btnStart.setOnLongClickListener(this);
 		btnStart.setOnClickListener(new OnClickListener() {
 			
 			@Override
