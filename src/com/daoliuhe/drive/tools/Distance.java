@@ -30,6 +30,17 @@ public class Distance {
 		s = Math.round(s * 10000) / 10000;
 		return s;
 	}
+	
+	
+	/**
+	 * 求连个浮点数差的绝对值
+	 * @param curBearing
+	 * @param bearing
+	 * @return 差的绝对值
+	 */
+	public static Float getDiff(Float curBearing, Float bearing){
+		return Math.abs(curBearing - bearing);
+	}
 
 	/**
 	 * @param args

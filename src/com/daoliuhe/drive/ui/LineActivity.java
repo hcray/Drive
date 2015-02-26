@@ -96,10 +96,12 @@ public class LineActivity extends Activity implements OnLongClickListener{
 	private Double curLongitude;
 	//当前的纬度
 	private Double curLatitude;
+	//当前的方位
+	private float curBearing;
 	//播报距离
     private Double distance;
     //角度误差
-    private Double angleError;
+    private float angleError;
     //刷新频率
     private Double refresh;
 
@@ -117,7 +119,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
         distance = Double.parseDouble(distanceValue);
         //角度误差
         String angleErrorValue =  settings.getString(CustomConstant.ANGLEERROR_KEY, CustomConstant.ANGLEERROR_VALUE);
-        angleError = Double.parseDouble(angleErrorValue);
+        angleError = Float.parseFloat(angleErrorValue);
         //刷新频率
         String refreshValue =  settings.getString(CustomConstant.REFRESH_KEY, CustomConstant.REFRESH_VALUE);
         refresh = Double.parseDouble(refreshValue);
@@ -568,9 +570,9 @@ public class LineActivity extends Activity implements OnLongClickListener{
 				curLongitude = location.getLongitude();
 				curLatitude = location.getLatitude();
 				//返回定位方位（方向），以度为单位，与正北方向顺时针的角度。
-				float curBearing = location.getBearing();
+				curBearing = location.getBearing();
 				//返回定位速度 ，单位：米/秒，如果此位置不具有速度，则返回0.0 。
-				float curSpeed = location.getSpeed();
+				//float curSpeed = location.getSpeed();
 				
 				fireHandler(location);
 				
@@ -610,7 +612,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 		// 在单次定位情况下，定位无论成功与否，都无需调用removeUpdates()方法移除请求，定位sdk内部会移除
 
 		mLocationManagerProxy.requestLocationUpdates(
-				LocationManagerProxy.GPS_PROVIDER, refresh.longValue(), distance.floatValue(),
+				LocationManagerProxy.GPS_PROVIDER, refresh.longValue(), distance.floatValue()/2,
 				mPendingIntent);
 		// 如果一直定位失败则2min后停止定位
 //		mHandler.postDelayed(new Runnable() {
@@ -637,58 +639,72 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			case R.id.btnChangeLanes:
 				intent.putExtra(CustomConstant.LATITUDE, lineBean.getChangeLanesLat());
 				intent.putExtra(CustomConstant.LONGITUDE, lineBean.getChangeLanesLng());
+				intent.putExtra(CustomConstant.BEARING, lineBean.getChangeLanesBr());
 				break;
 			case R.id.btnAheadDirectLine:
 				intent.putExtra(CustomConstant.LATITUDE, lineBean.getAheadDirectLineLat());
 				intent.putExtra(CustomConstant.LONGITUDE, lineBean.getAheadDirectLineLng());
+				intent.putExtra(CustomConstant.BEARING, lineBean.getAheadDirectLineBr());
 				break;
 			case R.id.btnTurnLeft:
 				intent.putExtra(CustomConstant.LATITUDE, lineBean.getTurnLeftLat());
 				intent.putExtra(CustomConstant.LONGITUDE, lineBean.getTurnLeftLng());
+				intent.putExtra(CustomConstant.BEARING, lineBean.getTurnLeftBr());
 				break;
 			case R.id.btnTurnRight:
 				intent.putExtra(CustomConstant.LATITUDE, lineBean.getTurnRightLat());
 				intent.putExtra(CustomConstant.LONGITUDE, lineBean.getTurnRightLng());
+				intent.putExtra(CustomConstant.BEARING, lineBean.getTurnRightBr());
 				break;
 			case R.id.btnSidewalk:
 				intent.putExtra(CustomConstant.LATITUDE, lineBean.getSidewalkLat());
 				intent.putExtra(CustomConstant.LONGITUDE, lineBean.getSidewalkLng());
+				intent.putExtra(CustomConstant.BEARING, lineBean.getSidewalkBr());
 				break;
 			case R.id.btnPassSchool:
 				intent.putExtra(CustomConstant.LATITUDE, lineBean.getPassSchoolLat());
 				intent.putExtra(CustomConstant.LONGITUDE, lineBean.getPassSchoolLng());
+				intent.putExtra(CustomConstant.BEARING, lineBean.getPassSchoolBr());
 				break;
 			case R.id.btnPassBusStation:
 				intent.putExtra(CustomConstant.LATITUDE, lineBean.getPassBusStationLat());
 				intent.putExtra(CustomConstant.LONGITUDE, lineBean.getPassBusStationLng());
+				intent.putExtra(CustomConstant.BEARING, lineBean.getPassBusStationBr());
 				break;
 			case R.id.btnPassSidewalk:
 				intent.putExtra(CustomConstant.LATITUDE, lineBean.getPassSidewalkLat());
 				intent.putExtra(CustomConstant.LONGITUDE, lineBean.getPassSidewalkLng());
+				intent.putExtra(CustomConstant.BEARING, lineBean.getPassSidewalkBr());
 				break;
 			case R.id.btnDirectLine:
 				intent.putExtra(CustomConstant.LATITUDE, lineBean.getDirectLineLat());
 				intent.putExtra(CustomConstant.LONGITUDE, lineBean.getDirectLineLng());
+				intent.putExtra(CustomConstant.BEARING, lineBean.getDirectLineBr());
 				break;
 			case R.id.btnEndDirectLine:
 				intent.putExtra(CustomConstant.LATITUDE, lineBean.getEndDirectLineLat());
 				intent.putExtra(CustomConstant.LONGITUDE, lineBean.getEndDirectLineLng());
+				intent.putExtra(CustomConstant.BEARING, lineBean.getEndDirectLineBr());
 				break;
 			case R.id.btnOvertake:
 				intent.putExtra(CustomConstant.LATITUDE, lineBean.getOvertakeLat());
 				intent.putExtra(CustomConstant.LONGITUDE, lineBean.getOvertakeLng());
+				intent.putExtra(CustomConstant.BEARING, lineBean.getOvertakeBr());
 				break;
 			case R.id.btnTurn:
 				intent.putExtra(CustomConstant.LATITUDE, lineBean.getTurnLat());
 				intent.putExtra(CustomConstant.LONGITUDE, lineBean.getTurnLng());
+				intent.putExtra(CustomConstant.BEARING, lineBean.getTurnBr());
 				break;
 			case R.id.btnPullOver:
 				intent.putExtra(CustomConstant.LATITUDE, lineBean.getPullOverLat());
 				intent.putExtra(CustomConstant.LONGITUDE, lineBean.getPullOverLng());
+				intent.putExtra(CustomConstant.BEARING, lineBean.getPullOverBr());
 				break;
 			case R.id.btnPassing:
 				intent.putExtra(CustomConstant.LATITUDE, lineBean.getPassingLat());
 				intent.putExtra(CustomConstant.LONGITUDE, lineBean.getPassingLng());
+				intent.putExtra(CustomConstant.BEARING, lineBean.getPassingBr());
 				break;
 		}
 		//哪个button的坐标
@@ -696,6 +712,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 		//当前的经纬度
 		intent.putExtra(CustomConstant.CUR_LATITUDE, curLatitude);
 		intent.putExtra(CustomConstant.CUR_LONGITUDE, curLongitude);
+		intent.putExtra(CustomConstant.CUR_BEARING, curBearing);
 		startActivityForResult(intent, ACTIVITY_ITEM_ADD);
 		return true;
 	}
@@ -824,30 +841,40 @@ public class LineActivity extends Activity implements OnLongClickListener{
 		//方向
 		float curBearing = location.getBearing();
 		//速度
-		float curSpeed = location.getSpeed();
+		//float curSpeed = location.getSpeed();
 		
 		Double changeLanesLat = lineBean.getChangeLanesLat();
 		Double changeLanesLng = lineBean.getChangeLanesLng();
+		Float changeLanesBr = lineBean.getChangeLanesBr();
+		
 		if(null != changeLanesLat && null != changeLanesLng && 0 != changeLanesLat && 0 != changeLanesLng){
-			if(Distance.GetDistance(curLongitude, curLatitude, changeLanesLng, changeLanesLat) < distance){
+			if (Distance.GetDistance(curLongitude, curLatitude, changeLanesLng,
+					changeLanesLat) < distance
+					&& Distance.getDiff(curBearing, changeLanesBr) < angleError) {
 				//tvline.setText(R.string.toast06);
 				playMusic(R.id.btnChangeLanes);
 				openScoring(5);
 			}
 		}
+		
 		Double aheadDirectLineLat = lineBean.getAheadDirectLineLat();
 		Double aheadDirectLineLng = lineBean.getAheadDirectLineLng();
+		Float aheadDirectLineBr = lineBean.getAheadDirectLineBr();
 		if(null != aheadDirectLineLat && null != aheadDirectLineLng && 0 != aheadDirectLineLat && 0 != aheadDirectLineLng){
-			if(Distance.GetDistance(curLongitude, curLatitude, aheadDirectLineLng, aheadDirectLineLat) < distance){
+			if(Distance.GetDistance(curLongitude, curLatitude, aheadDirectLineLng, aheadDirectLineLat) < distance 
+					&& Distance.getDiff(curBearing, aheadDirectLineBr) < angleError){
 				//tvline.setText(R.string.toast07);
 				playMusic(R.id.btnAheadDirectLine);
 				openScoring(3);
 			}
 		}
+		
 		Double turnLeftLat = lineBean.getTurnLat();
 		Double turnLeftLng = lineBean.getTurnLeftLng();
+		Float turnLeftBr = lineBean.getTurnLeftBr();
 		if(null != turnLeftLat && null != turnLeftLng && 0 != turnLeftLat && 0 != turnLeftLng){
-			if(Distance.GetDistance(curLongitude, curLatitude, turnLeftLng, turnLeftLat) < distance){
+			if(Distance.GetDistance(curLongitude, curLatitude, turnLeftLng, turnLeftLat) < distance
+					&& Distance.getDiff(curBearing, turnLeftBr) < angleError){
 				//tvline.setText(R.string.toast08);
 				playMusic(R.id.btnTurnLeft);
 				openScoring(6);
@@ -855,8 +882,10 @@ public class LineActivity extends Activity implements OnLongClickListener{
 		}
 		Double turnRightLat = lineBean.getTurnRightLat();
 		Double turnRightLng = lineBean.getTurnRightLng();
+		Float turnRightBr = lineBean.getTurnRightBr();
 		if(null != turnRightLat && null != turnRightLng && turnRightLat != 0 && turnRightLng != 0){
-			if(Distance.GetDistance(curLongitude, curLatitude, turnRightLng, turnRightLat) < distance){
+			if(Distance.GetDistance(curLongitude, curLatitude, turnRightLng, turnRightLat) < distance
+					&& Distance.getDiff(curBearing, turnRightBr) < angleError){
 				//tvline.setText(R.string.toast09);
 				playMusic(R.id.btnTurnRight);
 				openScoring(6);
@@ -864,8 +893,10 @@ public class LineActivity extends Activity implements OnLongClickListener{
 		}
 		Double sidewalkLat = lineBean.getSidewalkLat();
 		Double sidewalkLng = lineBean.getSidewalkLng();
+		Float sidewalkBr = lineBean.getSidewalkBr();
 		if(null != sidewalkLat && null != sidewalkLng && 0 != sidewalkLat && 0 != sidewalkLng){
-			if(Distance.GetDistance(curLongitude, curLatitude, sidewalkLng, sidewalkLat) < distance){
+			if(Distance.GetDistance(curLongitude, curLatitude, sidewalkLng, sidewalkLat) < distance
+					&& Distance.getDiff(curBearing, sidewalkBr) < angleError){
 				//tvline.setText(R.string.toast10);
 				playMusic(R.id.btnSidewalk);
 				openScoring(7);
@@ -873,8 +904,10 @@ public class LineActivity extends Activity implements OnLongClickListener{
 		}
 		Double passSchoolLat = lineBean.getPassSchoolLat();
 		Double passSchoolLng = lineBean.getPassSchoolLng();
+		Float passSchoolBr = lineBean.getPassSchoolBr();
 		if(null != passSchoolLat && null != passSchoolLng && 0 != passSchoolLat && 0 != passSchoolLng){
-			if(Distance.GetDistance(curLongitude, curLatitude, passSchoolLng, passSchoolLat) < distance){
+			if(Distance.GetDistance(curLongitude, curLatitude, passSchoolLng, passSchoolLat) < distance
+					&& Distance.getDiff(curBearing, passSchoolBr) < angleError){
 				//tvline.setText(R.string.toast11);
 				playMusic(R.id.btnPassSchool);
 				openScoring(8);
@@ -882,8 +915,10 @@ public class LineActivity extends Activity implements OnLongClickListener{
 		}
 		Double passBusStationLat = lineBean.getPassBusStationLat();
 		Double passBusStationLng = lineBean.getPassBusStationLng();
+		Float passBusStationBr = lineBean.getPassBusStationBr();
 		if(null != passBusStationLat && null != passBusStationLng && 0 != passBusStationLat && 0 != passBusStationLng){
-			if(Distance.GetDistance(curLongitude, curLatitude, passBusStationLng, passBusStationLat) < distance){
+			if(Distance.GetDistance(curLongitude, curLatitude, passBusStationLng, passBusStationLat) < distance
+					&& Distance.getDiff(curBearing, passBusStationBr) < angleError){
 				//tvline.setText(R.string.toast12);
 				playMusic(R.id.btnPassBusStation);
 				openScoring(9);
@@ -891,8 +926,10 @@ public class LineActivity extends Activity implements OnLongClickListener{
 		}
 		Double passSidewalkLat = lineBean.getPassSidewalkLat();
 		Double passSidewalkLng = lineBean.getPassSidewalkLng();
+		Float passSidewalkBr = lineBean.getPassSidewalkBr();
 		if(null != passSidewalkLat && null != passSidewalkLng && 0 != passSidewalkLat && 0 != passSidewalkLng){
-			if(Distance.GetDistance(curLongitude, curLatitude, passSidewalkLng, passSidewalkLat) < distance){
+			if(Distance.GetDistance(curLongitude, curLatitude, passSidewalkLng, passSidewalkLat) < distance
+					&& Distance.getDiff(curBearing, passSidewalkBr) < angleError){
 				//tvline.setText(R.string.toast13);
 				playMusic(R.id.btnPassSidewalk);
 				openScoring(7);
@@ -900,8 +937,10 @@ public class LineActivity extends Activity implements OnLongClickListener{
 		}
 		Double directLineLat = lineBean.getDirectLineLat();
 		Double directLineLng = lineBean.getDirectLineLng();
+		Float directLineBr = lineBean.getDirectLineBr();
 		if(null != directLineLat && null != directLineLng && 0 != directLineLat && 0 != directLineLng){
-			if(Distance.GetDistance(curLongitude, curLatitude, directLineLng, directLineLat) < distance){
+			if(Distance.GetDistance(curLongitude, curLatitude, directLineLng, directLineLat) < distance
+					&& Distance.getDiff(curBearing, directLineBr) < angleError){
 				//tvline.setText(R.string.toast14);
 				playMusic(R.id.btnDirectLine);
 				openScoring(3);
@@ -909,8 +948,10 @@ public class LineActivity extends Activity implements OnLongClickListener{
 		}
 		Double endDirectLineLat = lineBean.getEndDirectLineLat();
 		Double endDirectLineLng = lineBean.getEndDirectLineLng();
+		Float endDirectLineBr = lineBean.getEndDirectLineBr();
 		if(null != endDirectLineLat && null != endDirectLineLng && 0 != endDirectLineLat && 0 != endDirectLineLng){
-			if(Distance.GetDistance(curLongitude, curLatitude, endDirectLineLng, endDirectLineLat) < distance){
+			if(Distance.GetDistance(curLongitude, curLatitude, endDirectLineLng, endDirectLineLat) < distance
+					&& Distance.getDiff(curBearing, endDirectLineBr) < angleError){
 				//tvline.setText(R.string.toast15);
 				playMusic(R.id.btnEndDirectLine);
 				openScoring(3);
@@ -918,8 +959,10 @@ public class LineActivity extends Activity implements OnLongClickListener{
 		}
 		Double overtakeLat = lineBean.getOvertakeLat();
 		Double overtakeLng = lineBean.getOvertakeLng();
+		Float overtakeBr = lineBean.getOvertakeBr();
 		if(null != overtakeLat && null != overtakeLng && 0 != overtakeLat && 0 != overtakeLng){
-			if(Distance.GetDistance(curLongitude, curLatitude, overtakeLng, overtakeLat) < distance){
+			if(Distance.GetDistance(curLongitude, curLatitude, overtakeLng, overtakeLat) < distance
+					&& Distance.getDiff(curBearing, overtakeBr) < angleError){
 				//tvline.setText(R.string.toast16);
 				playMusic(R.id.btnOvertake);
 				openScoring(11);
@@ -927,8 +970,10 @@ public class LineActivity extends Activity implements OnLongClickListener{
 		}
 		Double turnLat = lineBean.getTurnLat();
 		Double turnLng = lineBean.getTurnLng();
+		Float turnBr = lineBean.getTurnBr();
 		if(null != turnLat && null != turnLng && 0 != turnLat && 0 != turnLng){
-			if(Distance.GetDistance(curLongitude, curLatitude, turnLng, turnLat) < distance){
+			if(Distance.GetDistance(curLongitude, curLatitude, turnLng, turnLat) < distance
+					&& Distance.getDiff(curBearing, turnBr) < angleError){
 				//tvline.setText(R.string.toast17);
 				playMusic(R.id.btnTurn);
 				openScoring(12);
@@ -937,8 +982,10 @@ public class LineActivity extends Activity implements OnLongClickListener{
 
 		Double pullOverLat = lineBean.getPullOverLat();
 		Double pullOverLng = lineBean.getPullOverLng();
+		Float pullOverBr = lineBean.getPullOverBr();
 		if(null != pullOverLat && null != pullOverLng && 0 != pullOverLat && 0 != pullOverLng){
-			if(Distance.GetDistance(curLongitude, curLatitude, pullOverLng, pullOverLat) < distance){
+			if(Distance.GetDistance(curLongitude, curLatitude, pullOverLng, pullOverLat) < distance
+					&& Distance.getDiff(curBearing, pullOverBr) < angleError){
 				//tvline.setText(R.string.toast18);
 				playMusic(R.id.btnPullOver);
 				openScoring(13);
@@ -947,8 +994,10 @@ public class LineActivity extends Activity implements OnLongClickListener{
 		
 		Double passingLat = lineBean.getPassingLat();
 		Double passingLng = lineBean.getPassingLng();
+		Float passingBr = lineBean.getPassingBr();
 		if(null != passingLat && null != passingLng && 0 != passingLat && 0 != passingLng){
-			if(Distance.GetDistance(curLongitude, curLatitude, passingLng, passingLat) < distance){
+			if(Distance.GetDistance(curLongitude, curLatitude, passingLng, passingLat) < distance
+					&& Distance.getDiff(curBearing, passingBr) < angleError){
 				//tvline.setText(R.string.toast19);
 				playMusic(R.id.btnPassing);
 				openScoring(10);
@@ -1004,65 +1053,81 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			Double lat = bundle.getDouble(CustomConstant.LATITUDE);
 			//经度
 			Double lng = bundle.getDouble(CustomConstant.LONGITUDE);
+			//方位
+			Float bearing = bundle.getFloat(CustomConstant.BEARING);
 			
-			Log.d(TAG, "onActivityResult() btnId: " + btnId + " lat: " + lat + " lng:　" + lng);
+			Log.d(TAG, "onActivityResult() btnId: " + btnId + " lat: " + lat + " lng:　" + lng + " bearing: " + bearing);
 			
 			switch (btnId) {
 			case R.id.btnChangeLanes:
 				lineBean.setChangeLanesLat(lat);
 				lineBean.setChangeLanesLng(lng);
+				lineBean.setChangeLanesBr(bearing);
 				break;
 			case R.id.btnAheadDirectLine:
 				lineBean.setAheadDirectLineLat(lat);
 				lineBean.setAheadDirectLineLng(lng);
+				lineBean.setAheadDirectLineBr(bearing);
 				break;
 			case R.id.btnTurnLeft:
 				lineBean.setTurnLeftLat(lat);
 				lineBean.setTurnLeftLng(lng);
+				lineBean.setTurnLeftBr(bearing);
 				break;
 			case R.id.btnTurnRight:
 				lineBean.setTurnRightLat(lat);
 				lineBean.setTurnRightLng(lng);
+				lineBean.setTurnRightBr(bearing);
 				break;
 			case R.id.btnSidewalk:
 				lineBean.setSidewalkLat(lat);
 				lineBean.setSidewalkLng(lng);
+				lineBean.setSidewalkBr(bearing);
 				break;
 			case R.id.btnPassSchool:
 				lineBean.setPassSchoolLat(lat);
 				lineBean.setPassSchoolLng(lng);
+				lineBean.setPassSchoolBr(bearing);
 				break;
 			case R.id.btnPassBusStation:
 				lineBean.setPassBusStationLat(lat);
 				lineBean.setPassBusStationLng(lng);
+				lineBean.setPassBusStationBr(bearing);
 				break;
 			case R.id.btnPassSidewalk:
 				lineBean.setPassSidewalkLat(lat);
 				lineBean.setPassSidewalkLng(lng);
+				lineBean.setPassSidewalkBr(bearing);
 				break;
 			case R.id.btnDirectLine:
 				lineBean.setDirectLineLat(lat);
 				lineBean.setDirectLineLng(lng);
+				lineBean.setDirectLineBr(bearing);
 				break;
 			case R.id.btnEndDirectLine:
 				lineBean.setEndDirectLineLat(lat);
 				lineBean.setEndDirectLineLng(lng);
+				lineBean.setEndDirectLineBr(bearing);
 				break;
 			case R.id.btnOvertake:
 				lineBean.setOvertakeLat(lat);
 				lineBean.setOvertakeLng(lng);
+				lineBean.setOvertakeBr(bearing);
 				break;
 			case R.id.btnTurn:
 				lineBean.setTurnLat(lat);
 				lineBean.setTurnLng(lng);
+				lineBean.setTurnBr(bearing);
 				break;
 			case R.id.btnPullOver:
 				lineBean.setPullOverLat(lat);
 				lineBean.setPullOverLng(lng);
+				lineBean.setPullOverBr(bearing);
 				break;
 			case R.id.btnPassing:
 				lineBean.setPassingLat(lat);
 				lineBean.setPassingLng(lng);
+				lineBean.setPassingBr(bearing);
 				break;
 			}
 			boolean ret = dbAdapter.updateLine(lineBean);

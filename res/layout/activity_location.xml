@@ -65,6 +65,31 @@
                  android:ems="20"
             android:inputType="number" />
         </TableRow>
+        
+        <TableRow
+            android:id="@+id/location_tablerow_bearing"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/bearingtext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dip"
+                android:text="方位"
+                android:textSize="14sp"
+            	android:textColor="#000000" />
+
+            <EditText
+                android:id="@+id/bearing_edit"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dip"
+                android:capitalize="none"
+                 android:ems="20"
+            android:inputType="number" />
+        </TableRow>
     </TableLayout>
 
     <LinearLayout

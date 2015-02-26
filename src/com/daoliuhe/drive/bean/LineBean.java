@@ -25,6 +25,10 @@ public class LineBean {
 	 * 前方请变更车道 经度
 	 */
 	private Double changeLanesLng;
+	/**
+	 * 前方请变更车道 方向
+	 */
+	private Float changeLanesBr;
 
 	/**
 	 * 前方路口直行 纬度
@@ -35,6 +39,10 @@ public class LineBean {
 	 * 前方路口直行 经度
 	 */
 	private Double aheadDirectLineLng;
+	/**
+	 * 前方路口直行 方向
+	 */
+	private Float aheadDirectLineBr;
 	
 	/**
 	 * 前方路口左转 纬度
@@ -45,6 +53,10 @@ public class LineBean {
 	 * 前方路口左转 经度
 	 */
 	private Double turnLeftLng;
+	/**
+	 * 前方路口左转 方向
+	 */
+	private Float turnLeftBr;
 	
 	/**
 	 * 前方路口右转 纬度
@@ -55,6 +67,10 @@ public class LineBean {
 	 * 前方路口右转 经度
 	 */
 	private Double turnRightLng; // 经度
+	/**
+	 * 前方路口右转 方向
+	 */
+	private Float turnRightBr; // 方向
 
 	/**
 	 * 前方人形横道 纬度 
@@ -65,6 +81,10 @@ public class LineBean {
 	 * 前方人形横道 经度
 	 */
 	private Double sidewalkLng;
+	/**
+	 * 前方人形横道 方向
+	 */
+	private Float sidewalkBr;
 	
 	/**
 	 * 通过学校区域 纬度
@@ -75,6 +95,10 @@ public class LineBean {
 	 * 通过学校区域 经度
 	 */
 	private Double passSchoolLng;
+	/**
+	 * 通过学校区域 方向
+	 */
+	private Float passSchoolBr;
 
 	/**
 	 * 通过公共汽车站 纬度
@@ -85,6 +109,10 @@ public class LineBean {
 	 * 通过公共汽车站 经度
 	 */
 	private Double passBusStationLng;
+	/**
+	 * 通过公共汽车站 方向
+	 */
+	private Float passBusStationBr;
 	
 	/**
 	 * 通过人行横道 纬度
@@ -95,6 +123,10 @@ public class LineBean {
 	 * 通过人行横道 经度
 	 */
 	private Double passSidewalkLng;
+	/**
+	 * 通过人行横道 方向
+	 */
+	private Float passSidewalkBr;
 
 	/**
 	 * 直线行驶 纬度
@@ -105,6 +137,10 @@ public class LineBean {
 	 * 直线行驶 经度
 	 */
 	private Double directLineLng;
+	/**
+	 * 直线行驶 方向
+	 */
+	private Float directLineBr;
 	
 	/**
 	 * 结束直线行驶 纬度
@@ -115,6 +151,10 @@ public class LineBean {
 	 * 结束直线行驶 经度
 	 */
 	private Double endDirectLineLng;
+	/**
+	 * 结束直线行驶 方向
+	 */
+	private Float endDirectLineBr;
 
 	/**
 	 * 超车 纬度
@@ -125,6 +165,10 @@ public class LineBean {
 	 * 超车 经度
 	 */
 	private Double overtakeLng;
+	/**
+	 * 超车 方向
+	 */
+	private Float overtakeBr;
 	
 	/**
 	 * 前方掉头 纬度
@@ -134,6 +178,10 @@ public class LineBean {
 	 * 前方掉头 经度
 	 */
 	private Double turnLng;
+	/**
+	 * 前方掉头 方向
+	 */
+	private Float turnBr;
 
 	/**
 	 * 请靠边停车 纬度
@@ -145,6 +193,10 @@ public class LineBean {
 	 */
 	private Double pullOverLng;
 	/**
+	 * 请靠边停车 方向
+	 */
+	private Float pullOverBr;
+	/**
 	 * 会车 纬度
 	 */
 	private Double passingLat;
@@ -153,6 +205,10 @@ public class LineBean {
 	 * 会车 经度
 	 */
 	private Double passingLng;
+	/**
+	 * 会车 方向
+	 */
+	private Float passingBr;
 	
 	
 
@@ -514,6 +570,174 @@ public class LineBean {
 		this.passingLng = passingLng;
 	}
 
+	
+	
+	public Float getChangeLanesBr() {
+		return changeLanesBr;
+	}
+
+
+
+	public void setChangeLanesBr(Float changeLanesBr) {
+		this.changeLanesBr = changeLanesBr;
+	}
+
+
+
+	public Float getAheadDirectLineBr() {
+		return aheadDirectLineBr;
+	}
+
+
+
+	public void setAheadDirectLineBr(Float aheadDirectLineBr) {
+		this.aheadDirectLineBr = aheadDirectLineBr;
+	}
+
+
+
+	public Float getTurnLeftBr() {
+		return turnLeftBr;
+	}
+
+
+
+	public void setTurnLeftBr(Float turnLeftBr) {
+		this.turnLeftBr = turnLeftBr;
+	}
+
+
+
+	public Float getTurnRightBr() {
+		return turnRightBr;
+	}
+
+
+
+	public void setTurnRightBr(Float turnRightBr) {
+		this.turnRightBr = turnRightBr;
+	}
+
+
+
+	public Float getSidewalkBr() {
+		return sidewalkBr;
+	}
+
+
+
+	public void setSidewalkBr(Float sidewalkBr) {
+		this.sidewalkBr = sidewalkBr;
+	}
+
+
+
+	public Float getPassSchoolBr() {
+		return passSchoolBr;
+	}
+
+
+
+	public void setPassSchoolBr(Float passSchoolBr) {
+		this.passSchoolBr = passSchoolBr;
+	}
+
+
+
+	public Float getPassBusStationBr() {
+		return passBusStationBr;
+	}
+
+
+
+	public void setPassBusStationBr(Float passBusStationBr) {
+		this.passBusStationBr = passBusStationBr;
+	}
+
+
+
+	public Float getPassSidewalkBr() {
+		return passSidewalkBr;
+	}
+
+
+
+	public void setPassSidewalkBr(Float passSidewalkBr) {
+		this.passSidewalkBr = passSidewalkBr;
+	}
+
+
+
+	public Float getDirectLineBr() {
+		return directLineBr;
+	}
+
+
+
+	public void setDirectLineBr(Float directLineBr) {
+		this.directLineBr = directLineBr;
+	}
+
+
+
+	public Float getEndDirectLineBr() {
+		return endDirectLineBr;
+	}
+
+
+
+	public void setEndDirectLineBr(Float endDirectLineBr) {
+		this.endDirectLineBr = endDirectLineBr;
+	}
+
+
+
+	public Float getOvertakeBr() {
+		return overtakeBr;
+	}
+
+
+
+	public void setOvertakeBr(Float overtakeBr) {
+		this.overtakeBr = overtakeBr;
+	}
+
+
+
+	public Float getTurnBr() {
+		return turnBr;
+	}
+
+
+
+	public void setTurnBr(Float turnBr) {
+		this.turnBr = turnBr;
+	}
+
+
+
+	public Float getPullOverBr() {
+		return pullOverBr;
+	}
+
+
+
+	public void setPullOverBr(Float pullOverBr) {
+		this.pullOverBr = pullOverBr;
+	}
+
+
+
+	public Float getPassingBr() {
+		return passingBr;
+	}
+
+
+
+	public void setPassingBr(Float passingBr) {
+		this.passingBr = passingBr;
+	}
+
 
 
 	@Override
@@ -523,34 +747,48 @@ public class LineBean {
 				.append(" lineName:").append(lineName)
 				.append(" changeLanesLat:").append(changeLanesLat)
 				.append(" changeLanesLng:").append(changeLanesLng)
+				.append(" changeLanesBr:").append(changeLanesBr)
 				.append(" aheadDirectLineLat:").append(aheadDirectLineLat)
 				.append(" aheadDirectLineLng:").append(aheadDirectLineLng)
+				.append(" aheadDirectLineBr:").append(aheadDirectLineBr)
 				.append(" turnLeftLat:").append(turnLeftLat)
 				.append(" turnLeftLng:").append(turnLeftLng)
+				.append(" turnLeftBr:").append(turnLeftBr)
 				.append(" turnRightLat:").append(turnRightLat)
 				.append(" turnRightLng:").append(turnRightLng)
+				.append(" turnRightBr:").append(turnRightBr)
 				.append(" sidewalkLat:").append(sidewalkLat)
 				.append(" sidewalkLng:").append(sidewalkLng)
+				.append(" sidewalkBr:").append(sidewalkBr)
 				
 				.append(" passSchoolLat:").append(passSchoolLat)
 				.append(" passSchoolLng:").append(passSchoolLng)
+				.append(" passSchoolBr:").append(passSchoolBr)
 				.append(" passBusStationLat:").append(passBusStationLat)
 				.append(" passBusStationLng:").append(passBusStationLng)
+				.append(" passBusStationBr:").append(passBusStationBr)
 				.append(" passSidewalkLat:").append(passSidewalkLat)
 				.append(" passSidewalkLng:").append(passSidewalkLng)
+				.append(" passSidewalkBr:").append(passSidewalkBr)
 				.append(" directLineLat:").append(directLineLat)
 				.append(" directLineLng:").append(directLineLng)
+				.append(" directLineBr:").append(directLineBr)
 				.append(" endDirectLineLat").append(endDirectLineLat)
 				.append(" endDirectLineLng").append(endDirectLineLng)
+				.append(" endDirectLineBr").append(endDirectLineBr)
 				
 				.append(" overtakeLat:").append(overtakeLat)
 				.append(" overtakeLng:").append(overtakeLng)
+				.append(" overtakeBr:").append(overtakeBr)
 				.append(" turnLat:").append(turnLat)
 				.append(" turnLng:").append(turnLng)
+				.append(" turnBr:").append(turnBr)
 				.append(" pullOverLat:").append(pullOverLat)
 				.append(" pullOverLng:").append(pullOverLng)
+				.append(" pullOverBr:").append(pullOverBr)
 				.append(" passingLat:").append(passingLat)
-				.append(" passingLng:").append(passingLng);		
+				.append(" passingLng:").append(passingLng)	
+				.append(" passingBr:").append(passingBr);		
 		
 		return history.toString();
 	}

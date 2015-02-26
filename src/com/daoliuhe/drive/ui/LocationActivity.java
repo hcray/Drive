@@ -19,6 +19,8 @@ public class LocationActivity extends Activity {
 	private EditText longitudeEdit;
 
 	private EditText latitudeEdit;
+
+	private EditText bearingEdit;
 	
 	private Button btnGetCurLocal;
 
@@ -31,10 +33,15 @@ public class LocationActivity extends Activity {
 	private Double lat;
 	
 	private Double lng;
+
+	private Float bearing;
 	//当前的经度
 	private Double curLongitude;
 	//当前的纬度
 	private Double curLatitude;
+
+	//当前的纬度
+	private Float curBearing;
 	
 	private static final String TAG = "LocationActivity";
 
@@ -48,10 +55,19 @@ public class LocationActivity extends Activity {
 			//保存的经纬度
 			lat = extras.getDouble(CustomConstant.LATITUDE);
 			lng = extras.getDouble(CustomConstant.LONGITUDE);
+			bearing = extras.getFloat(CustomConstant.BEARING);
+			
 			//当前的经纬度
 			curLongitude = extras.getDouble(CustomConstant.CUR_LONGITUDE);
 			curLatitude = extras.getDouble(CustomConstant.CUR_LATITUDE);
-			Log.d(TAG, "get from lineActivity btnId: " + btnId + " lat: " + lat + " lng: " + lng + " curLongitude:" + curLongitude + " curLatitude:" + curLatitude);
+			curBearing = extras.getFloat(CustomConstant.CUR_BEARING);
+			Log.d(TAG, "get from lineActivity btnId: " + btnId 
+					+ " lat: " + lat
+					+ " lng: " + lng 
+					+ " bearing: " + bearing 
+					+ " curLongitude:" + curLongitude
+					+ " curBearing:" + curBearing
+					+ " curLatitude:" + curLatitude);
 		}
 		
 		//经度
@@ -60,6 +76,9 @@ public class LocationActivity extends Activity {
 		//纬度
 		latitudeEdit = (EditText) this.findViewById(R.id.latitude_edit);
 		latitudeEdit.setText(lat.toString());
+		//方位
+		bearingEdit = (EditText) this.findViewById(R.id.bearing_edit);
+		bearingEdit.setText(bearing.toString());
 		//获取当前位置
 		btnGetCurLocal = (Button) this.findViewById(R.id.btnGetCurLocal);
 		//保存按钮
@@ -73,7 +92,8 @@ public class LocationActivity extends Activity {
 			public void onClick(View v) {
 				String longitudeEditValue = longitudeEdit.getText().toString();
 				String latitudeEditValue = latitudeEdit.getText().toString();
-				Log.d(TAG,"save onclick lat:"+latitudeEditValue + " lng:" + longitudeEditValue);
+				String bearingEditValue = bearingEdit.getText().toString();
+				Log.d(TAG,"save onclick lat:"+latitudeEditValue + " lng:" + longitudeEditValue + " bearing: " + bearingEditValue);
 				
 				//判断经度的输入是否为空
 				if (longitudeEditValue == null 
@@ -91,6 +111,14 @@ public class LocationActivity extends Activity {
 					return ;
 				}
 				
+				//判断纬度的输入是否为空
+				if (bearingEditValue == null 
+						|| bearingEditValue.equals("")
+						|| bearingEditValue.trim().equals("")) {
+					Toast.makeText(getApplicationContext(), "请输入有效的方位", Toast.LENGTH_SHORT).show();
+					return ;
+				}
+				
 				Intent mIntent = new Intent();
 				//按钮id
 				mIntent.putExtra(CustomConstant.BUTTONID , btnId);
@@ -98,6 +126,8 @@ public class LocationActivity extends Activity {
 				mIntent.putExtra(CustomConstant.LONGITUDE, Double.parseDouble(longitudeEditValue));
 				//纬度
 				mIntent.putExtra(CustomConstant.LATITUDE, Double.parseDouble(latitudeEditValue));
+				//方位
+				mIntent.putExtra(CustomConstant.BEARING, Float.parseFloat(bearingEditValue));
 				setResult(RESULT_OK, mIntent);
 				finish();
 			}});
@@ -109,6 +139,8 @@ public class LocationActivity extends Activity {
 				longitudeEdit.setText(curLongitude.toString());
 				//当前纬度
 				latitudeEdit.setText(curLatitude.toString());
+				//当前方位
+				bearingEdit.setText(curBearing.toString());
 			}
 		});
 		btnLocalCancel.setOnClickListener(new OnClickListener(){

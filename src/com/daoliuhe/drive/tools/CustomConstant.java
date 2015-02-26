@@ -50,6 +50,11 @@ public class CustomConstant {
 	public static final String LATITUDE = "latitude";
 
 	/**
+	 * 方位
+	 */
+	public static final String BEARING = "bearing";
+	
+	/**
 	 * 当前的经度
 	 */
 	public static final String CUR_LONGITUDE = "curLongitude";
@@ -58,6 +63,11 @@ public class CustomConstant {
 	 * 当前的纬度
 	 */
 	public static final String CUR_LATITUDE = "curLatitude";
+
+	/**
+	 * 当前的方位
+	 */
+	public static final String CUR_BEARING = "curBearing";
 	
 	
 	/**
