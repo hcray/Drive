@@ -36,7 +36,7 @@ import com.daoliuhe.drive.tools.Distance;
  * @author CYY
  *
  */
-public class LineActivity extends Activity implements OnLongClickListener{
+public class LineActivity extends Activity /* implements OnLongClickListener*/{
 
 	// private static final int ACTIVITY_LOGIN = 0;
 	private static final int ACTIVITY_ITEM_ADD = 1;
@@ -139,120 +139,6 @@ public class LineActivity extends Activity implements OnLongClickListener{
 				lineBean.setLineName(lineName);
 				//设置标题
 				setTitle(lineName);
-			}
-			Double changeLanesLat = extras.getDouble(DbAdapter.KEY_CHANGELANES_LAT);
-			if(null != changeLanesLat){
-				lineBean.setChangeLanesLat(changeLanesLat);
-			}
-			Double changeLanesLng = extras.getDouble(DbAdapter.KEY_CHANGELANES_LNG);
-			if(null != changeLanesLng){
-				lineBean.setChangeLanesLng(changeLanesLng);
-			}
-			Double aheadDirectLineLat = extras.getDouble(DbAdapter.KEY_AHEADDIRECTLINE_LAT);
-			if(null != aheadDirectLineLat){
-				lineBean.setAheadDirectLineLat(aheadDirectLineLat);
-			}
-			Double aheadDirectLineLng = extras.getDouble(DbAdapter.KEY_AHEADDIRECTLINE_LNG);
-			if(null != aheadDirectLineLng){
-				lineBean.setAheadDirectLineLng(aheadDirectLineLng);
-			}
-			Double turnLeftLat = extras.getDouble(DbAdapter.KEY_TURNLEFT_LAT);
-			if(null != turnLeftLat){
-				lineBean.setTurnLeftLat(turnLeftLat);
-			}
-			Double turnLeftLng = extras.getDouble(DbAdapter.KEY_TURNLEFT_LNG);
-			if(null != turnLeftLng){
-				lineBean.setTurnLeftLng(turnLeftLng);
-			}
-			Double turnRightLat = extras.getDouble(DbAdapter.KEY_TURNRIGHT_LAT);
-			if(null != turnRightLat){
-				lineBean.setTurnRightLat(turnRightLat);
-			}
-			Double turnRightLng = extras.getDouble(DbAdapter.KEY_TURNRIGHT_LNG);
-			if(null != turnRightLng){
-				lineBean.setTurnRightLng(turnRightLng);
-			}
-			Double sidewalkLat = extras.getDouble(DbAdapter.KEY_SIDEWALK_LAT);
-			if(null != sidewalkLat){
-				lineBean.setSidewalkLat(sidewalkLat);
-			}
-			Double sidewalkLng = extras.getDouble(DbAdapter.KEY_SIDEWALK_LNG);
-			if(null != sidewalkLng){
-				lineBean.setSidewalkLng(sidewalkLng);
-			}
-			Double passSchoolLat = extras.getDouble(DbAdapter.KEY_PASSSCHOOL_LAT);
-			if(null != passSchoolLat){
-				lineBean.setPassSchoolLat(passSchoolLat);
-			}
-			Double passSchoolLng = extras.getDouble(DbAdapter.KEY_PASSSCHOOL_LNG);
-			if(null != passSchoolLng){
-				lineBean.setPassSchoolLng(passSchoolLng);
-			}
-			Double passBusStationLat = extras.getDouble(DbAdapter.KEY_PASSBUSSTATION_LAT);
-			if(null != passBusStationLat){
-				lineBean.setPassBusStationLat(passBusStationLat);
-			}
-			Double passBusStationLng = extras.getDouble(DbAdapter.KEY_PASSBUSSTATION_LNG);
-			if(null != passBusStationLng){
-				lineBean.setPassBusStationLng(passBusStationLng);
-			}
-			Double passSidewalkLat = extras.getDouble(DbAdapter.KEY_PASSSIDEWALK_LAT);
-			if(null != passSidewalkLat){
-				lineBean.setPassSidewalkLat(passSidewalkLat);
-			}
-			Double passSidewalkLng = extras.getDouble(DbAdapter.KEY_PASSSIDEWALK_LNG);
-			if(null != passSidewalkLng){
-				lineBean.setPassSidewalkLng(passSidewalkLng);
-			}
-			Double directLineLat = extras.getDouble(DbAdapter.KEY_DIRECTLINE_LAT);
-			if(null != directLineLat){
-				lineBean.setDirectLineLat(directLineLat);
-			}
-			Double directLineLng = extras.getDouble(DbAdapter.KEY_DIRECTLINE_LNG);
-			if(null != directLineLng){
-				lineBean.setDirectLineLng(directLineLng);
-			}
-			Double endDirectLineLat = extras.getDouble(DbAdapter.KEY_ENDDIRECTLINE_LAT);
-			if(null != endDirectLineLat){
-				lineBean.setEndDirectLineLat(endDirectLineLat);
-			}
-			Double endDirectLineLng = extras.getDouble(DbAdapter.KEY_ENDDIRECTLINE_LNG);
-			if(null != endDirectLineLng){
-				lineBean.setEndDirectLineLng(endDirectLineLng);
-			}
-		
-		
-			Double overtakeLat = extras.getDouble(DbAdapter.KEY_OVERTAKE_LAT);
-			if(null != overtakeLat){
-				lineBean.setOvertakeLat(overtakeLat);
-			}
-			Double overtakeLng = extras.getDouble(DbAdapter.KEY_OVERTAKE_LNG);
-			if(null != overtakeLng){
-				lineBean.setOvertakeLng(overtakeLng);
-			}
-			Double turnLat = extras.getDouble(DbAdapter.KEY_TURN_LAT);
-			if(null != turnLat){
-				lineBean.setTurnLat(turnLat);
-			}
-			Double turnLng = extras.getDouble(DbAdapter.KEY_TURN_LNG);
-			if(null != turnLng){
-				lineBean.setTurnLng(turnLng);
-			}
-			Double pullOverLat = extras.getDouble(DbAdapter.KEY_PULLOVER_LAT);
-			if(null != pullOverLat){
-				lineBean.setPullOverLat(pullOverLat);
-			}
-			Double pullOverLng = extras.getDouble(DbAdapter.KEY_PULLOVER_LNG);
-			if(null != pullOverLng){
-				lineBean.setPullOverLng(pullOverLng);
-			}
-			Double passingLat = extras.getDouble(DbAdapter.KEY_PASSING_LAT);
-			if(null != passingLat){
-				lineBean.setPassingLat(passingLat);
-			}
-			Double passingLng = extras.getDouble(DbAdapter.KEY_PASSING_LNG);
-			if(null != passingLng){
-				lineBean.setPassingLng(passingLng);
 			}
 		}
 		
@@ -375,7 +261,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 		});
 		
 		btnChangeLanes = (Button) this.findViewById(R.id.btnChangeLanes);
-		btnChangeLanes.setOnLongClickListener(this);
+//		btnChangeLanes.setOnLongClickListener(this);
 		btnChangeLanes.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -386,7 +272,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			}
 		});
 		btnAheadDirectLine = (Button) this.findViewById(R.id.btnAheadDirectLine);
-		btnAheadDirectLine.setOnLongClickListener(this);
+//		btnAheadDirectLine.setOnLongClickListener(this);
 		btnAheadDirectLine.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -397,7 +283,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			}
 		});
 		btnTurnLeft = (Button) this.findViewById(R.id.btnTurnLeft);
-		btnTurnLeft.setOnLongClickListener(this);
+//		btnTurnLeft.setOnLongClickListener(this);
 		btnTurnLeft.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -408,7 +294,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			}
 		});
 		btnTurnRight = (Button) this.findViewById(R.id.btnTurnRight);
-		btnTurnRight.setOnLongClickListener(this);
+//		btnTurnRight.setOnLongClickListener(this);
 		btnTurnRight.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -419,7 +305,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			}
 		});
 		btnSidewalk = (Button) this.findViewById(R.id.btnSidewalk);
-		btnSidewalk.setOnLongClickListener(this);
+//		btnSidewalk.setOnLongClickListener(this);
 		btnSidewalk.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -431,7 +317,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 		});
 
 		btnPassSchool = (Button) this.findViewById(R.id.btnPassSchool);
-		btnPassSchool.setOnLongClickListener(this);
+//		btnPassSchool.setOnLongClickListener(this);
 		btnPassSchool.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -442,7 +328,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			}
 		});
 		btnPassBusStation = (Button) this.findViewById(R.id.btnPassBusStation);
-		btnPassBusStation.setOnLongClickListener(this);
+//		btnPassBusStation.setOnLongClickListener(this);
 		btnPassBusStation.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -453,7 +339,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			}
 		});
 		btnPassSidewalk = (Button) this.findViewById(R.id.btnPassSidewalk);
-		btnPassSidewalk.setOnLongClickListener(this);
+//		btnPassSidewalk.setOnLongClickListener(this);
 		btnPassSidewalk.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -464,7 +350,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			}
 		});
 		btnDirectLine = (Button) this.findViewById(R.id.btnDirectLine);
-		btnDirectLine.setOnLongClickListener(this);
+//		btnDirectLine.setOnLongClickListener(this);
 		btnDirectLine.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -475,7 +361,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			}
 		});
 		btnEndDirectLine = (Button) this.findViewById(R.id.btnEndDirectLine);
-		btnEndDirectLine.setOnLongClickListener(this);
+//		btnEndDirectLine.setOnLongClickListener(this);
 		btnEndDirectLine.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -487,7 +373,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 		});
 
 		btnOvertake = (Button) this.findViewById(R.id.btnOvertake);
-		btnOvertake.setOnLongClickListener(this);
+//		btnOvertake.setOnLongClickListener(this);
 		btnOvertake.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -498,7 +384,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			}
 		});
 		btnTurn = (Button) this.findViewById(R.id.btnTurn);
-		btnTurn.setOnLongClickListener(this);
+//		btnTurn.setOnLongClickListener(this);
 		btnTurn.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -509,7 +395,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			}
 		});
 		btnPullOver = (Button) this.findViewById(R.id.btnPullOver);
-		btnPullOver.setOnLongClickListener(this);
+//		btnPullOver.setOnLongClickListener(this);
 		btnPullOver.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -520,7 +406,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			}
 		});
 		btnPassing = (Button) this.findViewById(R.id.btnPassing);
-		btnPassing.setOnLongClickListener(this);
+//		btnPassing.setOnLongClickListener(this);
 		btnPassing.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -625,7 +511,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 
 	}
 
-	
+	/*
 	@Override
 	public boolean onLongClick(View v) {
 		Log.i(TAG, "view: " + v.getId());
@@ -716,6 +602,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 		startActivityForResult(intent, ACTIVITY_ITEM_ADD);
 		return true;
 	}
+	*/
 	
 //	// 位置监听
 //	private LocationListener locationListener = new LocationListener() {
@@ -843,7 +730,8 @@ public class LineActivity extends Activity implements OnLongClickListener{
 		//速度
 		//float curSpeed = location.getSpeed();
 		
-		Double changeLanesLat = lineBean.getChangeLanesLat();
+		/*		
+ 		Double changeLanesLat = lineBean.getChangeLanesLat();
 		Double changeLanesLng = lineBean.getChangeLanesLng();
 		Float changeLanesBr = lineBean.getChangeLanesBr();
 		
@@ -1003,6 +891,7 @@ public class LineActivity extends Activity implements OnLongClickListener{
 				openScoring(10);
 			}
 		}
+		*/
 	}
 
 //	/**
@@ -1060,74 +949,74 @@ public class LineActivity extends Activity implements OnLongClickListener{
 			
 			switch (btnId) {
 			case R.id.btnChangeLanes:
-				lineBean.setChangeLanesLat(lat);
-				lineBean.setChangeLanesLng(lng);
-				lineBean.setChangeLanesBr(bearing);
+//				lineBean.setChangeLanesLat(lat);
+//				lineBean.setChangeLanesLng(lng);
+//				lineBean.setChangeLanesBr(bearing);
 				break;
 			case R.id.btnAheadDirectLine:
-				lineBean.setAheadDirectLineLat(lat);
-				lineBean.setAheadDirectLineLng(lng);
-				lineBean.setAheadDirectLineBr(bearing);
+//				lineBean.setAheadDirectLineLat(lat);
+//				lineBean.setAheadDirectLineLng(lng);
+//				lineBean.setAheadDirectLineBr(bearing);
 				break;
 			case R.id.btnTurnLeft:
-				lineBean.setTurnLeftLat(lat);
-				lineBean.setTurnLeftLng(lng);
-				lineBean.setTurnLeftBr(bearing);
+//				lineBean.setTurnLeftLat(lat);
+//				lineBean.setTurnLeftLng(lng);
+//				lineBean.setTurnLeftBr(bearing);
 				break;
 			case R.id.btnTurnRight:
-				lineBean.setTurnRightLat(lat);
-				lineBean.setTurnRightLng(lng);
-				lineBean.setTurnRightBr(bearing);
+//				lineBean.setTurnRightLat(lat);
+//				lineBean.setTurnRightLng(lng);
+//				lineBean.setTurnRightBr(bearing);
 				break;
 			case R.id.btnSidewalk:
-				lineBean.setSidewalkLat(lat);
-				lineBean.setSidewalkLng(lng);
-				lineBean.setSidewalkBr(bearing);
+//				lineBean.setSidewalkLat(lat);
+//				lineBean.setSidewalkLng(lng);
+//				lineBean.setSidewalkBr(bearing);
 				break;
 			case R.id.btnPassSchool:
-				lineBean.setPassSchoolLat(lat);
-				lineBean.setPassSchoolLng(lng);
-				lineBean.setPassSchoolBr(bearing);
+//				lineBean.setPassSchoolLat(lat);
+//				lineBean.setPassSchoolLng(lng);
+//				lineBean.setPassSchoolBr(bearing);
 				break;
 			case R.id.btnPassBusStation:
-				lineBean.setPassBusStationLat(lat);
-				lineBean.setPassBusStationLng(lng);
-				lineBean.setPassBusStationBr(bearing);
+//				lineBean.setPassBusStationLat(lat);
+//				lineBean.setPassBusStationLng(lng);
+//				lineBean.setPassBusStationBr(bearing);
 				break;
 			case R.id.btnPassSidewalk:
-				lineBean.setPassSidewalkLat(lat);
-				lineBean.setPassSidewalkLng(lng);
-				lineBean.setPassSidewalkBr(bearing);
+//				lineBean.setPassSidewalkLat(lat);
+//				lineBean.setPassSidewalkLng(lng);
+//				lineBean.setPassSidewalkBr(bearing);
 				break;
 			case R.id.btnDirectLine:
-				lineBean.setDirectLineLat(lat);
-				lineBean.setDirectLineLng(lng);
-				lineBean.setDirectLineBr(bearing);
+//				lineBean.setDirectLineLat(lat);
+//				lineBean.setDirectLineLng(lng);
+//				lineBean.setDirectLineBr(bearing);
 				break;
 			case R.id.btnEndDirectLine:
-				lineBean.setEndDirectLineLat(lat);
-				lineBean.setEndDirectLineLng(lng);
-				lineBean.setEndDirectLineBr(bearing);
+//				lineBean.setEndDirectLineLat(lat);
+//				lineBean.setEndDirectLineLng(lng);
+//				lineBean.setEndDirectLineBr(bearing);
 				break;
 			case R.id.btnOvertake:
-				lineBean.setOvertakeLat(lat);
-				lineBean.setOvertakeLng(lng);
-				lineBean.setOvertakeBr(bearing);
+//				lineBean.setOvertakeLat(lat);
+//				lineBean.setOvertakeLng(lng);
+//				lineBean.setOvertakeBr(bearing);
 				break;
 			case R.id.btnTurn:
-				lineBean.setTurnLat(lat);
-				lineBean.setTurnLng(lng);
-				lineBean.setTurnBr(bearing);
+//				lineBean.setTurnLat(lat);
+//				lineBean.setTurnLng(lng);
+//				lineBean.setTurnBr(bearing);
 				break;
 			case R.id.btnPullOver:
-				lineBean.setPullOverLat(lat);
-				lineBean.setPullOverLng(lng);
-				lineBean.setPullOverBr(bearing);
+//				lineBean.setPullOverLat(lat);
+//				lineBean.setPullOverLng(lng);
+//				lineBean.setPullOverBr(bearing);
 				break;
 			case R.id.btnPassing:
-				lineBean.setPassingLat(lat);
-				lineBean.setPassingLng(lng);
-				lineBean.setPassingBr(bearing);
+//				lineBean.setPassingLat(lat);
+//				lineBean.setPassingLng(lng);
+//				lineBean.setPassingBr(bearing);
 				break;
 			}
 			boolean ret = dbAdapter.updateLine(lineBean);
