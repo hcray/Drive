@@ -90,6 +90,29 @@
                  android:ems="20"
             android:inputType="number" />
         </TableRow>
+        
+        <TableRow
+            android:id="@+id/location_tablerow_voiceType"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/voiceTypeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dip"
+                android:text="语音"
+                android:textSize="14sp"
+            	android:textColor="#000000" />
+            
+            <Spinner
+                android:id="@+id/spinnerVoiceType"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dip"
+                />
+        </TableRow>
     </TableLayout>
 
     <LinearLayout

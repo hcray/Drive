@@ -25,8 +25,16 @@
             android:textSize="20.0dip" />
 
         <Button
-            android:id="@+id/btnScoring"
+            android:id="@+id/btnLineParam"
             android:layout_below="@id/tv_line"
+            android:layout_width="fill_parent"
+            android:layout_height="60dp"
+            android:text="@string/title_activity_param" >
+        </Button>
+        
+        <Button
+            android:id="@+id/btnScoring"
+            android:layout_below="@id/btnLineParam"
             android:layout_width="fill_parent"
             android:layout_height="60dp"
             android:text="@string/title_activity_scoring" >
