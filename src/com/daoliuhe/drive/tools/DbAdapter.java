@@ -267,7 +267,7 @@ public class DbAdapter {
 		
 		Integer lineId = locationBean.getLineId();
 		if(null != lineId && lineId > 0){
-			initialValues.put(KEY_LINE_NAME, lineId);
+			initialValues.put(KEY_LINEID, lineId);
 		}
 		
 		Integer voiceType = locationBean.getVoiceType();
