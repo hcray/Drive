@@ -62,6 +62,11 @@
             android:label="@string/title_activity_location"
             android:screenOrientation="landscape" >
         </activity>
+        <activity
+            android:name="com.daoliuhe.drive.ui.LocationListActivity"
+            android:label="@string/title_activity_location_list"
+            android:screenOrientation="landscape" >
+        </activity>
 
         <service
             android:name="com.daoliuhe.drive.ui.SoundService"

@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.daoliuhe.drive.R;
 import com.daoliuhe.drive.tools.CustomConstant;
+import com.daoliuhe.drive.tools.DbAdapter;
 
 public class LocationActivity extends Activity {
 	
@@ -28,20 +29,9 @@ public class LocationActivity extends Activity {
 
 	private Button btnLocalCancel;
 	
-	private int btnId;
-	
-	private Double lat;
-	
-	private Double lng;
+	private int lineId;
 
-	private Float bearing;
-	//当前的经度
-	private Double curLongitude;
-	//当前的纬度
-	private Double curLatitude;
-
-	//当前的纬度
-	private Float curBearing;
+	private int id;
 	
 	private static final String TAG = "LocationActivity";
 
@@ -51,34 +41,18 @@ public class LocationActivity extends Activity {
 		setContentView(R.layout.activity_location);
 		Bundle extras = this.getIntent().getExtras();
 		if (extras != null) {
-			btnId = extras.getInt(CustomConstant.BUTTONID);
-			//保存的经纬度
-			lat = extras.getDouble(CustomConstant.LATITUDE);
-			lng = extras.getDouble(CustomConstant.LONGITUDE);
-			bearing = extras.getFloat(CustomConstant.BEARING);
-			
-			//当前的经纬度
-			curLongitude = extras.getDouble(CustomConstant.CUR_LONGITUDE);
-			curLatitude = extras.getDouble(CustomConstant.CUR_LATITUDE);
-			curBearing = extras.getFloat(CustomConstant.CUR_BEARING);
-			Log.d(TAG, "get from lineActivity btnId: " + btnId 
-					+ " lat: " + lat
-					+ " lng: " + lng 
-					+ " bearing: " + bearing 
-					+ " curLongitude:" + curLongitude
-					+ " curBearing:" + curBearing
-					+ " curLatitude:" + curLatitude);
+			//路线id
+			lineId = extras.getInt(DbAdapter.KEY_LINEID);
+			//坐标id
+			id = extras.getInt(DbAdapter.KEY_ID);
 		}
 		
 		//经度
 		longitudeEdit = (EditText) this.findViewById(R.id.longitude_edit);
-		longitudeEdit.setText(lng.toString());
 		//纬度
 		latitudeEdit = (EditText) this.findViewById(R.id.latitude_edit);
-		latitudeEdit.setText(lat.toString());
 		//方位
 		bearingEdit = (EditText) this.findViewById(R.id.bearing_edit);
-		bearingEdit.setText(bearing.toString());
 		//获取当前位置
 		btnGetCurLocal = (Button) this.findViewById(R.id.btnGetCurLocal);
 		//保存按钮
@@ -120,8 +94,10 @@ public class LocationActivity extends Activity {
 				}
 				
 				Intent mIntent = new Intent();
-				//按钮id
-				mIntent.putExtra(CustomConstant.BUTTONID , btnId);
+				//路线id
+				mIntent.putExtra(DbAdapter.KEY_LINEID , lineId);
+				//坐标id
+				mIntent.putExtra(DbAdapter.KEY_ID , id);
 				//经度
 				mIntent.putExtra(CustomConstant.LONGITUDE, Double.parseDouble(longitudeEditValue));
 				//纬度
@@ -135,12 +111,7 @@ public class LocationActivity extends Activity {
 		btnGetCurLocal.setOnClickListener(new OnClickListener(){
 			@Override
 			public void onClick(View v) {
-				//当前经度
-				longitudeEdit.setText(curLongitude.toString());
-				//当前纬度
-				latitudeEdit.setText(curLatitude.toString());
-				//当前方位
-				bearingEdit.setText(curBearing.toString());
+				
 			}
 		});
 		btnLocalCancel.setOnClickListener(new OnClickListener(){

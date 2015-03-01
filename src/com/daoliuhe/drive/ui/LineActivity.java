@@ -65,7 +65,7 @@ public class LineActivity extends Activity /* implements OnLongClickListener*/{
 	private Button btnLights1;
 	private Button btnLights2;
 	private Button btnLights3;
-	private Button btnShiftGears;
+	private Button btnReset;
 	private Button btnStart;
 
 	private Button btnChangeLanes;
@@ -84,9 +84,13 @@ public class LineActivity extends Activity /* implements OnLongClickListener*/{
 	private Button btnTurn;
 	private Button btnPullOver;
 	private Button btnPassing;
-	private Button btnReset;
+	private Button btnShiftGears;
 
+	//设置坐标点
+	private Button btnLineParam;
+	//评分标准
 	private Button btnScoring;
+	//返回
 	private Button btnLineReturn;
 	
 	private DbAdapter dbAdapter;
@@ -150,6 +154,21 @@ public class LineActivity extends Activity /* implements OnLongClickListener*/{
 
 		tvline = (TextView) this.findViewById(R.id.tv_line);
 		tvline.setMovementMethod(ScrollingMovementMethod.getInstance());
+		
+		//坐标点的录入
+		btnLineParam = (Button) this.findViewById(R.id.btnLineParam);
+		OnClickListener btnLineParamClick = new OnClickListener(){
+			@Override
+			public void onClick(View v) {
+				//坐标点
+				Intent intent = new Intent();
+				intent.setClass(LineActivity.this, LocationListActivity.class);
+				intent.putExtra(DbAdapter.KEY_ID, lineBean.getId());
+				intent.putExtra(DbAdapter.KEY_LINE_NAME, lineBean.getLineName());
+				startActivity(intent);
+			}
+		};
+		btnLineParam.setOnClickListener(btnLineParamClick);
 		
 		//评分标准
 		btnScoring = (Button) this.findViewById(R.id.btnScoring);
@@ -241,6 +260,7 @@ public class LineActivity extends Activity /* implements OnLongClickListener*/{
 			public void onClick(View v) {
 				//tvline.setText(R.string.toast04);
 				playMusic(v.getId());
+				openScoring(4);
 
 			}
 		});
@@ -1169,6 +1189,10 @@ public class LineActivity extends Activity /* implements OnLongClickListener*/{
 				
 				case R.id.btnPullOver : 
 					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.pull_over);
+					break;
+					
+				case R.id.btnPassing: 
+					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.psssing);
 					break;
 				
 				default:

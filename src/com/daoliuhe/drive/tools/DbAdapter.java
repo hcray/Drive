@@ -349,7 +349,7 @@ public class DbAdapter {
 	 */
 	public List<LocationBean> selectAllLocation() throws SQLException {
 		Log.d(TAG,"selectAllLocation()");
-		//路线集合
+		//坐标集合
 		List<LocationBean> list = new ArrayList<LocationBean>();
 		
 		Cursor mCursor =
@@ -476,7 +476,7 @@ public class DbAdapter {
 	 * @return 坐标集合
 	 * @throws SQLException
 	 */
-	public LocationBean selectLocationByLineId(int lineId) throws SQLException {
+	public List<LocationBean> selectLocationByLineId(int lineId) throws SQLException {
 		Log.d(TAG,"selectLocationById(int rowId)");
 		Cursor mCursor =
 				mDb.query(true, DATABASE_TABLE_LOCATION, new String[] {
@@ -486,10 +486,11 @@ public class DbAdapter {
 		if (mCursor != null) {
 			mCursor.moveToFirst();
 		}
-		
-		LocationBean locationBean = new LocationBean();
+		//坐标集合
+		List<LocationBean> list = new ArrayList<LocationBean>();
 		
 		for(mCursor.moveToFirst();!mCursor.isAfterLast();mCursor.moveToNext()){
+			LocationBean locationBean = new LocationBean();
 			
 			int idIndex = mCursor.getColumnIndex(KEY_ID);
 			int lineIdIndex = mCursor.getColumnIndex(KEY_LINEID);  
@@ -527,8 +528,10 @@ public class DbAdapter {
 			if(null != bearing){
 				locationBean.setBearing(bearing);
 			}
+			
+			list.add(locationBean);
 		}
 		mCursor.close();
-		return locationBean;
+		return list;
 	}
 }

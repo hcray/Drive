@@ -18,7 +18,7 @@
         android:background="@drawable/sidestyle">
 
         <Button
-            android:id="@+id/btnSubjectReturn"
+            android:id="@+id/btnLocationListReturn"
             android:layout_width="fill_parent"
             android:layout_height="60dp"
             android:text="@string/back" >
@@ -31,7 +31,7 @@
         android:layout_weight="4" >
 
         <ListView
-            android:id="@+id/subjectList"
+            android:id="@+id/locationList"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:divider="#8a8a8a"
