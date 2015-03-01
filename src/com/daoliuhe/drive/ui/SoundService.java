@@ -81,8 +81,8 @@ public class SoundService extends Service {
 				uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.light03);
 				break;
 			
-			case R.id.btnLights4: 
-				uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.light04);
+			case R.id.btnShiftGears: 
+				uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.shift_gears);
 				break;
 			
 			case R.id.btnStart: 

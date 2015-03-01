@@ -93,11 +93,11 @@
                     android:textSize="20sp" />
 
                 <Button
-                    android:id="@+id/btnLights4"
+                    android:id="@+id/btnReset"
                     android:layout_width="wrap_content"
                     android:layout_height="70dp"
                     android:layout_weight="1"
-                    android:text="模拟灯光操作四"
+                    android:text="停止播放"
                     android:textColor="#5e5e5e"
                     android:textSize="20sp" />
             </TableRow>
@@ -251,7 +251,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="70dp"
                     android:layout_weight="1"
-                    android:text="请靠边停车"
+                    android:text="靠边停车"
                     android:textColor="#5e5e5e"
                     android:textSize="20sp" />
 
@@ -265,11 +265,11 @@
                     android:textSize="20sp" />
 
                 <Button
-                    android:id="@+id/btnReset"
+                    android:id="@+id/btnShiftGears"
                     android:layout_width="wrap_content"
                     android:layout_height="70dp"
                     android:layout_weight="1"
-                    android:text="重置"
+                    android:text="加减挡位操作"
                     android:textColor="#5e5e5e"
                     android:textSize="20sp" />
             </TableRow>

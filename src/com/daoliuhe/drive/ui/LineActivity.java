@@ -20,7 +20,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
@@ -30,7 +29,6 @@ import com.daoliuhe.drive.R;
 import com.daoliuhe.drive.bean.LineBean;
 import com.daoliuhe.drive.tools.CustomConstant;
 import com.daoliuhe.drive.tools.DbAdapter;
-import com.daoliuhe.drive.tools.Distance;
 
 /**
  * @author CYY
@@ -67,7 +65,7 @@ public class LineActivity extends Activity /* implements OnLongClickListener*/{
 	private Button btnLights1;
 	private Button btnLights2;
 	private Button btnLights3;
-	private Button btnLights4;
+	private Button btnShiftGears;
 	private Button btnStart;
 
 	private Button btnChangeLanes;
@@ -236,8 +234,8 @@ public class LineActivity extends Activity /* implements OnLongClickListener*/{
 
 			}
 		});
-		btnLights4 = (Button) this.findViewById(R.id.btnLights4);
-		btnLights4.setOnClickListener(new OnClickListener() {
+		btnShiftGears = (Button) this.findViewById(R.id.btnShiftGears);
+		btnShiftGears.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -1113,8 +1111,8 @@ public class LineActivity extends Activity /* implements OnLongClickListener*/{
 					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.light03);
 					break;
 				
-				case R.id.btnLights4: 
-					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.light04);
+				case R.id.btnShiftGears: 
+					uri = Uri.parse("android.resource://" + getPackageName()+ "/" + R.raw.shift_gears);
 					break;
 				
 				case R.id.btnStart: 

@@ -17,63 +17,85 @@ public class CustomConstant {
 	 */
 	public enum VoiceType {
 		/**
-		 * 直线行驶 
+		 * 前方路口直行 
 		 */
 		aheadDirectLine(1, R.raw.ahead_direct_line),
 		
 		/**
-		 * 
+		 * 请变更车道
 		 */
 		changeLanes(2, R.raw.change_lanes),
+		
 		/**
-		 * 
+		 * 保持直线行驶
 		 */
 		directLine(3, R.raw.direct_line),
+		
 		/**
-		 * 
+		 * 结束直线行驶
 		 */
 		endDirectLine(4, R.raw.end_direct_line),
+		
 		/**
-		 * 
+		 * 请超越前方车辆
 		 */
 		overtake(5, R.raw.overtake),
+		
 		/**
-		 * 
+		 * 通过公共汽车站
 		 */
 		passBusStation(6, R.raw.pass_bus_station),
+		
 		/**
-		 * 
+		 * 通过学校区域
 		 */
 		passSchool(7, R.raw.pass_school),
+		
 		/**
-		 * 
+		 * 通过人行横道
 		 */
 		passSidewalk(8, R.raw.pass_sidewalk),
+		
 		/**
-		 * 
+		 * 请靠边停车
 		 */
 		pullOver(9, R.raw.pull_over),
+		
 		/**
-		 * 
+		 * 前方人行横道
 		 */
 		sidewalk(10, R.raw.sidewalk),
+		
 		/**
-		 * 
+		 * 请起步，继续完成考试
 		 */
 		start(11, R.raw.start),
+		
 		/**
-		 * 
+		 * 前方请选择合适地点掉头
 		 */
 		turn(12, R.raw.turn),
+		
 		/**
-		 * 
+		 * 前方路口左转
 		 */
 		turnLeft(13, R.raw.turn_left),
+		
 		/**
-		 * 
+		 * 前方路口右转
 		 */
-		turnRight(14, R.raw.turn_right);
-
+		turnRight(14, R.raw.turn_right),
+		
+		/**
+		 * 与机动车会车，结束会车
+		 */
+		passing(15,R.raw.psssing),
+		
+		/**
+		 * 加减档位操作
+		 */
+		shiftGears(16,R.raw.shift_gears);
+		
 		private int code;
 		
 		private int id;
