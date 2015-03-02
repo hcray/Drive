@@ -30,7 +30,61 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="4" >
+        <TableLayout
+            android:id="@+id/subjectTable"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
 
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dip"
+                android:layout_marginTop="10dip" >
+
+                <Button
+                    android:id="@+id/btnLine1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    android:layout_weight="1"
+                    android:text="海滨1号线(1)"
+                    android:textColor="#5e5e5e"
+                    android:textSize="20sp" />
+
+                <Button
+                    android:id="@+id/btnLine2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    android:layout_weight="1"
+                    android:text="海滨1号线(2)"
+                    android:textColor="#5e5e5e"
+                    android:textSize="20sp" />
+            </TableRow>
+            
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dip"
+                android:layout_marginTop="10dip" >
+                <Button
+                    android:id="@+id/btnLine3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    android:layout_weight="1"
+                    android:text="海滨2号线(1)"
+                    android:textColor="#5e5e5e"
+                    android:textSize="20sp" />
+
+                <Button
+                    android:id="@+id/btnLine4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    android:layout_weight="1"
+                    android:text="海滨2号线(2)"
+                    android:textColor="#5e5e5e"
+                    android:textSize="20sp" />
+            </TableRow>
+		</TableLayout>
+		<!-- 
         <ListView
             android:id="@+id/subjectList"
             android:layout_width="fill_parent"
@@ -40,6 +94,7 @@
             android:drawSelectorOnTop="false"
             android:scrollbars="vertical" >
         </ListView>
+		 -->
     </RelativeLayout>
 
 </LinearLayout>

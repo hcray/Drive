@@ -1,42 +1,42 @@
 package com.daoliuhe.drive.ui;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
-import android.widget.ListView;
 
 import com.daoliuhe.drive.R;
-import com.daoliuhe.drive.adapter.ListViewActivityAdapter;
 import com.daoliuhe.drive.bean.LineBean;
+import com.daoliuhe.drive.tools.CustomConstant;
 import com.daoliuhe.drive.tools.DbAdapter;
 
 public class SubjectActivity extends Activity {
 	//list
-	private ListView subjectList;
+//	private ListView subjectList;
 	//新增
-	private static final int MENU_ADD_ID = Menu.FIRST; 
+//	private static final int MENU_ADD_ID = Menu.FIRST; 
 	//取消
-	private static final int MENU_BACK_ID = Menu.FIRST + 1;
+//	private static final int MENU_BACK_ID = Menu.FIRST + 1;
 	
-	private static final int ACTIVITY_ADD = 1;
+//	private static final int ACTIVITY_ADD = 1;
 	
-	private static final int ACTIVITY_ITEMVIEW = ACTIVITY_ADD + 1;
+//	private static final int ACTIVITY_ITEMVIEW = ACTIVITY_ADD + 1;
 	
 	private DbAdapter dbAdapter;
 	
 	//private RelativeLayout  layout;
 	
-	private List<LineBean> lineList;
+//	private List<LineBean> lineList;
+	
+	private Button btnLine1;
+	
+	private Button btnLine2;
+	
+	private Button btnLine3;
+	
+	private Button btnLine4;
 	
 	//返回按钮
 	private Button btnSubjectReturn;
@@ -46,6 +46,9 @@ public class SubjectActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_subject);
 		
+		// 数据库
+		dbAdapter = new DbAdapter(this);
+		dbAdapter.open();
 		
 		btnSubjectReturn = (Button) this.findViewById(R.id.btnSubjectReturn);
 		OnClickListener btnSubjectReturnClick = new OnClickListener(){
@@ -57,14 +60,96 @@ public class SubjectActivity extends Activity {
 		};
 		btnSubjectReturn.setOnClickListener(btnSubjectReturnClick);
 		
+		btnLine1 = (Button) this.findViewById(R.id.btnLine1);
+		btnLine1.setOnClickListener(new OnClickListener(){
+			@Override
+			public void onClick(View v) {
+				LineBean lineBean = dbAdapter.selectLineBeanById(CustomConstant.S3LINE1ID);
+				if(lineBean == null){
+					lineBean = new LineBean();
+					lineBean.setId(CustomConstant.S3LINE1ID);
+					lineBean.setLineName(btnLine1.getText().toString());
+					dbAdapter.insertLine(lineBean);
+				}
+				
+				Intent intent = new Intent();
+				intent.setClass(SubjectActivity.this, LineActivity.class);
+				intent.putExtra(DbAdapter.KEY_ID, CustomConstant.S3LINE1ID);
+				intent.putExtra(DbAdapter.KEY_LINE_NAME, btnLine1.getText());
+				
+				startActivity(intent);
+			}
+		});
+		
+		btnLine2 = (Button) this.findViewById(R.id.btnLine2);
+		btnLine2.setOnClickListener(new OnClickListener(){
+			@Override
+			public void onClick(View v) {
+				LineBean lineBean = dbAdapter.selectLineBeanById(CustomConstant.S3LINE2ID);
+				if(lineBean == null){
+					lineBean = new LineBean();
+					lineBean.setId(CustomConstant.S3LINE2ID);
+					lineBean.setLineName(btnLine2.getText().toString());
+					dbAdapter.insertLine(lineBean);
+				}
+				
+				Intent intent = new Intent();
+				intent.setClass(SubjectActivity.this, LineActivity.class);
+				intent.putExtra(DbAdapter.KEY_ID, CustomConstant.S3LINE2ID);
+				intent.putExtra(DbAdapter.KEY_LINE_NAME, btnLine2.getText());
+				startActivity(intent);
+			}
+		});
+		
+		btnLine3 = (Button) this.findViewById(R.id.btnLine3);
+		btnLine3.setOnClickListener(new OnClickListener(){
+			@Override
+			public void onClick(View v) {
+				LineBean lineBean = dbAdapter.selectLineBeanById(CustomConstant.S3LINE3ID);
+				if(lineBean == null){
+					lineBean = new LineBean();
+					lineBean.setId(CustomConstant.S3LINE3ID);
+					lineBean.setLineName(btnLine3.getText().toString());
+					dbAdapter.insertLine(lineBean);
+				}
+				
+				Intent intent = new Intent();
+				intent.setClass(SubjectActivity.this, LineActivity.class);
+				intent.putExtra(DbAdapter.KEY_ID, CustomConstant.S3LINE3ID);
+				intent.putExtra(DbAdapter.KEY_LINE_NAME, btnLine3.getText());
+				startActivity(intent);
+			}
+		});
+		
+		btnLine4 = (Button) this.findViewById(R.id.btnLine4);
+		btnLine4.setOnClickListener(new OnClickListener(){
+			@Override
+			public void onClick(View v) {
+				LineBean lineBean = dbAdapter.selectLineBeanById(CustomConstant.S3LINE4ID);
+				if(lineBean == null){
+					lineBean = new LineBean();
+					lineBean.setId(CustomConstant.S3LINE4ID);
+					lineBean.setLineName(btnLine4.getText().toString());
+					dbAdapter.insertLine(lineBean);
+				}
+				
+				Intent intent = new Intent();
+				intent.setClass(SubjectActivity.this, LineActivity.class);
+				intent.putExtra(DbAdapter.KEY_ID, CustomConstant.S3LINE4ID);
+				intent.putExtra(DbAdapter.KEY_LINE_NAME, btnLine4.getText());
+				startActivity(intent);
+			}
+		});
+		
 		//layout = (RelativeLayout ) this.findViewById(R.id.subject_relativeLayout);
 		//数据库
-		dbAdapter = new DbAdapter(this);
-		dbAdapter.open();
+		//dbAdapter = new DbAdapter(this);
+		//dbAdapter.open();
 		//加载list列表
-		renderListView();
+		//renderListView();
 	}
 
+	/*
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -87,6 +172,7 @@ public class SubjectActivity extends Activity {
 		}
 		return super.onMenuItemSelected(featureId, item);
 	}
+	
 	
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -127,14 +213,14 @@ public class SubjectActivity extends Activity {
         };
         subjectList.setOnItemClickListener(listener);
 	}
-	
+	*/
 	/**
 	 * 增加线路记录
 	 */
-	private void addLine(){
-		Intent intent = new Intent(SubjectActivity.this, LineNameActivity.class);
-		startActivityForResult(intent, ACTIVITY_ADD);
-	}
+//	private void addLine(){
+//		Intent intent = new Intent(SubjectActivity.this, LineNameActivity.class);
+//		startActivityForResult(intent, ACTIVITY_ADD);
+//	}
 
 	@Override
 	protected void onDestroy() {

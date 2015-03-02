@@ -210,4 +210,24 @@ public class CustomConstant {
 	 * 声音类型
 	 */
 	public static final String VOICETYPE = "voiceType";
+	
+	/**
+	 * 线路1 id
+	 */
+	public static final int S3LINE1ID = 1;
+	
+	/**
+	 * 线路2 id
+	 */
+	public static final int S3LINE2ID = 2;
+	
+	/**
+	 * 线路3 id
+	 */
+	public static final int S3LINE3ID = 3;
+	
+	/**
+	 * 线路4 id
+	 */
+	public static final int S3LINE4ID = 4;
 }

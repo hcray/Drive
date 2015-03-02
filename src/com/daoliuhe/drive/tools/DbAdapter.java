@@ -33,7 +33,7 @@ public class DbAdapter {
 	
 
 	private static final String TABLE_LINE_CREATE = "create table t_lines ("
-			+" id integer primary key autoincrement, "
+			+" id integer primary key, "
 			+" lineName text not null,"
 			+" comment text);";
 	
@@ -57,7 +57,7 @@ public class DbAdapter {
 	 */
 	private static final String DATABASE_TABLE_LOCATION = "t_locations";
 	
-	private static final int DATABASE_VERSION = 2;
+	private static final int DATABASE_VERSION = 3;
 
 	private final Context mCtx;
 	private DatabaseHelper mDbHelper;
@@ -120,19 +120,29 @@ public class DbAdapter {
 		Log.d(TAG,"insertLine()");
 		ContentValues initialValues = new ContentValues();
 		
+		Integer id = lineBean.getId();
+		if(null != id && id != 0){
+			initialValues.put(KEY_ID, id);
+		}
+		
 		String lineName = lineBean.getLineName();
 		if(null != lineName && !lineName.isEmpty()){
 			initialValues.put(KEY_LINE_NAME, lineName);
+		}
+		
+		String comment = lineBean.getComment();
+		if(null != comment && !comment.isEmpty()){
+			initialValues.put(KEY_COMMENT, comment);
 		}
 
 		long ret = mDb.insert(DATABASE_TABLE_LINES, null, initialValues);
 		Cursor cursor = mDb.rawQuery("select last_insert_rowid() id", null);
 		cursor.moveToFirst();
 		int columnIndex = cursor.getColumnIndexOrThrow("id");
-		int id = cursor.getInt(columnIndex);
+		int retId = cursor.getInt(columnIndex);
 
 		if (ret > 0) {
-			return id;
+			return retId;
 		} else {
 			return 0;
 		}
@@ -153,6 +163,10 @@ public class DbAdapter {
 			initialValues.put(KEY_LINE_NAME, lineName);
 		}
 		
+		String comment = lineBean.getComment();
+		if(null != comment && !comment.isEmpty()){
+			initialValues.put(KEY_COMMENT, comment);
+		}
 		//id
 		Integer id = lineBean.getId();
 		
@@ -222,24 +236,24 @@ public class DbAdapter {
 		Log.d(TAG,"selectLineBeanById(int rowId)");
 		Cursor mCursor =
 				mDb.query(true, DATABASE_TABLE_LINES, new String[] {
-						KEY_ID, KEY_LINE_NAME, 
+						KEY_ID, KEY_LINE_NAME, KEY_COMMENT,
 						}, KEY_ID + "=" + id, null, null, null, null, null);
 		
 		if (mCursor != null) {
 			mCursor.moveToFirst();
 		}
 		
-		LineBean lineBean = new LineBean();
+		LineBean lineBean = null;
 
 		for(mCursor.moveToFirst();!mCursor.isAfterLast();mCursor.moveToNext()){
-			
+			lineBean = new LineBean();
 			int idIndex = mCursor.getColumnIndex(KEY_ID);
 			int lineNameIndex = mCursor.getColumnIndex(KEY_LINE_NAME);
 			int commentIndex = mCursor.getColumnIndex(KEY_COMMENT);
 			
 			Integer retId = mCursor.getInt(idIndex);
 			if(null != retId){
-				lineBean.setId(id);
+				lineBean.setId(retId);
 			}
 			
 			String lineName = mCursor.getString(lineNameIndex);
