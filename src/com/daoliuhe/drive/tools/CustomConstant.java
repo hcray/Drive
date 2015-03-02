@@ -19,87 +19,113 @@ public class CustomConstant {
 		/**
 		 * 保持直线行驶
 		 */
-		directLine(1, R.raw.direct_line),
+		directLine(1, 3, R.raw.direct_line),
 		/**
 		 * 结束直线行驶
 		 */
-		endDirectLine(2, R.raw.end_direct_line),
+		endDirectLine(2, 3, R.raw.end_direct_line),
 		/**
 		 * 前方路口直行 
 		 */
-		aheadDirectLine(3, R.raw.ahead_direct_line),
+		aheadDirectLine(3, 6, R.raw.ahead_direct_line),
 		/**
 		 * 前方路口左转
 		 */
-		turnLeft(4, R.raw.turn_left),
+		turnLeft(4, 6, R.raw.turn_left),
 		/**
 		 * 前方路口右转
 		 */
-		turnRight(5, R.raw.turn_right),
+		turnRight(5, 6, R.raw.turn_right),
 		/**
 		 * 通过学校区域
 		 */
-		passSchool(6, R.raw.pass_school),
+		passSchool(6, 8, R.raw.pass_school),
 		/**
 		 * 通过人行横道
 		 */
-		passSidewalk(7, R.raw.pass_sidewalk),
+		passSidewalk(7, 7, R.raw.pass_sidewalk),
 		/**
 		 * 通过公共汽车站
 		 */
-		passBusStation(8, R.raw.pass_bus_station),
+		passBusStation(8, 9, R.raw.pass_bus_station),
 		/**
 		 * 前方人行横道
 		 */
-		sidewalk(9, R.raw.sidewalk),
+		sidewalk(9, 7, R.raw.sidewalk),
 		/**
 		 * 请变更车道
 		 */
-		changeLanes(10, R.raw.change_lanes),
+		changeLanes(10, 5, R.raw.change_lanes),
 		/**
 		 * 请超越前方车辆
 		 */
-		overtake(11, R.raw.overtake),
+		overtake(11, 11, R.raw.overtake),
 		/**
 		 * 与机动车会车，结束会车
 		 */
-		passing(12,R.raw.psssing),
+		passing(12, 10, R.raw.psssing),
 		/**
 		 * 加减档位操作
 		 */
-		shiftGears(13,R.raw.shift_gears),
+		shiftGears(13, 4, R.raw.shift_gears),
 		/**
 		 * 请靠边停车
 		 */
-		pullOver(14, R.raw.pull_over),
+		pullOver(14, 13, R.raw.pull_over),
 		/**
 		 * 前方请选择合适地点掉头
 		 */
-		turn(15, R.raw.turn),
+		turn(15, 12, R.raw.turn),
 		/**
 		 * 请起步，继续完成考试
 		 */
-		start(16, R.raw.start);
+		start(16, 2, R.raw.start);
 		
+		/**
+		 * 目录文件的路径R.raw.*
+		 */
 		private int code;
 		
+		/**
+		 * 数据库存储的语音类型id
+		 */
 		private int id;
+		
+		/**
+		 * 评分项的id
+		 */
+		private int scoreId;
 
 		/**
 		 * @param id 数据库存储id
+		 * @param scoreId 评分项的id
 		 * @param code 目录文件的路径R.raw.*
 		 */
-		private VoiceType(int id, int code) {
+		private VoiceType(int id, int scoreId, int code) {
 			this.id = id;
+			this.scoreId = scoreId;
 			this.code = code;
 		}
 
+		/**
+		 * @return  目录文件的路径,例如：R.raw.shift_gears
+		 */
 		public int getCode() {
 			return this.code;
 		}
 		
+		/**
+		 * @return 数据库存储的语音类型id
+		 */
 		public int getId(){
 			return id;
+		}
+		
+		/**
+		 * @return 评分项的id
+		 */
+		public int getScoreId(){
+			return scoreId;
 		}
 	}
 
