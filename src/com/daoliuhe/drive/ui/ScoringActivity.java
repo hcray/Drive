@@ -102,7 +102,7 @@ public class ScoringActivity extends Activity {
 					finish();
 				}
 			}
-		}, 5000);
+		}, 3000);
 	}
 
 	@Override

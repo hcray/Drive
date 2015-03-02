@@ -151,6 +151,11 @@ public class CustomConstant {
 	 * 刷新频率 key
 	 */
 	public static final String REFRESH_KEY = "edtRefreshKey";
+
+	/**
+	 * 是否弹出评分标准 key
+	 */
+	public static final String SHOW_KEY = "tbShowKey";
 	/**
 	 * 刷新频率 value 默认值
 	 */

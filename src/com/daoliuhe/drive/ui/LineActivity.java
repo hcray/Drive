@@ -96,7 +96,7 @@ public class LineActivity extends Activity /* implements OnLongClickListener */{
 	private Button btnScoring;
 	// 返回
 	private Button btnLineReturn;
-
+	//数据库
 	private DbAdapter dbAdapter;
 	// 当前的经度
 	//private Double curLongitude;
@@ -110,6 +110,8 @@ public class LineActivity extends Activity /* implements OnLongClickListener */{
 	private float angleError;
 	// 刷新频率
 	private Double refresh;
+	//是否弹出评分标准
+	private boolean showFlag;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -133,7 +135,8 @@ public class LineActivity extends Activity /* implements OnLongClickListener */{
 		String refreshValue = settings.getString(CustomConstant.REFRESH_KEY,
 				CustomConstant.REFRESH_VALUE);
 		refresh = Double.parseDouble(refreshValue);
-
+		//是否弹出评分标准
+		showFlag = settings.getBoolean(CustomConstant.SHOW_KEY, true);
 		// 数据库
 		dbAdapter = new DbAdapter(this);
 		dbAdapter.open();
@@ -750,10 +753,12 @@ public class LineActivity extends Activity /* implements OnLongClickListener */{
 	 * @param id
 	 */
 	public void openScoring(VoiceType voiceType) {
-		Intent intent = new Intent();
-		intent.setClass(LineActivity.this, ScoringActivity.class);
-		intent.putExtra(CustomConstant.SELECT_ITEM, voiceType.getScoreId());
-		startActivity(intent);
+		if(showFlag){
+			Intent intent = new Intent();
+			intent.setClass(LineActivity.this, ScoringActivity.class);
+			intent.putExtra(CustomConstant.SELECT_ITEM, voiceType.getScoreId());
+			startActivity(intent);
+		}
 	}
 	
 	/**
@@ -762,10 +767,12 @@ public class LineActivity extends Activity /* implements OnLongClickListener */{
 	 * @param id
 	 */
 	public void openScoring(int id) {
-		Intent intent = new Intent();
-		intent.setClass(LineActivity.this, ScoringActivity.class);
-		intent.putExtra(CustomConstant.SELECT_ITEM, id);
-		startActivity(intent);
+		if(showFlag){
+			Intent intent = new Intent();
+			intent.setClass(LineActivity.this, ScoringActivity.class);
+			intent.putExtra(CustomConstant.SELECT_ITEM, id);
+			startActivity(intent);
+		}
 	}
 	
 	/**

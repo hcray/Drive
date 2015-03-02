@@ -9,6 +9,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.daoliuhe.drive.R;
 import com.daoliuhe.drive.tools.CustomConstant;
@@ -31,6 +32,8 @@ public class ParamActivity extends Activity {
 	private EditText edtAngleError;
 	//刷新频率
 	private EditText edtRefresh;
+	//是否弹出评分标准
+	private ToggleButton toggleButtonShow;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +48,7 @@ public class ParamActivity extends Activity {
 		edtDistance = (EditText) this.findViewById(R.id.edtDistance);
 		edtAngleError = (EditText) this.findViewById(R.id.edtAngleError);
 		edtRefresh = (EditText) this.findViewById(R.id.edtRefresh);
+		toggleButtonShow = (ToggleButton) this.findViewById(R.id.toggleButtonShow);
 		
 		
 		// Restore preferences
@@ -55,10 +59,14 @@ public class ParamActivity extends Activity {
         String angleErrorValue =  settings.getString(CustomConstant.ANGLEERROR_KEY, CustomConstant.ANGLEERROR_VALUE);
         //刷新频率
         String refreshValue =  settings.getString(CustomConstant.REFRESH_KEY, CustomConstant.REFRESH_VALUE);
+        //是否弹出评分标准
+        boolean tgShowValue = settings.getBoolean(CustomConstant.SHOW_KEY, true);
+        
         //设值
         edtDistance.setText(distanceValue);
         edtAngleError.setText(angleErrorValue);
         edtRefresh.setText(refreshValue);
+        toggleButtonShow.setChecked(tgShowValue);
 		
 		OnClickListener btnParamSaveClick = new OnClickListener(){
 			@Override
@@ -96,6 +104,7 @@ public class ParamActivity extends Activity {
 				.putString(CustomConstant.DISTANCE_KEY, edtDistanceValue)
 				.putString(CustomConstant.ANGLEERROR_KEY, edtAngleErrorValue)
 				.putString(CustomConstant.REFRESH_KEY, edtRefreshValue)
+				.putBoolean(CustomConstant.SHOW_KEY, toggleButtonShow.isChecked())
 				.commit();
 				//保存
 				finish();
@@ -114,15 +123,19 @@ public class ParamActivity extends Activity {
 		        String angleErrorValue = CustomConstant.ANGLEERROR_VALUE;
 		        //刷新频率
 		        String refreshValue = CustomConstant.REFRESH_VALUE;
+		        //是否弹出评分标准
+		        boolean showValue = true;
 		        //恢复页面的值
 		        edtDistance.setText(distanceValue);
 				edtAngleError.setText(angleErrorValue);
 				edtRefresh.setText(refreshValue);
+				toggleButtonShow.setChecked(showValue);
 		        //保存
 				settings.edit()
 				.putString(CustomConstant.DISTANCE_KEY, distanceValue)
 				.putString(CustomConstant.ANGLEERROR_KEY, angleErrorValue)
 				.putString(CustomConstant.REFRESH_KEY, refreshValue)
+				.putBoolean(CustomConstant.SHOW_KEY, showValue)
 				.commit();
 				
 			}
