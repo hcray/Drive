@@ -19,6 +19,7 @@ import com.daoliuhe.drive.R;
 import com.daoliuhe.drive.adapter.ListViewActivityAdapter;
 import com.daoliuhe.drive.bean.LineBean;
 import com.daoliuhe.drive.bean.LocationBean;
+import com.daoliuhe.drive.tools.CustomConstant;
 import com.daoliuhe.drive.tools.DbAdapter;
 
 public class LocationListActivity extends Activity {
@@ -31,7 +32,7 @@ public class LocationListActivity extends Activity {
 	
 	private static final int ACTIVITY_ADD = 1;
 	
-	private static final int ACTIVITY_ITEMVIEW = ACTIVITY_ADD + 1;
+	private static final int ACTIVITY_EDIT = ACTIVITY_ADD + 1;
 	
 	private DbAdapter dbAdapter;
 	
@@ -111,6 +112,9 @@ public class LocationListActivity extends Activity {
 		if(requestCode == ACTIVITY_ADD && resultCode == RESULT_OK){
 			//刷新坐标点列表
 			renderListView();
+		}else if(requestCode == ACTIVITY_EDIT && resultCode == RESULT_OK){
+			//刷新坐标点列表
+			renderListView();
 		}
 	}
 	
@@ -133,6 +137,14 @@ public class LocationListActivity extends Activity {
 			public void onItemClick(AdapterView<?> arg0, View arg1, int position,
 					long arg3) {
 				int id = locationList.get(position).getId();
+
+				int voiceType = locationList.get(position).getVoiceType();
+				
+				Double longitude = locationList.get(position).getLongitude();
+				
+				Double latitude = locationList.get(position).getLatitude();
+				
+				float bearing = locationList.get(position).getBearing();
 				
 				Intent intent = new Intent();
 				intent.setClass(LocationListActivity.this, LocationActivity.class);
@@ -140,7 +152,16 @@ public class LocationListActivity extends Activity {
 				intent.putExtra(DbAdapter.KEY_ID, id);
 				//路线id
 				intent.putExtra(DbAdapter.KEY_LINEID, lineBean.getId());
-				startActivityForResult(intent, ACTIVITY_ITEMVIEW);
+
+				intent.putExtra(CustomConstant.VOICETYPE, voiceType);
+				
+				intent.putExtra(CustomConstant.LONGITUDE, longitude);
+				
+				intent.putExtra(CustomConstant.LATITUDE, latitude);
+				
+				intent.putExtra(CustomConstant.BEARING, bearing);
+				
+				startActivityForResult(intent, ACTIVITY_EDIT);
 			}
         	
         };

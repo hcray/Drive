@@ -29,6 +29,7 @@
             android:layout_below="@id/tv_line"
             android:layout_width="fill_parent"
             android:layout_height="60dp"
+            android:layout_marginBottom="10dp"
             android:text="@string/title_activity_param" >
         </Button>
         
@@ -37,6 +38,7 @@
             android:layout_below="@id/btnLineParam"
             android:layout_width="fill_parent"
             android:layout_height="60dp"
+            android:layout_marginBottom="10dp"
             android:text="@string/title_activity_scoring" >
         </Button>
 
@@ -44,6 +46,7 @@
             android:id="@+id/btnLineReturn"
             android:layout_width="fill_parent"
             android:layout_height="60dp"
+            android:layout_marginBottom="10dp"
             android:layout_below="@id/btnScoring"
             android:text="@string/end_player" >
         </Button>

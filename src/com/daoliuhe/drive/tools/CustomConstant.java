@@ -200,4 +200,14 @@ public class CustomConstant {
 	 * 视频播放的id
 	 */
 	public static final String VIDEO_ID = "videoId";
+	
+	/**
+	 * 位置
+	 */
+	public static final String POSITION = "position";
+	
+	/**
+	 * 声音类型
+	 */
+	public static final String VOICETYPE = "voiceType";
 }

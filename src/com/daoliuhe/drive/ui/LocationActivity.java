@@ -56,12 +56,6 @@ public class LocationActivity extends Activity {
 		dbAdapter.open();
 		
 		Bundle extras = this.getIntent().getExtras();
-		if (extras != null) {
-			//路线id
-			lineId = extras.getInt(DbAdapter.KEY_LINEID);
-			//坐标id
-			id = extras.getInt(DbAdapter.KEY_ID);
-		}
 		
 		//经度
 		longitudeEdit = (EditText) this.findViewById(R.id.longitude_edit);
@@ -82,6 +76,30 @@ public class LocationActivity extends Activity {
 		adapterVoiceType = new ArrayAdapter<CharSequence>(this, android.R.layout.simple_spinner_dropdown_item, voiceType);
 		//设置下拉框的数据适配器adapterCity
 		this.spinnerVoiceType.setAdapter(adapterVoiceType);
+		
+		if (extras != null) {
+			//路线id
+			lineId = extras.getInt(DbAdapter.KEY_LINEID);
+			//坐标id
+			id = extras.getInt(DbAdapter.KEY_ID, 0);
+			if(id > 0){
+				Integer voiceType = extras.getInt(CustomConstant.VOICETYPE);
+				
+				spinnerVoiceType.setSelection(voiceType, true);
+				
+				Double longitude = extras.getDouble(CustomConstant.LONGITUDE);
+				longitudeEdit.setText(longitude.toString());
+				
+				Double latitude = extras.getDouble(CustomConstant.LATITUDE);
+				latitudeEdit.setText(latitude.toString());
+				
+				Float bearing = extras.getFloat(CustomConstant.BEARING);
+				bearingEdit.setText(bearing.toString());
+				
+			}
+		}
+		
+		
 		
 		btnLocalSave.setOnClickListener(new OnClickListener(){
 

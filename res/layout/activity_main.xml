@@ -18,7 +18,8 @@
             android:id="@+id/btnSubjectTwo"
             android:layout_width="fill_parent"
             android:layout_height="60dp"
-            android:text="@string/subject_two" >
+            android:text="@string/subject_two"
+            android:layout_marginBottom="10dp">
         </Button>
 
         <Button
@@ -26,7 +27,8 @@
             android:layout_width="fill_parent"
             android:layout_height="60dp"
             android:layout_below="@id/btnSubjectTwo"
-            android:text="@string/subject_two_video" >
+            android:text="@string/subject_two_video"
+            android:layout_marginBottom="10dp">
         </Button>
         
         <Button
@@ -34,7 +36,8 @@
             android:layout_width="fill_parent"
             android:layout_height="60dp"
             android:layout_below="@id/btnSubjectTwoVideo"
-            android:text="@string/subject_three" >
+            android:text="@string/subject_three"
+            android:layout_marginBottom="10dp">
         </Button>
 
         <Button
@@ -42,7 +45,8 @@
             android:layout_width="fill_parent"
             android:layout_height="60dp"
             android:layout_below="@id/btnSubjectThree"
-            android:text="@string/subject_three_video" >
+            android:text="@string/subject_three_video"
+			android:layout_marginBottom="10dp">
         </Button>
 
         <Button
@@ -50,7 +54,8 @@
             android:layout_width="fill_parent"
             android:layout_height="60dp"
             android:layout_below="@id/btnSubjectThreeVideo"
-            android:text="@string/param_settings" >
+            android:text="@string/param_settings"
+            android:layout_marginBottom="10dp">
         </Button>
     </RelativeLayout>
 

@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.daoliuhe.drive.R;
 import com.daoliuhe.drive.tools.CustomConstant;
@@ -30,6 +31,12 @@ public class MainActivity extends Activity {
 		
 		//科目二路线
 		btnSubjectTwo = (Button) this.findViewById(R.id.btnSubjectTwo);
+		btnSubjectTwo.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Toast.makeText(getApplicationContext(), "建设中...", Toast.LENGTH_SHORT).show();
+			}
+		});
 
 		//科目二视频
 		btnSubjectTwoVideo = (Button) this.findViewById(R.id.btnSubjectTwoVideo);

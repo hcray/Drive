@@ -14,7 +14,7 @@
     <string name="back">返回</string>
     <string name="title_activity_subject">路线列表</string>
     <string name="line_list">线路</string>
-    <string name="title_activity_param">参数设置</string>
+    <string name="title_activity_param">坐标设置</string>
     <string name="title_activity_line">线路</string>
     <string name="alert_dialog_ok">确定</string>
     <string name="alert_dialog_cancel">取消</string>
