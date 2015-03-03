@@ -50,8 +50,80 @@ public class DbAdapter {
 			+" longitude REAL not null,"
 			+" bearing REAL not null)";
 
-	private static final String INSERT_LINE1_LOCATION1 = "insert into t_locations (lineId, voiceType, longitude, latitude, bearing) "
-			+ "values (1,1,1,1,1)";
+	//路线1-1
+	private static final String INSERT_LINE11_LOCATION =
+			"insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (1,1,120.821543,30.177781,181.07);"
+			+"insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (1,2,120.821581,30.176933,178.07);"
+			+"insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (1,4,120.821575,30.175501,192.02);"
+			+"insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (1,4,120.823163,30.175381,231.01);"
+			+"insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (1,6,120.823556,30.176125,9.09);"
+			+"insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (1,5,120.823455,30.178751,37.17);"
+			+"insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (1,13,120.827036,30.179314,86.05);"
+			+"insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (1,12,120.828676,30.179434,190.83);"
+			+"insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (1,3,120.831515,30.179575,83.83);"
+			+"insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (1,4,120.836691,30.179723,93.95);"
+			+"insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (1,8,120.837926,30.180398,347.96);"
+			+"insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (1,11,120.837583,30.181409,183.69);"
+			+"insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (1,10,120.821543,30.177781,181.07);"
+			+"insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (1,7,120.836994,30.183226,352.88);"
+			+"insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (1,14,120.836498,30.184795,354);"
+			+"insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (1,3,120.835794,30.186965,352.07);"
+			+"insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (1,15,120.834963,30.189716,353.89);";
+
+	//路线1-2
+	private static final String INSERT_LINE12_LOCATION = 
+			"insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (2,5,120.834959,30.189349,230.99);"
+			+"insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (2,15,120.834233,30.188325,274.19);"
+			+"insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (2,5,120.834058,30.188201,101.16);"
+			+"insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (2,11,120.835918,30.186551,165.67);"
+			+"insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (2,10,120.836021,30.186206,149.8);"
+			+"insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (2,7,120.836428,30.184655,106.75);"
+			+"insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (2,14,120.836683,30.183960,165.75);"
+			+"insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (2,8,120.837476,30.181465,184.4);"
+			+"insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (2,5,120.837736,30.180599,350.87);"
+			+"insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (2,1,120.837273,30.179746,277.35);"
+			+"insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (2,2,120.835851,30.179640,255.64);"
+			+"insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (2,3,120.83325,30.179516,258.18);"
+			+"insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (2,13,120.829076,30.17938,95.71);"
+			+"insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (2,12,120.827738,30.179358,242.16);"
+			+"insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (2,4,120.824151,30.179151,251.92);";
+	//路线2-1
+	private static final String INSERT_LINE21_LOCATION = 
+			"insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (1,1,120.821543,30.177781,181.07);"
+			+"insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (1,2,120.821581,30.176933,178.07);"
+			+"insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (1,4,120.821575,30.175501,192.02);"
+			+"insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (1,4,120.823163,30.175381,231.01);"
+			+"insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (1,6,120.823556,30.176125,9.09);"
+			+"insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (1,5,120.823455,30.178751,37.17);"
+			+"insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (1,13,120.827036,30.179314,86.05);"
+			+"insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (1,12,120.828676,30.179434,190.83);"
+			+"insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (1,3,120.831515,30.179575,83.83);"
+			+"insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (1,5,120.83671,30.1796216,91.64);"
+			+"insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (1,11,120.838206,30.178853,47.82);"
+			+"insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (1,15,120.838583,30.178035,138.4);"
+			+"insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (1,7,120.838391,30.179021,351.78);"
+			+"insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (1,8,120.837926,30.180398,347.96);"
+			+"insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (1,11,120.837583,30.181409,183.69);"
+			+"insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (1,10,120.821543,30.177781,181.07);"
+			+"insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (1,7,120.836994,30.183226,352.88);"
+			+"insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (1,14,120.836498,30.184795,354);";
+	
+	//路线2-2
+	private static final String INSERT_LINE22_LOCATION = 
+			"insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (1,3,120.835794,30.186965,352.07);"
+			+"insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (1,15,120.834963,30.189716,353.89);"
+			+"insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (2,11,120.835918,30.186551,165.67);"
+			+"insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (2,10,120.836021,30.186206,149.8);"
+			+"insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (2,7,120.836428,30.184655,106.75);"
+			+"insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (2,14,120.836683,30.183960,165.75);"
+			+"insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (2,8,120.837476,30.181465,184.4);"
+			+"insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (2,5,120.837736,30.180599,350.87);"
+			+"insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (2,1,120.837273,30.179746,277.35);"
+			+"insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (2,2,120.835851,30.179640,255.64);"
+			+"insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (2,3,120.83325,30.179516,258.18);"
+			+"insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (2,13,120.829076,30.17938,95.71);"
+			+"insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (2,12,120.827738,30.179358,242.16);"
+			+"insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (2,4,120.824151,30.179151,251.92);";
 
 	private static final String DATABASE_NAME = "database";
 	
@@ -90,7 +162,10 @@ public class DbAdapter {
 			db.execSQL(INSERT_LINE5);
 			db.execSQL(INSERT_LINE6);
 			//初始化坐标数据
-			db.execSQL(INSERT_LINE1_LOCATION1);
+			db.execSQL(INSERT_LINE11_LOCATION);
+			db.execSQL(INSERT_LINE12_LOCATION);
+			db.execSQL(INSERT_LINE21_LOCATION);
+			db.execSQL(INSERT_LINE22_LOCATION);
 		}
 
 		@Override
