@@ -38,6 +38,10 @@ public class SubjectActivity extends Activity {
 	
 	private Button btnLine4;
 	
+	private Button btnLine5;
+	
+	private Button btnLine6;
+	
 	//·µ»Ø°´Å¥
 	private Button btnSubjectReturn;
 
@@ -137,6 +141,46 @@ public class SubjectActivity extends Activity {
 				intent.setClass(SubjectActivity.this, LineActivity.class);
 				intent.putExtra(DbAdapter.KEY_ID, CustomConstant.S3LINE4ID);
 				intent.putExtra(DbAdapter.KEY_LINE_NAME, btnLine4.getText());
+				startActivity(intent);
+			}
+		});
+		
+		btnLine5 = (Button) this.findViewById(R.id.btnLine5);
+		btnLine5.setOnClickListener(new OnClickListener(){
+			@Override
+			public void onClick(View v) {
+				LineBean lineBean = dbAdapter.selectLineBeanById(CustomConstant.S3LINE5ID);
+				if(lineBean == null){
+					lineBean = new LineBean();
+					lineBean.setId(CustomConstant.S3LINE5ID);
+					lineBean.setLineName(btnLine5.getText().toString());
+					dbAdapter.insertLine(lineBean);
+				}
+				
+				Intent intent = new Intent();
+				intent.setClass(SubjectActivity.this, LineActivity.class);
+				intent.putExtra(DbAdapter.KEY_ID, CustomConstant.S3LINE5ID);
+				intent.putExtra(DbAdapter.KEY_LINE_NAME, btnLine6.getText());
+				startActivity(intent);
+			}
+		});
+		
+		btnLine6 = (Button) this.findViewById(R.id.btnLine6);
+		btnLine6.setOnClickListener(new OnClickListener(){
+			@Override
+			public void onClick(View v) {
+				LineBean lineBean = dbAdapter.selectLineBeanById(CustomConstant.S3LINE6ID);
+				if(lineBean == null){
+					lineBean = new LineBean();
+					lineBean.setId(CustomConstant.S3LINE6ID);
+					lineBean.setLineName(btnLine6.getText().toString());
+					dbAdapter.insertLine(lineBean);
+				}
+				
+				Intent intent = new Intent();
+				intent.setClass(SubjectActivity.this, LineActivity.class);
+				intent.putExtra(DbAdapter.KEY_ID, CustomConstant.S3LINE6ID);
+				intent.putExtra(DbAdapter.KEY_LINE_NAME, btnLine6.getText());
 				startActivity(intent);
 			}
 		});

@@ -30,12 +30,17 @@ public class DbAdapter {
 	public static final String KEY_LONGITUDE = "longitude";	//经度
 	public static final String KEY_BEARING = "bearing";		//方位
 	
-	
-
 	private static final String TABLE_LINE_CREATE = "create table t_lines ("
 			+" id integer primary key, "
 			+" lineName text not null,"
 			+" comment text);";
+	
+	private static final String INSERT_LINE1 = "insert into t_lines (id,lineName,comment) values(1,'海滨1号线(1)','l1')";
+	private static final String INSERT_LINE2 = "insert into t_lines (id,lineName,comment) values(2,'海滨1号线(2)','l2')";
+	private static final String INSERT_LINE3 = "insert into t_lines (id,lineName,comment) values(3,'海滨2号线(1)','l3')";
+	private static final String INSERT_LINE4 = "insert into t_lines (id,lineName,comment) values(4,'海滨2号线(2)','l4')";
+	private static final String INSERT_LINE5 = "insert into t_lines (id,lineName,comment) values(5,'5号线','l5')";
+	private static final String INSERT_LINE6 = "insert into t_lines (id,lineName,comment) values(6,'6号线','l6')";
 	
 	private static final String TABLE_LOCATION_CREATE = "create table t_locations ("
 			+" id integer primary key autoincrement, "
@@ -44,6 +49,9 @@ public class DbAdapter {
 			+" latitude REAL not null, " 
 			+" longitude REAL not null,"
 			+" bearing REAL not null)";
+
+	private static final String INSERT_LINE1_LOCATION1 = "insert into t_locations (lineId, voiceType, longitude, latitude, bearing) "
+			+ "values (1,1,1,1,1)";
 
 	private static final String DATABASE_NAME = "database";
 	
@@ -71,8 +79,18 @@ public class DbAdapter {
 
 		@Override
 		public void onCreate(SQLiteDatabase db) {
+			//创建表
 			db.execSQL(TABLE_LINE_CREATE);
 			db.execSQL(TABLE_LOCATION_CREATE);
+			//初始化路线数据
+			db.execSQL(INSERT_LINE1);
+			db.execSQL(INSERT_LINE2);
+			db.execSQL(INSERT_LINE3);
+			db.execSQL(INSERT_LINE4);
+			db.execSQL(INSERT_LINE5);
+			db.execSQL(INSERT_LINE6);
+			//初始化坐标数据
+			db.execSQL(INSERT_LINE1_LOCATION1);
 		}
 
 		@Override

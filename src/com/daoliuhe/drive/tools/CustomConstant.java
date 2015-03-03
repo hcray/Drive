@@ -235,4 +235,14 @@ public class CustomConstant {
 	 * 线路4 id
 	 */
 	public static final int S3LINE4ID = 4;
+	
+	/**
+	 * 线路5 id
+	 */
+	public static final int S3LINE5ID = 5;
+	
+	/**
+	 * 线路6 id
+	 */
+	public static final int S3LINE6ID = 6;
 }

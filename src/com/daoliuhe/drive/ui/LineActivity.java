@@ -4,9 +4,12 @@ import java.io.IOException;
 import java.util.List;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
@@ -23,7 +26,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.amap.api.location.LocationManagerProxy;
 import com.daoliuhe.drive.R;
@@ -33,6 +38,7 @@ import com.daoliuhe.drive.tools.CustomConstant;
 import com.daoliuhe.drive.tools.CustomConstant.VoiceType;
 import com.daoliuhe.drive.tools.DbAdapter;
 import com.daoliuhe.drive.tools.Distance;
+import com.daoliuhe.drive.tools.Utils;
 
 /**
  * @author CYY
@@ -172,11 +178,14 @@ public class LineActivity extends Activity /* implements OnLongClickListener */{
 			@Override
 			public void onClick(View v) {
 				// 坐标点
+				passwordDialog(LineActivity.this);
+				/*
 				Intent intent = new Intent();
 				intent.setClass(LineActivity.this, LocationListActivity.class);
 				intent.putExtra(DbAdapter.KEY_ID, lineBean.getId());
 				intent.putExtra(DbAdapter.KEY_LINE_NAME, lineBean.getLineName());
 				startActivity(intent);
+				*/
 			}
 		};
 		btnLineParam.setOnClickListener(btnLineParamClick);
@@ -938,6 +947,47 @@ public class LineActivity extends Activity /* implements OnLongClickListener */{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	
+	/**
+	 * 输入管理员密码的弹出框
+	 * @param context
+	 * @return
+	 */
+	private Dialog passwordDialog(Context context) {
+		//密码输入框
+		final EditText etPassword = new EditText(context);
+		AlertDialog.Builder builder = new AlertDialog.Builder(context);
+		//builder.setIcon(R.drawable.ic_dialog_info);
+		builder.setTitle("请输入密码");
+		builder.setView(etPassword);
+		builder.setPositiveButton(R.string.alert_dialog_ok, new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int whichButton) {
+				//setTitle("点击了对话框上的确定按钮");
+				String inputPW = etPassword.getText().toString();
+				String password = "3a79c605ba623458602d0b195e1c00b455f2dfbbf45664959d3f454f038ff321";
+				//判断输入的密码
+				if(inputPW != null && password.equalsIgnoreCase(Utils.encodeSHA256(inputPW))){
+					Intent intent = new Intent();
+					intent.setClass(LineActivity.this, LocationListActivity.class);
+					intent.putExtra(DbAdapter.KEY_ID, lineBean.getId());
+					intent.putExtra(DbAdapter.KEY_LINE_NAME, lineBean.getLineName());
+					startActivity(intent);
+				}else{
+					Toast.makeText(getApplicationContext(), "密码错误", Toast.LENGTH_SHORT).show();
+				}
+			}
+		});
+		
+		builder.setNegativeButton(R.string.alert_dialog_cancel, new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int whichButton) {
+				//setTitle("点击了对话框上的取消按钮");
+			}
+		});
+		
+		return builder.create();
+
 	}
 
 }
