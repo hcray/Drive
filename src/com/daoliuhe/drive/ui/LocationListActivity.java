@@ -124,7 +124,7 @@ public class LocationListActivity extends Activity {
 		locationList = dbAdapter.selectLocationByLineId(lineId );
         List<String> viewList = new ArrayList<String>();
         for(LocationBean bean : locationList){
-			viewList.add(bean.getId() + " ”Ô“Ù£∫" + bean.getVoiceType() + " Longitude:"
+			viewList.add(bean.getId() + " ”Ô“Ù£∫" + LocationActivity.voiceType[bean.getVoiceType()] + " Longitude:"
 					+ bean.getLongitude() + " Latitude:" + bean.getLatitude() + " Bearing:"
 					+ bean.getBearing());
         }

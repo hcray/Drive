@@ -9,7 +9,7 @@ import com.daoliuhe.drive.R;
  * 
  */
 public class CustomConstant {
-
+	
 	/**
 	 * 播报的语音类型
 	 * @author 21829
@@ -79,7 +79,12 @@ public class CustomConstant {
 		/**
 		 * 请起步，继续完成考试
 		 */
-		start(16, 2, R.raw.start);
+		start(16, 2, R.raw.start),
+		
+		/**
+		 * 结束考试
+		 */
+		end(17, 2, R.raw.end);
 		
 		/**
 		 * 目录文件的路径R.raw.*

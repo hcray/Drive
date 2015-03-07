@@ -43,7 +43,7 @@ public class LocationActivity extends Activity {
 	
 	private ArrayAdapter<CharSequence> adapterVoiceType = null;
 
-	private static String[] voiceType = {"", "保持直线行驶", "结束直线行驶", "前方路口直行",
+	public static final String[] voiceType = {"", "保持直线行驶", "结束直线行驶", "前方路口直行",
 			"前方路口左转", "前方路口右转", "通过学校区域", "通过人行横道", "通过公共汽车站", "前方人行横道",
 			"前方请变更车道", "请超越前方车辆", "与机动车会车", "加减挡位操作", "请靠边停车", "前方选择合适地点掉头" };
 

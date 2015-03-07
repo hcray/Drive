@@ -73,7 +73,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="70dp"
                     android:layout_weight="1"
-                    android:text="模拟灯光操作一"
+                    android:text="随机灯光操作A"
                     android:textColor="#5e5e5e"
                     android:textSize="20sp" />
 
@@ -82,7 +82,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="70dp"
                     android:layout_weight="1"
-                    android:text="模拟灯光操作二"
+                    android:text="随机灯光操作B"
                     android:textColor="#5e5e5e"
                     android:textSize="20sp" />
 
