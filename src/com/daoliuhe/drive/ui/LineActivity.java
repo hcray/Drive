@@ -1092,11 +1092,11 @@ public class LineActivity extends Activity /* implements OnLongClickListener */{
 		builder.setNegativeButton(R.string.alert_dialog_cancel, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int whichButton) {
 				//setTitle("点击了对话框上的取消按钮");
-				Intent intent = new Intent();
-				intent.setClass(LineActivity.this, LocationListActivity.class);
-				intent.putExtra(DbAdapter.KEY_ID, lineBean.getId());
-				intent.putExtra(DbAdapter.KEY_LINE_NAME, lineBean.getLineName());
-				startActivity(intent);
+				//Intent intent = new Intent();
+				//intent.setClass(LineActivity.this, LocationListActivity.class);
+				//intent.putExtra(DbAdapter.KEY_ID, lineBean.getId());
+				//intent.putExtra(DbAdapter.KEY_LINE_NAME, lineBean.getLineName());
+				//startActivity(intent);
 			}
 		});
 		
