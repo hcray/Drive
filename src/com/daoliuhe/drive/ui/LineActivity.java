@@ -118,6 +118,12 @@ public class LineActivity extends Activity /* implements OnLongClickListener */{
 	private Double refresh;
 	//是否弹出评分标准
 	private boolean showFlag;
+	// 播报过的经度
+	private Double lastLongitude = 0d;
+	// 播报过的纬度
+	private Double lastLatitude = 0d;
+	//是否已经离开播报过的坐标点
+	private boolean isLeaveScope = false;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -555,16 +561,30 @@ public class LineActivity extends Activity /* implements OnLongClickListener */{
 		float curBearing = location.getBearing();
 		// 速度
 		// float curSpeed = location.getSpeed();
+		
+		//判断当前的坐标点是否已经离开上次播报的范围，设置相关的参数
+		if(Distance.GetDistance(curLongitude, curLatitude, lastLongitude, lastLatitude) > distance){
+			isLeaveScope = true;
+		}
+		
 		// 查询出路线中的所有的坐标点
 		int lineId = lineBean.getId();
 		List<LocationBean> locationList = dbAdapter.selectLocationByLineId(lineId);
 		// 迭代保存的坐标点
 		for (LocationBean locationBean : locationList) {
-			// 经度
+			/** 
+			 * 保存坐标点的经度
+			 */
 			Double longitude = locationBean.getLongitude();
-			// 纬度
+			
+			/** 
+			 * 保存坐标点的纬度
+			 */
 			Double latitude = locationBean.getLatitude();
-			// 方位
+			
+			/**
+			 * 保存坐标点的方位
+			 */
 			Float bearing = locationBean.getBearing();
 			// 语音类型
 			int voiceType = locationBean.getVoiceType();
@@ -581,17 +601,28 @@ public class LineActivity extends Activity /* implements OnLongClickListener */{
 			}
 
 			//判断是否符合触发条件
-			if (null != latitude && null != longitude && 0 != latitude
-					&& 0 != longitude) {
-				if (Distance.GetDistance(curLongitude, curLatitude, longitude,
-						latitude) < distance
+			if (null != latitude && null != longitude && 0 != latitude && 0 != longitude) {
+				//录入坐标点范围内的坐标
+				if (Distance.GetDistance(curLongitude, curLatitude, longitude, latitude) < distance
 						&& Distance.getDiff(curBearing, bearing) < angleError) {
-					// tvline.setText(R.string.toast06);
-					playMusic(curVoiceType);
-					openScoring(curVoiceType);
+					//当前播报的点不是上一次播报的点
+					if(longitude != lastLongitude && latitude != lastLatitude){
+						// tvline.setText(R.string.toast06);
+						lastLatitude = latitude;
+						lastLongitude = longitude;
+						playMusic(curVoiceType);
+						openScoring(curVoiceType);
+					//当前播报的点不是上一次播报的点,判断是否离开过上一次播报点的范围
+					}else{
+						if(isLeaveScope){
+							lastLatitude = latitude;
+							lastLongitude = longitude;
+							playMusic(curVoiceType);
+							openScoring(curVoiceType);
+						}
+					}
 				}
 			}
-
 		}
 	}
 
