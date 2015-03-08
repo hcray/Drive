@@ -58,13 +58,13 @@ public class DbAdapter {
 	private static final String INSERT_LINE11_LOCATION5 ="insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (1,6,120.823556,30.176125,9.09);";
 	private static final String INSERT_LINE11_LOCATION6 ="insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (1,5,120.823455,30.178751,37.17);";
 	private static final String INSERT_LINE11_LOCATION7 ="insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (1,13,120.827036,30.179314,86.05);";
-	private static final String INSERT_LINE11_LOCATION8 ="insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (1,12,120.828676,30.179434,190.83);";
+	private static final String INSERT_LINE11_LOCATION8 ="insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (1,12,120.828676,30.179434,90.83);";
 	private static final String INSERT_LINE11_LOCATION9 ="insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (1,3,120.831515,30.179575,83.83);";
 	private static final String INSERT_LINE11_LOCATION10 ="insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (1,4,120.836691,30.179723,93.95);";
 	private static final String INSERT_LINE11_LOCATION11 ="insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (1,8,120.837926,30.180398,347.96);";
-	private static final String INSERT_LINE11_LOCATION12 ="insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (1,11,120.837583,30.181409,183.69);";
-	private static final String INSERT_LINE11_LOCATION13 ="insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (1,10,120.821543,30.177781,181.07);";
-	private static final String INSERT_LINE11_LOCATION14 ="insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (1,7,120.836994,30.183226,352.88);";
+	private static final String INSERT_LINE11_LOCATION12 ="insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (1,11,120.837583,30.181409,338.46);";
+	private static final String INSERT_LINE11_LOCATION13 ="insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (1,10,120.821543,30.177781,340);";
+	private static final String INSERT_LINE11_LOCATION14 ="insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (1,3,120.836994,30.183226,352.88);";
 	private static final String INSERT_LINE11_LOCATION15 ="insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (1,14,120.836498,30.184795,354);";
 	private static final String INSERT_LINE11_LOCATION16 ="insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (1,3,120.835794,30.186965,352.07);";
 	private static final String INSERT_LINE11_LOCATION17 ="insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (1,15,120.834963,30.189716,353.89);";
@@ -74,15 +74,15 @@ public class DbAdapter {
 	private static final String INSERT_LINE12_LOCATION2 = "insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (2,15,120.834233,30.188325,274.19);";
 	private static final String INSERT_LINE12_LOCATION3 = "insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (2,5,120.834058,30.188201,101.16);";
 	private static final String INSERT_LINE12_LOCATION4 = "insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (2,11,120.835918,30.186551,165.67);";
-	private static final String INSERT_LINE12_LOCATION5 = "insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (2,10,120.836021,30.186206,149.8);";
-	private static final String INSERT_LINE12_LOCATION6 = "insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (2,7,120.836428,30.184655,106.75);";
+	private static final String INSERT_LINE12_LOCATION5 = "insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (2,10,120.836173,30.1863785,166.21);";
+	private static final String INSERT_LINE12_LOCATION6 = "insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (2,7,120.836428,30.184655,166.75);";
 	private static final String INSERT_LINE12_LOCATION7 = "insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (2,14,120.836683,30.183960,165.75);";
 	private static final String INSERT_LINE12_LOCATION8 = "insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (2,8,120.837476,30.181465,184.4);";
-	private static final String INSERT_LINE12_LOCATION9 = "insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (2,5,120.837736,30.180599,350.87);";
+	private static final String INSERT_LINE12_LOCATION9 = "insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (2,5,120.837736,30.180599,190);";
 	private static final String INSERT_LINE12_LOCATION10 = "insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (2,1,120.837273,30.179746,277.35);";
 	private static final String INSERT_LINE12_LOCATION11 = "insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (2,2,120.835851,30.179640,255.64);";
 	private static final String INSERT_LINE12_LOCATION12 = "insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (2,3,120.83325,30.179516,258.18);";
-	private static final String INSERT_LINE12_LOCATION13 = "insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (2,13,120.829076,30.17938,95.71);";
+	private static final String INSERT_LINE12_LOCATION13 = "insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (2,13,120.829076,30.17938,250.71);";
 	private static final String INSERT_LINE12_LOCATION14 = "insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (2,12,120.827738,30.179358,242.16);";
 	private static final String INSERT_LINE12_LOCATION15 = "insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (2,4,120.824151,30.179151,251.92);";
 	
@@ -94,31 +94,31 @@ public class DbAdapter {
 	private static final String INSERT_LINE21_LOCATION5 = "insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (3,6,120.823556,30.176125,9.09);";
 	private static final String INSERT_LINE21_LOCATION6 = "insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (3,5,120.823455,30.178751,37.17);";
 	private static final String INSERT_LINE21_LOCATION7 = "insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (3,13,120.827036,30.179314,86.05);";
-	private static final String INSERT_LINE21_LOCATION8 = "insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (3,12,120.828676,30.179434,190.83);";
+	private static final String INSERT_LINE21_LOCATION8 = "insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (3,12,120.828676,30.179434,90.83);";
 	private static final String INSERT_LINE21_LOCATION9 = "insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (3,3,120.831515,30.179575,83.83);";
 	private static final String INSERT_LINE21_LOCATION10 = "insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (3,5,120.83671,30.1796216,91.64);";
 	private static final String INSERT_LINE21_LOCATION11 = "insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (3,11,120.838206,30.178853,47.82);";
 	private static final String INSERT_LINE21_LOCATION12 = "insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (3,15,120.838583,30.178035,138.4);";
 	private static final String INSERT_LINE21_LOCATION13 = "insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (3,7,120.838391,30.179021,351.78);";
 	private static final String INSERT_LINE21_LOCATION14 = "insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (3,8,120.837926,30.180398,347.96);";
-	private static final String INSERT_LINE21_LOCATION15 = "insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (3,11,120.837583,30.181409,183.69);";
-	private static final String INSERT_LINE21_LOCATION16 = "insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (3,10,120.821543,30.177781,181.07);";
-	private static final String INSERT_LINE21_LOCATION17 = "insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (3,7,120.836994,30.183226,352.88);";
+	private static final String INSERT_LINE21_LOCATION15 = "insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (3,11,120.837583,30.181409,338.46);";
+	private static final String INSERT_LINE21_LOCATION16 = "insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (3,10,120.821543,30.177781,340);";
+	private static final String INSERT_LINE21_LOCATION17 = "insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (3,3,120.836994,30.183226,352.88);";
 	private static final String INSERT_LINE21_LOCATION18 = "insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (3,14,120.836498,30.184795,354);";
 	
 	//Â·Ïß2-2
 	private static final String INSERT_LINE22_LOCATION1 = "insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (4,3,120.835794,30.186965,352.07);";
 	private static final String INSERT_LINE22_LOCATION2 = "insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (4,15,120.834963,30.189716,353.89);";
 	private static final String INSERT_LINE22_LOCATION3 = "insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (4,11,120.835918,30.186551,165.67);";
-	private static final String INSERT_LINE22_LOCATION4 = "insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (4,10,120.836021,30.186206,149.8);";
-	private static final String INSERT_LINE22_LOCATION5 = "insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (4,7,120.836428,30.184655,106.75);";
+	private static final String INSERT_LINE22_LOCATION4 = "insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (4,10,120.836173,30.1863785,166.21);";
+	private static final String INSERT_LINE22_LOCATION5 = "insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (4,7,120.836428,30.184655,166.75);";
 	private static final String INSERT_LINE22_LOCATION6 = "insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (4,14,120.836683,30.183960,165.75);";
 	private static final String INSERT_LINE22_LOCATION7 = "insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (4,8,120.837476,30.181465,184.4);";
-	private static final String INSERT_LINE22_LOCATION8 = "insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (4,5,120.837736,30.180599,350.87);";
+	private static final String INSERT_LINE22_LOCATION8 = "insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (4,5,120.837736,30.180599,190);";
 	private static final String INSERT_LINE22_LOCATION9 = "insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (4,1,120.837273,30.179746,277.35);";
 	private static final String INSERT_LINE22_LOCATION10 = "insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (4,2,120.835851,30.179640,255.64);";
 	private static final String INSERT_LINE22_LOCATION11 = "insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (4,3,120.83325,30.179516,258.18);";
-	private static final String INSERT_LINE22_LOCATION12 = "insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (4,13,120.829076,30.17938,95.71);";
+	private static final String INSERT_LINE22_LOCATION12 = "insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (4,13,120.829076,30.17938,250.71);";
 	private static final String INSERT_LINE22_LOCATION13 = "insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (4,12,120.827738,30.179358,242.16);";
 	private static final String INSERT_LINE22_LOCATION14 = "insert into t_locations (lineId, voiceType, longitude, latitude, bearing) values (4,4,120.824151,30.179151,251.92);";
 
