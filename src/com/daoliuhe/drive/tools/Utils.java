@@ -29,4 +29,16 @@ public class Utils {
 		}  
     	return sb.toString();  
     }
+    
+    
+	/**
+	 * 生成随机数
+	 * @param min 开始
+	 * @param max 结束
+	 * @return 随机数
+	 */
+	public static int random(int min, int max) {
+		int x = min + (int) (Math.random() * max);
+		return x;
+	}
 }

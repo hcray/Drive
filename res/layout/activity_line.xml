@@ -87,20 +87,20 @@
                     android:textSize="20sp" />
 
                 <Button
-                    android:id="@+id/btnLights3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="70dp"
-                    android:layout_weight="1"
-                    android:text="模拟灯光操作三"
-                    android:textColor="#5e5e5e"
-                    android:textSize="20sp" />
-
-                <Button
                     android:id="@+id/btnReset"
                     android:layout_width="wrap_content"
                     android:layout_height="70dp"
                     android:layout_weight="1"
                     android:text="停止播放"
+                    android:textColor="#5e5e5e"
+                    android:textSize="20sp" />
+                
+                <Button
+                    android:id="@+id/btnEnd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    android:layout_weight="1"
+                    android:text="考试结束"
                     android:textColor="#5e5e5e"
                     android:textSize="20sp" />
             </TableRow>

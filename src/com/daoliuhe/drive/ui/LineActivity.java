@@ -74,7 +74,7 @@ public class LineActivity extends Activity /* implements OnLongClickListener */{
 
 	private Button btnLights1;
 	private Button btnLights2;
-	private Button btnLights3;
+	private Button btnEnd;
 	private Button btnReset;
 	private Button btnStart;
 
@@ -249,7 +249,9 @@ public class LineActivity extends Activity /* implements OnLongClickListener */{
 			public void onClick(View v) {
 				// tvline.setText(R.string.toast01);
 				// id,左右声道, 音量, 优先级, 是否循环(0为不循环，-1为循环),播放比率(从0.5到2，一般为1，表示正常播放)
-				playMusic(v.getId());
+				//playMusic(v.getId());
+				int x = Utils.random(1, 5); 
+				playRandomLightMusic(x);
 			}
 		});
 
@@ -259,12 +261,14 @@ public class LineActivity extends Activity /* implements OnLongClickListener */{
 			@Override
 			public void onClick(View v) {
 				// tvline.setText(R.string.toast02);
-				playMusic(v.getId());
+				//playMusic(v.getId());
+				int x = Utils.random(5, 5); 
+				playRandomLightMusic(x);
 
 			}
 		});
-		btnLights3 = (Button) this.findViewById(R.id.btnLights3);
-		btnLights3.setOnClickListener(new OnClickListener() {
+		btnEnd = (Button) this.findViewById(R.id.btnEnd);
+		btnEnd.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -752,6 +756,12 @@ public class LineActivity extends Activity /* implements OnLongClickListener */{
 		if (dbAdapter != null) {
 			dbAdapter.close();
 		}
+		
+		// 移除定位请求
+		mLocationManagerProxy.removeUpdates(mPendingIntent);
+		unregisterReceiver(mGPSLocationReceiver);
+		// 销毁定位
+		mLocationManagerProxy.destroy();
 
 		// lm.removeUpdates(locationListener);
 	}
@@ -784,6 +794,74 @@ public class LineActivity extends Activity /* implements OnLongClickListener */{
 		}
 	}
 	
+	/**
+	 * 随机播放灯光声音
+	 * 
+	 * @param random
+	 */
+	public void playRandomLightMusic(int random) {
+		try {
+			// 重置多媒体
+			mMediaPlayer.reset();
+			Uri uri = null;
+			switch (random) {
+			case 1:
+				uri = Uri.parse("android.resource://" + getPackageName() + "/"
+						+ R.raw.light01);
+				break;
+			case 2:
+				uri = Uri.parse("android.resource://" + getPackageName() + "/"
+						+ R.raw.light02);
+				break;
+			case 3:
+				uri = Uri.parse("android.resource://" + getPackageName() + "/"
+						+ R.raw.light03);
+				break;
+			case 4:
+				uri = Uri.parse("android.resource://" + getPackageName() + "/"
+						+ R.raw.light04);
+				break;
+			case 5:
+				uri = Uri.parse("android.resource://" + getPackageName() + "/"
+						+ R.raw.light05);
+				break;
+			case 6:
+				uri = Uri.parse("android.resource://" + getPackageName() + "/"
+						+ R.raw.light06);
+				break;
+			case 7:
+				uri = Uri.parse("android.resource://" + getPackageName() + "/"
+						+ R.raw.light07);
+				break;
+			case 8:
+				uri = Uri.parse("android.resource://" + getPackageName() + "/"
+						+ R.raw.light08);
+				break;
+			case 9:
+				uri = Uri.parse("android.resource://" + getPackageName() + "/"
+						+ R.raw.light09);
+				break;
+			case 10:
+				uri = Uri.parse("android.resource://" + getPackageName() + "/"
+						+ R.raw.light10);
+				break;
+			}
+			
+			if (null != uri) {
+				mMediaPlayer.setDataSource(this, uri);
+				// 准备播放
+				mMediaPlayer.prepare();
+				// 开始播放
+				mMediaPlayer.start();
+			} else {
+				mMediaPlayer.stop();
+			}
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 	/**
 	 * 播放声音
 	 * 
@@ -835,9 +913,9 @@ public class LineActivity extends Activity /* implements OnLongClickListener */{
 						+ R.raw.light02);
 				break;
 
-			case R.id.btnLights3:
+			case R.id.btnEnd:
 				uri = Uri.parse("android.resource://" + getPackageName() + "/"
-						+ R.raw.light03);
+						+ R.raw.end);
 				break;
 
 			case R.id.btnShiftGears:
