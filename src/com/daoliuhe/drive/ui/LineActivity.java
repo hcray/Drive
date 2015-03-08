@@ -789,10 +789,10 @@ public class LineActivity extends Activity /* implements OnLongClickListener */{
 		}
 		
 		// 移除定位请求
-		mLocationManagerProxy.removeUpdates(mPendingIntent);
-		unregisterReceiver(mGPSLocationReceiver);
+		//mLocationManagerProxy.removeUpdates(mPendingIntent);
+		//unregisterReceiver(mGPSLocationReceiver);
 		// 销毁定位
-		mLocationManagerProxy.destroy();
+		//mLocationManagerProxy.destroy();
 
 		// lm.removeUpdates(locationListener);
 	}
