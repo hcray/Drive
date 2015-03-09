@@ -141,7 +141,7 @@ public class CustomConstant {
 	/**
 	 * 播报距离 value 默认值
 	 */
-	public static final String DISTANCE_VALUE = "10";
+	public static final String DISTANCE_VALUE = "20";
 
 	/**
 	 * 角度误差 key
@@ -150,7 +150,7 @@ public class CustomConstant {
 	/**
 	 * 角度误差 value 默认值
 	 */
-	public static final String ANGLEERROR_VALUE = "50";
+	public static final String ANGLEERROR_VALUE = "100";
 	
 	/**
 	 * 刷新频率 key
