@@ -34,7 +34,7 @@ public class MainActivity extends Activity {
 		btnSubjectTwo.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Toast.makeText(getApplicationContext(), "Ω®…Ë÷–...", Toast.LENGTH_SHORT).show();
+				Toast.makeText(getApplicationContext(), getResources().getString(R.string.main_built), Toast.LENGTH_SHORT).show();
 			}
 		});
 

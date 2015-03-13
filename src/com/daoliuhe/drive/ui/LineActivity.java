@@ -1069,7 +1069,7 @@ public class LineActivity extends Activity /* implements OnLongClickListener */{
 		final EditText etPassword = new EditText(context);
 		AlertDialog.Builder builder = new AlertDialog.Builder(context);
 		//builder.setIcon(R.drawable.ic_dialog_info);
-		builder.setTitle("«Î ‰»Î√‹¬Î");
+		builder.setTitle(getResources().getString(R.string.inputPassword));
 		builder.setView(etPassword);
 		builder.setPositiveButton(R.string.alert_dialog_ok, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int whichButton) {
@@ -1084,7 +1084,7 @@ public class LineActivity extends Activity /* implements OnLongClickListener */{
 					intent.putExtra(DbAdapter.KEY_LINE_NAME, lineBean.getLineName());
 					startActivity(intent);
 				}else{
-					Toast.makeText(getApplicationContext(), "√‹¬Î¥ÌŒÛ", Toast.LENGTH_SHORT).show();
+					Toast.makeText(getApplicationContext(), getResources().getString(R.string.passwordError), Toast.LENGTH_SHORT).show();
 				}
 			}
 		});

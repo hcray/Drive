@@ -48,7 +48,7 @@ public class LineNameActivity extends Activity {
 				String edtLineNameValue = edtLineName.getText().toString();
 				//判断名称有没有输入
 				if (edtLineNameValue == null || edtLineNameValue.isEmpty()) {
-					Toast.makeText(getApplicationContext(), "请输入有效的名称", Toast.LENGTH_SHORT).show();
+					Toast.makeText(getApplicationContext(), getResources().getString(R.string.lineName_input_name), Toast.LENGTH_SHORT).show();
 					return ;
 				}
 				

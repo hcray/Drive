@@ -43,9 +43,15 @@ public class LocationActivity extends Activity {
 	
 	private ArrayAdapter<CharSequence> adapterVoiceType = null;
 
-	public static final String[] voiceType = {"", "保持直线行驶", "结束直线行驶", "前方路口直行",
-			"前方路口左转", "前方路口右转", "通过学校区域", "通过人行横道", "通过公共汽车站", "前方人行横道",
-			"前方请变更车道", "请超越前方车辆", "与机动车会车", "加减挡位操作", "请靠边停车", "前方选择合适地点掉头" };
+	public final String[] voiceType = { "",
+			getResources().getString(R.string.location_voiceType_01), getResources().getString(R.string.location_voiceType_02),
+			getResources().getString(R.string.location_voiceType_03), getResources().getString(R.string.location_voiceType_04),
+			getResources().getString(R.string.location_voiceType_05), getResources().getString(R.string.location_voiceType_06),
+			getResources().getString(R.string.location_voiceType_07), getResources().getString(R.string.location_voiceType_08),
+			getResources().getString(R.string.location_voiceType_09), getResources().getString(R.string.location_voiceType_10),
+			getResources().getString(R.string.location_voiceType_11), getResources().getString(R.string.location_voiceType_12),
+			getResources().getString(R.string.location_voiceType_13), getResources().getString(R.string.location_voiceType_14),
+			getResources().getString(R.string.location_voiceType_15) };
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -116,7 +122,7 @@ public class LocationActivity extends Activity {
 				if (longitudeEditValue == null 
 						|| longitudeEditValue.equals("")
 						|| longitudeEditValue.trim().equals("")) {
-					Toast.makeText(getApplicationContext(), "请输入有效的经度值", Toast.LENGTH_SHORT).show();
+					Toast.makeText(getApplicationContext(), getResources().getString(R.string.location_input_longitude), Toast.LENGTH_SHORT).show();
 					return ;
 				}
 				
@@ -124,7 +130,7 @@ public class LocationActivity extends Activity {
 				if (latitudeEditValue == null 
 						|| latitudeEditValue.equals("")
 						|| latitudeEditValue.trim().equals("")) {
-					Toast.makeText(getApplicationContext(), "请输入有效的纬度值", Toast.LENGTH_SHORT).show();
+					Toast.makeText(getApplicationContext(), getResources().getString(R.string.location_input_latitude), Toast.LENGTH_SHORT).show();
 					return ;
 				}
 				
@@ -132,13 +138,13 @@ public class LocationActivity extends Activity {
 				if (bearingEditValue == null 
 						|| bearingEditValue.equals("")
 						|| bearingEditValue.trim().equals("")) {
-					Toast.makeText(getApplicationContext(), "请输入有效的方位", Toast.LENGTH_SHORT).show();
+					Toast.makeText(getApplicationContext(), getResources().getString(R.string.location_input_bearing), Toast.LENGTH_SHORT).show();
 					return ;
 				}
 
 				//判断语音的选择
 				if(pos == 0){
-					Toast.makeText(getApplicationContext(), "请选择语音", Toast.LENGTH_SHORT).show();
+					Toast.makeText(getApplicationContext(), getResources().getString(R.string.location_input_voiceType), Toast.LENGTH_SHORT).show();
 					return ;
 				}
 				
@@ -193,7 +199,6 @@ public class LocationActivity extends Activity {
 	
 	@Override
 	protected void onDestroy() {
-		// TODO Auto-generated method stub
 		super.onDestroy();
 		if(null != dbAdapter){
 			dbAdapter.close();

@@ -194,5 +194,36 @@
 
     <string name="title_activity_video_player">视频播放器</string>
     <string name="main_logo"></string>
+    <string name="inputPassword">请输入密码</string>
+    <string name="passwordError">密码错误</string>
+    
+    <string name="lineName_input_name">请输入有效的名称</string>
+    
+    <string name="location_voiceType_01">保持直线行驶</string>
+	<string name="location_voiceType_02">结束直线行驶</string>
+	<string name="location_voiceType_03">前方路口直行</string>
+	<string name="location_voiceType_04">前方路口左转</string>
+	<string name="location_voiceType_05">前方路口右转</string>
+	<string name="location_voiceType_06">通过学校区域</string>
+	<string name="location_voiceType_07">通过人行横道</string>
+	<string name="location_voiceType_08">通过公共汽车站</string>
+	<string name="location_voiceType_09">前方人行横道</string>
+	<string name="location_voiceType_10">前方请变更车道</string>
+	<string name="location_voiceType_11">请超越前方车辆</string>
+	<string name="location_voiceType_12">与机动车会车</string>
+	<string name="location_voiceType_13">加减挡位操作</string>
+	<string name="location_voiceType_14">请靠边停车</string>
+	<string name="location_voiceType_15">前方选择合适地点掉头</string>
+	
+	<string name="location_input_longitude">请输入有效的经度值</string>
+	<string name="location_input_latitude">请输入有效的纬度值</string>
+	<string name="location_input_bearing">请输入有效的方位</string>
+	<string name="location_input_voiceType">请选择语音</string>
+	
+	<string name="main_built">建设中</string>
+	
+	<string name="param_input_distance">请输入有效的播报距离</string>
+	<string name="param_input_angleError">请输入有效的角度误差</string>
+	<string name="param_input_refresh">请输入有效的刷新频率</string>
 
 </resources>

@@ -45,6 +45,16 @@ public class LocationListActivity extends Activity {
 	//¬∑œﬂ
 	private LineBean lineBean;
 
+	public final String[] voiceType = { "",
+			getResources().getString(R.string.location_voiceType_01), getResources().getString(R.string.location_voiceType_02),
+			getResources().getString(R.string.location_voiceType_03), getResources().getString(R.string.location_voiceType_04),
+			getResources().getString(R.string.location_voiceType_05), getResources().getString(R.string.location_voiceType_06),
+			getResources().getString(R.string.location_voiceType_07), getResources().getString(R.string.location_voiceType_08),
+			getResources().getString(R.string.location_voiceType_09), getResources().getString(R.string.location_voiceType_10),
+			getResources().getString(R.string.location_voiceType_11), getResources().getString(R.string.location_voiceType_12),
+			getResources().getString(R.string.location_voiceType_13), getResources().getString(R.string.location_voiceType_14),
+			getResources().getString(R.string.location_voiceType_15) };
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -124,7 +134,7 @@ public class LocationListActivity extends Activity {
 		locationList = dbAdapter.selectLocationByLineId(lineId );
         List<String> viewList = new ArrayList<String>();
         for(LocationBean bean : locationList){
-			viewList.add(bean.getId() + " ”Ô“Ù£∫" + LocationActivity.voiceType[bean.getVoiceType()] + " Longitude:"
+			viewList.add(bean.getId() + " voiceType£∫" + voiceType[bean.getVoiceType()] + " Longitude:"
 					+ bean.getLongitude() + " Latitude:" + bean.getLatitude() + " Bearing:"
 					+ bean.getBearing());
         }

@@ -81,7 +81,7 @@ public class ParamActivity extends Activity {
 				if (edtDistanceValue == null || edtDistanceValue.equals("")
 						|| edtDistanceValue.trim().equals("")
 						|| Integer.parseInt(edtDistanceValue) < 0) {
-					Toast.makeText(getApplicationContext(), "请输入有效的播报距离", Toast.LENGTH_SHORT).show();
+					Toast.makeText(getApplicationContext(), getResources().getString(R.string.param_input_distance), Toast.LENGTH_SHORT).show();
 					return ;
 				}
 				
@@ -89,7 +89,7 @@ public class ParamActivity extends Activity {
 				if (edtAngleErrorValue == null || edtAngleErrorValue.equals("")
 						|| edtAngleErrorValue.trim().equals("")
 						|| Integer.parseInt(edtAngleErrorValue) < 0){
-					Toast.makeText(getApplicationContext(), "请输入有效的角度误差", Toast.LENGTH_SHORT).show();
+					Toast.makeText(getApplicationContext(), getResources().getString(R.string.param_input_angleError), Toast.LENGTH_SHORT).show();
 					return ;
 				}
 				
@@ -97,7 +97,7 @@ public class ParamActivity extends Activity {
 				if (edtRefreshValue == null || edtRefreshValue.equals("")
 						|| edtRefreshValue.trim().equals("")
 						|| Integer.parseInt(edtRefreshValue) < 0) {
-					Toast.makeText(getApplicationContext(), "请输入有效的刷新频率", Toast.LENGTH_SHORT).show();
+					Toast.makeText(getApplicationContext(), getResources().getString(R.string.param_input_refresh), Toast.LENGTH_SHORT).show();
 					return ;
 				}
 				settings.edit()
