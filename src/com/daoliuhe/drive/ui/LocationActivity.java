@@ -43,20 +43,23 @@ public class LocationActivity extends Activity {
 	
 	private ArrayAdapter<CharSequence> adapterVoiceType = null;
 
-	public final String[] voiceType = { "",
-			getResources().getString(R.string.location_voiceType_01), getResources().getString(R.string.location_voiceType_02),
-			getResources().getString(R.string.location_voiceType_03), getResources().getString(R.string.location_voiceType_04),
-			getResources().getString(R.string.location_voiceType_05), getResources().getString(R.string.location_voiceType_06),
-			getResources().getString(R.string.location_voiceType_07), getResources().getString(R.string.location_voiceType_08),
-			getResources().getString(R.string.location_voiceType_09), getResources().getString(R.string.location_voiceType_10),
-			getResources().getString(R.string.location_voiceType_11), getResources().getString(R.string.location_voiceType_12),
-			getResources().getString(R.string.location_voiceType_13), getResources().getString(R.string.location_voiceType_14),
-			getResources().getString(R.string.location_voiceType_15) };
+	private String[] voiceType;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_location);
+		
+		voiceType = new String[]{ "",
+				getResources().getString(R.string.location_voiceType_01), getResources().getString(R.string.location_voiceType_02),
+				getResources().getString(R.string.location_voiceType_03), getResources().getString(R.string.location_voiceType_04),
+				getResources().getString(R.string.location_voiceType_05), getResources().getString(R.string.location_voiceType_06),
+				getResources().getString(R.string.location_voiceType_07), getResources().getString(R.string.location_voiceType_08),
+				getResources().getString(R.string.location_voiceType_09), getResources().getString(R.string.location_voiceType_10),
+				getResources().getString(R.string.location_voiceType_11), getResources().getString(R.string.location_voiceType_12),
+				getResources().getString(R.string.location_voiceType_13), getResources().getString(R.string.location_voiceType_14),
+				getResources().getString(R.string.location_voiceType_15) };
+		
 		//Êý¾Ý¿â
 		dbAdapter = new DbAdapter(this);
 		dbAdapter.open();

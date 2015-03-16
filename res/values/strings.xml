@@ -221,9 +221,12 @@
 	<string name="location_input_voiceType">请选择语音</string>
 	
 	<string name="main_built">建设中</string>
+	<string name="main_contact">请联系销售人员</string>
 	
 	<string name="param_input_distance">请输入有效的播报距离</string>
 	<string name="param_input_angleError">请输入有效的角度误差</string>
 	<string name="param_input_refresh">请输入有效的刷新频率</string>
+	
+	
 
 </resources>
