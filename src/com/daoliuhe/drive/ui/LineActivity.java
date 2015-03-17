@@ -532,13 +532,13 @@ public class LineActivity extends Activity /* implements OnLongClickListener */{
 	 */
 	private void updateView(Location location) {
 		if (location != null) {
-			tvline.setText("location info\nLongitude£º");
+			tvline.setText("location info\nLongitude:");
 			tvline.append(String.valueOf(location.getLongitude()));
-			tvline.append("\nLatitude£º");
+			tvline.append("\nLatitude:");
 			tvline.append(String.valueOf(location.getLatitude()));
-			tvline.append("\nBearing£º");
+			tvline.append("\nBearing:");
 			tvline.append(String.valueOf(location.getBearing()));
-			tvline.append("\nSpeed£º");
+			tvline.append("\nSpeed:");
 			tvline.append(String.valueOf(location.getSpeed()));
 		} else {
 			// Çå¿ÕEditText¶ÔÏó
